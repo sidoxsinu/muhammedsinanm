@@ -396,15 +396,107 @@
 })();
 
 // Make toggleDropdown global
-window.toggleDropdown = function(button) {
-    const parentItem = button.closest('.club-item') || button.closest('.event-item');
-    if (parentItem) {
-        parentItem.classList.toggle('active');
-        button.classList.toggle('active');
-    }
+window.toggleDropdown = function (button) {
+  const parentItem = button.closest('.club-item') || button.closest('.event-item');
+  if (parentItem) {
+    parentItem.classList.toggle('active');
+    button.classList.toggle('active');
+  }
 };
 
-window.toggleMenu = function() {
-    const navLinks = document.querySelector('.nav-links');
-    if (navLinks) navLinks.classList.toggle('active');
+window.toggleMenu = function () {
+  const navLinks = document.querySelector('.nav-links');
+  if (navLinks) navLinks.classList.toggle('active');
 };
+
+// FEATURE 9 — LETTER-BY-LETTER SCROLL FILL (about text)
+(function initAboutTextFill() {
+  const para    = document.querySelector('#about .large-intro-text');
+  const section = document.querySelector('#about');
+  if (!para || !section) return;
+
+  // ── Force the paragraph visible; char colours handle the reveal ──────────
+  para.style.opacity = '1';
+  para.style.transform = 'none';
+
+  // ── 1. Split every character into its own <span> ─────────────────────────
+  const chars = [];
+  const nodes = Array.from(para.childNodes);
+  para.innerHTML = '';
+
+  nodes.forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      Array.from(node.textContent).forEach(ch => {
+        const s = document.createElement('span');
+        s.className = 'char';
+        s.textContent = ch;
+        para.appendChild(s);
+        chars.push(s);
+      });
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      // keyword span (.highlight-text) → accent colour when lit
+      Array.from(node.textContent).forEach(ch => {
+        const s = document.createElement('span');
+        s.className = 'char char--key';
+        s.textContent = ch;
+        para.appendChild(s);
+        chars.push(s);
+      });
+    }
+  });
+
+  const total   = chars.length;
+  let lastLit   = -1;
+  let rafId     = null;
+
+  // ── 2. Compute progress from the paragraph's own position ─────────────────
+  function updateFill() {
+    const rect = para.getBoundingClientRect();
+    const vh   = window.innerHeight;
+
+    // Fill begins when text is ~60 % down the viewport (not right as it enters)
+    const start = vh * 0.60;  // text needs to scroll in before fill starts
+    const end   = vh * -0.6;  // text is 60 % above the viewport top
+
+    let progress = (start - rect.top) / (start - end);
+    progress = Math.max(0, Math.min(1, progress));
+
+    const targetLit = Math.round(progress * total);
+
+    if (targetLit === lastLit) { rafId = null; return; }
+
+    if (targetLit > lastLit) {
+      for (let i = Math.max(0, lastLit); i < targetLit; i++) {
+        chars[i].classList.add('char--lit');
+      }
+    } else {
+      for (let i = lastLit - 1; i >= targetLit; i--) {
+        chars[i].classList.remove('char--lit');
+      }
+    }
+
+    lastLit = targetLit;
+    rafId = null;
+  }
+
+  function onScroll() {
+    if (!rafId) rafId = requestAnimationFrame(updateFill);
+  }
+
+  // ── 3. Attach listener only while section is near viewport ───────────────
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        window.addEventListener('scroll', onScroll, { passive: true });
+        updateFill(); // paint immediately on enter
+      } else {
+        window.removeEventListener('scroll', onScroll);
+      }
+    });
+  }, { rootMargin: '400px 0px 400px 0px' });
+
+  observer.observe(section);
+
+  // Also run once on load in case about section starts in view
+  updateFill();
+})();

@@ -212,6 +212,38 @@ section h3 {
 }
 
 /* ==========================================================================
+   ABOUT TEXT — LETTER-BY-LETTER SCROLL FILL
+   ========================================================================== */
+
+/* Hide the paragraph's own colour; chars handle it */
+.large-intro-text {
+  color: transparent;
+  opacity: 1 !important;  /* prevent GSAP reveal-block from hiding it */
+  transform: none !important;
+}
+
+/* Every character is a span — dim by default */
+.char {
+  display: inline;
+  color: rgba(255, 255, 255, 0.12);
+  transition: color 0.18s ease;
+  white-space: pre-wrap;
+}
+
+/* Regular text: light up to white */
+.char.char--lit {
+  color: #ffffff;
+}
+
+/* Keyword chars: light up to accent red */
+.char.char--key {
+  color: rgba(229, 77, 46, 0.18);
+}
+.char.char--key.char--lit {
+  color: #E54D2E;
+}
+
+/* ==========================================================================
    PROJECTS / LISTS
    ========================================================================== */
 .projects, .clubs-list, .events-list {
