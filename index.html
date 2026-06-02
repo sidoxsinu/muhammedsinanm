@@ -829,14 +829,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }, { passive: true });
 
         // 5. Drag-to-scroll (mouse) & Click Handling
-        let isDown = false, startX, startScrollLeft;
+        let isDown = false, startX;
+        let totalDelta = 0;
         let isDraggingCard = false;
 
         viewport.addEventListener('mousedown', e => {
             isDown = true;
             isDraggingCard = false;
+            totalDelta = 0;
             startX = e.pageX - viewport.offsetLeft;
-            startScrollLeft = viewport.scrollLeft;
             viewport.style.cursor = 'grabbing';
         });
         document.addEventListener('mouseup', () => { isDown = false; viewport.style.cursor = 'grab'; });
@@ -845,10 +846,15 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - viewport.offsetLeft;
-            if (Math.abs(x - startX) > 5) {
+            const deltaX = x - startX;
+            totalDelta += Math.abs(deltaX);
+            
+            if (totalDelta > 5) {
                 isDraggingCard = true;
             }
-            viewport.scrollLeft = startScrollLeft - (x - startX) * 1.5;
+            
+            viewport.scrollLeft -= deltaX * 1.5;
+            startX = x;
         });
 
         // Click handler for cards
