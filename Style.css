@@ -234,7 +234,6 @@ section h3 {
 
 .card:hover, .jtl-card:hover {
   background-color: #222222;
-  transform: translateY(-4px);
 }
 
 .card-header h4, .jtl-title {
@@ -672,8 +671,9 @@ section h3 {
 }
 .event-result {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: #E8562A;
   letter-spacing: 0.03em;
+  font-weight: 500;
 }
 
 .bg-light {
@@ -971,11 +971,12 @@ section h3 {
 /* FEATURE 4 — 3D CARD TILT ON HOVER */
 .tilt-card {
   transform-style: preserve-3d;
-  transition: transform 0.1s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
   will-change: transform;
 }
 
 .tilt-card:hover {
+  transition: transform 0s, box-shadow 0.3s ease;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.08);
