@@ -876,10 +876,26 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // 6. Init
+        // 6. Auto-scroll
+        let scrollAccumulator = 0;
+        function autoScroll() {
+            // Only pause if actively dragging
+            if (!isDown) {
+                scrollAccumulator += 0.6; // Small constant pace
+                if (scrollAccumulator >= 1) {
+                    const step = Math.floor(scrollAccumulator);
+                    viewport.scrollLeft += step;
+                    scrollAccumulator -= step;
+                }
+            }
+            requestAnimationFrame(autoScroll);
+        }
+
+        // 7. Init
         requestAnimationFrame(() => {
             initScroll();
             requestAnimationFrame(applyCovertflow);
+            requestAnimationFrame(autoScroll);
         });
     })();
 
