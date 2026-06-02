@@ -500,3 +500,5 @@ window.toggleMenu = function () {
   // Also run once on load in case about section starts in view
   updateFill();
 })();
+
+

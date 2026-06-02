@@ -1077,3 +1077,321 @@ body.cursor-hover .cursor-dot {
   height: 40px;
   background: rgba(232, 86, 42, 0.9);
 }
+
+/* ==========================================================================
+   JOURNEY TIMELINE NEW DESIGN
+   ========================================================================== */
+.journey-timeline-container {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.journey-timeline-viewport {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 0 calc(5vw);
+}
+.journey-timeline-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.journey-timeline-track {
+    display: flex;
+    width: max-content;
+    min-width: 100%;
+}
+
+.journey-column {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+}
+
+.journey-year-container {
+    padding: 0 30px 20px 30px;
+}
+
+.journey-year {
+    font-size: 2.8rem;
+    font-weight: 300;
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+}
+
+.journey-content {
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    padding: 40px 30px;
+    flex-grow: 1;
+    min-height: 300px;
+}
+
+.journey-content.bg-alt {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.journey-dot {
+    position: absolute;
+    top: -6px;
+    left: 30px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-red);
+    border-radius: 50%;
+}
+
+.journey-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.journey-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 24px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.journey-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 1px;
+    background-color: var(--text-secondary);
+}
+
+.journey-list li strong {
+    color: var(--text-primary);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.journey-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.journey-nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.jtl-nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.jtl-nav-btn:hover {
+    border-color: var(--accent-red);
+    background: rgba(229, 77, 46, 0.1);
+}
+
+@media (max-width: 768px) {
+    .journey-header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .journey-column {
+        flex: 0 0 280px;
+    }
+}
+
+/* ==========================================================================
+   CTA / CONTACT SECTION
+   ========================================================================== */
+.cta-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 5vw;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.02));
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cta-content {
+    max-width: 800px;
+    margin-bottom: 60px;
+}
+
+.cta-heading {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 500;
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.cta-desc {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 40px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #2a2a2a;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.cta-social-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.social-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-pill:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.social-pill svg {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.social-pill:hover svg {
+    color: var(--text-primary);
+}
+
+.profile-pill {
+    background: #ffffff;
+    color: #000000;
+    padding: 6px 20px 6px 6px;
+    border: none;
+}
+
+.profile-pill:hover {
+    background: #e6e6e6;
+    transform: translateY(-2px);
+}
+
+.profile-pill img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #000;
+}
+
+/* ==========================================================================
+   SCROLL CIRCLE
+   ========================================================================== */
+.scroll-circle-wrapper {
+    position: absolute;
+    bottom: 110px;
+    right: 5vw;
+    z-index: 10;
+    color: #000000;
+}
+
+.scroll-circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+}
+
+.scroll-circle-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+}
+
+.scroll-circle-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-red);
+}
+
+.scroll-circle-asterisk {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.scroll-circle:hover .scroll-circle-asterisk {
+    transform: scale(1.35) rotate(45deg);
+}
+
+@media (max-width: 768px) {
+    .scroll-circle-wrapper {
+        bottom: 20px;
+        right: 20px;
+        transform: scale(0.7);
+        transform-origin: bottom right;
+    }
+}
