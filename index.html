@@ -2,1019 +2,1485 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Muhammed Sinan M | Portfolio</title>
-<link href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iJTIzZmZmZmZmIi8+PHRleHQgeD0iNTAiIHk9IjY1IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iNDUiIGZpbGw9IiUyMzBhMGYxZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U008L3RleHQ+PC9zdmc+" rel="icon"/>
-<meta content="Muhammed Sinan M | Portfolio" property="og:title"/>
-<meta content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner — Best Technical Project at Google for Developers Build with AI" property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="" property="og:url"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner — Best Technical Project at Google for Developers Build with AI" name="description"/>
-<link href="Style.css" rel="stylesheet"/>
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script></head>
-<body>
-<!-- READING PROGRESS BAR -->
-<div id="reading-progress"></div>
-<!-- GRAIN / NOISE OVERLAY -->
-<svg aria-hidden="true" style="display:none">
-<filter id="grain-filter">
-<feturbulence basefrequency="0.65" numoctaves="3" stitchtiles="stitch" type="fractalNoise"></feturbulence>
-<fecolormatrix type="saturate" values="0"></fecolormatrix>
-</filter>
-</svg>
-<div aria-hidden="true" id="noise-overlay"></div>
-<!-- CUSTOM CURSOR -->
-<div aria-hidden="true" id="cursor-dot"></div>
-<!-- SHARE BUTTON + POPUP -->
-<div aria-label="Share portfolio" id="share-btn" title="Share">
-<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18">
-<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-<polyline points="16 6 12 2 8 6"></polyline>
-<line x1="12" x2="12" y1="2" y2="15"></line>
-</svg>
-</div>
-<div aria-hidden="true" id="share-popup">
-<a href="#" id="share-linkedin" rel="noopener noreferrer" target="_blank">in LinkedIn</a>
-<a href="#" id="share-whatsapp" rel="noopener noreferrer" target="_blank">💬 WhatsApp</a>
-<a href="#" id="share-twitter" rel="noopener noreferrer" target="_blank">𝕏 Twitter / X</a>
-<a href="#" id="share-instagram">📷 Instagram</a>
-<a href="#" id="share-copy">📋 Copy Link</a>
-</div>
-<!-- TOAST -->
-<div id="share-toast"></div>
-<!-- SCROLLSPY -->
-<div aria-label="Page sections" id="scrollspy">
-<div class="spy-dot" data-section="about" title="About"><span class="spy-tip">About</span></div>
-<div class="spy-dot" data-section="journey" title="Journey"><span class="spy-tip">Journey</span></div>
-<div class="spy-dot" data-section="education" title="Education"><span class="spy-tip">Education</span></div>
-<div class="spy-dot" data-section="projects" title="Projects"><span class="spy-tip">Projects</span></div>
-<div class="spy-dot" data-section="achievements" title="Achievements"><span class="spy-tip">Achievements</span>
-</div>
-<div class="spy-dot" data-section="experience" title="Experience"><span class="spy-tip">Experience</span></div>
-<div class="spy-dot" data-section="skills" title="Skills"><span class="spy-tip">Skills</span></div>
-<div class="spy-dot" data-section="clubs" title="Clubs"><span class="spy-tip">Clubs</span></div>
-<div class="spy-dot" data-section="hackathons" title="Hackathons"><span class="spy-tip">Hackathons</span></div>
-<div class="spy-dot" data-section="certifications" title="Certifications"><span class="spy-tip">Certifications</span></div>
-<div class="spy-dot" data-section="contact" title="Contact"><span class="spy-tip">Contact</span></div>
-</div>
-<div class="site-wrapper">
-<!-- NAV -->
-<nav class="premium-nav">
-<div class="nav-left">© Muhammed Sinan M</div>
-<div class="nav-center">
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#experience">Experience</a>
-<a href="images/Resume/Muhammed Sinan M.pdf" target="_blank" style="color: #E8562A; font-weight: 500;">Resume</a>
-</div>
-<div class="nav-right">
-<a href="https://contact.muhammedsinan.in" target="_blank">Contact</a>
-</div>
-</nav>
-<!-- MOBILE NAV MENU -->
-<div aria-hidden="true" id="mobile-nav-menu">
-<a href="#about" onclick="closeMenu()">About</a>
-<a href="#journey" onclick="closeMenu()">Journey</a>
-<a href="#education" onclick="closeMenu()">Education</a>
-<a href="#projects" onclick="closeMenu()">Projects</a>
-<a href="#achievements" onclick="closeMenu()">Achievements</a>
-<a href="#experience" onclick="closeMenu()">Experience</a>
-<a href="#skills" onclick="closeMenu()">Skills</a>
-<a href="#clubs" onclick="closeMenu()">Clubs</a>
-<a href="#hackathons" onclick="closeMenu()">Hackathons</a>
-<a href="#certifications" onclick="closeMenu()">Certifications</a>
-<div class="mobile-nav-actions">
-<a class="btn download-resume-link" download="Muhammed_Sinan_M_Resume.pdf" href="images/Resume/Muhammed Sinan M.pdf" id="download-resume-mobile" onclick="closeMenu()" style="display:block;text-align:center;">Download Resume</a>
-<a id="mobileThemeToggle" onclick="document.getElementById('themeToggle').click();closeMenu();" style="cursor:pointer;display:block;text-align:center;padding:10px 0;color:var(--primary-navy);font-weight:600;">Toggle
-                    Dark/Light</a>
-</div>
-</div>
-<!-- HERO -->
-<section class="hero-premium">
-<div class="hero-socials"><a class_="social-icon" href="https://github.com/sidoxsinu" rel="noopener noreferrer" target="_blank"><svg class="feather feather-github" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a class_="social-icon" href="https://www.linkedin.com/in/sidoxsinu/" rel="noopener noreferrer" target="_blank"><svg class="feather feather-linkedin" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a class_="social-icon" href="https://x.com/sidoxsinu" rel="noopener noreferrer" target="_blank"><svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg></a><a class_="social-icon" href="https://www.instagram.com/sidoxsinu" rel="noopener noreferrer" target="_blank"><svg class="feather feather-instagram" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a></div>
-<div class="hero-roles hero-subtitle">
-<p class="reveal-block">Computer Science Student</p>
-<p class="reveal-block">Full-Stack Developer</p>
-</div>
-<div class="hero-content">
-<img alt="Profile" class="hero-pfp hero-portrait" src="images/profile-picture/bg-removed-black&amp;white-pfp.png"/>
-<h1 class="hero-title hero-name">Muhammed<br/>Sinan M</h1>
-</div>
-<!-- GSAP SCROLL CIRCLE -->
-<div class="scroll-circle-wrapper">
-  <div class="scroll-circle">
-    <svg class="scroll-circle-svg" viewBox="0 0 100 100" width="120" height="120">
-      <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" stroke="none" />
-      <text>
-        <textPath href="#circlePath" startOffset="0%" textLength="220" lengthAdjust="spacingAndGlyphs" font-size="11" fill="currentColor" letter-spacing="3.4px" style="font-family: var(--font-heading); text-transform: uppercase;">
-          SCROLL • EXPLORE • SCROLL • EXPLORE •
-        </textPath>
-      </text>
-    </svg>
-    <div class="scroll-circle-icon scroll-circle-asterisk">
-      <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" width="36" height="36">
-        <line x1="12" y1="2" x2="12" y2="22"></line>
-        <line x1="2" y1="12" x2="22" y2="12"></line>
-        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
-        <line x1="4.93" y1="19.07" x2="19.07" y2="4.93"></line>
-      </svg>
-    </div>
-  </div>
-</div>
-</section>
-<!-- ABOUT -->
-<section id="about">
-<div class="section-inner">
-<span class="section-label">// About</span><h3 class="fade-in-up reveal-text">About Me</h3>
-<p class="large-intro-text">Computer Science student <span class="highlight-text">passionate </span><span class="highlight-text">about </span>building real-world <span class="highlight-text">tech </span><span class="highlight-text">solutions </span>with clean logic and user-focused design. Strong in frontend development, system thinking, and problem solving, with hands-on experience in developing platforms from scratch. Interested in AI-driven products, SaaS platforms, and scalable systems. </p>
 
-</div>
-</section>
-<!-- STATS STRIP -->
-<section aria-label="Portfolio stats" class="stats-strip-section" id="stats-strip">
-<div class="stats-strip">
-<div class="stat-item fade-in-up">
-<span class="stat-number count-up" data-suffix="+" data-target="27">0</span>
-<span class="stat-label">EVENTS</span>
-</div>
-<div class="stat-item fade-in-up">
-<span class="stat-number count-up" data-suffix="+" data-target="6">0</span>
-<span class="stat-label">PROJECTS</span>
-</div>
-<div class="stat-item fade-in-up">
-<span class="stat-number count-up" data-suffix="" data-target="3">0</span>
-<span class="stat-label">AWARDS</span>
-</div>
-</div>
-</section>
-<!-- TESTIMONIALS MARQUEE -->
-<section aria-label="Recognition quotes" class="testimonials-section">
-<div class="marquee-track" id="marquee-track">
-<div class="marquee-inner">
-<div class="quote-card">
-<p class="quote-text">"Was found punctual and inquisitive throughout the programme."</p>
-<p class="quote-source reveal-block">— Suvidha Foundation, Research Internship</p>
-</div>
-<div class="quote-card">
-<p class="quote-text">"Recognized for technical excellence and innovation among all competing
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Muhammed Sinan M | Portfolio</title>
+    <link
+        href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iJTIzZmZmZmZmIi8+PHRleHQgeD0iNTAiIHk9IjY1IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iNDUiIGZpbGw9IiUyMzBhMGYxZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U008L3RleHQ+PC9zdmc+"
+        rel="icon" />
+    <meta content="Muhammed Sinan M | Portfolio" property="og:title" />
+    <meta
+        content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner — Best Technical Project at Google for Developers Build with AI"
+        property="og:description" />
+    <meta content="website" property="og:type" />
+    <meta content="" property="og:url" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+        content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner — Best Technical Project at Google for Developers Build with AI"
+        name="description" />
+    <link href="Style.css" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- READING PROGRESS BAR -->
+    <div id="reading-progress"></div>
+    <!-- GRAIN / NOISE OVERLAY -->
+    <svg aria-hidden="true" style="display:none">
+        <filter id="grain-filter">
+            <feturbulence basefrequency="0.65" numoctaves="3" stitchtiles="stitch" type="fractalNoise"></feturbulence>
+            <fecolormatrix type="saturate" values="0"></fecolormatrix>
+        </filter>
+    </svg>
+    <div aria-hidden="true" id="noise-overlay"></div>
+    <!-- CUSTOM CURSOR -->
+    <div aria-hidden="true" id="cursor-dot"></div>
+    <!-- SHARE BUTTON + POPUP -->
+    <div aria-label="Share portfolio" id="share-btn" title="Share">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2" viewbox="0 0 24 24" width="18">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+            <polyline points="16 6 12 2 8 6"></polyline>
+            <line x1="12" x2="12" y1="2" y2="15"></line>
+        </svg>
+    </div>
+    <div aria-hidden="true" id="share-popup">
+        <a href="#" id="share-linkedin" rel="noopener noreferrer" target="_blank">in LinkedIn</a>
+        <a href="#" id="share-whatsapp" rel="noopener noreferrer" target="_blank">💬 WhatsApp</a>
+        <a href="#" id="share-twitter" rel="noopener noreferrer" target="_blank">𝕏 Twitter / X</a>
+        <a href="#" id="share-instagram">📷 Instagram</a>
+        <a href="#" id="share-copy">📋 Copy Link</a>
+    </div>
+    <!-- TOAST -->
+    <div id="share-toast"></div>
+    <!-- SCROLLSPY -->
+    <div aria-label="Page sections" id="scrollspy">
+        <div class="spy-dot" data-section="about" title="About"><span class="spy-tip">About</span></div>
+        <div class="spy-dot" data-section="journey" title="Journey"><span class="spy-tip">Journey</span></div>
+        <div class="spy-dot" data-section="education" title="Education"><span class="spy-tip">Education</span></div>
+        <div class="spy-dot" data-section="projects" title="Projects"><span class="spy-tip">Projects</span></div>
+        <div class="spy-dot" data-section="achievements" title="Achievements"><span class="spy-tip">Achievements</span>
+        </div>
+        <div class="spy-dot" data-section="experience" title="Experience"><span class="spy-tip">Experience</span></div>
+        <div class="spy-dot" data-section="skills" title="Skills"><span class="spy-tip">Skills</span></div>
+        <div class="spy-dot" data-section="clubs" title="Clubs"><span class="spy-tip">Clubs</span></div>
+        <div class="spy-dot" data-section="hackathons" title="Hackathons"><span class="spy-tip">Hackathons</span></div>
+        <div class="spy-dot" data-section="certifications" title="Certifications"><span
+                class="spy-tip">Certifications</span></div>
+        <div class="spy-dot" data-section="contact" title="Let's Talk!"><span class="spy-tip">Let's Talk!</span></div>
+    </div>
+    <div class="site-wrapper">
+        <!-- NAV -->
+        <nav class="premium-nav">
+            <div class="nav-left">© Muhammed Sinan M</div>
+            <div class="nav-center">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="images/Resume/Muhammed Sinan M.pdf" target="_blank"
+                    style="color: #E8562A; font-weight: 500;">Resume</a>
+            </div>
+            <div class="nav-right">
+                <a href="https://contact.muhammedsinan.in" target="_blank">Let's Talk!</a>
+            </div>
+        </nav>
+        <!-- MOBILE NAV MENU -->
+        <div aria-hidden="true" id="mobile-nav-menu">
+            <a href="#about" onclick="closeMenu()">About</a>
+            <a href="#journey" onclick="closeMenu()">Journey</a>
+            <a href="#education" onclick="closeMenu()">Education</a>
+            <a href="#projects" onclick="closeMenu()">Projects</a>
+            <a href="#achievements" onclick="closeMenu()">Achievements</a>
+            <a href="#experience" onclick="closeMenu()">Experience</a>
+            <a href="#skills" onclick="closeMenu()">Skills</a>
+            <a href="#clubs" onclick="closeMenu()">Clubs</a>
+            <a href="#hackathons" onclick="closeMenu()">Hackathons</a>
+            <a href="#certifications" onclick="closeMenu()">Certifications</a>
+            <div class="mobile-nav-actions">
+                <a class="btn download-resume-link" download="Muhammed_Sinan_M_Resume.pdf"
+                    href="images/Resume/Muhammed Sinan M.pdf" id="download-resume-mobile" onclick="closeMenu()"
+                    style="display:block;text-align:center;">Download Resume</a>
+                <a id="mobileThemeToggle" onclick="document.getElementById('themeToggle').click();closeMenu();"
+                    style="cursor:pointer;display:block;text-align:center;padding:10px 0;color:var(--primary-navy);font-weight:600;">Toggle
+                    Dark/Light</a>
+            </div>
+        </div>
+        <!-- HERO -->
+        <section class="hero-premium">
+            <div class="hero-socials"><a class_="social-icon" href="https://github.com/sidoxsinu"
+                    rel="noopener noreferrer" target="_blank"><svg class="feather feather-github" fill="none"
+                        height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg></a><a class_="social-icon" href="https://www.linkedin.com/in/sidoxsinu/"
+                    rel="noopener noreferrer" target="_blank"><svg class="feather feather-linkedin" fill="none"
+                        height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect height="12" width="4" x="2" y="9"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg></a><a class_="social-icon" href="https://x.com/sidoxsinu" rel="noopener noreferrer"
+                    target="_blank"><svg fill="none" height="20" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                    </svg></a><a class_="social-icon" href="https://www.instagram.com/sidoxsinu"
+                    rel="noopener noreferrer" target="_blank"><svg class="feather feather-instagram" fill="none"
+                        height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                    </svg></a></div>
+            <div class="hero-roles hero-subtitle">
+                <p class="reveal-block">Computer Science Student</p>
+                <p class="reveal-block">Full-Stack Developer</p>
+            </div>
+            <div class="hero-content">
+                <img alt="Profile" class="hero-pfp hero-portrait"
+                    src="images/profile-picture/bg-removed-black&amp;white-pfp.png" />
+                <h1 class="hero-title hero-name">Muhammed<br />Sinan M</h1>
+            </div>
+            <!-- GSAP SCROLL CIRCLE -->
+            <div class="scroll-circle-wrapper">
+                <div class="scroll-circle">
+                    <svg class="scroll-circle-svg" viewBox="0 0 100 100" width="120" height="120">
+                        <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none"
+                            stroke="none" />
+                        <text>
+                            <textPath href="#circlePath" startOffset="0%" textLength="220"
+                                lengthAdjust="spacingAndGlyphs" font-size="11" fill="currentColor"
+                                letter-spacing="3.4px"
+                                style="font-family: var(--font-heading); text-transform: uppercase;">
+                                SCROLL • EXPLORE • SCROLL • EXPLORE •
+                            </textPath>
+                        </text>
+                    </svg>
+                    <div class="scroll-circle-icon scroll-circle-asterisk">
+                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="4" stroke-linecap="round"
+                            stroke-linejoin="round" width="36" height="36">
+                            <line x1="12" y1="2" x2="12" y2="22"></line>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                            <line x1="4.93" y1="19.07" x2="19.07" y2="4.93"></line>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-inner">
+                <span class="section-label">// About</span>
+                <h3 class="fade-in-up reveal-text">About Me</h3>
+                <p class="large-intro-text">Computer Science student <span class="highlight-text">passionate
+                    </span><span class="highlight-text">about </span>building real-world <span
+                        class="highlight-text">tech </span><span class="highlight-text">solutions </span>with clean
+                    logic and user-focused design. Strong in frontend development, system thinking, and problem solving,
+                    with hands-on experience in developing platforms from scratch. Interested in AI-driven products,
+                    SaaS platforms, and scalable systems. </p>
+
+            </div>
+        </section>
+        <!-- STATS STRIP -->
+        <section aria-label="Portfolio stats" class="stats-strip-section" id="stats-strip">
+            <div class="stats-strip">
+                <div class="stat-item fade-in-up">
+                    <span class="stat-number count-up" data-suffix="+" data-target="27">0</span>
+                    <span class="stat-label">EVENTS</span>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <span class="stat-number count-up" data-suffix="+" data-target="6">0</span>
+                    <span class="stat-label">PROJECTS</span>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <span class="stat-number count-up" data-suffix="" data-target="3">0</span>
+                    <span class="stat-label">AWARDS</span>
+                </div>
+            </div>
+        </section>
+        <!-- TESTIMONIALS MARQUEE -->
+        <section aria-label="Recognition quotes" class="testimonials-section">
+            <div class="marquee-track" id="marquee-track">
+                <div class="marquee-inner">
+                    <div class="quote-card">
+                        <p class="quote-text">"Was found punctual and inquisitive throughout the programme."</p>
+                        <p class="quote-source reveal-block">— Suvidha Foundation, Research Internship</p>
+                    </div>
+                    <div class="quote-card">
+                        <p class="quote-text">"Recognized for technical excellence and innovation among all competing
                             teams."</p>
-<p class="quote-source reveal-block">— MuLearn NSSCE, Build with AI Hackathon</p>
-</div>
-<div class="quote-card">
-<p class="quote-text">"Active participation, critical thinking ability, and contribution towards
+                        <p class="quote-source reveal-block">— MuLearn NSSCE, Build with AI Hackathon</p>
+                    </div>
+                    <div class="quote-card">
+                        <p class="quote-text">"Active participation, critical thinking ability, and contribution towards
                             nurturing creativity and technical excellence."</p>
-<p class="quote-source reveal-block">— YIP 8.0, K-DISC Government of Kerala</p>
-</div>
-<div class="quote-card">
-<p class="quote-text">"Was found punctual and inquisitive throughout the programme."</p>
-<p class="quote-source reveal-block">— Suvidha Foundation, Research Internship</p>
-</div>
-<div class="quote-card">
-<p class="quote-text">"Recognized for technical excellence and innovation among all competing
+                        <p class="quote-source reveal-block">— YIP 8.0, K-DISC Government of Kerala</p>
+                    </div>
+                    <div class="quote-card">
+                        <p class="quote-text">"Was found punctual and inquisitive throughout the programme."</p>
+                        <p class="quote-source reveal-block">— Suvidha Foundation, Research Internship</p>
+                    </div>
+                    <div class="quote-card">
+                        <p class="quote-text">"Recognized for technical excellence and innovation among all competing
                             teams."</p>
-<p class="quote-source reveal-block">— MuLearn NSSCE, Build with AI Hackathon</p>
-</div>
-<div class="quote-card">
-<p class="quote-text">"Active participation, critical thinking ability, and contribution towards
+                        <p class="quote-source reveal-block">— MuLearn NSSCE, Build with AI Hackathon</p>
+                    </div>
+                    <div class="quote-card">
+                        <p class="quote-text">"Active participation, critical thinking ability, and contribution towards
                             nurturing creativity and technical excellence."</p>
-<p class="quote-source reveal-block">— YIP 8.0, K-DISC Government of Kerala</p>
-</div>
-</div>
-</div>
-</section>
-<!-- CAREER TIMELINE -->
-<section aria-label="Career journey" class="jtl-section" id="journey">
-<div class="section-inner">
-<div class="journey-header-top">
-<div>
-<span class="section-label">// Journey</span><h3 class="fade-in-up reveal-text">My Journey And Milestones</h3>
-<p class="section-desc jtl-subtitle reveal-block">From student to builder — every milestone that shaped me.</p>
-</div>
-<div class="journey-nav-buttons fade-in-up reveal-block">
-<button aria-label="Previous" class="jtl-nav-btn prev" id="jtl-new-prev"><span>‹</span></button>
-<button aria-label="Next" class="jtl-nav-btn next" id="jtl-new-next"><span>›</span></button>
-</div>
-</div>
-</div>
-<div class="journey-timeline-container fade-in-up reveal-block">
-<div class="journey-timeline-viewport" id="journey-timeline-viewport">
-<div class="journey-timeline-track">
-<div class="journey-column">
-<div class="journey-year-container">
-<h4 class="journey-year">2026</h4>
-</div>
-<div class="journey-content bg-alt">
-<div class="journey-dot"></div>
-<ul class="journey-list">
-<li><strong>Research Intern</strong>Suvidha Foundation · AI &amp; Dev workflows</li>
-<li><strong>BeachHack Season 7</strong>Finalist · HackForChrist</li>
-</ul>
-</div>
-</div>
-<div class="journey-column">
-<div class="journey-year-container">
-<h4 class="journey-year">2025</h4>
-</div>
-<div class="journey-content">
-<div class="journey-dot"></div>
-<ul class="journey-list">
-<li><strong>First Hackathon Win</strong>WEBATHON 2025 · Second Prize</li>
-<li><strong>Core Development</strong>Learned Python, MERN, and Java</li>
-<li><strong>B.Tech CS Started</strong>Joined Christ College of Engineering</li>
-</ul>
-</div>
-</div>
-<div class="journey-column">
-<div class="journey-year-container">
-<h4 class="journey-year">2023</h4>
-</div>
-<div class="journey-content bg-alt">
-<div class="journey-dot"></div>
-<ul class="journey-list">
-<li><strong>Higher Secondary</strong>Completed Science from MES HSS Irimbiliyam</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const prevBtn = document.getElementById('jtl-new-prev');
-    const nextBtn = document.getElementById('jtl-new-next');
-    const viewport = document.getElementById('journey-timeline-viewport');
-    if(prevBtn && nextBtn && viewport) {
-        prevBtn.addEventListener('click', () => viewport.scrollBy({ left: -350, behavior: 'smooth' }));
-        nextBtn.addEventListener('click', () => viewport.scrollBy({ left: 350, behavior: 'smooth' }));
-    }
-});
-</script>
-</section>
-<!-- EDUCATION -->
-<section class="bg-light" id="education">
-<div class="section-inner">
-<span class="section-label">// Education</span><h3 class="fade-in-up reveal-text">Education</h3>
-<div class="timeline">
-<div class="timeline-item">
-<div class="timeline-marker"></div>
-<h4>B.Tech in Computer Science &amp; Engineering</h4>
-<p class="meta reveal-block">Christ College of Engineering, Irinjalakuda | 2025–Present</p>
-</div>
-<div class="timeline-item">
-<div class="timeline-marker"></div>
-<h4>Higher Secondary – Science</h4>
-<p class="meta reveal-block">MES HSS Irimbiliyam | 2023–2025</p>
-</div>
-</div>
-</div>
-</section>
-<!-- PROJECTS -->
-<section id="projects">
-<div class="section-inner">
-<span class="section-label">// Projects</span><h3 class="fade-in-up reveal-text">Projects</h3>
-<div class="projects">
-<div class="card split-card reveal-block" style="border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.05); position: relative;"><div class="split-card-content">
-<div class="card-header" style="display: flex; flex-direction: column; gap: 8px; align-items: flex-start; margin-bottom: 8px;">
-<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-<h4 style="margin: 0; color: var(--primary-navy);">Next Generation AI Assistant</h4>
-<span style="color: #B8860B; font-size: 13px; font-weight: 600; padding: 2px 8px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; background: rgba(212, 175, 55, 0.05); display: inline-flex; align-items: center; gap: 4px;">🏆
-                                    Best Technical Project</span>
-</div>
-</div>
-<p class="reveal-block" style="color: var(--text-secondary); font-size: 13px; margin-bottom: 12px; font-weight: 500;">
-                            Organized by MuLearn NSSCE &amp; Google for Developers</p>
-<p class="reveal-block">Built a Next-Gen AI Assistant that won the Best Technical Project award at the Build with AI
-                            Hackathon hosted at NSSCE, Palakkad. Recognized for technical excellence and innovation in
-                            AI development.</p>
-<p class="reveal-block" style="margin-top: 8px; font-weight: 500; color: var(--primary-navy); font-size: 14px;">
-                            Recognized among the best at a Google for Developers powered hackathon.</p>
-<div class="tags" style="margin-bottom: 24px;">
-<span class="tag">AI</span>
-<span class="tag">Groq API</span>
-<span class="tag">Llama 3.3</span>
-</div>
-<div style="display: flex; gap: 12px; margin-bottom: 24px;">
-<a class="card-link" href="https://next-gen-ai-assistant-system.vercel.app" rel="noopener noreferrer" style="margin: 0;" target="_blank">Live Demo
+                        <p class="quote-source reveal-block">— YIP 8.0, K-DISC Government of Kerala</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CAREER TIMELINE -->
+        <section aria-label="Career journey" class="jtl-section" id="journey">
+            <div class="section-inner">
+                <div class="journey-header-top">
+                    <div>
+                        <span class="section-label">// Journey</span>
+                        <h3 class="fade-in-up reveal-text">My Journey And Milestones</h3>
+                        <p class="section-desc jtl-subtitle reveal-block">From student to builder — every milestone that
+                            shaped me.</p>
+                    </div>
+                    <div class="journey-nav-buttons fade-in-up reveal-block">
+                        <button aria-label="Previous" class="jtl-nav-btn prev" id="jtl-new-prev"><span>‹</span></button>
+                        <button aria-label="Next" class="jtl-nav-btn next" id="jtl-new-next"><span>›</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="journey-timeline-container fade-in-up reveal-block">
+                <div class="journey-timeline-viewport" id="journey-timeline-viewport">
+                    <div class="journey-timeline-track">
+                        <div class="journey-column">
+                            <div class="journey-year-container">
+                                <h4 class="journey-year">2026</h4>
+                            </div>
+                            <div class="journey-content bg-alt">
+                                <div class="journey-dot"></div>
+                                <ul class="journey-list">
+                                    <li><strong>Research Intern</strong>Suvidha Foundation · AI &amp; Dev workflows</li>
+                                    <li><strong>BeachHack Season 7</strong>Finalist · HackForChrist</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="journey-column">
+                            <div class="journey-year-container">
+                                <h4 class="journey-year">2025</h4>
+                            </div>
+                            <div class="journey-content">
+                                <div class="journey-dot"></div>
+                                <ul class="journey-list">
+                                    <li><strong>First Hackathon Win</strong>WEBATHON 2025 · Second Prize</li>
+                                    <li><strong>Core Development</strong>Learned Python, MERN, and Java</li>
+                                    <li><strong>B.Tech CS Started</strong>Joined Christ College of Engineering</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="journey-column">
+                            <div class="journey-year-container">
+                                <h4 class="journey-year">2023</h4>
+                            </div>
+                            <div class="journey-content bg-alt">
+                                <div class="journey-dot"></div>
+                                <ul class="journey-list">
+                                    <li><strong>Higher Secondary</strong>Completed Science from MES HSS Irimbiliyam</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const prevBtn = document.getElementById('jtl-new-prev');
+                    const nextBtn = document.getElementById('jtl-new-next');
+                    const viewport = document.getElementById('journey-timeline-viewport');
+                    if (prevBtn && nextBtn && viewport) {
+                        prevBtn.addEventListener('click', () => viewport.scrollBy({ left: -350, behavior: 'smooth' }));
+                        nextBtn.addEventListener('click', () => viewport.scrollBy({ left: 350, behavior: 'smooth' }));
+                    }
+                });
+            </script>
+        </section>
+        <!-- EDUCATION -->
+        <section class="bg-light" id="education">
+            <div class="section-inner">
+                <span class="section-label">// Education</span>
+                <h3 class="fade-in-up reveal-text">Education</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <h4>B.Tech in Computer Science &amp; Engineering</h4>
+                        <p class="meta reveal-block">Christ College of Engineering, Irinjalakuda | 2025–Present</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <h4>Higher Secondary – Science</h4>
+                        <p class="meta reveal-block">MES HSS Irimbiliyam | 2023–2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="section-inner">
+                <span class="section-label">// Projects</span>
+                <h3 class="fade-in-up reveal-text">Projects</h3>
+                <div class="projects">
+                    <div class="card split-card reveal-block"
+                        style="border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.05); position: relative;">
+                        <div class="split-card-content">
+                            <div class="card-header"
+                                style="display: flex; flex-direction: column; gap: 8px; align-items: flex-start; margin-bottom: 8px;">
+                                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                    <h4 style="margin: 0; color: var(--primary-navy);">Next Generation AI Assistant</h4>
+                                    <span
+                                        style="color: #B8860B; font-size: 13px; font-weight: 600; padding: 2px 8px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; background: rgba(212, 175, 55, 0.05); display: inline-flex; align-items: center; gap: 4px;">🏆
+                                        Best Technical Project</span>
+                                </div>
+                            </div>
+                            <p class="reveal-block"
+                                style="color: var(--text-secondary); font-size: 13px; margin-bottom: 12px; font-weight: 500;">
+                                Organized by MuLearn NSSCE &amp; Google for Developers</p>
+                            <p class="reveal-block">Built a Next-Gen AI Assistant that won the Best Technical Project
+                                award at the Build with AI
+                                Hackathon hosted at NSSCE, Palakkad. Recognized for technical excellence and innovation
+                                in
+                                AI development.</p>
+                            <p class="reveal-block"
+                                style="margin-top: 8px; font-weight: 500; color: var(--primary-navy); font-size: 14px;">
+                                Recognized among the best at a Google for Developers powered hackathon.</p>
+                            <div class="tags" style="margin-bottom: 24px;">
+                                <span class="tag">AI</span>
+                                <span class="tag">Groq API</span>
+                                <span class="tag">Llama 3.3</span>
+                            </div>
+                            <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+                                <a class="card-link" href="https://next-gen-ai-assistant-system.vercel.app"
+                                    rel="noopener noreferrer" style="margin: 0;" target="_blank">Live Demo
+                                    ↗</a>
+                                <a class="card-link" href="https://github.com/sidoxsinu/next-gen-ai-assistant-system"
+                                    rel="noopener noreferrer" style="margin: 0;" target="_blank">View Repository ↗</a>
+                            </div>
+                            <div
+                                style="border-top: 1px solid var(--border-gray); padding-top: 16px; margin-bottom: 16px;">
+                                <div
+                                    style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; text-align: left;">
+                                    <div style="border-right: 1px solid var(--border-gray); padding-right: 10px;">
+                                        <div
+                                            style="font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px;">
+                                            Event</div>
+                                        <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary);">
+                                            Build
+                                            with AI</div>
+                                    </div>
+                                    <div style="border-right: 1px solid var(--border-gray); padding-right: 10px;">
+                                        <div
+                                            style="font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px;">
+                                            Organized By</div>
+                                        <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary);">
+                                            Google Developers</div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px;">
+                                            Recognition</div>
+                                        <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary);">
+                                            Best
+                                            Technical Project</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                                <span
+                                    style="font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; margin-right: 8px;">As
+                                    Featured In</span>
+                                <a href="javascript:void(0)" id="recognition-toggle-btn" onclick="toggleRecognition()"
+                                    style="color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s;">📎
+                                    View Recognition →</a>
+                                <div id="recognition-links"
+                                    style="display: none; flex-direction: column; gap: 8px; margin-top: 12px; padding-left: 12px; border-left: 2px solid var(--border-gray);">
+                                    <a class="minimal-link"
+                                        href="https://www.linkedin.com/posts/mulearn-nssce_engineering-excellence-at-its-best-congratulations-activity-7453323334664200192-6xAI"
+                                        rel="noopener noreferrer"
+                                        style="color: var(--text-secondary); text-decoration: none;" target="_blank">🔗
+                                        MuLearn NSSCE
+                                        (LinkedIn)</a>
+                                    <a class="minimal-link"
+                                        href="https://www.linkedin.com/posts/mulearn-nssce_buildwithai-buildwithaixasulearn-buildwithaipalakkad-activity-7453136864355557376-I1J3"
+                                        rel="noopener noreferrer"
+                                        style="color: var(--text-secondary); text-decoration: none;" target="_blank">📣
+                                        Event Post
+                                        (LinkedIn)</a>
+                                    <a class="minimal-link" href="https://www.instagram.com/p/DXjRXeCk9Ry/"
+                                        rel="noopener noreferrer"
+                                        style="color: var(--text-secondary); text-decoration: none;" target="_blank">📸
+                                        Christ College of
+                                        Engineering (Instagram)</a>
+                                    <a class="minimal-link" href="https://www.instagram.com/p/DXgG9EDj1Du/"
+                                        rel="noopener noreferrer"
+                                        style="color: var(--text-secondary); text-decoration: none;" target="_blank">📸
+                                        MuLearn &amp; MU Campus
+                                        (Instagram)</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="split-card-image">
+                            <div class="project-number-fill">( 2024 )</div>
+                            <div class="project-acronym-fill">NE</div>
+                        </div>
+                    </div>
+                    <div class="card fade-in-up split-card reveal-block">
+                        <div class="split-card-content">
+                            <div class="card-header">
+                                <h4>Pylon</h4>
+                            </div>
+                            <p class="reveal-block">Smart Scholarship Finder using HTML, CSS, Vanilla JavaScript. Custom
+                                filtering algorithm,
+                                responsive UI, animations, optimized performance.</p>
+                            <div class="tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <div style="display: flex; gap: 12px; margin-top: auto;">
+                                <a class="card-link" href="https://pylon-topaz.vercel.app" rel="noopener noreferrer"
+                                    style="margin: 0;" target="_blank">Live Demo ↗</a>
+                                <a class="card-link" href="https://github.com/sidoxsinu/Pylon" rel="noopener noreferrer"
+                                    style="margin: 0;" target="_blank">View Repository ↗</a>
+                            </div>
+                        </div>
+                        <div class="split-card-image">
+                            <div class="project-number-fill">( 2024 )</div>
+                            <div class="project-acronym-fill">PY</div>
+                        </div>
+                    </div>
+                    <div class="card fade-in-up split-card reveal-block">
+                        <div class="split-card-content">
+                            <div class="card-header">
+                                <h4>UniversityHub</h4>
+                            </div>
+                            <p class="reveal-block">A university platform built for students — centralizing resources,
+                                information, and tools in
+                                one place using vanilla JavaScript.</p>
+                            <div class="tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <a class="card-link" href="https://github.com/sidoxsinu/universityhub"
+                                rel="noopener noreferrer" style="margin-top: 16px;" target="_blank">View Repository
                                 ↗</a>
-<a class="card-link" href="https://github.com/sidoxsinu/next-gen-ai-assistant-system" rel="noopener noreferrer" style="margin: 0;" target="_blank">View Repository ↗</a>
-</div>
-<div style="border-top: 1px solid var(--border-gray); padding-top: 16px; margin-bottom: 16px;">
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; text-align: left;">
-<div style="border-right: 1px solid var(--border-gray); padding-right: 10px;">
-<div style="font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px;">
-                                        Event</div>
-<div style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary);">Build
-                                        with AI</div>
-</div>
-<div style="border-right: 1px solid var(--border-gray); padding-right: 10px;">
-<div style="font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px;">
-                                        Organized By</div>
-<div style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary);">
-                                        Google Developers</div>
-</div>
-<div>
-<div style="font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px;">
-                                        Recognition</div>
-<div style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary);">Best
-                                        Technical Project</div>
-</div>
-</div>
-</div>
-<div style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
-<span style="font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; margin-right: 8px;">As
-                                Featured In</span>
-<a href="javascript:void(0)" id="recognition-toggle-btn" onclick="toggleRecognition()" style="color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s;">📎
-                                View Recognition →</a>
-<div id="recognition-links" style="display: none; flex-direction: column; gap: 8px; margin-top: 12px; padding-left: 12px; border-left: 2px solid var(--border-gray);">
-<a class="minimal-link" href="https://www.linkedin.com/posts/mulearn-nssce_engineering-excellence-at-its-best-congratulations-activity-7453323334664200192-6xAI" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none;" target="_blank">🔗 MuLearn NSSCE
-                                    (LinkedIn)</a>
-<a class="minimal-link" href="https://www.linkedin.com/posts/mulearn-nssce_buildwithai-buildwithaixasulearn-buildwithaipalakkad-activity-7453136864355557376-I1J3" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none;" target="_blank">📣 Event Post
-                                    (LinkedIn)</a>
-<a class="minimal-link" href="https://www.instagram.com/p/DXjRXeCk9Ry/" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none;" target="_blank">📸 Christ College of
-                                    Engineering (Instagram)</a>
-<a class="minimal-link" href="https://www.instagram.com/p/DXgG9EDj1Du/" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none;" target="_blank">📸 MuLearn &amp; MU Campus
-                                    (Instagram)</a>
-</div>
-</div>
-</div><div class="split-card-image"><div class="project-number-fill">( 2024 )</div><div class="project-acronym-fill">NE</div></div></div>
-<div class="card fade-in-up split-card reveal-block"><div class="split-card-content">
-<div class="card-header">
-<h4>Pylon</h4>
-</div>
-<p class="reveal-block">Smart Scholarship Finder using HTML, CSS, Vanilla JavaScript. Custom filtering algorithm,
-                            responsive UI, animations, optimized performance.</p>
-<div class="tags">
-<span class="tag">HTML/CSS</span>
-<span class="tag">JavaScript</span>
-</div>
-<div style="display: flex; gap: 12px; margin-top: auto;">
-<a class="card-link" href="https://pylon-topaz.vercel.app" rel="noopener noreferrer" style="margin: 0;" target="_blank">Live Demo ↗</a>
-<a class="card-link" href="https://github.com/sidoxsinu/Pylon" rel="noopener noreferrer" style="margin: 0;" target="_blank">View Repository ↗</a>
-</div>
-</div><div class="split-card-image"><div class="project-number-fill">( 2024 )</div><div class="project-acronym-fill">PY</div></div></div>
-<div class="card fade-in-up split-card reveal-block"><div class="split-card-content">
-<div class="card-header">
-<h4>UniversityHub</h4>
-</div>
-<p class="reveal-block">A university platform built for students — centralizing resources, information, and tools in
-                            one place using vanilla JavaScript.</p>
-<div class="tags">
-<span class="tag">HTML/CSS</span>
-<span class="tag">JavaScript</span>
-</div>
-<a class="card-link" href="https://github.com/sidoxsinu/universityhub" rel="noopener noreferrer" style="margin-top: 16px;" target="_blank">View Repository ↗</a>
-</div><div class="split-card-image"><div class="project-number-fill">( 2024 )</div><div class="project-acronym-fill">UN</div></div></div>
-<div class="card fade-in-up split-card reveal-block"><div class="split-card-content">
-<div class="card-header">
-<h4>CodeBurry</h4>
-</div>
-<p class="reveal-block">Gamified learning platform with React, TypeScript, TailwindCSS. Interactive challenges,
-                            progress dashboard, community features.</p>
-<div class="tags">
-<span class="tag">React</span>
-<span class="tag">TypeScript</span>
-<span class="tag">TailwindCSS</span>
-</div>
-<div style="display: flex; gap: 12px; margin-top: auto;">
-<a class="card-link" href="https://code-burry.vercel.app" rel="noopener noreferrer" style="margin: 0;" target="_blank">Live Demo ↗</a>
-<a class="card-link" href="https://github.com/sidoxsinu/CodeBurry" rel="noopener noreferrer" style="margin: 0;" target="_blank">View Repository ↗</a>
-</div>
-</div><div class="split-card-image"><div class="project-number-fill">( 2024 )</div><div class="project-acronym-fill">CO</div></div></div>
-<div class="card fade-in-up split-card reveal-block"><div class="split-card-content">
-<div class="card-header">
-<h4>SilentGuard</h4>
-</div>
-<p class="reveal-block">AI-based system for pattern analysis and system failure prediction. Focuses on monitoring,
-                            anomaly detection, and preventive alerts.</p>
-<div class="tags">
-<span class="tag">AI/ML</span>
-<span class="tag">Python</span>
-</div>
-<a class="card-link" href="https://github.com/sidoxsinu/SilentGuard" rel="noopener noreferrer" style="margin-top: 16px;" target="_blank">View Repository ↗</a>
-</div><div class="split-card-image"><div class="project-number-fill">( 2024 )</div><div class="project-acronym-fill">SI</div></div></div>
-<div class="card fade-in-up split-card reveal-block"><div class="split-card-content">
-<div class="card-header">
-<h4>AI Voice Assistant</h4>
-</div>
-<p class="reveal-block">Voice-controlled assistant with email automation, to-do list management, and command
-                            recognition using AI logic.</p>
-<div class="tags">
-<span class="tag">Voice UI</span>
-<span class="tag">Automation</span>
-</div>
-<a class="card-link" href="https://github.com/sidoxsinu/AI-Voice-Assistant" rel="noopener noreferrer" style="margin-top: 16px;" target="_blank">View Repository ↗</a>
-</div><div class="split-card-image"><div class="project-number-fill">( 2024 )</div><div class="project-acronym-fill">AI</div></div></div>
-</div>
-</div>
-</section>
-<!-- EXPERIENCE & INTERNSHIP -->
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-<div class="section-inner">
-<span class="section-label">// Achievements</span><h3 class="fade-in-up reveal-text">Achievements &amp; Recognition</h3>
-<div class="projects">
-<div class="card fade-in-up reveal-block">
-<div class="card-header" style="margin-bottom: 8px;">
-<h4 style="margin: 0; color: var(--primary-navy); font-size: 1.1rem;">🏆 Best Technical
+                        </div>
+                        <div class="split-card-image">
+                            <div class="project-number-fill">( 2024 )</div>
+                            <div class="project-acronym-fill">UN</div>
+                        </div>
+                    </div>
+                    <div class="card fade-in-up split-card reveal-block">
+                        <div class="split-card-content">
+                            <div class="card-header">
+                                <h4>CodeBurry</h4>
+                            </div>
+                            <p class="reveal-block">Gamified learning platform with React, TypeScript, TailwindCSS.
+                                Interactive challenges,
+                                progress dashboard, community features.</p>
+                            <div class="tags">
+                                <span class="tag">React</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">TailwindCSS</span>
+                            </div>
+                            <div style="display: flex; gap: 12px; margin-top: auto;">
+                                <a class="card-link" href="https://code-burry.vercel.app" rel="noopener noreferrer"
+                                    style="margin: 0;" target="_blank">Live Demo ↗</a>
+                                <a class="card-link" href="https://github.com/sidoxsinu/CodeBurry"
+                                    rel="noopener noreferrer" style="margin: 0;" target="_blank">View Repository ↗</a>
+                            </div>
+                        </div>
+                        <div class="split-card-image">
+                            <div class="project-number-fill">( 2024 )</div>
+                            <div class="project-acronym-fill">CO</div>
+                        </div>
+                    </div>
+                    <div class="card fade-in-up split-card reveal-block">
+                        <div class="split-card-content">
+                            <div class="card-header">
+                                <h4>SilentGuard</h4>
+                            </div>
+                            <p class="reveal-block">AI-based system for pattern analysis and system failure prediction.
+                                Focuses on monitoring,
+                                anomaly detection, and preventive alerts.</p>
+                            <div class="tags">
+                                <span class="tag">AI/ML</span>
+                                <span class="tag">Python</span>
+                            </div>
+                            <a class="card-link" href="https://github.com/sidoxsinu/SilentGuard"
+                                rel="noopener noreferrer" style="margin-top: 16px;" target="_blank">View Repository
+                                ↗</a>
+                        </div>
+                        <div class="split-card-image">
+                            <div class="project-number-fill">( 2024 )</div>
+                            <div class="project-acronym-fill">SI</div>
+                        </div>
+                    </div>
+                    <div class="card fade-in-up split-card reveal-block">
+                        <div class="split-card-content">
+                            <div class="card-header">
+                                <h4>AI Voice Assistant</h4>
+                            </div>
+                            <p class="reveal-block">Voice-controlled assistant with email automation, to-do list
+                                management, and command
+                                recognition using AI logic.</p>
+                            <div class="tags">
+                                <span class="tag">Voice UI</span>
+                                <span class="tag">Automation</span>
+                            </div>
+                            <a class="card-link" href="https://github.com/sidoxsinu/AI-Voice-Assistant"
+                                rel="noopener noreferrer" style="margin-top: 16px;" target="_blank">View Repository
+                                ↗</a>
+                        </div>
+                        <div class="split-card-image">
+                            <div class="project-number-fill">( 2024 )</div>
+                            <div class="project-acronym-fill">AI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- EXPERIENCE & INTERNSHIP -->
+        <!-- ACHIEVEMENTS -->
+        <section id="achievements">
+            <div class="section-inner">
+                <span class="section-label">// Achievements</span>
+                <h3 class="fade-in-up reveal-text">Achievements &amp; Recognition</h3>
+                <div class="projects">
+                    <div class="card fade-in-up reveal-block">
+                        <div class="card-header" style="margin-bottom: 8px;">
+                            <h4 style="margin: 0; color: var(--primary-navy); font-size: 1.1rem;">🏆 Best Technical
                                 Project — Google for Developers NSSCE Build with AI Hackathon</h4>
-</div>
-<p class="reveal-block" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; font-weight: 500;">
+                        </div>
+                        <p class="reveal-block"
+                            style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; font-weight: 500;">
                             Organized by MuLearn NSSCE · Mar 2026</p>
-<p class="reveal-block" style="margin-bottom: 16px;">Next Gen AI Assistant recognized for technical excellence and
+                        <p class="reveal-block" style="margin-bottom: 16px;">Next Gen AI Assistant recognized for
+                            technical excellence and
                             innovation among all competing teams.</p>
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<a class="minimal-link" href="https://www.linkedin.com/posts/mulearn-nssce_engineering-excellence-at-its-best-congratulations-activity-7453323334664200192-6xAI" rel="noopener noreferrer" style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;" target="_blank">🔗
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <a class="minimal-link"
+                                href="https://www.linkedin.com/posts/mulearn-nssce_engineering-excellence-at-its-best-congratulations-activity-7453323334664200192-6xAI"
+                                rel="noopener noreferrer"
+                                style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
+                                target="_blank">🔗
                                 MuLearn NSSCE (LinkedIn)</a>
-<a class="minimal-link" href="https://www.linkedin.com/posts/mulearn-nssce_buildwithai-buildwithaixasulearn-buildwithaipalakkad-activity-7453136864355557376-I1J3" rel="noopener noreferrer" style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;" target="_blank">📣
+                            <a class="minimal-link"
+                                href="https://www.linkedin.com/posts/mulearn-nssce_buildwithai-buildwithaixasulearn-buildwithaipalakkad-activity-7453136864355557376-I1J3"
+                                rel="noopener noreferrer"
+                                style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
+                                target="_blank">📣
                                 Event Post (LinkedIn)</a>
-<a class="minimal-link" href="https://www.instagram.com/p/DXjRXeCk9Ry/" rel="noopener noreferrer" style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;" target="_blank">📸
+                            <a class="minimal-link" href="https://www.instagram.com/p/DXjRXeCk9Ry/"
+                                rel="noopener noreferrer"
+                                style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
+                                target="_blank">📸
                                 Christ College of Engineering (Instagram)</a>
-<a class="minimal-link" href="https://www.instagram.com/p/DXgG9EDj1Du/" rel="noopener noreferrer" style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;" target="_blank">📸
+                            <a class="minimal-link" href="https://www.instagram.com/p/DXgG9EDj1Du/"
+                                rel="noopener noreferrer"
+                                style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
+                                target="_blank">📸
                                 MuLearn &amp; MU Campus (Instagram)</a>
-</div>
-</div>
-<div class="card fade-in-up reveal-block">
-<div class="card-header" style="margin-bottom: 8px;">
-<h4 style="margin: 0; color: var(--primary-navy); font-size: 1.1rem;">🏆 Webathon Runner Up
+                        </div>
+                    </div>
+                    <div class="card fade-in-up reveal-block">
+                        <div class="card-header" style="margin-bottom: 8px;">
+                            <h4 style="margin: 0; color: var(--primary-navy); font-size: 1.1rem;">🏆 Webathon Runner Up
                             </h4>
-</div>
-<p class="reveal-block" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; font-weight: 500;">
+                        </div>
+                        <p class="reveal-block"
+                            style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; font-weight: 500;">
                             Organized by Webathon · 2024</p>
-<p class="reveal-block" style="margin-bottom: 16px;">Pylon: an all-in-one scholarship search platform recognized as
+                        <p class="reveal-block" style="margin-bottom: 16px;">Pylon: an all-in-one scholarship search
+                            platform recognized as
                             Runner Up at the Webathon.</p>
-<a class="minimal-link" href="https://github.com/sidoxsinu/Pylon" rel="noopener noreferrer" style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;" target="_blank">🔗 View
+                        <a class="minimal-link" href="https://github.com/sidoxsinu/Pylon" rel="noopener noreferrer"
+                            style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
+                            target="_blank">🔗 View
                             Project</a>
-</div>
-</div>
-</div>
-</section>
-<section class="bg-light" id="experience">
-<div class="section-inner">
-<span class="section-label">// Experience</span><h3 class="fade-in-up reveal-text">Experience &amp; Internship</h3>
-<div class="projects">
-<div class="card fade-in-up reveal-block" style="display: flex; flex-direction: column;">
-<div class="card-header">
-<h4>Research Intern</h4>
-<span class="badge">Internship</span>
-</div>
-<p class="reveal-block" style="color: var(--primary-navy); font-size: 16px; font-weight: 600; margin-bottom: 4px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-light" id="experience">
+            <div class="section-inner">
+                <span class="section-label">// Experience</span>
+                <h3 class="fade-in-up reveal-text">Experience &amp; Internship</h3>
+                <div class="projects">
+                    <div class="card fade-in-up reveal-block" style="display: flex; flex-direction: column;">
+                        <div class="card-header">
+                            <h4>Research Intern</h4>
+                            <span class="badge">Internship</span>
+                        </div>
+                        <p class="reveal-block"
+                            style="color: var(--primary-navy); font-size: 16px; font-weight: 600; margin-bottom: 4px;">
                             Suvidha Foundation (Suvidha Mahila Mandal)</p>
-<p class="reveal-block" style="color: var(--accent-blue); font-size: 14px; font-weight: 500; margin-bottom: 12px;">25
+                        <p class="reveal-block"
+                            style="color: var(--accent-blue); font-size: 14px; font-weight: 500; margin-bottom: 12px;">
+                            25
                             Mar 2026 – 25 Apr 2026</p>
-<p class="reveal-block">Completed an internship programme at Suvidha Foundation in collaboration with Code Karo
+                        <p class="reveal-block">Completed an internship programme at Suvidha Foundation in collaboration
+                            with Code Karo
                             Yaaro. Was recognized for being punctual and inquisitive throughout the programme.</p>
-<p class="reveal-block" style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
-<strong>Certificate ID:</strong> SMM222324827
+                        <p class="reveal-block"
+                            style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+                            <strong>Certificate ID:</strong> SMM222324827
                         </p>
-<div style="margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 20px;">
-<img alt="Internship Certificate" src="images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.jpeg" style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: var(--light-gray); border-radius: 8px; border: 1px solid var(--border-gray);"/>
-<a class="btn" href="https://suvidhafoundationedutech.org/verify" rel="noopener noreferrer" style="width: 100%; text-align: center;" target="_blank">Verify
+                        <div
+                            style="margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 20px;">
+                            <img alt="Internship Certificate"
+                                src="images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.jpeg"
+                                style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: var(--light-gray); border-radius: 8px; border: 1px solid var(--border-gray);" />
+                            <a class="btn" href="https://suvidhafoundationedutech.org/verify" rel="noopener noreferrer"
+                                style="width: 100%; text-align: center;" target="_blank">Verify
                                 Certificate</a>
-</div>
-</div>
-<div class="card fade-in-up reveal-block" style="display: flex; flex-direction: column;">
-<div class="card-header">
-<h4>NSS Volunteer Leader</h4>
-<span class="badge">Volunteer</span>
-</div>
-<p class="reveal-block" style="color: var(--primary-navy); font-size: 16px; font-weight: 600; margin-bottom: 4px;">
+                        </div>
+                    </div>
+                    <div class="card fade-in-up reveal-block" style="display: flex; flex-direction: column;">
+                        <div class="card-header">
+                            <h4>NSS Volunteer Leader</h4>
+                            <span class="badge">Volunteer</span>
+                        </div>
+                        <p class="reveal-block"
+                            style="color: var(--primary-navy); font-size: 16px; font-weight: 600; margin-bottom: 4px;">
                             MES HSS Irimbiliyam</p>
-<p class="reveal-block" style="color: var(--accent-blue); font-size: 14px; font-weight: 500; margin-bottom: 12px;">
+                        <p class="reveal-block"
+                            style="color: var(--accent-blue); font-size: 14px; font-weight: 500; margin-bottom: 12px;">
                             2023 – 2025</p>
-<p class="reveal-block" style="margin-bottom: 20px;">Led community programs, coordinated events, managed digital
+                        <p class="reveal-block" style="margin-bottom: 20px;">Led community programs, coordinated events,
+                            managed digital
                             content and campaigns. Completed 240+ certified volunteer hours and developed strong
                             leadership skills.</p>
-<div style="margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 20px;">
-<img alt="NSS Volunteer Certificate" src="images/certificates/1753219537959.jpeg" style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: var(--light-gray); border-radius: 8px; border: 1px solid var(--border-gray);"/>
-<a class="btn" href="images/certificates/1753219537959.jpeg" rel="noopener noreferrer" style="width: 100%; text-align: center;" target="_blank">View Certificate</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- SKILLS -->
-<section id="skills">
-<div class="section-inner">
-<span class="section-label">// Skills</span><h3 class="fade-in-up reveal-text">Technical Skills</h3>
-<div class="skills-grid">
-<div class="skill-category fly-left">
-<h4>Web Development</h4>
-<p class="reveal-block">HTML, CSS, JavaScript, React, TypeScript, TailwindCSS</p>
-</div>
-<div class="skill-category fly-left">
-<h4>AI &amp; Problem Solving</h4>
-<p class="reveal-block">Basic AI/ML Concepts, Logical Thinking, System Design</p>
-</div>
-<div class="skill-category fly-right">
-<h4>Design &amp; Tools</h4>
-<p class="reveal-block">UI/UX Design, Canva, Git/GitHub, VS Code</p>
-</div>
-</div>
-</div>
-<!-- end fallback -->
-</section></div>
-<!-- CLUBS & ORGANIZATIONS -->
-<section class="bg-light" id="clubs">
-<div class="section-inner">
-<span class="section-label">// Clubs</span><h3 class="fade-in-up reveal-text">Clubs &amp; Organizations</h3>
-<div class="clubs-list">
-<div class="club-item">
-<button class="club-dropdown" onclick="toggleDropdown(this)">
-<span class="club-title">IEEE &amp; Specialized Societies</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="club-content">
-<ul>
-<li>IEEE Member (Aug 2025 - Present)</li>
-<li>IEEE Computer Society (Oct 2025 - Present)</li>
-<li>IEEE Electron Devices Society (Oct 2025 - Present)</li>
-<li>IEEE Electronics Packaging Society (Oct 2025 - Present)</li>
-<li>IEEE Broadcast Technology Society (Oct 2025 - Present)</li>
-<li>IEEE Industry Applications Society (Oct 2025 - Present)</li>
-<li>IEEE Vehicular Technology Society (Oct 2025 - Present)</li>
-<li>IEEE Engineering in Medicine &amp; Biology Society (Oct 2025 - Present)</li>
-</ul>
-</div>
-</div>
-<div class="club-item">
-<button class="club-dropdown" onclick="toggleDropdown(this)">
-<span class="club-title">Community &amp; Development</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="club-content">
-<ul>
-<li>Community of Developers (Aug 2025 - Present)</li>
-<li>FOSS CCE (Dec 2025 - Present)</li>
-<li>IEDC - Innovation &amp; Entrepreneurship Development Centre (Aug 2025 - Present)</li>
-</ul>
-</div>
-</div>
-<div class="club-item">
-<button class="club-dropdown" onclick="toggleDropdown(this)">
-<span class="club-title">Social Service</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="club-content">
-<ul>
-<li>NSS Volunteer Leader (Jun 2023 - Mar 2025)</li>
-<li>240+ certified volunteer hours</li>
-<li>Led community programs, campaigns, and social initiatives</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- HACKATHONS & EVENTS -->
-<section id="hackathons">
-<div class="section-inner">
-<span class="section-label">// Hackathons</span><h3 class="fade-in-up reveal-text">Hackathons &amp; Events</h3>
-<div class="events-list">
-<!-- Christ College of Engineering -->
-<div class="event-item reveal-block">
-<button class="event-dropdown" onclick="toggleDropdown(this)">
-<span>Christ College of Engineering (CCE)</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="event-content">
-<div class="event-list-item"><h4 class="event-name">BeachHack Season 7</h4><span class="event-result">Finalist</span></div>
-<div class="event-list-item"><h4 class="event-name">WEBATHON 2025</h4><span class="event-result">Second Prize</span></div>
-<div class="event-list-item"><h4 class="event-name">Code a Pookalam</h4><span class="event-result">Participant</span></div>
-<div class="event-list-item"><h4 class="event-name">TECHLETICS 4.0 Quake Clash</h4><span class="event-result">Champion</span></div>
-<div class="event-list-item"><h4 class="event-name">DEVMODE:UNITY UNLEASHED</h4><span class="event-result">Participant</span></div>
-<div class="event-list-item"><h4 class="event-name">EVOLV 2.0</h4><span class="event-result">Participant</span></div>
-<div class="event-list-item"><h4 class="event-name">FOSS RELAY CODING</h4><span class="event-result">Participant</span></div>
-<div class="event-list-item"><h4 class="event-name">JUMPSTART 8.0</h4><span class="event-result">Participant</span></div>
-</div>
-</div>
-<!-- VIT Vellore -->
-<div class="event-item reveal-block">
-<button class="event-dropdown" onclick="toggleDropdown(this)">
-<span>VIT Vellore</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="event-content">
-<div class="event-list-item"><h4 class="event-name">HackBattle</h4><span class="event-result">Finalist</span></div>
-</div>
-</div>
-<!-- Rajagiri -->
-<div class="event-item reveal-block">
-<button class="event-dropdown" onclick="toggleDropdown(this)">
-<span>Rajagiri School of Engineering &amp; Technology</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="event-content">
-<div class="event-list-item"><h4 class="event-name">HackQuest '25</h4><span class="event-result">Winner / Team Leader</span></div>
-</div>
-</div>
-<!-- NIT Calicut -->
-<div class="event-item reveal-block">
-<button class="event-dropdown" onclick="toggleDropdown(this)">
-<span>NIT Calicut</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="event-content">
-<div class="event-list-item"><h4 class="event-name">IEEE YESS'25</h4><span class="event-result">Participant</span></div>
-</div>
-</div>
-<!-- Tech Maghi / IIT Hyderabad -->
-<div class="event-item reveal-block">
-<button class="event-dropdown" onclick="toggleDropdown(this)">
-<span>IIT Hyderabad &amp; Tech Maghi</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="event-content">
-<div class="event-list-item"><h4 class="event-name">AI Cyber Security Workshop</h4><span class="event-result">Participant</span></div>
-<div class="event-list-item"><h4 class="event-name">Agentic AI Boot Camp</h4><span class="event-result">Participant</span></div>
-</div>
-</div>
-<!-- NSS Palakkad / μLearn -->
-<div class="event-item reveal-block">
-<button class="event-dropdown" onclick="toggleDropdown(this)">
-<span>NSS Palakkad / μLearn</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="event-content">
-<div class="event-list-item"><h4 class="event-name">Build With AI 2026 Hackathon</h4><span class="event-result">Best Technical
-                                    Project</span>
-</div>
-</div>
-</div>
-<!-- K-DISC -->
-<div class="event-item reveal-block">
-<button class="event-dropdown" onclick="toggleDropdown(this)">
-<span>K-DISC / Government of Kerala</span>
-<span class="dropdown-arrow">▼</span>
-</button>
-<div class="event-content">
-<div class="event-list-item"><h4 class="event-name">YIP 8.0 Idea Submission</h4><span class="event-result">Awarded</span></div>
-<div class="event-list-item"><h4 class="event-name">YIP 8.0 VOS Training</h4><span class="event-result">Participant</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- CERTIFICATIONS & LANGUAGES -->
-<section class="bg-light" id="certifications">
-<div class="section-inner">
-<div class="certs-languages-wrapper" style="">
-<div>
-<h3 class="fade-in-up reveal-text">Certifications</h3>
-<ul class="cert-list reveal-stagger"><li>IEEE Certified Member (CM)</li><li>Google Developer Program (2025)</li><li>National Service Scheme (NSS) Certificate (2023–2025)</li></ul>
-</div>
-<div>
-<h3 class="fade-in-up reveal-text">Languages</h3>
-<ul class="language-list reveal-stagger"><li>English</li><li>Malayalam</li><li>Hindi</li><li>Arabic</li></ul>
-</div>
-</div>
-<p class="section-desc reveal-block">Click any certificate to view the full document.</p>
-<section class="cert-carousel-section" id="fan-carousel">
-  <div class="cert-carousel-header">
-    <span class="fan-label">// Certifications</span>
-    <h2 class="fan-title">What I've <em>Earned</em></h2>
-    <p class="fan-subtitle">Scroll or drag to explore certificates and recognitions.</p>
-  </div>
-  <div class="cert-carousel-stage">
-    <div class="cert-viewport" id="cert-viewport">
-      <div class="cert-track" id="cert-track"><div class="cert-card" data-url="images/certificates/YESS25_Certificate_YESS25AHNzclof.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certs/thumb_YESS25_Certificate_YESS25AHNzclof.jpg" alt="IEEE YESS'25" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#01</span><span class="cert-card-name">IEEE YESS'25</span></div></div><div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-14-55.jpg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/PHOTO-2025-11-02-22-14-55.jpg" alt="FOSS Relay Coding" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#02</span><span class="cert-card-name">FOSS Relay Coding</span></div></div><div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-14-08.jpg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/PHOTO-2025-11-02-22-14-08.jpg" alt="EVOLV 2.0 Bootcamp" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#03</span><span class="cert-card-name">EVOLV 2.0 Bootcamp</span></div></div><div class="cert-card" data-url="images/certificates/8 2.PNG" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/8 2.PNG" alt="BeachHack 7 - Survive the Island" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#04</span><span class="cert-card-name">BeachHack 7 - Survive the Island</span></div></div><div class="cert-card" data-url="images/certificates/18 2.PNG" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/18 2.PNG" alt="BeachHack 7 - Error 404" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#05</span><span class="cert-card-name">BeachHack 7 - Error 404</span></div></div><div class="cert-card" data-url="images/certificates/Muhammed Sinan M-Certificate.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certs/thumb_Muhammed Sinan M-Certificate.jpg" alt="YIP 8.0 VOS Training" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#06</span><span class="cert-card-name">YIP 8.0 VOS Training</span></div></div><div class="cert-card" data-url="images/certificates/Muhammed_Sinan_M_Spectrum_iv__1764229988.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certs/thumb_Muhammed_Sinan_M_Spectrum_iv__1764229988.jpg" alt="Spectrum Softtech IV" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#07</span><span class="cert-card-name">Spectrum Softtech IV</span></div></div><div class="cert-card" data-url="images/certificates/Muhammed Sinan_HackBattle_certificate.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certs/thumb_Muhammed Sinan_HackBattle_certificate.jpg" alt="HackBattle VIT" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#08</span><span class="cert-card-name">HackBattle VIT</span></div></div><div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-15-12.jpg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/PHOTO-2025-11-02-22-15-12.jpg" alt="Code a Pookalam" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#09</span><span class="cert-card-name">Code a Pookalam</span></div></div><div class="cert-card" data-url="images/certificates/MUHAMMED SINAN M.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certs/thumb_MUHAMMED SINAN M.jpg" alt="AI Cyber Security Workshop" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#10</span><span class="cert-card-name">AI Cyber Security Workshop</span></div></div><div class="cert-card" data-url="images/certificates/PHOTO-2026-03-13-22-21-42.jpg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/PHOTO-2026-03-13-22-21-42.jpg" alt="JUMPSTART 8.0 Bootcamp" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#11</span><span class="cert-card-name">JUMPSTART 8.0 Bootcamp</span></div></div><div class="cert-card" data-url="images/certificates/1753219537959.jpeg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/1753219537959.jpeg" alt="NSS Volunteer" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#12</span><span class="cert-card-name">NSS Volunteer</span></div></div><div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-13-55.jpg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/PHOTO-2025-11-02-22-13-55.jpg" alt="Unity Unleashed Workshop" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#13</span><span class="cert-card-name">Unity Unleashed Workshop</span></div></div><div class="cert-card" data-url="images/certificates/Muhammed Sinan M 2.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certs/thumb_Muhammed Sinan M 2.jpg" alt="Agentic AI Boot Camp" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#14</span><span class="cert-card-name">Agentic AI Boot Camp</span></div></div><div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-12-45.jpg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/PHOTO-2025-11-02-22-12-45.jpg" alt="CSI Webathon 2nd Prize" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#15</span><span class="cert-card-name">CSI Webathon 2nd Prize</span></div></div><div class="cert-card" data-url="images/certificates/27 2.PNG" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/27 2.PNG" alt="BeachHack 7 - Debug" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#16</span><span class="cert-card-name">BeachHack 7 - Debug</span></div></div><div class="cert-card" data-url="images/certificates/YIP_Certificate_Muhammed Sinan M_1161163.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certs/thumb_YIP_Certificate_Muhammed Sinan M_1161163.jpg" alt="YIP 8.0 Idea Submission" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#17</span><span class="cert-card-name">YIP 8.0 Idea Submission</span></div></div><div class="cert-card" data-url="images/certificates/Muhammed Sinan M_certificate.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certs/thumb_Muhammed Sinan M_certificate.jpg" alt="HackQuest '25" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#18</span><span class="cert-card-name">HackQuest '25</span></div></div><div class="cert-card" data-url="images/certificates/PHOTO-2026-02-17-20-59-17.jpg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/PHOTO-2026-02-17-20-59-17.jpg" alt="TECHLETICS 4.0 Quake Clash" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#19</span><span class="cert-card-name">TECHLETICS 4.0 Quake Clash</span></div></div><div class="cert-card" data-url="images/certificates/IE-HK-26-2027.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certs/thumb_IE-HK-26-2027.jpg" alt="IEDC District Hackathon" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#20</span><span class="cert-card-name">IEDC District Hackathon</span></div></div><div class="cert-card" data-url="images/certificates/PHOTO-2025-12-02-19-56-54.jpg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/PHOTO-2025-12-02-19-56-54.jpg" alt="CSI Webathon Participant" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#21</span><span class="cert-card-name">CSI Webathon Participant</span></div></div><div class="cert-card" data-url="images/certificates/certificate.pdf" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/certificate.pdf" alt="MATLAB Onramp" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#22</span><span class="cert-card-name">MATLAB Onramp</span></div></div><div class="cert-card" data-url="images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.jpeg" role="button" tabindex="0"><div class="cert-card-inner"><img src="images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.jpeg" alt="Suvidha Research Intern" loading="lazy"/></div><div class="cert-card-footer"><span class="cert-card-num">#23</span><span class="cert-card-name">Suvidha Research Intern</span></div></div></div></div></div></section>
-</div>
-</section>
-<!-- CTA / CONTACT SECTION -->
-<section class="cta-section" id="contact-cta">
-  <div class="cta-content">
-    <h2 class="cta-heading fade-in-up reveal-text">HAVE A PROJECT IN MIND?</h2>
-    <p class="cta-desc fade-in-up reveal-block">Together, we can create something clear and impactful. Let's collaborate to bring our ideas to life in a way that resonates with everyone.</p>
-    <a href="https://contact.muhammedsinan.in" target="_blank" class="cta-btn magnetic-btn fade-in-up reveal-block">Contact Me ↗</a>
-  </div>
-  <div class="cta-social-pills fade-in-up reveal-block">
-    <a href="#about" class="social-pill profile-pill">
-      <img src="images/profile-picture/bg-removed-black&amp;white-pfp.png" alt="Profile" />
-      <span>Muhammed Sinan M</span>
-    </a>
-    <a href="https://github.com/sidoxsinu" target="_blank" class="social-pill">
-      <svg class="feather feather-github" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-      <span>GitHub</span>
-    </a>
-    <a href="https://www.linkedin.com/in/sidoxsinu/" target="_blank" class="social-pill">
-      <svg class="feather feather-linkedin" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-      <span>LinkedIn</span>
-    </a>
-    <a href="https://www.instagram.com/sidoxsinu" target="_blank" class="social-pill">
-      <svg class="feather feather-instagram" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-      <span>Instagram</span>
-    </a>
-    <a href="https://x.com/sidoxsinu" target="_blank" class="social-pill">
-      <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
-      <span>Twitter</span>
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; padding: 50px 10%; background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.05); color: #f0f0f0;">
-<div style="flex: 2; min-width: 280px;">
-<h3 class="reveal-text" style="color: #f0f0f0; margin-bottom: 12px; font-size: 24px;">Muhammed Sinan M</h3>
-<p class="reveal-block" style="color: rgba(240,240,240,0.7); font-size: 14px; margin-bottom: 25px; max-width: 350px; line-height: 1.6;">Building the future, one line at a time.</p>
-<div style="color: rgba(240,240,240,0.8); font-size: 14px; line-height: 1.8;">
-<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-<span style="font-size: 16px;">📧</span> <a href="mailto:muhammedsinan.m67@gmail.com" style="color: rgba(240,240,240,0.8); text-decoration: none;">muhammedsinan.m67@gmail.com</a>
-</div>
-<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-<span style="font-size: 16px;">📍</span> <span>Irinjalakuda, Kerala, India</span>
-</div>
-<div style="display: flex; align-items: center; gap: 10px;">
-<span style="font-size: 16px;">📞</span> <a href="tel:+918590568566" style="color: rgba(240,240,240,0.8); text-decoration: none;">+91 85905 68566</a>
-</div>
-</div>
-</div>
-<div style="flex: 1; min-width: 150px;">
-<h4 style="color: #f0f0f0; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Quick Links</h4>
-<div style="display: flex; flex-direction: column; gap: 12px;">
-<a href="#about" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">About</a>
-<a href="#projects" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Projects</a>
-<a href="#experience" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Experience</a>
-<a href="#achievements" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Achievements</a>
-</div>
-</div>
-<div style="flex: 1; min-width: 150px;">
-<h4 style="color: #f0f0f0; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Social &amp; More</h4>
-<div style="display: flex; flex-direction: column; gap: 12px;">
-<a href="https://github.com/sidoxsinu" rel="noopener noreferrer" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">GitHub</a>
-<a href="https://www.linkedin.com/in/sidoxsinu/" rel="noopener noreferrer" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">LinkedIn</a>
-<a href="https://x.com/sidoxsinu" rel="noopener noreferrer" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">X (Twitter)</a>
-<a href="https://www.instagram.com/sidoxsinu" rel="noopener noreferrer" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">Instagram</a>
-<a aria-label="Print CV" href="#" onclick="window.print(); return false;" style="color: #c9a84c; text-decoration: none; font-size: 14px; font-weight: 600;" title="Print CV">Print CV</a>
-</div>
-</div>
-</div>
-<div style="text-align: center; padding: 20px; background: #081022; color: rgba(240,240,240,0.5); font-size: 12px;">
-<span class="copyright-pulse">© 2026 Muhammed Sinan M</span> · All Rights Reserved
+                        <div
+                            style="margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 20px;">
+                            <img alt="NSS Volunteer Certificate" src="images/certificates/1753219537959.jpeg"
+                                style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: var(--light-gray); border-radius: 8px; border: 1px solid var(--border-gray);" />
+                            <a class="btn" href="images/certificates/1753219537959.jpeg" rel="noopener noreferrer"
+                                style="width: 100%; text-align: center;" target="_blank">View Certificate</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="section-inner">
+                <span class="section-label">// Skills</span>
+                <h3 class="fade-in-up reveal-text">Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-category fly-left">
+                        <h4>Web Development</h4>
+                        <p class="reveal-block">HTML, CSS, JavaScript, React, TypeScript, TailwindCSS</p>
+                    </div>
+                    <div class="skill-category fly-left">
+                        <h4>AI &amp; Problem Solving</h4>
+                        <p class="reveal-block">Basic AI/ML Concepts, Logical Thinking, System Design</p>
+                    </div>
+                    <div class="skill-category fly-right">
+                        <h4>Design &amp; Tools</h4>
+                        <p class="reveal-block">UI/UX Design, Canva, Git/GitHub, VS Code</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end fallback -->
+        </section>
+    </div>
+    <!-- CLUBS & ORGANIZATIONS -->
+    <section class="bg-light" id="clubs">
+        <div class="section-inner">
+            <span class="section-label">// Clubs</span>
+            <h3 class="fade-in-up reveal-text">Clubs &amp; Organizations</h3>
+            <div class="clubs-list">
+                <div class="club-item">
+                    <button class="club-dropdown" onclick="toggleDropdown(this)">
+                        <span class="club-title">IEEE &amp; Specialized Societies</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="club-content">
+                        <ul>
+                            <li>IEEE Member (Aug 2025 - Present)</li>
+                            <li>IEEE Computer Society (Oct 2025 - Present)</li>
+                            <li>IEEE Electron Devices Society (Oct 2025 - Present)</li>
+                            <li>IEEE Electronics Packaging Society (Oct 2025 - Present)</li>
+                            <li>IEEE Broadcast Technology Society (Oct 2025 - Present)</li>
+                            <li>IEEE Industry Applications Society (Oct 2025 - Present)</li>
+                            <li>IEEE Vehicular Technology Society (Oct 2025 - Present)</li>
+                            <li>IEEE Engineering in Medicine &amp; Biology Society (Oct 2025 - Present)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="club-item">
+                    <button class="club-dropdown" onclick="toggleDropdown(this)">
+                        <span class="club-title">Community &amp; Development</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="club-content">
+                        <ul>
+                            <li>Community of Developers (Aug 2025 - Present)</li>
+                            <li>FOSS CCE (Dec 2025 - Present)</li>
+                            <li>IEDC - Innovation &amp; Entrepreneurship Development Centre (Aug 2025 - Present)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="club-item">
+                    <button class="club-dropdown" onclick="toggleDropdown(this)">
+                        <span class="club-title">Social Service</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="club-content">
+                        <ul>
+                            <li>NSS Volunteer Leader (Jun 2023 - Mar 2025)</li>
+                            <li>240+ certified volunteer hours</li>
+                            <li>Led community programs, campaigns, and social initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-</footer>
-<button aria-label="Back to top" data-magnetic="" id="back-to-top">
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
-<polyline points="18 15 12 9 6 15"></polyline>
-</svg>
-</button>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
+    </section>
+    <!-- HACKATHONS & EVENTS -->
+    <section id="hackathons">
+        <div class="section-inner">
+            <span class="section-label">// Hackathons</span>
+            <h3 class="fade-in-up reveal-text">Hackathons &amp; Events</h3>
+            <div class="events-list">
+                <!-- Christ College of Engineering -->
+                <div class="event-item reveal-block">
+                    <button class="event-dropdown" onclick="toggleDropdown(this)">
+                        <span>Christ College of Engineering (CCE)</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="event-content">
+                        <div class="event-list-item">
+                            <h4 class="event-name">BeachHack Season 7</h4><span class="event-result">Finalist</span>
+                        </div>
+                        <div class="event-list-item">
+                            <h4 class="event-name">WEBATHON 2025</h4><span class="event-result">Second Prize</span>
+                        </div>
+                        <div class="event-list-item">
+                            <h4 class="event-name">Code a Pookalam</h4><span class="event-result">Participant</span>
+                        </div>
+                        <div class="event-list-item">
+                            <h4 class="event-name">TECHLETICS 4.0 Quake Clash</h4><span
+                                class="event-result">Champion</span>
+                        </div>
+                        <div class="event-list-item">
+                            <h4 class="event-name">DEVMODE:UNITY UNLEASHED</h4><span
+                                class="event-result">Participant</span>
+                        </div>
+                        <div class="event-list-item">
+                            <h4 class="event-name">EVOLV 2.0</h4><span class="event-result">Participant</span>
+                        </div>
+                        <div class="event-list-item">
+                            <h4 class="event-name">FOSS RELAY CODING</h4><span class="event-result">Participant</span>
+                        </div>
+                        <div class="event-list-item">
+                            <h4 class="event-name">JUMPSTART 8.0</h4><span class="event-result">Participant</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- VIT Vellore -->
+                <div class="event-item reveal-block">
+                    <button class="event-dropdown" onclick="toggleDropdown(this)">
+                        <span>VIT Vellore</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="event-content">
+                        <div class="event-list-item">
+                            <h4 class="event-name">HackBattle</h4><span class="event-result">Finalist</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Rajagiri -->
+                <div class="event-item reveal-block">
+                    <button class="event-dropdown" onclick="toggleDropdown(this)">
+                        <span>Rajagiri School of Engineering &amp; Technology</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="event-content">
+                        <div class="event-list-item">
+                            <h4 class="event-name">HackQuest '25</h4><span class="event-result">Winner / Team
+                                Leader</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- NIT Calicut -->
+                <div class="event-item reveal-block">
+                    <button class="event-dropdown" onclick="toggleDropdown(this)">
+                        <span>NIT Calicut</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="event-content">
+                        <div class="event-list-item">
+                            <h4 class="event-name">IEEE YESS'25</h4><span class="event-result">Participant</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tech Maghi / IIT Hyderabad -->
+                <div class="event-item reveal-block">
+                    <button class="event-dropdown" onclick="toggleDropdown(this)">
+                        <span>IIT Hyderabad &amp; Tech Maghi</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="event-content">
+                        <div class="event-list-item">
+                            <h4 class="event-name">AI Cyber Security Workshop</h4><span
+                                class="event-result">Participant</span>
+                        </div>
+                        <div class="event-list-item">
+                            <h4 class="event-name">Agentic AI Boot Camp</h4><span
+                                class="event-result">Participant</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- NSS Palakkad / μLearn -->
+                <div class="event-item reveal-block">
+                    <button class="event-dropdown" onclick="toggleDropdown(this)">
+                        <span>NSS Palakkad / μLearn</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="event-content">
+                        <div class="event-list-item">
+                            <h4 class="event-name">Build With AI 2026 Hackathon</h4><span class="event-result">Best
+                                Technical
+                                Project</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- K-DISC -->
+                <div class="event-item reveal-block">
+                    <button class="event-dropdown" onclick="toggleDropdown(this)">
+                        <span>K-DISC / Government of Kerala</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="event-content">
+                        <div class="event-list-item">
+                            <h4 class="event-name">YIP 8.0 Idea Submission</h4><span class="event-result">Awarded</span>
+                        </div>
+                        <div class="event-list-item">
+                            <h4 class="event-name">YIP 8.0 VOS Training</h4><span
+                                class="event-result">Participant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CERTIFICATIONS & LANGUAGES -->
+    <section class="bg-light" id="certifications">
+        <div class="section-inner">
+            <div class="certs-languages-wrapper" style="">
+                <div>
+                    <h3 class="fade-in-up reveal-text">Certifications</h3>
+                    <ul class="cert-list reveal-stagger">
+                        <li>IEEE Certified Member (CM)</li>
+                        <li>Google Developer Program (2025)</li>
+                        <li>National Service Scheme (NSS) Certificate (2023–2025)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="fade-in-up reveal-text">Languages</h3>
+                    <ul class="language-list reveal-stagger">
+                        <li>English</li>
+                        <li>Malayalam</li>
+                        <li>Hindi</li>
+                        <li>Arabic</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="section-desc reveal-block">Click any certificate to view the full document.</p>
+            <section class="cert-carousel-section" id="fan-carousel">
+                <div class="cert-carousel-header">
+                    <span class="fan-label">// Certifications</span>
+                    <h2 class="fan-title">What I've <em>Earned</em></h2>
+                    <p class="fan-subtitle">Scroll or drag to explore certificates and recognitions.</p>
+                </div>
+                <div class="cert-carousel-stage">
+                    <div class="cert-viewport" id="cert-viewport">
+                        <div class="cert-track" id="cert-track">
+                            <div class="cert-card" data-url="images/certificates/YESS25_Certificate_YESS25AHNzclof.pdf"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certs/thumb_YESS25_Certificate_YESS25AHNzclof.jpg"
+                                        alt="IEEE YESS'25" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#01</span><span
+                                        class="cert-card-name">IEEE YESS'25</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-14-55.jpg"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certificates/PHOTO-2025-11-02-22-14-55.jpg" alt="FOSS Relay Coding"
+                                        loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#02</span><span
+                                        class="cert-card-name">FOSS Relay Coding</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-14-08.jpg"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certificates/PHOTO-2025-11-02-22-14-08.jpg" alt="EVOLV 2.0 Bootcamp"
+                                        loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#03</span><span
+                                        class="cert-card-name">EVOLV 2.0 Bootcamp</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/8 2.PNG" role="button" tabindex="0">
+                                <div class="cert-card-inner"><img src="images/certificates/8 2.PNG"
+                                        alt="BeachHack 7 - Survive the Island" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#04</span><span
+                                        class="cert-card-name">BeachHack 7 - Survive the Island</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/18 2.PNG" role="button" tabindex="0">
+                                <div class="cert-card-inner"><img src="images/certificates/18 2.PNG"
+                                        alt="BeachHack 7 - Error 404" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#05</span><span
+                                        class="cert-card-name">BeachHack 7 - Error 404</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/Muhammed Sinan M-Certificate.pdf"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certs/thumb_Muhammed Sinan M-Certificate.jpg"
+                                        alt="YIP 8.0 VOS Training" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#06</span><span
+                                        class="cert-card-name">YIP 8.0 VOS Training</span></div>
+                            </div>
+                            <div class="cert-card"
+                                data-url="images/certificates/Muhammed_Sinan_M_Spectrum_iv__1764229988.pdf"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certs/thumb_Muhammed_Sinan_M_Spectrum_iv__1764229988.jpg"
+                                        alt="Spectrum Softtech IV" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#07</span><span
+                                        class="cert-card-name">Spectrum Softtech IV</span></div>
+                            </div>
+                            <div class="cert-card"
+                                data-url="images/certificates/Muhammed Sinan_HackBattle_certificate.pdf" role="button"
+                                tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certs/thumb_Muhammed Sinan_HackBattle_certificate.jpg"
+                                        alt="HackBattle VIT" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#08</span><span
+                                        class="cert-card-name">HackBattle VIT</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-15-12.jpg"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certificates/PHOTO-2025-11-02-22-15-12.jpg" alt="Code a Pookalam"
+                                        loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#09</span><span
+                                        class="cert-card-name">Code a Pookalam</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/MUHAMMED SINAN M.pdf" role="button"
+                                tabindex="0">
+                                <div class="cert-card-inner"><img src="images/certs/thumb_MUHAMMED SINAN M.jpg"
+                                        alt="AI Cyber Security Workshop" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#10</span><span
+                                        class="cert-card-name">AI Cyber Security Workshop</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/PHOTO-2026-03-13-22-21-42.jpg"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certificates/PHOTO-2026-03-13-22-21-42.jpg"
+                                        alt="JUMPSTART 8.0 Bootcamp" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#11</span><span
+                                        class="cert-card-name">JUMPSTART 8.0 Bootcamp</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/1753219537959.jpeg" role="button"
+                                tabindex="0">
+                                <div class="cert-card-inner"><img src="images/certificates/1753219537959.jpeg"
+                                        alt="NSS Volunteer" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#12</span><span
+                                        class="cert-card-name">NSS Volunteer</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-13-55.jpg"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certificates/PHOTO-2025-11-02-22-13-55.jpg"
+                                        alt="Unity Unleashed Workshop" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#13</span><span
+                                        class="cert-card-name">Unity Unleashed Workshop</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/Muhammed Sinan M 2.pdf" role="button"
+                                tabindex="0">
+                                <div class="cert-card-inner"><img src="images/certs/thumb_Muhammed Sinan M 2.jpg"
+                                        alt="Agentic AI Boot Camp" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#14</span><span
+                                        class="cert-card-name">Agentic AI Boot Camp</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/PHOTO-2025-11-02-22-12-45.jpg"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certificates/PHOTO-2025-11-02-22-12-45.jpg"
+                                        alt="CSI Webathon 2nd Prize" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#15</span><span
+                                        class="cert-card-name">CSI Webathon 2nd Prize</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/27 2.PNG" role="button" tabindex="0">
+                                <div class="cert-card-inner"><img src="images/certificates/27 2.PNG"
+                                        alt="BeachHack 7 - Debug" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#16</span><span
+                                        class="cert-card-name">BeachHack 7 - Debug</span></div>
+                            </div>
+                            <div class="cert-card"
+                                data-url="images/certificates/YIP_Certificate_Muhammed Sinan M_1161163.pdf"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certs/thumb_YIP_Certificate_Muhammed Sinan M_1161163.jpg"
+                                        alt="YIP 8.0 Idea Submission" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#17</span><span
+                                        class="cert-card-name">YIP 8.0 Idea Submission</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/Muhammed Sinan M_certificate.pdf"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certs/thumb_Muhammed Sinan M_certificate.jpg" alt="HackQuest '25"
+                                        loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#18</span><span
+                                        class="cert-card-name">HackQuest '25</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/PHOTO-2026-02-17-20-59-17.jpg"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certificates/PHOTO-2026-02-17-20-59-17.jpg"
+                                        alt="TECHLETICS 4.0 Quake Clash" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#19</span><span
+                                        class="cert-card-name">TECHLETICS 4.0 Quake Clash</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/IE-HK-26-2027.pdf" role="button"
+                                tabindex="0">
+                                <div class="cert-card-inner"><img src="images/certs/thumb_IE-HK-26-2027.jpg"
+                                        alt="IEDC District Hackathon" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#20</span><span
+                                        class="cert-card-name">IEDC District Hackathon</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/PHOTO-2025-12-02-19-56-54.jpg"
+                                role="button" tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certificates/PHOTO-2025-12-02-19-56-54.jpg"
+                                        alt="CSI Webathon Participant" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#21</span><span
+                                        class="cert-card-name">CSI Webathon Participant</span></div>
+                            </div>
+                            <div class="cert-card" data-url="images/certificates/certificate.pdf" role="button"
+                                tabindex="0">
+                                <div class="cert-card-inner"><img src="images/certificates/certificate.pdf"
+                                        alt="MATLAB Onramp" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#22</span><span
+                                        class="cert-card-name">MATLAB Onramp</span></div>
+                            </div>
+                            <div class="cert-card"
+                                data-url="images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.jpeg" role="button"
+                                tabindex="0">
+                                <div class="cert-card-inner"><img
+                                        src="images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.jpeg"
+                                        alt="Suvidha Research Intern" loading="lazy" /></div>
+                                <div class="cert-card-footer"><span class="cert-card-num">#23</span><span
+                                        class="cert-card-name">Suvidha Research Intern</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <!-- CTA / CONTACT SECTION -->
+    <section class="cta-section" id="contact-cta">
+        <div class="cta-content">
+            <h2 class="cta-heading fade-in-up reveal-text">HAVE A PROJECT IN MIND?</h2>
+            <p class="cta-desc fade-in-up reveal-block">Together, we can create something clear and impactful. Let's
+                collaborate to bring our ideas to life in a way that resonates with everyone.</p>
+            <a href="https://contact.muhammedsinan.in" target="_blank"
+                class="cta-btn magnetic-btn fade-in-up reveal-block">Let's Talk! ↗</a>
+        </div>
+        <div class="cta-social-pills fade-in-up reveal-block">
+            <a href="#about" class="social-pill profile-pill">
+                <img src="images/profile-picture/bg-removed-black&amp;white-pfp.png" alt="Profile" />
+                <span>Muhammed Sinan M</span>
+            </a>
+            <a href="https://github.com/sidoxsinu" target="_blank" class="social-pill">
+                <svg class="feather feather-github" fill="none" height="16" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                </svg>
+                <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/sidoxsinu/" target="_blank" class="social-pill">
+                <svg class="feather feather-linkedin" fill="none" height="16" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect height="12" width="4" x="2" y="9"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://www.instagram.com/sidoxsinu" target="_blank" class="social-pill">
+                <svg class="feather feather-instagram" fill="none" height="16" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg>
+                <span>Instagram</span>
+            </a>
+            <a href="https://x.com/sidoxsinu" target="_blank" class="social-pill">
+                <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                </svg>
+                <span>Twitter</span>
+            </a>
+        </div>
+    </section>
 
-        // Instant Entrance Animations
-        gsap.from(".premium-nav", { y: -20, opacity: 0, duration: 0.3, ease: "power2.out" });
-        gsap.from(".hero-title", { y: 20, opacity: 0, duration: 0.4, ease: "power3.out" });
-        gsap.from(".hero-pfp", { scale: 1.02, opacity: 0, duration: 0.4, ease: "power2.out" });
-        gsap.from(".hero-socials a", { x: -10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
-        gsap.from(".hero-roles p", { x: 10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
-        gsap.from(".scroll-circle-wrapper", { opacity: 0, scale: 0.8, duration: 0.6, delay: 0.6, ease: "power2.out" });
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; padding: 50px 10%; background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.05); color: #f0f0f0;">
+            <div style="flex: 2; min-width: 280px;">
+                <h3 class="reveal-text" style="color: #f0f0f0; margin-bottom: 12px; font-size: 24px;">Muhammed Sinan M
+                </h3>
+                <p class="reveal-block"
+                    style="color: rgba(240,240,240,0.7); font-size: 14px; margin-bottom: 25px; max-width: 350px; line-height: 1.6;">
+                    Building the future, one line at a time.</p>
+                <div style="color: rgba(240,240,240,0.8); font-size: 14px; line-height: 1.8;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                        <span style="font-size: 16px;">📧</span> <a href="mailto:muhammedsinan.m67@gmail.com"
+                            style="color: rgba(240,240,240,0.8); text-decoration: none;">muhammedsinan.m67@gmail.com</a>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                        <span style="font-size: 16px;">📍</span> <span>Irinjalakuda, Kerala, India</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 16px;">📞</span> <a href="tel:+918590568566"
+                            style="color: rgba(240,240,240,0.8); text-decoration: none;">+91 85905 68566</a>
+                    </div>
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 150px;">
+                <h4 style="color: #f0f0f0; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Quick Links</h4>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="#about"
+                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">About</a>
+                    <a href="#projects"
+                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Projects</a>
+                    <a href="#experience"
+                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Experience</a>
+                    <a href="#achievements"
+                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Achievements</a>
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 150px;">
+                <h4 style="color: #f0f0f0; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Social &amp; More
+                </h4>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="https://github.com/sidoxsinu" rel="noopener noreferrer"
+                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;"
+                        target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/sidoxsinu/" rel="noopener noreferrer"
+                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;"
+                        target="_blank">LinkedIn</a>
+                    <a href="https://x.com/sidoxsinu" rel="noopener noreferrer"
+                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">X
+                        (Twitter)</a>
+                    <a href="https://www.instagram.com/sidoxsinu" rel="noopener noreferrer"
+                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;"
+                        target="_blank">Instagram</a>
+                    <a aria-label="Print CV" href="#" onclick="window.print(); return false;"
+                        style="color: #c9a84c; text-decoration: none; font-size: 14px; font-weight: 600;"
+                        title="Print CV">Print CV</a>
+                </div>
+            </div>
+        </div>
+        <div
+            style="text-align: center; padding: 20px; background: #081022; color: rgba(240,240,240,0.5); font-size: 12px;">
+            <span class="copyright-pulse">© 2026 Muhammed Sinan M</span> · All Rights Reserved
+        </div>
+    </footer>
+    <button aria-label="Back to top" data-magnetic="" id="back-to-top">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+            viewbox="0 0 24 24">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
 
-        gsap.to(".hero-pfp", {
-            yPercent: 15,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".hero-premium",
-                start: "top top",
-                end: "bottom top",
-                scrub: true
+                // Instant Entrance Animations
+                gsap.from(".premium-nav", { y: -20, opacity: 0, duration: 0.3, ease: "power2.out" });
+                gsap.from(".hero-title", { y: 20, opacity: 0, duration: 0.4, ease: "power3.out" });
+                gsap.from(".hero-pfp", { scale: 1.02, opacity: 0, duration: 0.4, ease: "power2.out" });
+                gsap.from(".hero-socials a", { x: -10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
+                gsap.from(".hero-roles p", { x: 10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
+                gsap.from(".scroll-circle-wrapper", { opacity: 0, scale: 0.8, duration: 0.6, delay: 0.6, ease: "power2.out" });
+
+                gsap.to(".hero-pfp", {
+                    yPercent: 15,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: ".hero-premium",
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+
+                gsap.to('.scroll-circle-svg', {
+                    rotation: 720,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: document.body,
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: true
+                    }
+                });
             }
-        });
 
-        gsap.to('.scroll-circle-svg', {
-            rotation: 720,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: document.body,
-                start: 'top top',
-                end: 'bottom bottom',
-                scrub: true
-            }
-        });
-    }
 
-    
-    // ---- Infinite 3D Coverflow for Certificate Carousel ----
-    (function () {
-        const viewport = document.getElementById('cert-viewport');
-        const track = document.getElementById('cert-track');
-        if (!viewport || !track) return;
+            // ---- Infinite 3D Coverflow for Certificate Carousel ----
+            (function () {
+                const viewport = document.getElementById('cert-viewport');
+                const track = document.getElementById('cert-track');
+                if (!viewport || !track) return;
 
-        // 1. Clone the original cards — prepend + append full set copies
-        const originals = Array.from(track.querySelectorAll('.cert-card'));
-        if (!originals.length) return;
+                // 1. Clone the original cards — prepend + append full set copies
+                const originals = Array.from(track.querySelectorAll('.cert-card'));
+                if (!originals.length) return;
 
-        function cloneSet() {
-            return originals.map(card => {
-                const clone = card.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true');
-                return clone;
-            });
-        }
-
-        const prependClones = cloneSet();
-        const appendClones  = cloneSet();
-
-        // Insert clones
-        prependClones.reverse().forEach(c => track.prepend(c));
-        appendClones.forEach(c => track.append(c));
-
-        // 2. Jump to the start of the real (middle) set without animation
-        //    We do this after layout — wait one frame so offsetLeft is ready
-        function getSetWidth() {
-            // total width occupied by one full set of cards (with gaps)
-            const allCards = track.querySelectorAll('.cert-card');
-            const n = originals.length;
-            if (!allCards[n]) return 0;
-            // The middle set starts at index n (after prepend clones)
-            return allCards[n].offsetLeft - allCards[0].offsetLeft;
-        }
-
-        let setWidth = 0;
-        let jumping = false;
-
-        function initScroll() {
-            setWidth = getSetWidth();
-            // Centre viewport on the first card of the real set
-            viewport.scrollLeft = setWidth;
-        }
-
-        // 3. Apply 3D transforms
-        function applyCovertflow() {
-            const cards = track.querySelectorAll('.cert-card');
-            const vpCenter = viewport.scrollLeft + viewport.clientWidth / 2;
-            const SPREAD = viewport.clientWidth * 0.55;
-
-            cards.forEach(card => {
-                const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-                const dist = cardCenter - vpCenter;
-                const t = Math.max(-1, Math.min(1, dist / SPREAD));
-
-                const rotateY  = t * -50;
-                const scale    = 1 + Math.abs(t) * 0.35;
-                const zTranslate = Math.abs(t) * 80;
-                const brightness = 1 - Math.abs(t) * 0.35;
-
-                card.style.transform = `perspective(1400px) rotateY(${rotateY}deg) scale(${scale}) translateZ(${zTranslate}px)`;
-                card.style.filter    = `brightness(${brightness})`;
-            });
-        }
-
-        // 4. Infinite scroll guard — teleport when entering the clone zones
-        function guardInfinite() {
-            if (jumping) return;
-            if (setWidth === 0) { setWidth = getSetWidth(); }
-
-            if (viewport.scrollLeft >= setWidth * 2) {
-                // Entered the append-clone zone → jump back to real set
-                jumping = true;
-                viewport.scrollLeft -= setWidth;
-                jumping = false;
-            } else if (viewport.scrollLeft <= 0) {
-                // Entered the prepend-clone zone → jump forward to real set
-                jumping = true;
-                viewport.scrollLeft += setWidth;
-                jumping = false;
-            }
-        }
-
-        viewport.addEventListener('scroll', () => {
-            guardInfinite();
-            requestAnimationFrame(applyCovertflow);
-        }, { passive: true });
-
-        // 5. Drag-to-scroll (mouse) & Click Handling
-        let isDown = false, startX;
-        let totalDelta = 0;
-        let isDraggingCard = false;
-
-        viewport.addEventListener('mousedown', e => {
-            isDown = true;
-            isDraggingCard = false;
-            totalDelta = 0;
-            startX = e.pageX - viewport.offsetLeft;
-            viewport.style.cursor = 'grabbing';
-        });
-        document.addEventListener('mouseup', () => { isDown = false; viewport.style.cursor = 'grab'; });
-        viewport.addEventListener('mouseleave', () => { isDown = false; viewport.style.cursor = 'grab'; });
-        viewport.addEventListener('mousemove', e => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - viewport.offsetLeft;
-            const deltaX = x - startX;
-            totalDelta += Math.abs(deltaX);
-            
-            if (totalDelta > 5) {
-                isDraggingCard = true;
-            }
-            
-            viewport.scrollLeft -= deltaX * 1.5;
-            startX = x;
-        });
-
-        // Click handler for cards
-        viewport.addEventListener('click', e => {
-            // Prevent opening if the user was dragging
-            if (isDraggingCard) {
-                e.preventDefault();
-                e.stopPropagation();
-                return;
-            }
-            
-            // If it's a genuine click, find if a cert-card was clicked
-            const card = e.target.closest('.cert-card');
-            if (card) {
-                const url = card.getAttribute('data-url');
-                if (url) {
-                    window.open(url, '_blank');
+                function cloneSet() {
+                    return originals.map(card => {
+                        const clone = card.cloneNode(true);
+                        clone.setAttribute('aria-hidden', 'true');
+                        return clone;
+                    });
                 }
-            }
-        });
 
-        // 6. Auto-scroll
-        let scrollAccumulator = 0;
-        function autoScroll() {
-            // Only pause if actively dragging
-            if (!isDown) {
-                scrollAccumulator += 0.6; // Small constant pace
-                if (scrollAccumulator >= 1) {
-                    const step = Math.floor(scrollAccumulator);
-                    viewport.scrollLeft += step;
-                    scrollAccumulator -= step;
+                const prependClones = cloneSet();
+                const appendClones = cloneSet();
+
+                // Insert clones
+                prependClones.reverse().forEach(c => track.prepend(c));
+                appendClones.forEach(c => track.append(c));
+
+                // 2. Jump to the start of the real (middle) set without animation
+                //    We do this after layout — wait one frame so offsetLeft is ready
+                function getSetWidth() {
+                    // total width occupied by one full set of cards (with gaps)
+                    const allCards = track.querySelectorAll('.cert-card');
+                    const n = originals.length;
+                    if (!allCards[n]) return 0;
+                    // The middle set starts at index n (after prepend clones)
+                    return allCards[n].offsetLeft - allCards[0].offsetLeft;
                 }
+
+                let setWidth = 0;
+                let jumping = false;
+
+                function initScroll() {
+                    setWidth = getSetWidth();
+                    // Centre viewport on the first card of the real set
+                    viewport.scrollLeft = setWidth;
+                }
+
+                // 3. Apply 3D transforms
+                function applyCovertflow() {
+                    const cards = track.querySelectorAll('.cert-card');
+                    const vpCenter = viewport.scrollLeft + viewport.clientWidth / 2;
+                    const SPREAD = viewport.clientWidth * 0.55;
+
+                    cards.forEach(card => {
+                        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                        const dist = cardCenter - vpCenter;
+                        const t = Math.max(-1, Math.min(1, dist / SPREAD));
+
+                        const rotateY = t * -50;
+                        const scale = 1 + Math.abs(t) * 0.35;
+                        const zTranslate = Math.abs(t) * 80;
+                        const brightness = 1 - Math.abs(t) * 0.35;
+
+                        card.style.transform = `perspective(1400px) rotateY(${rotateY}deg) scale(${scale}) translateZ(${zTranslate}px)`;
+                        card.style.filter = `brightness(${brightness})`;
+                    });
+                }
+
+                // 4. Infinite scroll guard — teleport when entering the clone zones
+                function guardInfinite() {
+                    if (jumping) return;
+                    if (setWidth === 0) { setWidth = getSetWidth(); }
+
+                    if (viewport.scrollLeft >= setWidth * 2) {
+                        // Entered the append-clone zone → jump back to real set
+                        jumping = true;
+                        viewport.scrollLeft -= setWidth;
+                        jumping = false;
+                    } else if (viewport.scrollLeft <= 0) {
+                        // Entered the prepend-clone zone → jump forward to real set
+                        jumping = true;
+                        viewport.scrollLeft += setWidth;
+                        jumping = false;
+                    }
+                }
+
+                viewport.addEventListener('scroll', () => {
+                    guardInfinite();
+                    requestAnimationFrame(applyCovertflow);
+                }, { passive: true });
+
+                // 5. Drag-to-scroll (mouse) & Click Handling
+                let isDown = false, startX;
+                let totalDelta = 0;
+                let isDraggingCard = false;
+
+                viewport.addEventListener('mousedown', e => {
+                    isDown = true;
+                    isDraggingCard = false;
+                    totalDelta = 0;
+                    startX = e.pageX - viewport.offsetLeft;
+                    viewport.style.cursor = 'grabbing';
+                });
+                document.addEventListener('mouseup', () => { isDown = false; viewport.style.cursor = 'grab'; });
+                viewport.addEventListener('mouseleave', () => { isDown = false; viewport.style.cursor = 'grab'; });
+                viewport.addEventListener('mousemove', e => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - viewport.offsetLeft;
+                    const deltaX = x - startX;
+                    totalDelta += Math.abs(deltaX);
+
+                    if (totalDelta > 5) {
+                        isDraggingCard = true;
+                    }
+
+                    viewport.scrollLeft -= deltaX * 1.5;
+                    startX = x;
+                });
+
+                // Click handler for cards
+                viewport.addEventListener('click', e => {
+                    // Prevent opening if the user was dragging
+                    if (isDraggingCard) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return;
+                    }
+
+                    // If it's a genuine click, find if a cert-card was clicked
+                    const card = e.target.closest('.cert-card');
+                    if (card) {
+                        const url = card.getAttribute('data-url');
+                        if (url) {
+                            window.open(url, '_blank');
+                        }
+                    }
+                });
+
+                // 6. Auto-scroll
+                let scrollAccumulator = 0;
+                function autoScroll() {
+                    // Only pause if actively dragging
+                    if (!isDown) {
+                        scrollAccumulator += 0.6; // Small constant pace
+                        if (scrollAccumulator >= 1) {
+                            const step = Math.floor(scrollAccumulator);
+                            viewport.scrollLeft += step;
+                            scrollAccumulator -= step;
+                        }
+                    }
+                    requestAnimationFrame(autoScroll);
+                }
+
+                // 7. Init
+                requestAnimationFrame(() => {
+                    initScroll();
+                    requestAnimationFrame(applyCovertflow);
+                    requestAnimationFrame(autoScroll);
+                });
+            })();
+
+
+            // 3D Coverflow Effect for Carousels
+            function updateCarousel3D(viewport) {
+                const cards = viewport.querySelectorAll('.jtl-card, .cert-card');
+                if (!cards.length) return;
+
+                const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
+
+                cards.forEach(card => {
+                    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                    const distance = cardCenter - viewportCenter;
+
+                    const maxRotation = 35;
+                    const rotationFactor = distance / (viewport.clientWidth / 1.5);
+                    let rotateY = rotationFactor * -maxRotation;
+                    rotateY = Math.max(-maxRotation, Math.min(maxRotation, rotateY));
+
+                    const zTranslate = Math.abs(rotationFactor) * -200;
+                    const scale = Math.max(0.7, 1 - Math.abs(rotationFactor) * 0.2);
+
+                    card.style.transform = `perspective(1200px) translateZ(${zTranslate}px) rotateY(${rotateY}deg) scale(${scale})`;
+                });
             }
-            requestAnimationFrame(autoScroll);
-        }
 
-        // 7. Init
-        requestAnimationFrame(() => {
-            initScroll();
-            requestAnimationFrame(applyCovertflow);
-            requestAnimationFrame(autoScroll);
+            document.querySelectorAll('.carousel-viewport').forEach(viewport => {
+                updateCarousel3D(viewport);
+                viewport.addEventListener('scroll', () => {
+                    requestAnimationFrame(() => updateCarousel3D(viewport));
+                });
+            });
+
+            document.querySelectorAll('.carousel-nav-btn, .btn').forEach(btn => {
+                btn.addEventListener('mousemove', e => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    btn.style.setProperty('--x', `${x}px`);
+                    btn.style.setProperty('--y', `${y}px`);
+                });
+            });
+
+            const prevBtns = document.querySelectorAll('.carousel-nav-btn.prev');
+            const nextBtns = document.querySelectorAll('.carousel-nav-btn.next');
+
+            prevBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const container = btn.closest('.carousel-stage');
+                    const viewport = container.querySelector('.carousel-viewport');
+                    if (viewport) viewport.scrollBy({ left: -300, behavior: 'smooth' });
+                });
+            });
+
+            nextBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const container = btn.closest('.carousel-stage');
+                    const viewport = container.querySelector('.carousel-viewport');
+                    if (viewport) viewport.scrollBy({ left: 300, behavior: 'smooth' });
+                });
+            });
         });
-    })();
+    </script>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <script defer="" src="animations.js?v=2"></script>
+</body>
 
-
-    // 3D Coverflow Effect for Carousels
-    function updateCarousel3D(viewport) {
-        const cards = viewport.querySelectorAll('.jtl-card, .cert-card');
-        if (!cards.length) return;
-        
-        const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
-        
-        cards.forEach(card => {
-            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-            const distance = cardCenter - viewportCenter;
-            
-            const maxRotation = 35;
-            const rotationFactor = distance / (viewport.clientWidth / 1.5);
-            let rotateY = rotationFactor * -maxRotation; 
-            rotateY = Math.max(-maxRotation, Math.min(maxRotation, rotateY));
-            
-            const zTranslate = Math.abs(rotationFactor) * -200;
-            const scale = Math.max(0.7, 1 - Math.abs(rotationFactor) * 0.2);
-            
-            card.style.transform = `perspective(1200px) translateZ(${zTranslate}px) rotateY(${rotateY}deg) scale(${scale})`;
-        });
-    }
-
-    document.querySelectorAll('.carousel-viewport').forEach(viewport => {
-        updateCarousel3D(viewport);
-        viewport.addEventListener('scroll', () => {
-            requestAnimationFrame(() => updateCarousel3D(viewport));
-        });
-    });
-
-    document.querySelectorAll('.carousel-nav-btn, .btn').forEach(btn => {
-        btn.addEventListener('mousemove', e => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            btn.style.setProperty('--x', `${x}px`);
-            btn.style.setProperty('--y', `${y}px`);
-        });
-    });
-
-    const prevBtns = document.querySelectorAll('.carousel-nav-btn.prev');
-    const nextBtns = document.querySelectorAll('.carousel-nav-btn.next');
-
-    prevBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const container = btn.closest('.carousel-stage');
-            const viewport = container.querySelector('.carousel-viewport');
-            if (viewport) viewport.scrollBy({ left: -300, behavior: 'smooth' });
-        });
-    });
-
-    nextBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const container = btn.closest('.carousel-stage');
-            const viewport = container.querySelector('.carousel-viewport');
-            if (viewport) viewport.scrollBy({ left: 300, behavior: 'smooth' });
-        });
-    });
-});
-</script><div class="cursor-dot" id="cursorDot"></div><script defer="" src="animations.js?v=2"></script></body></html>
+</html>
