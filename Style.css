@@ -874,6 +874,29 @@ section h3 {
   position: relative;
 }
 
+/* Glow/fade effect at both ends of the carousel */
+.cert-carousel-stage::before,
+.cert-carousel-stage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15vw;
+  min-width: 150px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.cert-carousel-stage::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0) 100%);
+}
+
+.cert-carousel-stage::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0) 100%);
+}
+
 .cert-viewport {
   overflow-x: scroll;
   overflow-y: visible;
