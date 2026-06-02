@@ -26,7 +26,7 @@ CERT_DATA = [
 
 def make_card(thumb, link, num, name):
     return (
-        f'<div class="cert-card" onclick="window.open(\'{link}\', \'_blank\')" role="button" tabindex="0">'
+        f'<div class="cert-card" data-url="{link}" role="button" tabindex="0">'
         f'<div class="cert-card-inner"><img src="{thumb}" alt="{name}" loading="lazy"/></div>'
         f'<div class="cert-card-footer"><span class="cert-card-num">{num}</span><span class="cert-card-name">{name}</span></div>'
         f'</div>'

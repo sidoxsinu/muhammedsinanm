@@ -589,6 +589,71 @@ section h3 {
   display: block;
 }
 
+.stats-strip {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+/* TESTIMONIALS & QUOTES */
+.testimonials-section {
+  padding: 40px 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.marquee-track {
+  display: flex;
+  overflow: hidden;
+  width: 100vw;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-inner {
+  display: flex;
+  gap: 3rem;
+  padding-left: 3rem;
+  width: max-content;
+  animation: marqueeScroll 25s linear infinite;
+}
+
+.marquee-inner:hover {
+  animation-play-state: paused;
+}
+
+.quote-card {
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 24px 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.quote-text {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-style: italic;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.quote-source {
+  font-size: 0.9rem;
+  color: #E8562A;
+  font-weight: 500;
+}
+
 .event-list-item {
   display: flex;
   justify-content: space-between;
@@ -730,7 +795,7 @@ section h3 {
 .cert-carousel-section {
   padding-block: 6rem;
   overflow: hidden;
-  background: var(--bg, #0a0f1e);
+  background: transparent;
 }
 
 .cert-carousel-header {
