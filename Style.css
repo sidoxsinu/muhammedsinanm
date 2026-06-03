@@ -2082,9 +2082,10 @@ body.cursor-hover .cursor-dot {
 
   /* 10 — FOOTER: MOBILE STACKED LAYOUT */
   .site-footer {
-    padding: 60px 6vw 40px 6vw;
+    padding: 0;
   }
   .footer-inner {
+    padding: 60px 6vw 40px 6vw;
     flex-direction: column;
     gap: 48px;
     text-align: center;
