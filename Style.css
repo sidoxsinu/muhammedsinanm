@@ -1787,12 +1787,27 @@ body.cursor-hover .cursor-dot {
   /* 5 — CERTIFICATE CAROUSEL: MOBILE UX */
   .cert-viewport {
     padding-block: 40px;
-    padding-inline: calc(50vw - 90px);
+    padding-inline: 0 !important;
+  }
+  .cert-track {
+    padding-inline: calc(50vw - 70px) !important;
+    gap: 16px !important;
   }
   .cert-card {
-    width: 180px;
-    height: 240px;
-    flex: 0 0 180px;
+    width: 140px;
+    height: auto !important;
+    flex: 0 0 140px;
+  }
+  .cert-card-inner {
+    height: 190px !important;
+    border-radius: 12px;
+  }
+  .cert-card-name {
+    font-size: 0.75rem !important;
+    max-width: 130px !important;
+  }
+  .cert-card-num {
+    font-size: 0.7rem !important;
   }
 
   /* 6 — JOURNEY TIMELINE: MOBILE TOUCH */

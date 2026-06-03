@@ -1230,21 +1230,30 @@
                     }
                 }
 
-                // 3. Apply 3D transforms using cached dimensions
+                // 3. Apply 3D transforms using cached dimensions (disabled on mobile for a constant flat look)
                 function applyCovertflow() {
                     ensureDimensions();
                     if (!cachedCardDims.length) return;
 
+                    const isMobile = window.innerWidth <= 768;
+
+                    if (isMobile) {
+                        cachedCardDims.forEach(dim => {
+                            dim.card.style.transform = 'none';
+                            dim.card.style.filter = 'none';
+                        });
+                        return;
+                    }
+
                     const vpCenter = viewport.scrollLeft + viewport.clientWidth / 2;
                     const SPREAD = viewport.clientWidth * 0.55;
-                    const isMobile = window.innerWidth <= 768;
-                    const maxRot = isMobile ? -30 : -50;
 
                     cachedCardDims.forEach(dim => {
                         const cardCenter = dim.offsetLeft + dim.offsetWidth / 2;
                         const dist = cardCenter - vpCenter;
                         const t = Math.max(-1, Math.min(1, dist / SPREAD));
 
+                        const maxRot = -50;
                         const rotateY = t * maxRot;
                         const scale = 1 + Math.abs(t) * 0.35;
                         const zTranslate = Math.abs(t) * 80;
