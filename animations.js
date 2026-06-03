@@ -523,7 +523,6 @@ window.toggleMenu = function () {
 // Phase 2: Each ~70 vh of scrolling drops the next card from above,
 //          landing on the pile and fanning out with slight rotations for a "dealt deck" look.
 (function initCardPile() {
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   // ONLY target .projects containers to avoid breaking skills grids or dropdowns
@@ -544,14 +543,17 @@ window.toggleMenu = function () {
     container.classList.add('card-pile-container');
 
     const vh = window.innerHeight;
+    const pinDistance = cards.length * vh * 0.7;
     
-    // 1. Stretch section – ~70vh slot per card
-    section.style.paddingBottom = `${(cards.length + 1) * vh * 0.7}px`;
-
-    // 2. Pin the inner content so heading stays fixed while cards pile up
-    sectionInner.style.position = 'sticky';
-    sectionInner.style.top = '90px';
-    sectionInner.style.overflow = 'visible'; // pile can spill below
+    // We don't need to manually stretch the section or use fragile CSS sticky.
+    // GSAP will pin the inner section automatically and add the required spacing!
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top 90px', // Pin when section top reaches 90px from viewport top
+      end: `+=${pinDistance}`,
+      pin: sectionInner, // Pin the inner wrapper
+      pinSpacing: true, // Automatically adds padding to the parent
+    });
 
     // 3. Set up cards
     cards.forEach((card, i) => {
@@ -565,11 +567,13 @@ window.toggleMenu = function () {
       card.style.removeProperty('--card-index');
 
       // 4. ScrollTrigger: drop each card when its threshold is reached
-      const startPx = (i + 0.3) * (vh * 0.70);
+      // We calculate when this specific card should drop based on how far we've scrolled into the pin.
+      const dropOffset = (i + 0.3) * (vh * 0.70);
       
       ScrollTrigger.create({
-        trigger: section,
-        start: () => `top+=${startPx} top+=90`,
+        trigger: section, // We use the section as trigger
+        // This fires when the section has scrolled up by `dropOffset` pixels PAST the 90px mark
+        start: () => `top ${90 - dropOffset}px`,
         onEnter() {
           gsap.killTweensOf(card);
           gsap.to(card, {
