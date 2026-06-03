@@ -1837,6 +1837,7 @@ body.cursor-hover .cursor-dot {
     font-size: clamp(1.6rem, 5.5vw, 2.2rem);
     line-height: 1.45;
     padding-inline: 0;
+    margin-bottom: 0 !important;
   }
 
   /* 5 — CERTIFICATE CAROUSEL: MOBILE UX */
@@ -1941,11 +1942,23 @@ body.cursor-hover .cursor-dot {
 
   /* 9 — SECTION TYPOGRAPHY & SPACING: MOBILE SCALE */
   section {
-    padding-block: 40px !important;
+    padding-block: 20px !important;
     padding-inline: 6vw !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+  }
+  #about {
+    padding-bottom: 0 !important;
+    margin-bottom: -60px !important;
+  }
+  #about .section-inner {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  #stats-strip {
+    padding-top: 0 !important;
+    margin-top: -180px !important; /* Absolute max pull up */
   }
   .hero-premium,
   .cert-carousel-section,
@@ -1981,8 +1994,9 @@ body.cursor-hover .cursor-dot {
   .stats-strip {
     flex-direction: column;
     align-items: center;
-    gap: 32px;
-    padding-block: 40px;
+    gap: 24px; /* Reduced gap between stats items */
+    padding-top: 0px;
+    padding-bottom: 40px;
   }
   .stat-number { font-size: 3rem; }
   .skills-grid {
