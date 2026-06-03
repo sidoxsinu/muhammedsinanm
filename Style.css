@@ -1794,10 +1794,13 @@ body.cursor-hover .cursor-dot {
     object-position: top center;
   }
   .hero-title {
-    font-size: clamp(2.5rem, 15vw, 4.5rem);
+    font-size: clamp(2.5rem, 17.5vw, 4.5rem);
     letter-spacing: -0.04em;
     text-align: center;
     width: 100vw;
+    top: auto !important;
+    bottom: 160px !important;
+    z-index: 30 !important;
   }
   .hero-roles {
     right: auto;
@@ -1816,7 +1819,9 @@ body.cursor-hover .cursor-dot {
     transform: translateX(-50%);
     bottom: 52px;
     top: auto;
+    z-index: 20 !important;
   }
+  .hero-socials a { opacity: 1 !important; color: #ffffff !important; }
   .hero-socials a svg { width: 18px; height: 18px; }
   .scroll-circle-wrapper {
     transform-origin: bottom right;
