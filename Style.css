@@ -1791,7 +1791,6 @@ body.cursor-hover .cursor-dot {
     width: 100% !important;
     left: 0 !important;
     right: 0 !important;
-    transform: none !important;
     object-position: top center;
   }
   .hero-title {
@@ -1881,6 +1880,8 @@ body.cursor-hover .cursor-dot {
     grid-area: auto !important;
     margin: 0 !important;
   }
+  /* Only reset stacking-specific properties — do NOT override opacity/transform
+     so GSAP reveal-block and fade-in-up animations still work on mobile */
   .projects .card,
   .projects .split-card,
   .clubs-list .club-item,
@@ -1888,8 +1889,6 @@ body.cursor-hover .cursor-dot {
   .skills-grid .skill-category {
     position: relative !important;
     top: auto !important;
-    transform: none !important;
-    opacity: 1 !important;
     filter: none !important;
     text-align: left !important;
   }

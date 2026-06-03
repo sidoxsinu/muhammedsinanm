@@ -366,16 +366,19 @@
     }
   });
 
-  gsap.to('.hero-portrait', {
-    yPercent: 15,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero-premium',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    }
-  });
+  // Portrait parallax: desktop only — on mobile, pfp uses height:100% layout
+  if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+    gsap.to('.hero-portrait', {
+      yPercent: 15,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-premium',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+  }
 
   gsap.to('.hero-subtitle', {
     opacity: 0,
