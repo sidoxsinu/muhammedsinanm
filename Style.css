@@ -1736,8 +1736,10 @@ body.cursor-hover .cursor-dot {
     z-index: 999;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 32px;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 80px 20px 40px;
+    overflow-y: auto;
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -1746,7 +1748,7 @@ body.cursor-hover .cursor-dot {
   }
   #mobile-nav-menu a {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: 1.6rem;
     color: #ffffff;
     text-decoration: none;
     cursor: pointer;
@@ -1755,20 +1757,20 @@ body.cursor-hover .cursor-dot {
 
   .nav-hamburger {
     position: fixed;
-    top: 24px;
+    top: 12px;
     right: 5vw;
     z-index: 1001;
     background: none;
     border: none;
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
     mix-blend-mode: difference;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
-    padding: 8px;
+    gap: 4px;
+    padding: 6px;
   }
   .nav-hamburger span {
     display: block;
@@ -1777,9 +1779,9 @@ body.cursor-hover .cursor-dot {
     background: #ffffff;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
-  .nav-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
   .nav-hamburger.active span:nth-child(2) { opacity: 0; }
-  .nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav-hamburger.active span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
 
   /* 3 — HERO SECTION: MOBILE LAYOUT */
   .hero-premium {
@@ -1787,9 +1789,9 @@ body.cursor-hover .cursor-dot {
     overflow: hidden;
   }
   .hero-pfp {
-    height: 125svh !important; /* svh for mobile stability */
+    height: 110svh !important; /* Reduced to zoom out slightly on mobile */
     width: 100% !important;
-    top: -10svh !important;
+    top: -5svh !important;
     left: 0 !important;
     right: 0 !important;
     object-position: top center;
@@ -1966,7 +1968,8 @@ body.cursor-hover .cursor-dot {
     padding-inline: 0 !important;
   }
   .premium-nav {
-    padding: 16px 6vw !important;
+    padding: 12px 5vw !important;
+    font-size: 13px !important;
   }
   .nav-center,
   .nav-right {
@@ -2077,5 +2080,101 @@ body.cursor-hover .cursor-dot {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES (For "Print Portfolio")
+   ========================================================================== */
+@media print {
+  /* 1. Force light mode and un-hide text */
+  body, main, section, .hero-premium {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  * {
+    color: #000000 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* 2. Undo GSAP hides & transforms */
+  .fade-in-up, .reveal-text, .reveal-block, .fly-left, .fly-right {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  /* 3. About Section text reveal reset */
+  .large-intro-text, .char {
+    color: #000000 !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .highlight-text, .char--key {
+    color: #000000 !important;
+    font-weight: bold !important;
+  }
+
+  /* 4. Kill GSAP Pin Spacers (Prevents Blank Pages) */
+  .pin-spacer {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    display: block !important;
+  }
+
+  /* 5. Un-pile Cards */
+  .card-pile-container {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .card, .split-card {
+    position: relative !important;
+    transform: none !important;
+    opacity: 1 !important;
+    page-break-inside: avoid;
+    border: 1px solid #ccc !important;
+    margin-bottom: 20px !important;
+  }
+  .split-card-media {
+    display: none !important; /* Hide heavy images on print */
+  }
+
+  /* 6. Un-wrap Certificates Carousel */
+  .cert-track {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+    transform: none !important;
+  }
+  .cert-card {
+    page-break-inside: avoid;
+  }
+
+  /* 7. Hide non-printable UI elements */
+  nav, .mobile-nav-toggle, #mobile-nav-menu, 
+  .scroll-circle-wrapper, .hero-pfp, 
+  .testimonials-section, /* Hide marquee which breaks on print */
+  a[title="Print Portfolio"] {
+    display: none !important;
+  }
+
+  /* 8. General formatting */
+  section {
+    padding: 20px 0 !important;
+    page-break-inside: auto;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    margin-top: 20px !important;
+  }
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
   }
 }
