@@ -243,7 +243,7 @@
 (function initMagneticButtons() {
   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   const magneticEls = document.querySelectorAll(
-    'nav a, .contact-link, .btn-primary, .btn-secondary, .hero-cta, .magnetic-btn, .cta-btn'
+    'nav a, .contact-link, .btn-primary, .btn-secondary, .hero-cta, .magnetic-btn, .cta-btn, .btn, .social-pill'
   );
 
   magneticEls.forEach(el => {

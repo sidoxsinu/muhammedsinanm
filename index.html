@@ -20,7 +20,7 @@
     <meta
         content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner — Best Technical Project at Google for Developers Build with AI"
         name="description" />
-    <link href="Style.css?v=7" rel="stylesheet" />
+    <link href="Style.css?v=11" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap"
         rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
@@ -107,7 +107,7 @@
             <div class="mobile-nav-actions">
                 <a class="btn download-resume-link" download="Muhammed_Sinan_M_Resume.pdf"
                     href="images/Resume/Muhammed Sinan M.pdf" id="download-resume-mobile" onclick="closeMenu()"
-                    style="display:block;text-align:center;">Download Resume</a>
+                    style="display:block;text-align:center;"><span>Download Resume</span></a>
                 <a id="mobileThemeToggle" onclick="document.getElementById('themeToggle').click();closeMenu();"
                     style="cursor:pointer;display:block;text-align:center;padding:10px 0;color:var(--primary-navy);font-weight:600;">Toggle
                     Dark/Light</a>
@@ -563,8 +563,7 @@
                                 src="images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.jpeg"
                                 style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: var(--light-gray); border-radius: 8px; border: 1px solid var(--border-gray);" />
                             <a class="btn" href="https://suvidhafoundationedutech.org/verify" rel="noopener noreferrer"
-                                style="width: 100%; text-align: center;" target="_blank">Verify
-                                Certificate</a>
+                                style="width: 100%; text-align: center;" target="_blank"><span>Verify Certificate</span></a>
                         </div>
                     </div>
                     <div class="card fade-in-up reveal-block" style="display: flex; flex-direction: column;">
@@ -587,7 +586,7 @@
                             <img alt="NSS Volunteer Certificate" src="images/certificates/1753219537959.jpeg"
                                 style="width: 100%; max-width: 280px; height: 200px; object-fit: contain; background: var(--light-gray); border-radius: 8px; border: 1px solid var(--border-gray);" />
                             <a class="btn" href="images/certificates/1753219537959.jpeg" rel="noopener noreferrer"
-                                style="width: 100%; text-align: center;" target="_blank">View Certificate</a>
+                                style="width: 100%; text-align: center;" target="_blank"><span>View Certificate</span></a>
                         </div>
                     </div>
                 </div>
@@ -1069,65 +1068,55 @@
 
     <!-- FOOTER -->
     <footer class="site-footer">
-        <div
-            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; padding: 50px 10%; background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.05); color: #f0f0f0;">
-            <div style="flex: 2; min-width: 280px;">
-                <h3 class="reveal-text" style="color: #f0f0f0; margin-bottom: 12px; font-size: 24px;">Muhammed Sinan M
-                </h3>
-                <p class="reveal-block"
-                    style="color: rgba(240,240,240,0.7); font-size: 14px; margin-bottom: 25px; max-width: 350px; line-height: 1.6;">
+        <div class="footer-inner">
+            <div class="footer-col footer-col-left">
+                <h3 class="reveal-text" style="color: #f0f0f0; margin-bottom: 12px; font-size: 24px;">Muhammed Sinan M</h3>
+                <p class="reveal-block" style="color: rgba(240,240,240,0.7); font-size: 14px; margin-bottom: 25px; max-width: 350px; line-height: 1.6;">
                     Building the future, one line at a time.</p>
                 <div style="color: rgba(240,240,240,0.8); font-size: 14px; line-height: 1.8;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                        <span style="font-size: 16px;">📧</span> <a href="mailto:muhammedsinan.m67@gmail.com"
-                            style="color: rgba(240,240,240,0.8); text-decoration: none;">muhammedsinan.m67@gmail.com</a>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <svg class="feather feather-mail" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg" style="color: var(--accent-red); flex-shrink: 0; margin-top: 1px;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <a href="mailto:muhammedsinan.m67@gmail.com" style="color: rgba(240,240,240,0.8); text-decoration: none;">muhammedsinan.m67@gmail.com</a>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                        <span style="font-size: 16px;">📍</span> <span>Irinjalakuda, Kerala, India</span>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <svg class="feather feather-map-pin" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg" style="color: var(--accent-red); flex-shrink: 0;">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span>Irinjalakuda, Kerala, India</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 16px;">📞</span> <a href="tel:+918590568566"
-                            style="color: rgba(240,240,240,0.8); text-decoration: none;">+91 85905 68566</a>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <svg class="feather feather-phone" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg" style="color: var(--accent-red); flex-shrink: 0;">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <a href="tel:+918590568566" style="color: rgba(240,240,240,0.8); text-decoration: none;">+91 85905 68566</a>
                     </div>
                 </div>
             </div>
-            <div style="flex: 1; min-width: 150px;">
+            <div class="footer-col">
                 <h4 style="color: #f0f0f0; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Quick Links</h4>
                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="#about"
-                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">About</a>
-                    <a href="#projects"
-                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Projects</a>
-                    <a href="#experience"
-                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Experience</a>
-                    <a href="#achievements"
-                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Achievements</a>
+                    <a href="#about" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">About</a>
+                    <a href="#projects" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Projects</a>
+                    <a href="#experience" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Experience</a>
+                    <a href="#achievements" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;">Achievements</a>
                 </div>
             </div>
-            <div style="flex: 1; min-width: 150px;">
-                <h4 style="color: #f0f0f0; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Social &amp; More
-                </h4>
+            <div class="footer-col">
+                <h4 style="color: #f0f0f0; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Social &amp; More</h4>
                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="https://github.com/sidoxsinu" rel="noopener noreferrer"
-                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;"
-                        target="_blank">GitHub</a>
-                    <a href="https://www.linkedin.com/in/sidoxsinu/" rel="noopener noreferrer"
-                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;"
-                        target="_blank">LinkedIn</a>
-                    <a href="https://x.com/sidoxsinu" rel="noopener noreferrer"
-                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">X
-                        (Twitter)</a>
-                    <a href="https://www.instagram.com/sidoxsinu" rel="noopener noreferrer"
-                        style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;"
-                        target="_blank">Instagram</a>
-                    <a aria-label="Print CV" href="#" onclick="window.print(); return false;"
-                        style="color: #c9a84c; text-decoration: none; font-size: 14px; font-weight: 600;"
-                        title="Print CV">Print CV</a>
+                    <a href="https://github.com/sidoxsinu" rel="noopener noreferrer" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/sidoxsinu/" rel="noopener noreferrer" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">LinkedIn</a>
+                    <a href="https://x.com/sidoxsinu" rel="noopener noreferrer" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">X (Twitter)</a>
+                    <a href="https://www.instagram.com/sidoxsinu" rel="noopener noreferrer" style="color: rgba(240,240,240,0.8); text-decoration: none; font-size: 14px;" target="_blank">Instagram</a>
+                    <a aria-label="Print Resume" href="#" onclick="window.print(); return false;" style="color: var(--accent-red); text-decoration: none; font-size: 14px; font-weight: 600;" title="Print Resume">Print Resume</a>
                 </div>
             </div>
         </div>
-        <div
-            style="text-align: center; padding: 20px; background: #081022; color: rgba(240,240,240,0.5); font-size: 12px;">
+        <div class="footer-bottom">
             <span class="copyright-pulse">© 2026 Muhammed Sinan M</span> · All Rights Reserved
         </div>
     </footer>
@@ -1393,7 +1382,7 @@
                 });
             });
 
-            document.querySelectorAll('.carousel-nav-btn, .btn, .cta-btn').forEach(btn => {
+            document.querySelectorAll('.carousel-nav-btn, .btn, .cta-btn, .social-pill').forEach(btn => {
                 btn.addEventListener('mousemove', e => {
                     const rect = btn.getBoundingClientRect();
                     const x = e.clientX - rect.left;
@@ -1430,7 +1419,7 @@
         });
     </script>
     <div class="cursor-dot" id="cursorDot"></div>
-    <script defer="" src="animations.js?v=13"></script>
+    <script defer="" src="animations.js?v=17"></script>
 </body>
 
 </html>

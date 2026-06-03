@@ -1328,6 +1328,56 @@ body.cursor-hover .cursor-dot {
     font-weight: 500;
 }
 
+/* General premium buttons (magnetic + ripple) */
+.btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.05);
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+}
+
+.btn:hover {
+    border-color: var(--accent-red);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    width: 0;
+    height: 0;
+    background: var(--accent-red);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.btn:hover::before {
+    width: 320px;
+    height: 320px;
+}
+
+.btn span {
+    position: relative;
+    z-index: 2;
+    font-weight: 500;
+}
+
 .cta-social-pills {
     display: flex;
     flex-wrap: wrap;
@@ -1338,6 +1388,8 @@ body.cursor-hover .cursor-dot {
 }
 
 .social-pill {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -1349,13 +1401,30 @@ body.cursor-hover .cursor-dot {
     font-size: 0.95rem;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s, background-color 0.3s, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .social-pill:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
+    border-color: var(--accent-red);
+}
+
+.social-pill::before {
+    content: '';
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    width: 0;
+    height: 0;
+    background: var(--accent-red);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.social-pill:hover::before {
+    width: 320px;
+    height: 320px;
 }
 
 .social-pill svg {
@@ -1367,16 +1436,21 @@ body.cursor-hover .cursor-dot {
     color: var(--text-primary);
 }
 
+.social-pill > * {
+    position: relative;
+    z-index: 2;
+}
+
 .profile-pill {
     background: #ffffff;
     color: #000000;
     padding: 6px 20px 6px 6px;
     border: none;
+    transition: color 0.3s ease;
 }
 
 .profile-pill:hover {
-    background: #e6e6e6;
-    transform: translateY(-2px);
+    color: #ffffff;
 }
 
 .profile-pill img {
@@ -1543,6 +1617,43 @@ body.cursor-hover .cursor-dot {
   background-color: #1a1a1a;
   border-radius:    12px;
   border:           1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   FOOTER (STYLING RESET & MATCHING THEME)
+   ========================================================================== */
+.site-footer {
+  width: 100%;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 50px 10%;
+  background-color: #111111; /* Matches main theme background */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: #f0f0f0;
+}
+
+.footer-col-left {
+  flex: 2;
+  min-width: 280px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 150px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  background-color: #0a0a0a; /* Dark background, matching dark theme (no navy) */
+  color: rgba(240, 240, 240, 0.5);
+  font-size: 12px;
 }
 
 /* ==========================================================================
