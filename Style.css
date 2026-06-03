@@ -1868,17 +1868,29 @@ body.cursor-hover .cursor-dot {
   }
   .journey-year { font-size: 2rem; }
 
-  /* 7 — STACKED CARDS: position fallback for single-card sections (pile skips them) */
+  /* 7 — STACKED CARDS: STICKY STACK ON MOBILE */
+  /* Replaces the desktop drop-from-top JS animation with a smooth CSS scroll-up sticky stack */
   .projects .card,
   .projects .split-card,
   .clubs-list .club-item,
   .events-list .event-item,
   .skills-grid .skill-category {
-    position: relative;
-    top: auto;
-    filter: none;
+    position: sticky !important;
     text-align: left !important;
+    filter: none !important;
   }
+  
+  /* Stagger the sticky top offsets so they stack into a deck */
+  .projects > :nth-child(1), .clubs-list > :nth-child(1), .events-list > :nth-child(1) { top: 90px !important; }
+  .projects > :nth-child(2), .clubs-list > :nth-child(2), .events-list > :nth-child(2) { top: 102px !important; }
+  .projects > :nth-child(3), .clubs-list > :nth-child(3), .events-list > :nth-child(3) { top: 114px !important; }
+  .projects > :nth-child(4), .clubs-list > :nth-child(4), .events-list > :nth-child(4) { top: 126px !important; }
+  .projects > :nth-child(5), .clubs-list > :nth-child(5), .events-list > :nth-child(5) { top: 138px !important; }
+  .projects > :nth-child(6), .clubs-list > :nth-child(6), .events-list > :nth-child(6) { top: 150px !important; }
+  .projects > :nth-child(7), .clubs-list > :nth-child(7), .events-list > :nth-child(7) { top: 162px !important; }
+  .projects > :nth-child(8), .clubs-list > :nth-child(8), .events-list > :nth-child(8) { top: 174px !important; }
+  .projects > :nth-child(9), .clubs-list > :nth-child(9), .events-list > :nth-child(9) { top: 186px !important; }
+  .projects > :nth-child(10), .clubs-list > :nth-child(10), .events-list > :nth-child(10) { top: 198px !important; }
   /* Align card links to the left in Achievements, Projects, and Experience on mobile */
   .projects .card .minimal-link,
   .projects .card .card-link,

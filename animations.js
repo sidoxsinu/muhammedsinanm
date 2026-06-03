@@ -543,8 +543,9 @@ window.toggleMenu = function () {
 //          landing on the pile and fanning out with slight rotations for a "dealt deck" look.
 (function initCardPile() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-  // Runs on all viewports — pin distance is shorter on mobile for a comfortable scroll experience
-  const isMobile = window.innerWidth <= 768;
+  
+  // Disable GSAP drop-from-top card pile on mobile (uses CSS sticky stack instead)
+  if (window.innerWidth <= 768) return;
 
   // ONLY target .projects containers to avoid breaking skills grids or dropdowns
   const containers = document.querySelectorAll('#projects .projects, #achievements .projects, #experience .projects');
@@ -564,8 +565,7 @@ window.toggleMenu = function () {
     container.classList.add('card-pile-container');
 
     const vh = window.innerHeight;
-    // Mobile: 50% vh per card keeps the scroll comfortable; desktop: 70%
-    const scrollPerCard = isMobile ? 0.50 : 0.70;
+    const scrollPerCard = 0.70;
     const pinDistance = cards.length * vh * scrollPerCard;
     
     // We don't need to manually stretch the section or use fragile CSS sticky.
@@ -584,9 +584,15 @@ window.toggleMenu = function () {
       gsap.killTweensOf(card);
       card.classList.remove('fade-in-up', 'reveal-block', 'reveal-text', 'fly-left', 'fly-right');
 
+      // Adaptive layout variables
+      const startScale = 0.9;
+      const targetScale = 1;
+      const rotMult = 1;
+      const yStep = 15;
+
       // Set initial state: hidden, high above
       gsap.set(card, { clearProps: 'transform,opacity,filter' });
-      gsap.set(card, { y: -160, opacity: 0, scale: 0.9, rotation: 0, zIndex: i + 1 });
+      gsap.set(card, { y: -160, opacity: 0, scale: startScale, rotation: 0, zIndex: i + 1 });
       card.style.removeProperty('--card-index');
 
       // 4. ScrollTrigger: drop each card when its threshold is reached
@@ -600,10 +606,10 @@ window.toggleMenu = function () {
         onEnter() {
           gsap.killTweensOf(card);
           gsap.to(card, {
-            y: (i * 15), // pile offset: 15 px deeper per card
+            y: (i * yStep), // pile offset deeper per card
             opacity: 1,
-            scale: 1,
-            rotation: ROTS[i % ROTS.length],
+            scale: targetScale,
+            rotation: ROTS[i % ROTS.length] * rotMult,
             duration: 0.8,
             ease: 'back.out(1.2)',
           });
@@ -614,7 +620,7 @@ window.toggleMenu = function () {
           gsap.to(card, {
             y: -160,
             opacity: 0,
-            scale: 0.9,
+            scale: startScale,
             rotation: 0,
             duration: 0.4,
             ease: 'power3.in',
