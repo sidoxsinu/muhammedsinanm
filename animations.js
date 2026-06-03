@@ -546,6 +546,7 @@ window.toggleMenu = function () {
 //          landing on the pile and fanning out with slight rotations for a "dealt deck" look.
 (function initCardPile() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (window.innerWidth <= 768) return; // Disable card stacking/pinning on mobile
 
   // ONLY target .projects containers to avoid breaking skills grids or dropdowns
   const containers = document.querySelectorAll('#projects .projects, #achievements .projects, #experience .projects');

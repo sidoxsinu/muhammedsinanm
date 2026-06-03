@@ -1834,8 +1834,8 @@ body.cursor-hover .cursor-dot {
   .split-card-image .card-year-large {
     font-size: 6rem;
   }
-  .project-tags { flex-wrap: wrap; gap: 6px; }
-  .project-tag { font-size: 0.75rem; padding: 4px 10px; }
+  .tags { flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 0.75rem; padding: 4px 10px; }
   .split-card-content .btn-row {
     flex-direction: column;
     gap: 10px;
@@ -1848,9 +1848,32 @@ body.cursor-hover .cursor-dot {
   }
 
   /* 9 — SECTION TYPOGRAPHY & SPACING: MOBILE SCALE */
-  section { padding-block: 60px; }
+  section {
+    padding-block: 60px;
+    padding-inline: 6vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .hero-premium,
+  .cert-carousel-section,
+  .testimonials-section {
+    padding-inline: 0 !important;
+  }
+  .premium-nav {
+    padding: 16px 6vw !important;
+  }
+  .nav-center,
+  .nav-right {
+    display: none !important;
+  }
+  .certs-languages-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding: 1rem 0 !important;
+  }
   .section-inner { gap: 24px; }
-  .section-h3, h3 { font-size: 2rem; }
+  .section-h3, h3, section h3 { font-size: clamp(2rem, 8vw, 2.5rem) !important; }
   .section-label {
     font-size: 0.7rem;
     letter-spacing: 0.1em;
