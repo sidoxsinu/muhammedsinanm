@@ -20,7 +20,7 @@
     <meta
         content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner — Best Technical Project at Google for Developers Build with AI"
         name="description" />
-    <link href="Style.css?v=12" rel="stylesheet" />
+    <link href="Style.css?v=13" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap"
         rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
@@ -1190,53 +1190,76 @@
                 prependClones.reverse().forEach(c => track.prepend(c));
                 appendClones.forEach(c => track.append(c));
 
-                // 2. Jump to the start of the real (middle) set without animation
-                //    We do this after layout — wait one frame so offsetLeft is ready
-                function getSetWidth() {
-                    // total width occupied by one full set of cards (with gaps)
-                    const allCards = track.querySelectorAll('.cert-card');
-                    const n = originals.length;
-                    if (!allCards[n]) return 0;
-                    // The middle set starts at index n (after prepend clones)
-                    return allCards[n].offsetLeft - allCards[0].offsetLeft;
-                }
+                // Cache all cert cards after clones are added to track
+                const certCards = Array.from(track.querySelectorAll('.cert-card'));
 
+                // Cache elements layout dimensions to prevent layout thrashing (crashes and lag)
+                let cachedCardDims = [];
                 let setWidth = 0;
                 let jumping = false;
+                let autoScrollPaused = false;
+                let accumulatedScrollY = 0;
+                let wheelTimeout = null;
 
-                function initScroll() {
-                    setWidth = getSetWidth();
-                    // Centre viewport on the first card of the real set
-                    viewport.scrollLeft = setWidth;
+                function cacheDimensions() {
+                    const n = originals.length;
+                    if (certCards[n] && certCards[0]) {
+                        setWidth = certCards[n].offsetLeft - certCards[0].offsetLeft;
+                    } else {
+                        setWidth = 0;
+                    }
+
+                    cachedCardDims = certCards.map(card => ({
+                        card: card,
+                        offsetLeft: card.offsetLeft,
+                        offsetWidth: card.offsetWidth
+                    }));
                 }
 
-                // 3. Apply 3D transforms
+                function ensureDimensions() {
+                    if (setWidth === 0 || !cachedCardDims.length) {
+                        cacheDimensions();
+                    }
+                }
+
+                function initScroll() {
+                    cacheDimensions();
+                    // Centre viewport on the first card of the real set
+                    if (setWidth > 0) {
+                        viewport.scrollLeft = setWidth;
+                    }
+                }
+
+                // 3. Apply 3D transforms using cached dimensions
                 function applyCovertflow() {
-                    const cards = track.querySelectorAll('.cert-card');
+                    ensureDimensions();
+                    if (!cachedCardDims.length) return;
+
                     const vpCenter = viewport.scrollLeft + viewport.clientWidth / 2;
                     const SPREAD = viewport.clientWidth * 0.55;
+                    const isMobile = window.innerWidth <= 768;
+                    const maxRot = isMobile ? -30 : -50;
 
-                    cards.forEach(card => {
-                        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                    cachedCardDims.forEach(dim => {
+                        const cardCenter = dim.offsetLeft + dim.offsetWidth / 2;
                         const dist = cardCenter - vpCenter;
                         const t = Math.max(-1, Math.min(1, dist / SPREAD));
 
-                        const isMobile = window.innerWidth <= 768;
-                        const maxRot = isMobile ? -30 : -50;
                         const rotateY = t * maxRot;
                         const scale = 1 + Math.abs(t) * 0.35;
                         const zTranslate = Math.abs(t) * 80;
                         const brightness = 1 - Math.abs(t) * 0.35;
 
-                        card.style.transform = `perspective(1400px) rotateY(${rotateY}deg) scale(${scale}) translateZ(${zTranslate}px)`;
-                        card.style.filter = `brightness(${brightness})`;
+                        dim.card.style.transform = `perspective(1400px) rotateY(${rotateY}deg) scale(${scale}) translateZ(${zTranslate}px)`;
+                        dim.card.style.filter = `brightness(${brightness})`;
                     });
                 }
 
                 // 4. Infinite scroll guard — teleport when entering the clone zones
                 function guardInfinite() {
                     if (jumping) return;
-                    if (setWidth === 0) { setWidth = getSetWidth(); }
+                    ensureDimensions();
+                    if (setWidth === 0) return;
 
                     if (viewport.scrollLeft >= setWidth * 2) {
                         // Entered the append-clone zone → jump back to real set
@@ -1251,15 +1274,53 @@
                     }
                 }
 
+                let ticked = false;
                 viewport.addEventListener('scroll', () => {
                     guardInfinite();
-                    requestAnimationFrame(applyCovertflow);
+                    if (!ticked) {
+                        requestAnimationFrame(() => {
+                            applyCovertflow();
+                            ticked = false;
+                        });
+                        ticked = true;
+                    }
                 }, { passive: true });
+
+                // Redirect vertical wheel scroll to horizontal scroll up to 1 round, then let it scroll normally to next section/footer
+                viewport.addEventListener('wheel', e => {
+                    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                        ensureDimensions();
+                        const threshold = setWidth > 0 ? setWidth : 1500;
+
+                        if (accumulatedScrollY < threshold) {
+                            e.preventDefault();
+                            viewport.scrollLeft += e.deltaY * 1.2; // slight multiplier for better responsiveness
+                            accumulatedScrollY += Math.abs(e.deltaY);
+                        }
+
+                        clearTimeout(wheelTimeout);
+                        wheelTimeout = setTimeout(() => {
+                            accumulatedScrollY = 0;
+                        }, 800);
+                    }
+                }, { passive: false });
 
                 // 5. Drag-to-scroll (mouse) & Click Handling
                 let isDown = false, startX;
                 let totalDelta = 0;
                 let isDraggingCard = false;
+
+                // Pause auto-scroll on hover or interaction
+                viewport.addEventListener('mouseenter', () => {
+                    autoScrollPaused = true;
+                    accumulatedScrollY = 0;
+                });
+                viewport.addEventListener('mouseleave', () => {
+                    if (!isDown) {
+                        autoScrollPaused = false;
+                    }
+                    accumulatedScrollY = 0;
+                });
 
                 viewport.addEventListener('mousedown', e => {
                     isDown = true;
@@ -1267,31 +1328,46 @@
                     totalDelta = 0;
                     startX = e.pageX - viewport.offsetLeft;
                     viewport.style.cursor = 'grabbing';
+                    autoScrollPaused = true;
                 });
-                document.addEventListener('mouseup', () => { isDown = false; viewport.style.cursor = 'grab'; });
-                viewport.addEventListener('mouseleave', () => { isDown = false; viewport.style.cursor = 'grab'; });
+                
+                document.addEventListener('mouseup', () => {
+                    isDown = false;
+                    viewport.style.cursor = 'grab';
+                    if (!viewport.matches(':hover')) {
+                        autoScrollPaused = false;
+                    }
+                });
+
+                viewport.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    viewport.style.cursor = 'grab';
+                });
                 
                 let touchStartX = 0;
-                let scrollLeft = 0;
-                let autoScrollPaused = false;
+                let scrollLeftVal = 0;
                 
                 viewport.addEventListener('touchstart', e => {
                     touchStartX = e.touches[0].clientX;
                     isDown = true;
                     startX = touchStartX;
-                    scrollLeft = viewport.scrollLeft;
+                    scrollLeftVal = viewport.scrollLeft;
                     autoScrollPaused = true;
                 }, { passive: true });
 
                 viewport.addEventListener('touchmove', e => {
                     if (!isDown) return;
                     const dx = (touchStartX - e.touches[0].clientX) * 1.2;
-                    viewport.scrollLeft = scrollLeft + dx;
+                    viewport.scrollLeft = scrollLeftVal + dx;
                 }, { passive: true });
 
                 viewport.addEventListener('touchend', () => {
                     isDown = false;
-                    setTimeout(() => { autoScrollPaused = false; }, 2000);
+                    setTimeout(() => {
+                        if (!viewport.matches(':hover')) {
+                            autoScrollPaused = false;
+                        }
+                    }, 2000);
                 });
 
                 viewport.addEventListener('mousemove', e => {
@@ -1331,7 +1407,7 @@
                 // 6. Auto-scroll
                 let scrollAccumulator = 0;
                 function autoScroll() {
-                    // Only pause if actively dragging
+                    // Only pace if not interacting
                     if (!isDown && !autoScrollPaused) {
                         scrollAccumulator += 0.6; // Small constant pace
                         if (scrollAccumulator >= 1) {
@@ -1343,11 +1419,21 @@
                     requestAnimationFrame(autoScroll);
                 }
 
-                // 7. Init
+                // 7. Init & Listeners for dimensions updates
                 requestAnimationFrame(() => {
                     initScroll();
                     requestAnimationFrame(applyCovertflow);
                     requestAnimationFrame(autoScroll);
+                });
+
+                window.addEventListener('load', () => {
+                    cacheDimensions();
+                    applyCovertflow();
+                });
+
+                window.addEventListener('resize', () => {
+                    cacheDimensions();
+                    applyCovertflow();
                 });
             })();
 
@@ -1419,7 +1505,7 @@
         });
     </script>
     <div class="cursor-dot" id="cursorDot"></div>
-    <script defer="" src="animations.js?v=18"></script>
+    <script defer="" src="animations.js?v=19"></script>
 </body>
 
 </html>
