@@ -487,10 +487,11 @@ window.toggleMenu = function () {
   function updateFill() {
     const rect = para.getBoundingClientRect();
     const vh   = window.innerHeight;
+    const isMobile = window.innerWidth <= 768;
 
-    // Fill begins when text is ~60 % down the viewport (not right as it enters)
-    const start = vh * 0.60;  // text needs to scroll in before fill starts
-    const end   = vh * -0.6;  // text is 60 % above the viewport top
+    // Fill begins when text is ~60% down the viewport on desktop, 85% on mobile
+    const start = isMobile ? vh * 0.85 : vh * 0.60;  
+    const end   = isMobile ? vh * 0.0 : vh * -0.40;  // finishes exactly when it hits the top edge on mobile
 
     let progress = (start - rect.top) / (start - end);
     progress = Math.max(0, Math.min(1, progress));

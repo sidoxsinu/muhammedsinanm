@@ -1991,18 +1991,29 @@ body.cursor-hover .cursor-dot {
 
   /* 10 — FOOTER: MOBILE STACKED LAYOUT */
   .site-footer {
-    padding: 40px 6vw;
+    padding: 60px 6vw 40px 6vw;
   }
   .footer-inner {
     flex-direction: column;
-    gap: 32px;
+    gap: 48px;
     text-align: center;
   }
-  .footer-col { width: 100%; }
+  .footer-col { 
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-col p {
+    margin-inline: auto;
+  }
+  .footer-col-left > div > div {
+    justify-content: center !important;
+  }
   .footer-col a {
     display: inline-block;
-    padding: 6px 0;
-    min-height: 36px;
+    padding: 8px 0;
+    min-height: 44px; /* Better touch target */
   }
 
   /* 12 — FAN CAROUSEL: TOUCH/SWIPE */
