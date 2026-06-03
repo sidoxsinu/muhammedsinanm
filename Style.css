@@ -95,6 +95,10 @@ a {
   transform-origin: left;
 }
 
+.nav-hamburger {
+  display: none;
+}
+
 /* ==========================================================================
    HERO SECTION (WHITE BACKGROUND, TEXT INVERSION)
    ========================================================================== */
@@ -1277,6 +1281,8 @@ body.cursor-hover .cursor-dot {
 }
 
 .cta-btn {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -1289,14 +1295,37 @@ body.cursor-hover .cursor-dot {
     text-decoration: none;
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05);
-    transition: all 0.3s ease;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .cta-btn:hover {
-    background-color: #2a2a2a;
-    transform: translateY(-2px);
+    border-color: var(--accent-red);
     box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.2);
+}
+
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    width: 0;
+    height: 0;
+    background: var(--accent-red);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.cta-btn:hover::before {
+    width: 320px;
+    height: 320px;
+}
+
+.cta-btn span {
+    position: relative;
+    z-index: 2;
+    font-weight: 500;
 }
 
 .cta-social-pills {

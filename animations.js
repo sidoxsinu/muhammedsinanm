@@ -243,7 +243,7 @@
 (function initMagneticButtons() {
   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   const magneticEls = document.querySelectorAll(
-    'nav a, .contact-link, .btn-primary, .btn-secondary, .hero-cta'
+    'nav a, .contact-link, .btn-primary, .btn-secondary, .hero-cta, .magnetic-btn, .cta-btn'
   );
 
   magneticEls.forEach(el => {
@@ -448,9 +448,14 @@ window.toggleMenu = function () {
   const nodes = Array.from(para.childNodes);
   para.innerHTML = '';
 
-  nodes.forEach(node => {
+  nodes.forEach((node, nodeIdx) => {
+    let text = node.textContent.replace(/\s+/g, ' ');
+    if (nodeIdx === 0) text = text.trimStart();
+    if (nodeIdx === nodes.length - 1) text = text.trimEnd();
+    if (!text) return;
+
     if (node.nodeType === Node.TEXT_NODE) {
-      Array.from(node.textContent).forEach(ch => {
+      Array.from(text).forEach(ch => {
         const s = document.createElement('span');
         s.className = 'char';
         s.textContent = ch;
@@ -459,7 +464,7 @@ window.toggleMenu = function () {
       });
     } else if (node.nodeType === Node.ELEMENT_NODE) {
       // keyword span (.highlight-text) → accent colour when lit
-      Array.from(node.textContent).forEach(ch => {
+      Array.from(text).forEach(ch => {
         const s = document.createElement('span');
         s.className = 'char char--key';
         s.textContent = ch;
