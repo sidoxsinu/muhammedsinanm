@@ -20,7 +20,7 @@
     <meta
         content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner — Best Technical Project at Google for Developers Build with AI"
         name="description" />
-    <link href="Style.css?v=22" rel="stylesheet" />
+    <link href="Style.css?v=24" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap"
         rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
@@ -1131,7 +1131,19 @@
                 gsap.from(".hero-roles p", { x: 10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
                 gsap.from(".scroll-circle-wrapper", { opacity: 0, scale: 0.8, duration: 0.6, delay: 0.6, ease: "power2.out" });
 
-                if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+                // Parallax Hero Image (Branched for Desktop vs Mobile)
+                if (window.innerWidth <= 768) {
+                    gsap.to(".hero-pfp", {
+                        y: "10vh",
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: ".hero-premium",
+                            start: "top top",
+                            end: "bottom top",
+                            scrub: true
+                        }
+                    });
+                } else {
                     gsap.to(".hero-pfp", {
                         yPercent: 15,
                         ease: "none",
