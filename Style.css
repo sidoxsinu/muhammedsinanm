@@ -1824,6 +1824,7 @@ body.cursor-hover .cursor-dot {
     bottom: 52px;
     top: auto;
     z-index: 20 !important;
+    mix-blend-mode: normal !important;
   }
   .hero-socials a { opacity: 1 !important; color: #ffffff !important; }
   .hero-socials a svg { width: 18px; height: 18px; }
