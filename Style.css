@@ -1868,28 +1868,15 @@ body.cursor-hover .cursor-dot {
   }
   .journey-year { font-size: 2rem; }
 
-  /* 7 — STACKED CARDS: RESET ON MOBILE */
-  .card-pile-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 24px !important;
-    margin: 40px auto 0 !important;
-  }
-  .card-pile-container > .card,
-  .card-pile-container > .split-card {
-    grid-area: auto !important;
-    margin: 0 !important;
-  }
-  /* Only reset stacking-specific properties — do NOT override opacity/transform
-     so GSAP reveal-block and fade-in-up animations still work on mobile */
+  /* 7 — STACKED CARDS: position fallback for single-card sections (pile skips them) */
   .projects .card,
   .projects .split-card,
   .clubs-list .club-item,
   .events-list .event-item,
   .skills-grid .skill-category {
-    position: relative !important;
-    top: auto !important;
-    filter: none !important;
+    position: relative;
+    top: auto;
+    filter: none;
     text-align: left !important;
   }
   /* Align card links to the left in Achievements, Projects, and Experience on mobile */

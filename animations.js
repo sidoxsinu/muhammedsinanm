@@ -477,17 +477,11 @@ window.toggleMenu = function () {
     }
   });
 
-  // If touch device: skip char-split animation, just show text fully lit
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-    document.querySelectorAll('.large-intro-text .char').forEach(c => {
-      c.style.color = c.closest('.highlight-text') ? '#E54D2E' : '#ffffff';
-    });
-    return; // exit IIFE early
-  }
 
   const total   = chars.length;
   let lastLit   = -1;
   let rafId     = null;
+
 
   // ── 2. Compute progress from the paragraph's own position ─────────────────
   function updateFill() {
@@ -549,7 +543,8 @@ window.toggleMenu = function () {
 //          landing on the pile and fanning out with slight rotations for a "dealt deck" look.
 (function initCardPile() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-  if (window.innerWidth <= 768) return; // Disable card stacking/pinning on mobile
+  // Runs on all viewports — pin distance is shorter on mobile for a comfortable scroll experience
+  const isMobile = window.innerWidth <= 768;
 
   // ONLY target .projects containers to avoid breaking skills grids or dropdowns
   const containers = document.querySelectorAll('#projects .projects, #achievements .projects, #experience .projects');
@@ -569,7 +564,9 @@ window.toggleMenu = function () {
     container.classList.add('card-pile-container');
 
     const vh = window.innerHeight;
-    const pinDistance = cards.length * vh * 0.7;
+    // Mobile: 50% vh per card keeps the scroll comfortable; desktop: 70%
+    const scrollPerCard = isMobile ? 0.50 : 0.70;
+    const pinDistance = cards.length * vh * scrollPerCard;
     
     // We don't need to manually stretch the section or use fragile CSS sticky.
     // GSAP will pin the inner section automatically and add the required spacing!
@@ -594,7 +591,7 @@ window.toggleMenu = function () {
 
       // 4. ScrollTrigger: drop each card when its threshold is reached
       // We calculate when this specific card should drop based on how far we've scrolled into the pin.
-      const dropOffset = (i + 0.3) * (vh * 0.70);
+      const dropOffset = (i + 0.3) * (vh * scrollPerCard);
       
       ScrollTrigger.create({
         trigger: section, // We use the section as trigger
