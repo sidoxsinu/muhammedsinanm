@@ -1928,9 +1928,9 @@ body.cursor-hover .cursor-dot {
     position: sticky !important;
     text-align: left !important;
     filter: none !important;
-    height: 400px !important;
-    max-height: 60vh !important;
-    overflow-y: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
   }
   
   /* Stagger the sticky top offsets so they stack into a deck */
