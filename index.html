@@ -50,11 +50,11 @@
         </svg>
     </div>
     <div aria-hidden="true" id="share-popup">
-        <a href="#" id="share-linkedin" rel="noopener noreferrer" target="_blank">in LinkedIn</a>
-        <a href="#" id="share-whatsapp" rel="noopener noreferrer" target="_blank">💬 WhatsApp</a>
-        <a href="#" id="share-twitter" rel="noopener noreferrer" target="_blank">𝕏 Twitter / X</a>
-        <a href="#" id="share-instagram">📷 Instagram</a>
-        <a href="#" id="share-copy">📋 Copy Link</a>
+        <a href="#" id="share-linkedin" rel="noopener noreferrer" target="_blank">LinkedIn ↗</a>
+        <a href="#" id="share-whatsapp" rel="noopener noreferrer" target="_blank">WhatsApp ↗</a>
+        <a href="#" id="share-twitter" rel="noopener noreferrer" target="_blank">Twitter / X ↗</a>
+        <a href="#" id="share-instagram">Instagram ↗</a>
+        <a href="#" id="share-copy">Copy Link</a>
     </div>
     <!-- TOAST -->
     <div id="share-toast"></div>
@@ -480,7 +480,7 @@
                 <div class="projects">
                     <div class="card fade-in-up reveal-block">
                         <div class="card-header" style="margin-bottom: 8px;">
-                            <h4 style="margin: 0; color: var(--primary-navy); font-size: 1.1rem;">🏆 Best Technical
+                            <h4 style="margin: 0; color: var(--primary-navy); font-size: 1.1rem;">Best Technical
                                 Project — Google for Developers NSSCE Build with AI Hackathon</h4>
                         </div>
                         <p class="reveal-block"
@@ -494,29 +494,29 @@
                                 href="https://www.linkedin.com/posts/mulearn-nssce_engineering-excellence-at-its-best-congratulations-activity-7453323334664200192-6xAI"
                                 rel="noopener noreferrer"
                                 style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
-                                target="_blank">🔗
-                                MuLearn NSSCE (LinkedIn)</a>
+                                target="_blank">
+                                MuLearn NSSCE (LinkedIn) ↗</a>
                             <a class="minimal-link"
                                 href="https://www.linkedin.com/posts/mulearn-nssce_buildwithai-buildwithaixasulearn-buildwithaipalakkad-activity-7453136864355557376-I1J3"
                                 rel="noopener noreferrer"
                                 style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
-                                target="_blank">📣
-                                Event Post (LinkedIn)</a>
+                                target="_blank">
+                                Event Post (LinkedIn) ↗</a>
                             <a class="minimal-link" href="https://www.instagram.com/p/DXjRXeCk9Ry/"
                                 rel="noopener noreferrer"
                                 style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
-                                target="_blank">📸
-                                Christ College of Engineering (Instagram)</a>
+                                target="_blank">
+                                Christ College of Engineering (Instagram) ↗</a>
                             <a class="minimal-link" href="https://www.instagram.com/p/DXgG9EDj1Du/"
                                 rel="noopener noreferrer"
                                 style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
-                                target="_blank">📸
-                                MuLearn &amp; MU Campus (Instagram)</a>
+                                target="_blank">
+                                MuLearn &amp; MU Campus (Instagram) ↗</a>
                         </div>
                     </div>
                     <div class="card fade-in-up reveal-block">
                         <div class="card-header" style="margin-bottom: 8px;">
-                            <h4 style="margin: 0; color: var(--primary-navy); font-size: 1.1rem;">🏆 Webathon Runner Up
+                            <h4 style="margin: 0; color: var(--primary-navy); font-size: 1.1rem;">Webathon Runner Up
                             </h4>
                         </div>
                         <p class="reveal-block"
@@ -527,8 +527,7 @@
                             Runner Up at the Webathon.</p>
                         <a class="minimal-link" href="https://github.com/sidoxsinu/Pylon" rel="noopener noreferrer"
                             style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;"
-                            target="_blank">🔗 View
-                            Project</a>
+                            target="_blank">View Project ↗</a>
                     </div>
                 </div>
             </div>
@@ -1511,6 +1510,25 @@
                     }
                 });
             });
+
+            // Back to Top Button Logic
+            const backToTopBtn = document.getElementById('back-to-top');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                });
+
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
         });
     </script>
     <div class="cursor-dot" id="cursorDot"></div>
