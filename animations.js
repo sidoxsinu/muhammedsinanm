@@ -501,4 +501,168 @@ window.toggleMenu = function () {
   updateFill();
 })();
 
+// FEATURE 10 — SCROLL-STACK CARDS  (zoom-out entrance · one card at a time)
+(function initScrollStack() {
+  // ── Config ─────────────────────────────────────────────────────────────
+  const STICKY_TOP   = 90;   // px – just below the fixed nav
+  const SPACER_RATIO = 1.35; // viewport-heights of scroll room per card
+  const TAIL_RATIO   = 0.55; // extra room after the last card
+
+  // Sections to stack  (skills added – was previously missing)
+  const TARGETS = [
+    { sel: '#projects .projects',      cardSel: '.card'          },
+    { sel: '#achievements .projects',  cardSel: '.card'          },
+    { sel: '#experience .projects',    cardSel: '.card'          },
+    { sel: '#skills .skills-grid',     cardSel: '.skill-category'},
+    { sel: '#clubs .clubs-list',       cardSel: '.club-item'     },
+    { sel: '#hackathons .events-list', cardSel: '.event-item'    },
+  ];
+
+  TARGETS.forEach(({ sel, cardSel }) => {
+    const container = document.querySelector(sel);
+    if (!container) return;
+
+    // Direct children matching the card selector only
+    const cards = Array.from(container.children).filter(el => el.matches(cardSel));
+    if (!cards.length) return;
+
+    // Switch from flex / grid to block
+    container.style.display   = 'block';
+    container.style.marginTop = '0';   // section-inner gap handles the spacing
+
+    const vh         = window.innerHeight;
+    const spacerH    = Math.round(vh * SPACER_RATIO);
+    const totalCards = cards.length;
+
+    // ── Pip indicator row ─────────────────────────────────────────────
+    const pipRow = document.createElement('div');
+    pipRow.className = 'stack-pips';
+    cards.forEach((_, i) => {
+      const pip = document.createElement('span');
+      pip.className        = 'stack-pip' + (i === 0 ? ' active' : '');
+      pip.dataset.pipIndex = i;
+      pipRow.appendChild(pip);
+    });
+
+    // ── Wrap every card in its own scroll-spacer ──────────────────────
+    cards.forEach((card, index) => {
+      const spacer = document.createElement('div');
+      spacer.className      = 'card-stack-spacer';
+      spacer.style.height   = `${spacerH}px`;
+      spacer.style.position = 'relative';
+
+      container.insertBefore(spacer, card);
+      spacer.appendChild(card);
+
+      // Sticky + z-index  (inline !important wins any CSS specificity)
+      card.style.setProperty('position', 'sticky', 'important');
+      card.style.setProperty('top',      `${STICKY_TOP}px`, 'important');
+      card.style.setProperty('z-index',  `${index + 1}`,    'important');
+      card.style.setProperty('margin',   '0',               'important');
+      card.style.removeProperty('--card-index');
+
+      // "01 / 06" counter badge
+      const badge = document.createElement('span');
+      badge.className   = 'stack-card-counter';
+      badge.textContent = `${String(index + 1).padStart(2, '0')} / ${String(totalCards).padStart(2, '0')}`;
+      card.appendChild(badge);
+
+      // ── PRE-HIDE cards 2 … N ────────────────────────────────────────
+      // While each card travels upward (position: sticky scrolling toward
+      // its resting point) it is invisible.  When it "snaps" to 90 px, the
+      // zoom-out tween fires and it materialises out of nothing.
+      if (index > 0) {
+        gsap.set(card, { scale: 1.3, opacity: 0, filter: 'blur(8px)' });
+      }
+    });
+
+    container.appendChild(pipRow);
+
+    const tail = document.createElement('div');
+    tail.style.height = `${Math.round(vh * TAIL_RATIO)}px`;
+    container.appendChild(tail);
+
+    // ── GSAP ScrollTrigger animations ─────────────────────────────────
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    const spacers = Array.from(container.children).filter(
+      el => el.classList.contains('card-stack-spacer')
+    );
+
+    spacers.forEach((spacer, index) => {
+      const card   = spacer.firstElementChild;
+      const isLast = index === spacers.length - 1;
+      if (!card) return;
+
+      // ── A. ZOOM-OUT ENTRANCE ──────────────────────────────────────────
+      // Fires the instant this spacer's top crosses 90 px from viewport top
+      // = the card has just locked to its sticky resting position.
+      // The card materialises at scale 1.3 / blur 8px / opacity 0 and
+      // zooms out to its natural size in ~0.7 s.
+      if (index > 0) {
+        const enterTween = gsap.to(card, {
+          scale:    1,
+          opacity:  1,
+          filter:   'blur(0px)',
+          duration: 0.7,
+          ease:     'expo.out',
+          paused:   true,
+        });
+
+        ScrollTrigger.create({
+          trigger: spacer,
+          start: `top ${STICKY_TOP + 2}px`,   // card has just snapped into place
+          onEnter() {
+            // Kill competing tweens on the same props, then zoom out
+            gsap.killTweensOf(card, 'scale,opacity,filter');
+            enterTween.restart();
+          },
+          onLeaveBack() {
+            // User scrolled back above this card – restore the hidden state
+            gsap.set(card, { scale: 1.3, opacity: 0, filter: 'blur(8px)' });
+            enterTween.pause(0);
+          },
+        });
+      }
+
+      // ── B. PIP INDICATOR ─────────────────────────────────────────────
+      ScrollTrigger.create({
+        trigger: spacer,
+        start:   `top ${STICKY_TOP + 1}px`,
+        end:     `bottom ${STICKY_TOP + 1}px`,
+        onEnter:     () => activatePip(index, pipRow, spacers.length),
+        onEnterBack: () => activatePip(index, pipRow, spacers.length),
+      });
+
+      // ── C. SCALE-BACK as the NEXT card rises to cover this one ───────
+      // The covered card subtly shrinks and blurs so the incoming card
+      // feels like it is "pushing" the current one back.
+      if (!isLast) {
+        gsap.to(card, {
+          scale:        0.94,
+          opacity:      0.5,
+          filter:       'blur(1.5px)',
+          borderRadius: '20px',
+          ease:         'none',
+          scrollTrigger: {
+            trigger: spacer,
+            start:   `bottom ${STICKY_TOP + 40}px`,
+            end:     'bottom top',
+            scrub:   0.8,
+          },
+        });
+      }
+    });
+  });
+
+  /** Highlight pip at `index`, dim the rest */
+  function activatePip(index, pipRow, total) {
+    if (!pipRow) return;
+    for (let i = 0; i < total; i++) {
+      const pip = pipRow.querySelector(`[data-pip-index="${i}"]`);
+      if (pip) pip.classList.toggle('active', i === index);
+    }
+  }
+})();
+
 

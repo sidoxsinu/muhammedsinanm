@@ -18,7 +18,7 @@
 }
 
 html, body {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
   background-color: var(--bg-color);
   color: var(--text-primary);
@@ -247,10 +247,22 @@ section h3 {
    PROJECTS / LISTS
    ========================================================================== */
 .projects, .clubs-list, .events-list {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
   margin-top: 40px;
+}
+
+/* Uniform sticky top — all stacked cards sit at the same level */
+.projects .card, .clubs-list .card, .events-list .card,
+.card-stack-spacer > .card,
+.card-stack-spacer > .split-card,
+.card-stack-spacer > .club-item,
+.card-stack-spacer > .event-item {
+  position: sticky;
+  top: 90px;
+  transform-origin: center top;
+  will-change: transform, opacity, filter;
 }
 
 /* Elevated card layouts with subtle borders */
@@ -1359,7 +1371,6 @@ body.cursor-hover .cursor-dot {
     justify-content: center;
     width: 120px;
     height: 120px;
-    cursor: pointer;
 }
 
 .scroll-circle-svg {
@@ -1369,6 +1380,7 @@ body.cursor-hover .cursor-dot {
     width: 100%;
     height: 100%;
     transform-origin: center center;
+    pointer-events: none;
 }
 
 .scroll-circle-icon {
@@ -1377,13 +1389,14 @@ body.cursor-hover .cursor-dot {
     align-items: center;
     justify-content: center;
     color: var(--accent-red);
+    cursor: pointer;
 }
 
 .scroll-circle-asterisk {
     transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.scroll-circle:hover .scroll-circle-asterisk {
+.scroll-circle-asterisk:hover {
     transform: scale(1.35) rotate(45deg);
 }
 
@@ -1394,4 +1407,79 @@ body.cursor-hover .cursor-dot {
         transform: scale(0.7);
         transform-origin: bottom right;
     }
+}
+
+/* ==========================================================================
+   SCROLL-STACK SPACER SYSTEM
+   ========================================================================== */
+
+/* Wrapper that provides scroll "time" for each card */
+.card-stack-spacer {
+  position: relative;
+}
+
+/* Reset margins on stacked cards — spacing comes from spacer height */
+.card-stack-spacer > .card,
+.card-stack-spacer > .split-card,
+.card-stack-spacer > .club-item,
+.card-stack-spacer > .event-item {
+  margin: 0 !important;
+}
+
+/* Stack card counter badge */
+.stack-card-counter {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 0.72rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+  z-index: 10;
+  user-select: none;
+}
+
+/* Progress pip row shown at bottom of each stuck card */
+.stack-pips {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 20px;
+  pointer-events: none;
+}
+
+.stack-pip {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.stack-pip.active {
+  background: #E8562A;
+  transform: scale(1.5);
+}
+
+/* Smooth transition on the card's transform (separate from GSAP scrub) */
+.card-stack-spacer > * {
+  transition: box-shadow 0.4s ease;
+}
+
+/* .skill-category has no card background by default — give it one when stacked */
+.card-stack-spacer > .skill-category {
+  display:          flex;
+  flex-direction:   column;
+  padding:          40px;
+  background-color: #1a1a1a;
+  border-radius:    12px;
+  border:           1px solid rgba(255, 255, 255, 0.05);
+  transform-origin: center top;
+  will-change:      transform, opacity, filter;
+}
+
+/* Skills grid switches to block (column) when JS applies stack layout */
+#skills .skills-grid.stack-active {
+  display: block;
 }
