@@ -1638,6 +1638,10 @@ body.cursor-hover .cursor-dot {
   color: #f0f0f0;
 }
 
+.footer-inner a:hover {
+  text-decoration: underline !important;
+}
+
 .footer-col-left {
   flex: 2;
   min-width: 280px;
