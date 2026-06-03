@@ -549,7 +549,7 @@ window.toggleMenu = function () {
     // GSAP will pin the inner section automatically and add the required spacing!
     ScrollTrigger.create({
       trigger: section,
-      start: 'top 90px', // Pin when section top reaches 90px from viewport top
+      start: 'top 0px', // Pin at the very top of the screen to move everything upwards
       end: `+=${pinDistance}`,
       pin: sectionInner, // Pin the inner wrapper
       pinSpacing: true, // Automatically adds padding to the parent
@@ -572,8 +572,8 @@ window.toggleMenu = function () {
       
       ScrollTrigger.create({
         trigger: section, // We use the section as trigger
-        // This fires when the section has scrolled up by `dropOffset` pixels PAST the 90px mark
-        start: () => `top ${90 - dropOffset}px`,
+        // This fires when the section has scrolled up by `dropOffset` pixels PAST the 0px mark
+        start: () => `top ${0 - dropOffset}px`,
         onEnter() {
           gsap.killTweensOf(card);
           gsap.to(card, {
