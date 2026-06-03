@@ -322,7 +322,7 @@ section h3 {
 }
 
 .card-link, .minimal-link {
-  color: var(--text-primary);
+  color: var(--accent-red);
   text-decoration: none;
   font-size: 0.95rem;
   text-transform: uppercase;
@@ -331,10 +331,11 @@ section h3 {
   align-items: center;
   gap: 8px;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 .card-link:hover, .minimal-link:hover {
-  color: var(--accent-red);
+  color: var(--text-primary);
+  text-decoration: underline;
 }
 
 .skills-grid {
@@ -1786,7 +1787,7 @@ body.cursor-hover .cursor-dot {
     overflow: hidden;
   }
   .hero-pfp {
-    height: 85vh;
+    height: 100% !important;
     left: 50%;
     transform: translateX(-50%);
     object-position: top center;
@@ -1867,6 +1868,17 @@ body.cursor-hover .cursor-dot {
   .journey-year { font-size: 2rem; }
 
   /* 7 — STACKED CARDS: RESET ON MOBILE */
+  .card-pile-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    margin: 40px auto 0 !important;
+  }
+  .card-pile-container > .card,
+  .card-pile-container > .split-card {
+    grid-area: auto !important;
+    margin: 0 !important;
+  }
   .projects .card,
   .projects .split-card,
   .clubs-list .club-item,
@@ -1877,6 +1889,18 @@ body.cursor-hover .cursor-dot {
     transform: none !important;
     opacity: 1 !important;
     filter: none !important;
+    text-align: left !important;
+  }
+  /* Align card links to the left in Achievements, Projects, and Experience on mobile */
+  .projects .card .minimal-link,
+  .projects .card .card-link,
+  .projects .split-card .card-link,
+  .projects .split-card .minimal-link,
+  .clubs-list .club-item a,
+  .events-list .event-item a {
+    justify-content: flex-start !important;
+    min-width: auto !important;
+    text-align: left !important;
   }
 
   /* 8 — SPLIT CARDS & PROJECTS: MOBILE LAYOUT */
