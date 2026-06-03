@@ -1788,8 +1788,10 @@ body.cursor-hover .cursor-dot {
   }
   .hero-pfp {
     height: 100% !important;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
     object-position: top center;
   }
   .hero-title {
