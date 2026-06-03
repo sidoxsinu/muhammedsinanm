@@ -543,7 +543,7 @@ window.toggleMenu = function () {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   // ONLY target .projects containers to avoid breaking skills grids or dropdowns
-  const containers = document.querySelectorAll('#projects .projects, #achievements .projects');
+  const containers = document.querySelectorAll('#projects .projects, #achievements .projects, #experience .projects');
   
   // Alternating rotation offsets → natural "dealt deck" appearance
   const ROTS = [0, -4, 3.5, -6, 5, -2.5, 4.5, -3, 6, -1, 3, -5];
