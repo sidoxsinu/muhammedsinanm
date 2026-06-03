@@ -88,6 +88,9 @@
             <div class="nav-right">
                 <a href="https://contact.muhammedsinan.in" target="_blank">Let's Talk!</a>
             </div>
+            <button class="nav-hamburger" aria-label="Open navigation menu">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
         <!-- MOBILE NAV MENU -->
         <div aria-hidden="true" id="mobile-nav-menu">
@@ -1234,16 +1237,18 @@
                 gsap.from(".hero-roles p", { x: 10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
                 gsap.from(".scroll-circle-wrapper", { opacity: 0, scale: 0.8, duration: 0.6, delay: 0.6, ease: "power2.out" });
 
-                gsap.to(".hero-pfp", {
-                    yPercent: 15,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: ".hero-premium",
-                        start: "top top",
-                        end: "bottom top",
-                        scrub: true
-                    }
-                });
+                if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+                    gsap.to(".hero-pfp", {
+                        yPercent: 15,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: ".hero-premium",
+                            start: "top top",
+                            end: "bottom top",
+                            scrub: true
+                        }
+                    });
+                }
 
                 gsap.to('.scroll-circle-svg', {
                     rotation: 720,
@@ -1314,7 +1319,9 @@
                         const dist = cardCenter - vpCenter;
                         const t = Math.max(-1, Math.min(1, dist / SPREAD));
 
-                        const rotateY = t * -50;
+                        const isMobile = window.innerWidth <= 768;
+                        const maxRot = isMobile ? -30 : -50;
+                        const rotateY = t * maxRot;
                         const scale = 1 + Math.abs(t) * 0.35;
                         const zTranslate = Math.abs(t) * 80;
                         const brightness = 1 - Math.abs(t) * 0.35;
@@ -1361,6 +1368,30 @@
                 });
                 document.addEventListener('mouseup', () => { isDown = false; viewport.style.cursor = 'grab'; });
                 viewport.addEventListener('mouseleave', () => { isDown = false; viewport.style.cursor = 'grab'; });
+                
+                let touchStartX = 0;
+                let scrollLeft = 0;
+                let autoScrollPaused = false;
+                
+                viewport.addEventListener('touchstart', e => {
+                    touchStartX = e.touches[0].clientX;
+                    isDown = true;
+                    startX = touchStartX;
+                    scrollLeft = viewport.scrollLeft;
+                    autoScrollPaused = true;
+                }, { passive: true });
+
+                viewport.addEventListener('touchmove', e => {
+                    if (!isDown) return;
+                    const dx = (touchStartX - e.touches[0].clientX) * 1.2;
+                    viewport.scrollLeft = scrollLeft + dx;
+                }, { passive: true });
+
+                viewport.addEventListener('touchend', () => {
+                    isDown = false;
+                    setTimeout(() => { autoScrollPaused = false; }, 2000);
+                });
+
                 viewport.addEventListener('mousemove', e => {
                     if (!isDown) return;
                     e.preventDefault();
@@ -1399,7 +1430,7 @@
                 let scrollAccumulator = 0;
                 function autoScroll() {
                     // Only pause if actively dragging
-                    if (!isDown) {
+                    if (!isDown && !autoScrollPaused) {
                         scrollAccumulator += 0.6; // Small constant pace
                         if (scrollAccumulator >= 1) {
                             const step = Math.floor(scrollAccumulator);
@@ -1466,7 +1497,10 @@
                 btn.addEventListener('click', (e) => {
                     const container = btn.closest('.carousel-stage');
                     const viewport = container.querySelector('.carousel-viewport');
-                    if (viewport) viewport.scrollBy({ left: -300, behavior: 'smooth' });
+                    if (viewport) {
+                        const scrollAmount = window.innerWidth <= 768 ? 280 : 350;
+                        viewport.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    }
                 });
             });
 
@@ -1474,7 +1508,10 @@
                 btn.addEventListener('click', (e) => {
                     const container = btn.closest('.carousel-stage');
                     const viewport = container.querySelector('.carousel-viewport');
-                    if (viewport) viewport.scrollBy({ left: 300, behavior: 'smooth' });
+                    if (viewport) {
+                        const scrollAmount = window.innerWidth <= 768 ? 280 : 350;
+                        viewport.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    }
                 });
             });
         });

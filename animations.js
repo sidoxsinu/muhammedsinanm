@@ -11,7 +11,7 @@
   let isDragging = false;
   let startX = 0;
   let currentX = 0;
-  let dragThreshold = 60; // px to count as a swipe
+  let dragThreshold = window.innerWidth <= 768 ? 40 : 60; // px to count as a swipe
 
   // ---- Build dots ----
   cards.forEach((_, i) => {
@@ -141,11 +141,12 @@
   });
 
   // ---- Auto-advance every 4 seconds (pauses on hover) ----
-  let autoTimer = setInterval(next, 4000);
+  const autoDelay = window.innerWidth <= 768 ? 5000 : 4000;
+  let autoTimer = setInterval(next, autoDelay);
 
   stage.addEventListener('mouseenter', () => clearInterval(autoTimer));
   stage.addEventListener('mouseleave', () => {
-    autoTimer = setInterval(next, 4000);
+    autoTimer = setInterval(next, autoDelay);
   });
 
   // ---- Initial layout ----
@@ -183,6 +184,9 @@
   if (typeof gsap === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
+  const trigger88 = window.innerWidth <= 768 ? 'top 92%' : 'top 88%';
+  const trigger85 = window.innerWidth <= 768 ? 'top 92%' : 'top 85%';
+
   gsap.utils.toArray('.reveal-text').forEach(el => {
     gsap.fromTo(el,
       { y: 50, opacity: 0 },
@@ -193,7 +197,7 @@
         ease: 'power3.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 88%',
+          start: trigger88,
           toggleActions: 'play none none none',
         }
       }
@@ -210,7 +214,7 @@
         ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
+          start: trigger85,
         }
       }
     );
@@ -228,7 +232,7 @@
         ease: 'power2.out',
         scrollTrigger: {
           trigger: list,
-          start: 'top 85%',
+          start: trigger85,
         }
       }
     );
@@ -237,6 +241,7 @@
 
 // FEATURE 3 — MAGNETIC BUTTON EFFECT
 (function initMagneticButtons() {
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   const magneticEls = document.querySelectorAll(
     'nav a, .contact-link, .btn-primary, .btn-secondary, .hero-cta'
   );
@@ -261,6 +266,7 @@
 
 // FEATURE 4 — 3D CARD TILT ON HOVER
 (function initCardTilt() {
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   const cards = document.querySelectorAll('.card, .split-card, .event-list-item');
 
   cards.forEach(card => {
@@ -300,6 +306,7 @@
 
 // FEATURE 5 — SMOOTH CUSTOM CURSOR
 (function initCustomCursor() {
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   const dot = document.getElementById('cursorDot');
   if (!dot) return;
 
@@ -445,6 +452,14 @@ window.toggleMenu = function () {
     }
   });
 
+  // If touch device: skip char-split animation, just show text fully lit
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    document.querySelectorAll('.large-intro-text .char').forEach(c => {
+      c.style.color = c.closest('.highlight-text') ? '#E54D2E' : '#ffffff';
+    });
+    return; // exit IIFE early
+  }
+
   const total   = chars.length;
   let lastLit   = -1;
   let rafId     = null;
@@ -501,168 +516,106 @@ window.toggleMenu = function () {
   updateFill();
 })();
 
-// FEATURE 10 — SCROLL-STACK CARDS  (zoom-out entrance · one card at a time)
-(function initScrollStack() {
-  // ── Config ─────────────────────────────────────────────────────────────
-  const STICKY_TOP   = 90;   // px – just below the fixed nav
-  const SPACER_RATIO = 1.35; // viewport-heights of scroll room per card
-  const TAIL_RATIO   = 0.55; // extra room after the last card
 
-  // Sections to stack  (skills added – was previously missing)
-  const TARGETS = [
-    { sel: '#projects .projects',      cardSel: '.card'          },
-    { sel: '#achievements .projects',  cardSel: '.card'          },
-    { sel: '#experience .projects',    cardSel: '.card'          },
-    { sel: '#skills .skills-grid',     cardSel: '.skill-category'},
-    { sel: '#clubs .clubs-list',       cardSel: '.club-item'     },
-    { sel: '#hackathons .events-list', cardSel: '.event-item'    },
-  ];
 
-  TARGETS.forEach(({ sel, cardSel }) => {
-    const container = document.querySelector(sel);
-    if (!container) return;
+// FEATURE 10 — CARD PILE BUILD-UP
+// Phase 1: Section heading is visible alone.
+// Phase 2: Each ~70 vh of scrolling drops the next card from above,
+//          landing on the pile and fanning out with slight rotations for a "dealt deck" look.
+(function initCardPile() {
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-    // Direct children matching the card selector only
-    const cards = Array.from(container.children).filter(el => el.matches(cardSel));
-    if (!cards.length) return;
+  // ONLY target .projects containers to avoid breaking skills grids or dropdowns
+  const containers = document.querySelectorAll('#projects .projects, #achievements .projects');
+  
+  // Alternating rotation offsets → natural "dealt deck" appearance
+  const ROTS = [0, -4, 3.5, -6, 5, -2.5, 4.5, -3, 6, -1, 3, -5];
 
-    // Switch from flex / grid to block
-    container.style.display   = 'block';
-    container.style.marginTop = '0';   // section-inner gap handles the spacing
+  containers.forEach(container => {
+    const cards = Array.from(container.children).filter(el => el.matches('.card'));
+    if (cards.length < 2) return; // Don't pile if only 1 card
 
-    const vh         = window.innerHeight;
-    const spacerH    = Math.round(vh * SPACER_RATIO);
-    const totalCards = cards.length;
+    const section = container.closest('section');
+    const sectionInner = section?.querySelector('.section-inner');
+    if (!section || !sectionInner) return;
 
-    // ── Pip indicator row ─────────────────────────────────────────────
-    const pipRow = document.createElement('div');
-    pipRow.className = 'stack-pips';
-    cards.forEach((_, i) => {
-      const pip = document.createElement('span');
-      pip.className        = 'stack-pip' + (i === 0 ? ' active' : '');
-      pip.dataset.pipIndex = i;
-      pipRow.appendChild(pip);
-    });
+    // Apply grid overlap: cards will perfectly stack in CSS without explicit heights
+    container.classList.add('card-pile-container');
 
-    // ── Wrap every card in its own scroll-spacer ──────────────────────
-    cards.forEach((card, index) => {
-      const spacer = document.createElement('div');
-      spacer.className      = 'card-stack-spacer';
-      spacer.style.height   = `${spacerH}px`;
-      spacer.style.position = 'relative';
+    const vh = window.innerHeight;
+    
+    // 1. Stretch section – ~70vh slot per card
+    section.style.paddingBottom = `${(cards.length + 1) * vh * 0.7}px`;
 
-      container.insertBefore(spacer, card);
-      spacer.appendChild(card);
+    // 2. Pin the inner content so heading stays fixed while cards pile up
+    sectionInner.style.position = 'sticky';
+    sectionInner.style.top = '90px';
+    sectionInner.style.overflow = 'visible'; // pile can spill below
 
-      // Sticky + z-index  (inline !important wins any CSS specificity)
-      card.style.setProperty('position', 'sticky', 'important');
-      card.style.setProperty('top',      `${STICKY_TOP}px`, 'important');
-      card.style.setProperty('z-index',  `${index + 1}`,    'important');
-      card.style.setProperty('margin',   '0',               'important');
+    // 3. Set up cards
+    cards.forEach((card, i) => {
+      // Kill tweens from Feature 2 reveal to prevent conflicts
+      gsap.killTweensOf(card);
+      card.classList.remove('fade-in-up', 'reveal-block', 'reveal-text', 'fly-left', 'fly-right');
+
+      // Set initial state: hidden, high above
+      gsap.set(card, { clearProps: 'transform,opacity,filter' });
+      gsap.set(card, { y: -160, opacity: 0, scale: 0.9, rotation: 0, zIndex: i + 1 });
       card.style.removeProperty('--card-index');
 
-      // "01 / 06" counter badge
-      const badge = document.createElement('span');
-      badge.className   = 'stack-card-counter';
-      badge.textContent = `${String(index + 1).padStart(2, '0')} / ${String(totalCards).padStart(2, '0')}`;
-      card.appendChild(badge);
-
-      // ── PRE-HIDE cards 2 … N ────────────────────────────────────────
-      // While each card travels upward (position: sticky scrolling toward
-      // its resting point) it is invisible.  When it "snaps" to 90 px, the
-      // zoom-out tween fires and it materialises out of nothing.
-      if (index > 0) {
-        gsap.set(card, { scale: 1.3, opacity: 0, filter: 'blur(8px)' });
-      }
-    });
-
-    container.appendChild(pipRow);
-
-    const tail = document.createElement('div');
-    tail.style.height = `${Math.round(vh * TAIL_RATIO)}px`;
-    container.appendChild(tail);
-
-    // ── GSAP ScrollTrigger animations ─────────────────────────────────
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-    const spacers = Array.from(container.children).filter(
-      el => el.classList.contains('card-stack-spacer')
-    );
-
-    spacers.forEach((spacer, index) => {
-      const card   = spacer.firstElementChild;
-      const isLast = index === spacers.length - 1;
-      if (!card) return;
-
-      // ── A. ZOOM-OUT ENTRANCE ──────────────────────────────────────────
-      // Fires the instant this spacer's top crosses 90 px from viewport top
-      // = the card has just locked to its sticky resting position.
-      // The card materialises at scale 1.3 / blur 8px / opacity 0 and
-      // zooms out to its natural size in ~0.7 s.
-      if (index > 0) {
-        const enterTween = gsap.to(card, {
-          scale:    1,
-          opacity:  1,
-          filter:   'blur(0px)',
-          duration: 0.7,
-          ease:     'expo.out',
-          paused:   true,
-        });
-
-        ScrollTrigger.create({
-          trigger: spacer,
-          start: `top ${STICKY_TOP + 2}px`,   // card has just snapped into place
-          onEnter() {
-            // Kill competing tweens on the same props, then zoom out
-            gsap.killTweensOf(card, 'scale,opacity,filter');
-            enterTween.restart();
-          },
-          onLeaveBack() {
-            // User scrolled back above this card – restore the hidden state
-            gsap.set(card, { scale: 1.3, opacity: 0, filter: 'blur(8px)' });
-            enterTween.pause(0);
-          },
-        });
-      }
-
-      // ── B. PIP INDICATOR ─────────────────────────────────────────────
+      // 4. ScrollTrigger: drop each card when its threshold is reached
+      const startPx = (i + 0.3) * (vh * 0.70);
+      
       ScrollTrigger.create({
-        trigger: spacer,
-        start:   `top ${STICKY_TOP + 1}px`,
-        end:     `bottom ${STICKY_TOP + 1}px`,
-        onEnter:     () => activatePip(index, pipRow, spacers.length),
-        onEnterBack: () => activatePip(index, pipRow, spacers.length),
+        trigger: section,
+        start: () => `top+=${startPx} top+=90`,
+        onEnter() {
+          gsap.killTweensOf(card);
+          gsap.to(card, {
+            y: (i * 15), // pile offset: 15 px deeper per card
+            opacity: 1,
+            scale: 1,
+            rotation: ROTS[i % ROTS.length],
+            duration: 0.8,
+            ease: 'back.out(1.2)',
+          });
+        },
+        onLeaveBack() {
+          // Reverse: card flies back above the pile
+          gsap.killTweensOf(card);
+          gsap.to(card, {
+            y: -160,
+            opacity: 0,
+            scale: 0.9,
+            rotation: 0,
+            duration: 0.4,
+            ease: 'power3.in',
+          });
+        },
       });
-
-      // ── C. SCALE-BACK as the NEXT card rises to cover this one ───────
-      // The covered card subtly shrinks and blurs so the incoming card
-      // feels like it is "pushing" the current one back.
-      if (!isLast) {
-        gsap.to(card, {
-          scale:        0.94,
-          opacity:      0.5,
-          filter:       'blur(1.5px)',
-          borderRadius: '20px',
-          ease:         'none',
-          scrollTrigger: {
-            trigger: spacer,
-            start:   `bottom ${STICKY_TOP + 40}px`,
-            end:     'bottom top',
-            scrub:   0.8,
-          },
-        });
-      }
     });
   });
-
-  /** Highlight pip at `index`, dim the rest */
-  function activatePip(index, pipRow, total) {
-    if (!pipRow) return;
-    for (let i = 0; i < total; i++) {
-      const pip = pipRow.querySelector(`[data-pip-index="${i}"]`);
-      if (pip) pip.classList.toggle('active', i === index);
-    }
-  }
 })();
 
+// FEATURE: MOBILE NAV TOGGLE
+(function initMobileNav() {
+  const hamburger = document.querySelector('.nav-hamburger');
+  const menu = document.getElementById('mobile-nav-menu');
+  if (!hamburger || !menu) return;
 
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close on any link click
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();

@@ -253,17 +253,20 @@ section h3 {
   margin-top: 40px;
 }
 
-/* Uniform sticky top — all stacked cards sit at the same level */
-.projects .card, .clubs-list .card, .events-list .card,
-.card-stack-spacer > .card,
-.card-stack-spacer > .split-card,
-.card-stack-spacer > .club-item,
-.card-stack-spacer > .event-item {
-  position: sticky;
-  top: 90px;
-  transform-origin: center top;
-  will-change: transform, opacity, filter;
+/* GSAP Card Pile Container */
+.card-pile-container {
+  display: grid !important;
+  align-items: start;
 }
+.card-pile-container > .card,
+.card-pile-container > .split-card {
+  grid-area: 1 / 1;
+  width: 100%;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  margin: 0 !important; /* prevent flex gaps from applying */
+}
+
 
 /* Elevated card layouts with subtle borders */
 .card, .club-item, .event-item, .timeline-item, .jtl-card {
@@ -1482,4 +1485,311 @@ body.cursor-hover .cursor-dot {
 /* Skills grid switches to block (column) when JS applies stack layout */
 #skills .skills-grid.stack-active {
   display: block;
+}
+
+/* ==========================================================================
+   CARD PILE BUILD-UP
+   ========================================================================== */
+
+/* The cards container pulls into the heading area (JS sets negative marginTop).
+   Overflow visible so the absolute-positioned pile shows beyond container bounds. */
+.projects, .clubs-list, .events-list, .skills-grid {
+  overflow: visible !important;
+}
+
+/* All pile cards are absolute — give them a visible drop-shadow when landing */
+.projects > .card,
+.clubs-list > .club-item,
+.events-list > .event-item,
+.skills-grid > .skill-category {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Skill categories styled as cards when they're in the pile */
+.skills-grid > .skill-category {
+  padding:          40px;
+  background-color: #1a1a1a;
+  border-radius:    12px;
+  border:           1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   MOBILE OPTIMIZATIONS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1 — CURSOR: COMPLETE REMOVAL ON MOBILE */
+  #cursorDot { display: none !important; }
+  * { cursor: auto !important; }
+  a, button, [role="button"] { cursor: pointer !important; }
+
+  /* 4 — 3D card tilt / shine */
+  .tilt-shine { display: none !important; }
+  .card, .split-card, .event-list-item {
+    transform: none !important;
+    perspective: none !important;
+  }
+
+  /* 2 — NAVIGATION: ENABLE MOBILE MENU */
+  #mobile-nav-menu { display: flex !important; }
+  .premium-nav .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  #mobile-nav-menu {
+    position: fixed;
+    inset: 0;
+    background: #111111;
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #mobile-nav-menu.open {
+    transform: translateX(0);
+  }
+  #mobile-nav-menu a {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #mobile-nav-menu a.resume-link { color: #E8562A; }
+
+  .nav-hamburger {
+    position: fixed;
+    top: 24px;
+    right: 5vw;
+    z-index: 1001;
+    background: none;
+    border: none;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    mix-blend-mode: difference;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: #ffffff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* 3 — HERO SECTION: MOBILE LAYOUT */
+  .hero-premium {
+    height: 100svh;
+    overflow: hidden;
+  }
+  .hero-pfp {
+    height: 85vh;
+    left: 50%;
+    transform: translateX(-50%);
+    object-position: top center;
+  }
+  .hero-title {
+    font-size: clamp(3.2rem, 22vw, 8rem);
+    letter-spacing: -0.04em;
+    text-align: center;
+    width: 90vw;
+  }
+  .hero-roles {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 16px;
+    text-align: center;
+    font-size: clamp(0.75rem, 3.5vw, 1rem);
+    white-space: nowrap;
+  }
+  .hero-socials {
+    display: flex !important;
+    flex-direction: row;
+    gap: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 52px;
+    top: auto;
+  }
+  .hero-socials a svg { width: 18px; height: 18px; }
+  .scroll-circle-wrapper {
+    transform-origin: bottom right;
+    transform: scale(0.65);
+    bottom: 80px;
+    right: 4vw;
+  }
+
+  /* 4 — ABOUT SECTION: TYPOGRAPHY */
+  .large-intro-text {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+    line-height: 1.45;
+    padding-inline: 0;
+  }
+
+  /* 5 — CERTIFICATE CAROUSEL: MOBILE UX */
+  .cert-viewport {
+    padding-block: 40px;
+    padding-inline: calc(50vw - 90px);
+  }
+  .cert-card {
+    width: 180px;
+    height: 240px;
+    flex: 0 0 180px;
+  }
+
+  /* 6 — JOURNEY TIMELINE: MOBILE TOUCH */
+  .journey-header { gap: 16px; }
+  .journey-col { flex: 0 0 280px; scroll-snap-align: start; }
+  .journey-nav-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  .journey-year { font-size: 2rem; }
+
+  /* 7 — STACKED CARDS: RESET ON MOBILE */
+  .projects .card,
+  .projects .split-card,
+  .clubs-list .club-item,
+  .events-list .event-item,
+  .skills-grid .skill-category {
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  /* 8 — SPLIT CARDS & PROJECTS: MOBILE LAYOUT */
+  .split-card {
+    border-radius: 12px;
+    margin-block: 12px;
+  }
+  .split-card-content {
+    padding: 28px 20px;
+    gap: 16px;
+  }
+  .split-card-image {
+    min-height: 120px;
+    padding: 20px;
+  }
+  .split-card-image .card-year-large {
+    font-size: 6rem;
+  }
+  .project-tags { flex-wrap: wrap; gap: 6px; }
+  .project-tag { font-size: 0.75rem; padding: 4px 10px; }
+  .split-card-content .btn-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    min-height: 44px;
+  }
+
+  /* 9 — SECTION TYPOGRAPHY & SPACING: MOBILE SCALE */
+  section { padding-block: 60px; }
+  .section-inner { gap: 24px; }
+  .section-h3, h3 { font-size: 2rem; }
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+  .cta-section { padding: 60px 5vw; }
+  .cta-heading { font-size: clamp(2rem, 8vw, 3rem); }
+  .cta-socials { gap: 10px; }
+  .social-pill {
+    font-size: 0.8rem;
+    padding: 10px 16px;
+    min-height: 44px;
+  }
+  .stats-strip {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding-block: 40px;
+  }
+  .stat-number { font-size: 3rem; }
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .marquee-track { animation-duration: 35s; }
+
+  /* 10 — FOOTER: MOBILE STACKED LAYOUT */
+  .site-footer {
+    padding: 40px 6vw;
+  }
+  .footer-inner {
+    flex-direction: column;
+    gap: 32px;
+    text-align: center;
+  }
+  .footer-col { width: 100%; }
+  .footer-col a {
+    display: inline-block;
+    padding: 6px 0;
+    min-height: 36px;
+  }
+
+  /* 12 — FAN CAROUSEL: TOUCH/SWIPE */
+  .fan-carousel-wrapper { padding-inline: 0; }
+  .fan-card {
+    width: min(280px, 80vw);
+    --fan-z: 40px;
+  }
+  .fan-dot { width: 10px; height: 10px; margin: 0 6px; }
+  .fan-prev, .fan-next {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+
+  /* 13 — BACK TO TOP BUTTON: MOBILE POSITIONING */
+  #back-to-top {
+    bottom: 20px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+  }
+
+  /* 14 — PERFORMANCE: REDUCE GPU LAYER HINTS ON MOBILE */
+  .hero-pfp,
+  .hero-name,
+  .hero-title {
+    will-change: auto;
+  }
+  .cert-card { will-change: transform; }
+
+  /* 15 — GLOBAL TOUCH-TARGET RULE */
+  a, button, [role="button"], .cert-card, .fan-card,
+  .accordion-toggle, .dropdown-arrow, .journey-nav-btn {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* 11 — SCROLL REVEAL: REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

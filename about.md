@@ -380,11 +380,12 @@ cv/
 - Scroll progress: fill begins when text is 60% down viewport, ends when 60% above
 - Uses `IntersectionObserver` + `requestAnimationFrame` for performance
 
-### 5. Stacked Cards Shrink — Feature 10
-- Applied to `.projects`, `.clubs-list`, `.events-list` containers
-- Cards use `position: sticky` with `top: calc(120px + (var(--card-index) * 20px))`
-- GSAP ScrollTrigger: as you scroll past a card it scales to `0.92`, `opacity: 0.5`, `blur(3px)`
-- Last card is NOT shrunk (remains full size)
+### 5. Card Pile Build-Up — Feature 10
+- Applied to `.projects`, `.clubs-list`, `.events-list`, and `.skills-grid` containers
+- **Initial State**: Section heading is visible alone, inner container is `position: sticky`. The cards container is pulled up (negative `margin-top`) to overlap the heading area.
+- **Drop-in Animation**: Cards are positioned absolutely (`y: -160, opacity: 0, scale: 0.88`). As you scroll, they drop in one by one (every ~70vh) with a `back.out(1.4)` bounce ease to create a "thud" effect.
+- **Dealt Deck Effect**: Each card lands slightly lower (`y: i * 14px`) and with alternating slight rotations (e.g. `0°, -4°, +3.5°`) to mimic a fan of dealt cards.
+- **Scroll-back**: Cards smoothly fly back up above the pile when scrolling in reverse.
 
 ### 6. 3D Certificate Carousel — Feature: Infinite Coverflow (inline script)
 - 23 original cards are **cloned** (prepend + append sets) for seamless infinite scroll
@@ -475,7 +476,7 @@ cv/
 | `scroll-snap-type: x mandatory` | Journey timeline, cert carousel | Snap-to-column horizontal scroll |
 | `perspective` + `rotateY` | Cert carousel, fan carousel, card tilt | 3D transforms |
 | `mix-blend-mode: difference` on cursor | `.cursor-dot` | White dot inverts on all backgrounds |
-| Sticky cards + GSAP scrub | Projects, clubs, events | Cards "stack" as user scrolls |
+| Absolute card pile drop-in | Projects, skills, clubs, events | Cards stack overlapping the sticky heading on scroll |
 | `IntersectionObserver` | Counters, about-text-fill | Efficient scroll detection |
 | `requestAnimationFrame` | Carousel render, counters | Smooth 60fps rendering |
 | `will-change: transform` | Parallax elements, carousel cards | GPU compositing hint |
