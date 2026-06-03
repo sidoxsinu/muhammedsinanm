@@ -1794,10 +1794,10 @@ body.cursor-hover .cursor-dot {
     object-position: top center;
   }
   .hero-title {
-    font-size: clamp(3.2rem, 22vw, 8rem);
+    font-size: clamp(2.5rem, 15vw, 4.5rem);
     letter-spacing: -0.04em;
     text-align: center;
-    width: 90vw;
+    width: 100vw;
   }
   .hero-roles {
     right: auto;

@@ -487,14 +487,38 @@ cv/
 
 ---
 
-## 📱 Responsive Breakpoints
+## 📱 Mobile vs Desktop Experience & Optimizations
+
+The portfolio implements a highly sophisticated responsive design. Desktop provides a rich, heavily animated, mouse-driven experience, while mobile provides a native-feeling, touch-optimized, performance-conscious layout.
+
+### 1. Desktop Experience (Width > 768px)
+- **Navigation**: Full horizontal navbar (`.premium-nav .nav-links`) with hover-underline animations.
+- **Hero**: GSAP ScrollTrigger parallax (`yPercent: 15` on profile photo).
+- **Cursor & Hover**: Custom magnetic cursor (`#cursorDot`) with `mix-blend-mode` inversion that expands over interactive elements.
+- **Card Stacking**: Features a complex GSAP-driven "drop from top into a pile" animation for project cards, forming a 3D dealt deck as you scroll.
+- **3D Tilt**: Project cards use `mousemove` events to calculate perspective and rotation (`rotationX`, `rotationY`), creating a shiny 3D tilt effect on hover (`.tilt-shine`).
+- **Letter Fill**: The About section features a character-by-character text fill animation driven by scroll (`requestAnimationFrame`).
+
+### 2. Mobile Experience (Width ≤ 768px)
+- **Navigation**: Desktop links are hidden. A hamburger button (`.nav-hamburger`) toggles a full-screen slide-in overlay menu (`#mobile-nav-menu`) with massive typography for touch targets.
+- **Hero Layout**: Hero container uses `100svh` to avoid iOS toolbar jumpiness. Profile photo is centered with CSS (`left: 50%; transform: translateX(-50%)`). GSAP hero parallax is disabled to prevent layout conflicts. Social icons and roles are repositioned to the bottom center.
+- **Cursor & Tilt Disabled**: Custom `#cursorDot` is `display: none`, native pointers are restored. The 3D tilt and magnetic button effects are blocked using JS touch guards (`ontouchstart in window`).
+- **CSS Sticky Stack (Custom Mobile Feature)**: The GSAP drop-from-top card pile is disabled. Instead, `.projects` uses `position: sticky` with staggered `top` offsets (`90px`, `102px`, etc.). As the user scrolls down, cards organically slide up and stack seamlessly at the top of the screen like a deck of cards.
+- **Touch-Optimized Carousels**: The Certificate and Fan carousels utilize native `touchstart`, `touchmove`, and `touchend` events to handle swiping. Rotation limits in the 3D Fan Carousel are reduced from `±55°` to `±30°` to fit mobile screens.
+- **Timeline Swipe**: Journey timeline supports horizontal touch swiping, and the `scrollBy` buttons shift `280px` instead of `350px`.
+- **Performance Guards**: `will-change` properties are removed from idle elements to save GPU memory on mobile devices. Minimum touch bounds (`44x44px`) are enforced globally.
+
+---
+
+## 📐 Responsive Breakpoints
 
 | Breakpoint | Changes |
 |-----------|---------|
 | `≤ 1024px` | Split cards stack to column, large intro text reduces to `2.5rem` |
-| `≤ 768px` | Hero title `22vw`, roles `4vw`, section h3 `2.8rem`, nav padding reduced, social icons hidden, cards `padding: 32px 24px` |
+| `≤ 768px` | Hero title `22vw`, roles `4vw`, section h3 `2rem`, nav padding reduced, social icons horizontal row at bottom, cards `padding: 32px 24px` |
 | `≤ 768px` | Journey header stacks vertically, columns narrow to `280px` |
-| `≤ 768px` | Scroll circle scales to `0.7` from bottom-right origin |
+| `≤ 768px` | Scroll circle scales to `0.65` from bottom-right origin |
+| `≤ 768px` | Footer converts to single column, skills grid converts to single column |
 
 ---
 
