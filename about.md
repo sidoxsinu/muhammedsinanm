@@ -302,13 +302,13 @@ cv/
 
 | Institution | Events |
 |------------|--------|
-| **Christ College of Engineering (CCE)** | BeachHack Season 7 (Finalist), WEBATHON 2025 (2nd Prize), Code a Pookalam, TECHLETICS 4.0 Quake Clash (Champion), DEVMODE: UNITY UNLEASHED, EVOLV 2.0, FOSS RELAY CODING, JUMPSTART 8.0 |
-| **VIT Vellore** | HackBattle (Finalist) |
-| **Rajagiri School of Engineering & Technology** | HackQuest '25 (Winner / Team Leader) |
+| **Christ College of Engineering (CCE)** | BeachHack Season 7 (Finalist), WEBATHON 2025 (2nd Prize), Code a Pookalam, TECHLETICS 4.0 Quake Clash (Participant), DEVMODE: UNITY UNLEASHED, EVOLV 2.0, FOSS RELAY CODING, JUMPSTART 8.0 |
+| **VIT Vellore** | HackBattle (Participant) |
+| **Rajagiri School of Engineering & Technology** | HackQuest '25 (Participant) |
 | **NIT Calicut** | IEEE YESS'25 (Participant) |
 | **IIT Hyderabad & Tech Maghi** | AI Cyber Security Workshop, Agentic AI Boot Camp |
 | **NSS Palakkad / μLearn** | Build With AI 2026 Hackathon (Best Technical Project) |
-| **K-DISC / Government of Kerala** | YIP 8.0 Idea Submission (Awarded), YIP 8.0 VOS Training |
+| **K-DISC / Government of Kerala** | YIP 8.0 Idea Submission (Participant), YIP 8.0 VOS Training |
 
 ### Certifications (formal)
 - IEEE Certified Member (CM)
