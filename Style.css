@@ -124,16 +124,23 @@ a {
   flex-direction: column;
   gap: 16px;
   z-index: 10;
-  mix-blend-mode: difference;
-  color: #fff;
+  color: #000;
 }
 
 .hero-socials a {
   font-size: 14px;
   font-weight: 500;
   transition: opacity 0.3s;
+  color: #000 !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
 }
-.hero-socials a:hover { opacity: 0.6; }
+.hero-socials a:hover { opacity: 0.6 !important; }
+
+.hero-socials a svg {
+  stroke: currentColor !important;
+  opacity: 1 !important;
+}
 
 .hero-roles {
   position: absolute;
@@ -285,9 +292,26 @@ section h3 {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s;
 }
 
-.card:hover, .jtl-card:hover {
-  background-color: #222222;
+/* ── EXPERIENCE CARD: Horizontal layout (text left, image right) ── */
+.exp-card-layout {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 32px !important;
 }
+
+.exp-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.exp-card-image {
+  flex: 0 0 200px;
+  width: 200px;
+}
+
+
+.card:hover, .jtl-card:hover { background-color: #222222; }
 
 .card-header h4, .jtl-title {
   font-size: 2rem;
@@ -1889,6 +1913,9 @@ body.cursor-hover .cursor-dot {
     position: sticky !important;
     text-align: left !important;
     filter: none !important;
+    height: 400px !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
   }
   
   /* Stagger the sticky top offsets so they stack into a deck */
@@ -1912,6 +1939,16 @@ body.cursor-hover .cursor-dot {
     justify-content: flex-start !important;
     min-width: auto !important;
     text-align: left !important;
+  }
+
+  /* Experience card: stack vertically on mobile */
+  .exp-card-layout {
+    flex-direction: column !important;
+    padding: 24px 20px !important;
+  }
+  .exp-card-image {
+    flex: unset;
+    width: 100%;
   }
 
   /* 8 — SPLIT CARDS & PROJECTS: MOBILE LAYOUT */
