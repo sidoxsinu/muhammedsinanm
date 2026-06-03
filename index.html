@@ -20,7 +20,7 @@
     <meta
         content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner — Best Technical Project at Google for Developers Build with AI"
         name="description" />
-    <link href="Style.css?v=42" rel="stylesheet" />
+    <link href="Style.css?v=45" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap"
         rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
@@ -147,7 +147,7 @@
             <div class="hero-content">
                 <img alt="Profile" class="hero-pfp hero-portrait"
                     src="images/profile-picture/bg-removed-black&amp;white-pfp.png" />
-                <h1 class="hero-title hero-name">Muhammed<br />Sinan M</h1>
+                <h1 class="hero-title hero-name"><span class="scramble-line1">Muhammed</span><br /><span class="scramble-line2">Sinan M</span></h1>
             </div>
             <!-- GSAP SCROLL CIRCLE -->
             <div class="scroll-circle-wrapper">
@@ -1124,7 +1124,53 @@
 
                 // Instant Entrance Animations
                 gsap.from(".premium-nav", { y: -20, opacity: 0, duration: 0.3, ease: "power2.out" });
-                gsap.from(".hero-title", { y: 20, opacity: 0, duration: 0.4, ease: "power3.out" });
+
+                // Custom scramble-typewriter: chars appear left-to-right, each briefly scrambling before locking
+                function scrambleType(el, text, { charDelay = 80, scrambleFrames = 5, onComplete } = {}) {
+                    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    let resolved = 0, frame = 0;
+                    el.textContent = '';
+                    const tick = setInterval(() => {
+                        frame++;
+                        // Current scramble char for the in-progress position
+                        const next = (resolved < text.length && text[resolved] !== ' ')
+                            ? CHARS[Math.floor(Math.random() * CHARS.length)] : (resolved < text.length ? ' ' : '');
+                        el.textContent = text.substring(0, resolved) + next;
+                        // Lock this char after N frames
+                        if (frame >= scrambleFrames) {
+                            frame = 0;
+                            if (resolved < text.length) resolved++;
+                        }
+                        if (resolved >= text.length) {
+                            clearInterval(tick);
+                            el.textContent = text;
+                            if (onComplete) onComplete();
+                        }
+                    }, charDelay / scrambleFrames);
+                }
+
+                gsap.set(".hero-title", { opacity: 1 });
+                const line1 = document.querySelector(".scramble-line1");
+                const line2 = document.querySelector(".scramble-line2");
+                line1.textContent = '';
+                line2.textContent = '';
+
+                setTimeout(() => {
+                    line1.classList.add("typing-active");
+                    scrambleType(line1, "Muhammed", {
+                        charDelay: 90, scrambleFrames: 6,
+                        onComplete: () => {
+                            line1.classList.remove("typing-active");
+                            line2.classList.add("typing-active");
+                            scrambleType(line2, "Sinan M", {
+                                charDelay: 90, scrambleFrames: 6,
+                                onComplete: () => {
+                                    line2.classList.remove("typing-active");
+                                }
+                            });
+                        }
+                    });
+                }, 300);
                 gsap.from(".hero-pfp", { scale: 1.02, opacity: 0, duration: 0.4, ease: "power2.out" });
                 gsap.from(".hero-socials a", { x: -10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
                 gsap.from(".hero-roles p", { x: 10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });

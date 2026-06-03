@@ -860,6 +860,21 @@ section h3 {
   transform: translateY(30px);
 }
 
+/* Typewriter blinking cursor — follows the active writing line */
+.scramble-line1.typing-active::after,
+.scramble-line2.typing-active::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  color: inherit;
+  font-weight: 300;
+  animation: cursor-blink 0.65s step-end infinite;
+}
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 @media (max-width: 768px) {
   .hero-title { font-size: 22vw; }
   .hero-roles { font-size: 4vw; }
