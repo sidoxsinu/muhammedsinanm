@@ -290,7 +290,17 @@
       const rotX = ((y - cy) / cy) * -10;  // max ±10deg
       const rotY = ((x - cx) / cx) * 10;
 
-      card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
+      // Use GSAP to animate rotationX/Y independently without breaking the 'y' and 'rotation' (Z) 
+      // applied by the stacking animation!
+      gsap.to(card, {
+        rotationX: rotX,
+        rotationY: rotY,
+        scale: 1.02,
+        transformPerspective: 800,
+        duration: 0.1,
+        ease: "none",
+        overwrite: "auto"
+      });
 
       const mx = (x / rect.width * 100).toFixed(1);
       const my = (y / rect.height * 100).toFixed(1);
@@ -299,7 +309,14 @@
     });
 
     card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+      gsap.to(card, {
+        rotationX: 0,
+        rotationY: 0,
+        scale: 1,
+        duration: 0.4,
+        ease: "power2.out",
+        overwrite: "auto"
+      });
     });
   });
 })();
