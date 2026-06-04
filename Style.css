@@ -1951,18 +1951,27 @@ body.cursor-hover .cursor-dot {
     max-height: none !important;
     overflow: visible !important;
   }
+
+  /* Give skill-category cards the same card look as other stacked sections on mobile */
+  .skills-grid .skill-category {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 28px 24px;
+    margin-bottom: 16px;
+  }
   
   /* Stagger the sticky top offsets so they stack into a deck */
-  .projects > :nth-child(1), .clubs-list > :nth-child(1), .events-list > :nth-child(1) { top: 90px !important; }
-  .projects > :nth-child(2), .clubs-list > :nth-child(2), .events-list > :nth-child(2) { top: 102px !important; }
-  .projects > :nth-child(3), .clubs-list > :nth-child(3), .events-list > :nth-child(3) { top: 114px !important; }
-  .projects > :nth-child(4), .clubs-list > :nth-child(4), .events-list > :nth-child(4) { top: 126px !important; }
-  .projects > :nth-child(5), .clubs-list > :nth-child(5), .events-list > :nth-child(5) { top: 138px !important; }
-  .projects > :nth-child(6), .clubs-list > :nth-child(6), .events-list > :nth-child(6) { top: 150px !important; }
-  .projects > :nth-child(7), .clubs-list > :nth-child(7), .events-list > :nth-child(7) { top: 162px !important; }
-  .projects > :nth-child(8), .clubs-list > :nth-child(8), .events-list > :nth-child(8) { top: 174px !important; }
-  .projects > :nth-child(9), .clubs-list > :nth-child(9), .events-list > :nth-child(9) { top: 186px !important; }
-  .projects > :nth-child(10), .clubs-list > :nth-child(10), .events-list > :nth-child(10) { top: 198px !important; }
+  .projects > :nth-child(1), .clubs-list > :nth-child(1), .events-list > :nth-child(1), .skills-grid > :nth-child(1) { top: 90px !important; }
+  .projects > :nth-child(2), .clubs-list > :nth-child(2), .events-list > :nth-child(2), .skills-grid > :nth-child(2) { top: 102px !important; }
+  .projects > :nth-child(3), .clubs-list > :nth-child(3), .events-list > :nth-child(3), .skills-grid > :nth-child(3) { top: 114px !important; }
+  .projects > :nth-child(4), .clubs-list > :nth-child(4), .events-list > :nth-child(4), .skills-grid > :nth-child(4) { top: 126px !important; }
+  .projects > :nth-child(5), .clubs-list > :nth-child(5), .events-list > :nth-child(5), .skills-grid > :nth-child(5) { top: 138px !important; }
+  .projects > :nth-child(6), .clubs-list > :nth-child(6), .events-list > :nth-child(6), .skills-grid > :nth-child(6) { top: 150px !important; }
+  .projects > :nth-child(7), .clubs-list > :nth-child(7), .events-list > :nth-child(7), .skills-grid > :nth-child(7) { top: 162px !important; }
+  .projects > :nth-child(8), .clubs-list > :nth-child(8), .events-list > :nth-child(8), .skills-grid > :nth-child(8) { top: 174px !important; }
+  .projects > :nth-child(9), .clubs-list > :nth-child(9), .events-list > :nth-child(9), .skills-grid > :nth-child(9) { top: 186px !important; }
+  .projects > :nth-child(10), .clubs-list > :nth-child(10), .events-list > :nth-child(10), .skills-grid > :nth-child(10) { top: 198px !important; }
   /* Align card links to the left in Achievements, Projects, and Experience on mobile */
   .projects .card .minimal-link,
   .projects .card .card-link,
@@ -2078,8 +2087,9 @@ body.cursor-hover .cursor-dot {
   }
   .stat-number { font-size: 3rem; }
   .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0;
   }
   .marquee-track { animation-duration: 35s; }
 
