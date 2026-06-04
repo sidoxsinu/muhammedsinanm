@@ -1592,9 +1592,7 @@ body.cursor-hover .cursor-dot {
 
 @media (max-width: 768px) {
     .section-bg-scroll-circle {
-        right: -10vw;
-        transform: translateY(-50%) scale(2);
-        opacity: 0.08;
+        display: none;
     }
 }
 
