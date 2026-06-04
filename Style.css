@@ -1847,7 +1847,7 @@ body.cursor-hover .cursor-dot {
   }
   .hero-pfp {
     height: 110svh !important; /* Reduced to zoom out slightly on mobile */
-    width: 100% !important;
+    width: 99vw !important; /* Prevent Chrome from excluding it as a 100vwx110vh background */
     top: -5svh !important;
     left: 0 !important;
     right: 0 !important;

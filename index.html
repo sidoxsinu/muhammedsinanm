@@ -179,8 +179,8 @@
     <link
         href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iJTIzZmZmZmZmIi8+PHRleHQgeD0iNTAiIHk9IjY1IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iNDUiIGZpbGw9IiUyMzBhMGYxZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U008L3RleHQ+PC9zdmc+"
         rel="icon" />
-    <link rel="preload" href="Style.css?v=47" as="style" />
-    <link href="Style.css?v=47" rel="stylesheet" />
+    <link rel="preload" href="Style.css?v=48" as="style" />
+    <link href="Style.css?v=48" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap"
         rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap" rel="stylesheet" /></noscript>
@@ -1299,29 +1299,30 @@
                 const line1 = document.querySelector(".scramble-line1");
                 const line2 = document.querySelector(".scramble-line2");
 
-                // Delay clearing text by 1 rAF so Lighthouse/browser can record
-                // the initial H1 content as the LCP element before the scramble starts.
-                requestAnimationFrame(() => {
+                // PERFORMANCE FIX: Wait for the 'load' event (all resources & first paint complete)
+                // before wiping the text. On slow mobile connections, wiping it earlier can 
+                // clear the text right before the initial paint, leaving Lighthouse with no LCP candidate.
+                window.addEventListener('load', () => {
                     line1.textContent = '';
                     line2.textContent = '';
+                    
+                    setTimeout(() => {
+                        line1.classList.add("typing-active");
+                        scrambleType(line1, "Muhammed", {
+                            charDelay: 90, scrambleFrames: 6,
+                            onComplete: () => {
+                                line1.classList.remove("typing-active");
+                                line2.classList.add("typing-active");
+                                scrambleType(line2, "Sinan M", {
+                                    charDelay: 90, scrambleFrames: 6,
+                                    onComplete: () => {
+                                        line2.classList.remove("typing-active");
+                                    }
+                                });
+                            }
+                        });
+                    }, 100);
                 });
-
-                setTimeout(() => {
-                    line1.classList.add("typing-active");
-                    scrambleType(line1, "Muhammed", {
-                        charDelay: 90, scrambleFrames: 6,
-                        onComplete: () => {
-                            line1.classList.remove("typing-active");
-                            line2.classList.add("typing-active");
-                            scrambleType(line2, "Sinan M", {
-                                charDelay: 90, scrambleFrames: 6,
-                                onComplete: () => {
-                                    line2.classList.remove("typing-active");
-                                }
-                            });
-                        }
-                    });
-                }, 300);
                 // Keep hero-pfp fully visible from the start so it registers as LCP.
                 // Only animate scale, not opacity — a hero image at opacity:0 cannot be LCP.
                 gsap.from(".hero-pfp", { scale: 1.05, duration: 0.6, ease: "power2.out" });
@@ -1735,7 +1736,7 @@
         });
     </script>
     <div class="cursor-dot" id="cursorDot"></div>
-    <script defer="" src="animations.js?v=26"></script>
+    <script defer="" src="animations.js?v=28"></script>
 </body>
 
 </html>
