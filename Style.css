@@ -205,6 +205,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 32px; /* Reduced gap */
+  position: relative;
 }
 
 section h2, section h3 {
@@ -1572,6 +1573,28 @@ body.cursor-hover .cursor-dot {
         right: 20px;
         transform: scale(0.7);
         transform-origin: bottom right;
+    }
+}
+
+/* ==========================================================================
+   SECTION BACKGROUND SCROLL CIRCLE
+   ========================================================================== */
+.section-bg-scroll-circle {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%) scale(3.5);
+    z-index: 0;
+    opacity: 0.05;
+    color: var(--text-primary);
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .section-bg-scroll-circle {
+        right: -10vw;
+        transform: translateY(-50%) scale(2);
+        opacity: 0.08;
     }
 }
 
