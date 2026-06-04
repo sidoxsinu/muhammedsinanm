@@ -1,4 +1,19 @@
 
+// PERFORMANCE: Apply will-change to hero-pfp AFTER load, not before.
+// Pre-compositing before first paint can prevent Chrome's LCP reporter
+// from recording the paint event, causing NO_LCP scores.
+(function applyWillChangeAfterLCP() {
+  const pfp = document.querySelector('.hero-pfp');
+  if (!pfp) return;
+  if (pfp.complete) {
+    pfp.style.setProperty('will-change', 'transform', 'important');
+  } else {
+    pfp.addEventListener('load', function() {
+      pfp.style.setProperty('will-change', 'transform', 'important');
+    }, { once: true });
+  }
+})();
+
 // FEATURE 2 — SCROLL-TRIGGERED TEXT REVEAL ANIMATIONS
 (function initScrollReveal() {
   if (typeof gsap === 'undefined') return;
