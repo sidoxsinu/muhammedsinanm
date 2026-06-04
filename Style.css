@@ -1596,6 +1596,13 @@ body.cursor-hover .cursor-dot {
     }
 }
 
+.cert-scroll-circle {
+    top: 15%;
+    right: 10%;
+    transform: translateY(-50%) scale(1.5);
+    opacity: 0.08;
+}
+
 /* ==========================================================================
    SCROLL-STACK SPACER SYSTEM
    ========================================================================== */
