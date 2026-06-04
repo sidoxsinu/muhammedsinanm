@@ -1,6 +1,6 @@
-# 📋 Muhammed Sinan M — Portfolio: Complete Project Documentation
+# 🚀 Muhammed Sinan M — Personal Portfolio
 
-> A comprehensive reference covering every aspect of the portfolio website — architecture, design system, colors, typography, layout, animations, JavaScript features, sections, and content.
+> Source code for my personal portfolio website (https://muhammedsinan.in). A comprehensive reference covering every aspect of the project — architecture, design system, colors, typography, layout, animations, JavaScript features, and SEO optimizations.
 
 ---
 
@@ -256,15 +256,16 @@ cv/
 | B.Tech in Computer Science & Engineering | Christ College of Engineering, Irinjalakuda | 2025–Present |
 | Higher Secondary – Science | MES HSS Irimbiliyam | 2023–2025 |
 
-### Projects (6 cards, split layout)
+### Projects (7 cards, split layout)
 | # | Project | Tech | Year | Links |
 |---|---------|------|------|-------|
-| 1 | **Next Generation AI Assistant** 🏆 *Best Technical Project* | AI, Groq API, Llama 3.3 | 2024 | [Live](https://next-gen-ai-assistant-system.vercel.app) · [Repo](https://github.com/sidoxsinu/next-gen-ai-assistant-system) |
-| 2 | **Pylon** — Smart Scholarship Finder | HTML/CSS, JavaScript | 2024 | [Live](https://pylon-topaz.vercel.app) · [Repo](https://github.com/sidoxsinu/Pylon) |
-| 3 | **UniversityHub** — Student resource platform | HTML/CSS, JavaScript | 2024 | [Repo](https://github.com/sidoxsinu/universityhub) |
-| 4 | **CodeBurry** — Gamified learning platform | React, TypeScript, TailwindCSS | 2024 | [Live](https://code-burry.vercel.app) · [Repo](https://github.com/sidoxsinu/CodeBurry) |
-| 5 | **SilentGuard** — AI pattern analysis & failure prediction | AI/ML, Python | 2024 | [Repo](https://github.com/sidoxsinu/SilentGuard) |
-| 6 | **AI Voice Assistant** — Email automation, to-do, commands | Voice UI, Automation | 2024 | [Repo](https://github.com/sidoxsinu/AI-Voice-Assistant) |
+| 1 | **Parackal Travels Hub** 💼 *Freelance* | HTML/CSS, JS, GSAP | 2026 | [Live](https://parackaltravelhub.com) |
+| 2 | **Next Generation AI Assistant** 🏆 *Best Tech Project* | AI, Groq API, Llama 3.3 | 2024 | [Live](https://next-gen-ai-assistant-system.vercel.app) · [Repo](https://github.com/sidoxsinu/next-gen-ai-assistant-system) |
+| 3 | **Pylon** — Smart Scholarship Finder | HTML/CSS, JavaScript | 2024 | [Live](https://pylon-topaz.vercel.app) · [Repo](https://github.com/sidoxsinu/Pylon) |
+| 4 | **UniversityHub** — Student resource platform | HTML/CSS, JavaScript | 2024 | [Repo](https://github.com/sidoxsinu/universityhub) |
+| 5 | **CodeBurry** — Gamified learning platform | React, TypeScript, TailwindCSS | 2024 | [Live](https://code-burry.vercel.app) · [Repo](https://github.com/sidoxsinu/CodeBurry) |
+| 6 | **SilentGuard** — AI pattern analysis | AI/ML, Python | 2024 | [Repo](https://github.com/sidoxsinu/SilentGuard) |
+| 7 | **AI Voice Assistant** — Automation | Voice UI | 2024 | [Repo](https://github.com/sidoxsinu/AI-Voice-Assistant) |
 
 > The featured project card (Next Gen AI Assistant) has a gold border `rgba(212,175,55,0.4)` and gold badge for the 🏆 award. Includes a collapsible "View Recognition →" section with LinkedIn and Instagram links.
 
@@ -566,19 +567,19 @@ The portfolio implements a highly sophisticated responsive design. Desktop provi
 ## 🌐 SEO & Meta
 
 ```html
-<title>Muhammed Sinan M | Portfolio</title>
-<meta name="description" content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner — Best Technical Project at Google for Developers Build with AI">
-<meta property="og:title" content="Muhammed Sinan M | Portfolio">
-<meta property="og:description" content="CSE Student | Full-Stack Developer | AI Enthusiast | Hackathon Winner...">
-<meta property="og:type" content="website">
+<title>Muhammed Sinan M | Full-Stack Developer & AI Enthusiast | Kerala</title>
+<meta name="description" content="Portfolio of Muhammed Sinan M (sidoxsinu)...">
+<meta property="og:title" content="Muhammed Sinan M | Full-Stack Developer & AI Enthusiast">
+<meta property="og:description" content="Portfolio of Muhammed Sinan M (sidoxsinu)...">
+<meta property="og:type" content="profile">
 <meta name="twitter:card" content="summary_large_image">
 ```
 
+- **JSON-LD Schema Markup**: Included rich `Person` schema providing details on education, occupation, portfolio URL, alternate names (`Mohammed Sinan`, `Sinan M`, `MohammedSinanM`), and technical skills (`GSAP`, `Freelance Web Development`).
 - Favicon: inline SVG base64 — white square with dark `SM` initials
-- Single `<h1>` (hero title), semantic `<nav>`, `<section>`, `<footer>` elements
-- `aria-label` on stat strips, scrollspy, back-to-top, share button, nav links
-- `aria-hidden="true"` on decorative elements (noise, cursor, scrollspy, mobile nav)
-- `loading="lazy"` on all certificate images
+- Semantic HTML5 structure with `<h1>` (hero title), `<nav>`, `<section>`, and `<footer>` elements.
+- ARIA Attributes (`aria-label`, `aria-hidden="true"`) implemented across the site for screen readers.
+- Modern WebP Images (`loading="lazy"`) for all assets, ensuring maximum Core Web Vitals performance.
 
 ---
 
