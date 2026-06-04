@@ -905,8 +905,8 @@ section h2, section h3 {
 
 /* ===== CERTIFICATE CAROUSEL SECTION ===== */
 .cert-carousel-section {
+  position: relative;
   padding-block: 6rem;
-  overflow: hidden;
   background: transparent;
 }
 
@@ -1597,10 +1597,11 @@ body.cursor-hover .cursor-dot {
 }
 
 .cert-scroll-circle {
-    top: 15%;
-    right: 10%;
-    transform: translateY(-50%) scale(1.5);
-    opacity: 0.08;
+    top: 30%;
+    right: 5%;
+    transform: translateY(-50%) scale(2);
+    opacity: 0.15;
+    z-index: 0;
 }
 
 /* ==========================================================================
