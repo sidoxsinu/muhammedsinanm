@@ -173,8 +173,7 @@ a {
   object-fit: cover; /* Ensures it scales nicely */
   z-index: 1;
   filter: grayscale(100%) contrast(1.3) brightness(0.85); /* Deepened blacks for purer white text inversion */
-  /* will-change moved to JS after LCP — pre-compositing before first paint
-     can prevent Chrome's LCP reporter from recording the paint event */
+  will-change: transform; /* Optimized for parallax */
 }
 
 .hero-title {
