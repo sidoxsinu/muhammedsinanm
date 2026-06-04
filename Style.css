@@ -187,6 +187,8 @@ a {
   color: #ffffff;
   mix-blend-mode: difference;
   overflow: visible; /* Text bleeds safely */
+  /* LCP: keep visible by default so Lighthouse can record it before JS runs */
+  opacity: 1;
 }
 
 /* ==========================================================================
