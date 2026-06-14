@@ -179,14 +179,15 @@
     <link
         href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iJTIzZmZmZmZmIi8+PHRleHQgeD0iNTAiIHk9IjY1IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iNDUiIGZpbGw9IiUyMzBhMGYxZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U008L3RleHQ+PC9zdmc+"
         rel="icon" />
-    <link rel="preload" href="Style.css?v=49" as="style" />
-    <link href="Style.css?v=49" rel="stylesheet" />
+    <link rel="preload" href="Style.css?v=50" as="style" />
+    <link href="Style.css?v=50" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap"
         rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap" rel="stylesheet" /></noscript>
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script defer src="dot-field.js"></script>
+    <script defer src="staggered-menu.js"></script>
 </head>
 
 <body>
@@ -251,27 +252,52 @@
             <div class="nav-right">
                 <a href="https://contact.muhammedsinan.in" target="_blank">Let's Talk!</a>
             </div>
-            <button class="nav-hamburger" aria-label="Open navigation menu">
-                <span></span><span></span><span></span>
+            <button class="sm-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="staggered-menu-panel" type="button">
+                <span class="sm-toggle-textWrap" aria-hidden="true">
+                    <span class="sm-toggle-textInner">
+                        <span class="sm-toggle-line">Menu</span>
+                        <span class="sm-toggle-line">Close</span>
+                        <span class="sm-toggle-line">Menu</span>
+                        <span class="sm-toggle-line">Close</span>
+                    </span>
+                </span>
+                <span class="sm-icon" aria-hidden="true">
+                    <span class="sm-icon-line"></span>
+                    <span class="sm-icon-line sm-icon-line-v"></span>
+                </span>
             </button>
         </nav>
-        <!-- MOBILE NAV MENU -->
-        <div aria-hidden="true" id="mobile-nav-menu">
-            <a href="#about">About</a>
-            <a href="#journey">Journey</a>
-            <a href="#education">Education</a>
-            <a href="#projects">Projects</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#clubs">Clubs</a>
-            <a href="#hackathons">Hackathons</a>
-            <a href="#fan-carousel">Certifications</a>
-            <div class="mobile-nav-actions">
-                <a class="btn download-resume-link" download="Muhammed_Sinan_M_Resume.pdf"
-                    href="images/Resume/Muhammed Sinan M.pdf" id="download-resume-mobile"
-                    style="display:block;text-align:center;"><span>Download Resume</span></a>
+        <!-- STAGGERED MOBILE NAV MENU -->
+        <div class="staggered-menu-wrapper fixed-wrapper" data-position="right" aria-hidden="true" style="--sm-accent: #E54D2E;">
+            <div class="sm-prelayers" aria-hidden="true">
+                <div class="sm-prelayer" style="background: #111111"></div>
+                <div class="sm-prelayer" style="background: #222222"></div>
             </div>
+            <aside id="staggered-menu-panel" class="staggered-menu-panel" aria-hidden="true">
+                <div class="sm-panel-inner">
+                    <ul class="sm-panel-list" role="list" data-numbering="true">
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#about" data-index="1"><span class="sm-panel-itemLabel">About</span></a></li>
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#journey" data-index="2"><span class="sm-panel-itemLabel">Journey</span></a></li>
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#education" data-index="3"><span class="sm-panel-itemLabel">Education</span></a></li>
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#projects" data-index="4"><span class="sm-panel-itemLabel">Projects</span></a></li>
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#achievements" data-index="5"><span class="sm-panel-itemLabel">Achievements</span></a></li>
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#experience" data-index="6"><span class="sm-panel-itemLabel">Experience</span></a></li>
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#skills" data-index="7"><span class="sm-panel-itemLabel">Skills</span></a></li>
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#clubs" data-index="8"><span class="sm-panel-itemLabel">Clubs</span></a></li>
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#hackathons" data-index="9"><span class="sm-panel-itemLabel">Hackathons</span></a></li>
+                        <li class="sm-panel-itemWrap"><a class="sm-panel-item" href="#fan-carousel" data-index="10"><span class="sm-panel-itemLabel">Certifications</span></a></li>
+                        <li class="sm-panel-itemWrap" style="margin-top: 1rem;"><a class="sm-panel-item" href="images/Resume/Muhammed Sinan M.pdf" target="_blank" data-index="11" style="color: #E54D2E;"><span class="sm-panel-itemLabel">Resume</span></a></li>
+                    </ul>
+                    <div class="sm-socials" aria-label="Social links">
+                        <h3 class="sm-socials-title">Socials</h3>
+                        <ul class="sm-socials-list" role="list">
+                            <li class="sm-socials-item"><a href="https://github.com/sidoxsinu" target="_blank" rel="noopener noreferrer" class="sm-socials-link">GitHub</a></li>
+                            <li class="sm-socials-item"><a href="https://www.linkedin.com/in/muhammed-sinan-m/" target="_blank" rel="noopener noreferrer" class="sm-socials-link">LinkedIn</a></li>
+                            <li class="sm-socials-item"><a href="https://contact.muhammedsinan.in" target="_blank" rel="noopener noreferrer" class="sm-socials-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
         </div>
         <!-- HERO -->
         <section class="hero-premium">
