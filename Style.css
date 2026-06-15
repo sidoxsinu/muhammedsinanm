@@ -54,33 +54,42 @@ a {
   align-items: center;
   padding: 32px 5vw;
   z-index: 1000;
-  color: #fff;
+  color: #000;
   font-size: 15px;
   font-weight: 500;
   pointer-events: none;
-  border: 1px solid transparent;
   border-radius: 0px;
-  background: transparent;
-  box-shadow: 0 0 0 transparent;
-  -webkit-backdrop-filter: blur(0px);
-  backdrop-filter: blur(0px);
   transition:
     padding 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     max-width 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     margin 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    background 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     border-radius 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     top 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     gap 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    -webkit-backdrop-filter 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    backdrop-filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    color 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.premium-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(17, 17, 17, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  backdrop-filter: blur(24px) saturate(1.6);
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: -2;
 }
 
 .premium-nav > * {
   pointer-events: auto;
-  mix-blend-mode: difference;
 }
 
 .premium-nav .nav-left {
@@ -115,20 +124,17 @@ a {
   justify-content: center;
   gap: 2rem;
   border-radius: 60px;
-  background: rgba(17, 17, 17, 0.35);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  backdrop-filter: blur(24px) saturate(1.6);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
   pointer-events: auto;
+  color: #fff;
 }
 
-.premium-nav.nav-glass > * {
-  mix-blend-mode: normal;
+.premium-nav.nav-glass::before {
+  opacity: 1;
 }
+
+
+
+
 
 .premium-nav.nav-glass .nav-left {
   flex-grow: 0;
@@ -141,7 +147,7 @@ a {
 }
 
 /* Subtle shimmer highlight on the glass bar */
-.premium-nav.nav-glass::before {
+.premium-nav.nav-glass::after {
   content: '';
   position: absolute;
   inset: 0;
