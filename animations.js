@@ -485,3 +485,33 @@ window.toggleDropdown = function (button) {
     });
   });
 })();
+
+// FEATURE 11 — GLASSMORPHISM FLOATING NAV ON SCROLL
+// Nav transforms from full-width transparent to a floating frosted-glass pill
+// when scrolled past the hero, and reverts when scrolling back up.
+(function initGlassNav() {
+  const nav = document.querySelector('.premium-nav');
+  const hero = document.querySelector('.hero-premium');
+  if (!nav || !hero) return;
+
+  // Use IntersectionObserver: when hero is mostly off-screen, activate glass nav
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Hero is visible → restore original nav
+          nav.classList.remove('nav-glass');
+        } else {
+          // Hero scrolled away → morph to glass pill
+          nav.classList.add('nav-glass');
+        }
+      });
+    },
+    {
+      // Fire when only 5% of the hero is still visible
+      threshold: 0.05,
+    }
+  );
+
+  observer.observe(hero);
+})();

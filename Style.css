@@ -61,6 +61,75 @@ a {
   pointer-events: auto;
 }
 
+/* ── GLASSMORPHISM FLOATING NAV STATE ── */
+.premium-nav {
+  transition:
+    padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    -webkit-backdrop-filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+}
+
+.premium-nav.nav-glass {
+  mix-blend-mode: normal;
+  top: 16px;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  max-width: min(92vw, 960px);
+  margin-inline: auto;
+  padding: 14px 44px;
+  justify-content: center;
+  gap: 2rem;
+  border-radius: 60px;
+  background: rgba(17, 17, 17, 0.35);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  pointer-events: auto;
+}
+
+/* Subtle shimmer highlight on the glass bar */
+.premium-nav.nav-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Links breathe in glass mode */
+.premium-nav.nav-glass .nav-center {
+  gap: 1.8rem;
+}
+
+.premium-nav.nav-glass .nav-center a,
+.premium-nav.nav-glass .nav-right a,
+.premium-nav.nav-glass .nav-left {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
 .nav-center {
   display: flex;
   gap: 1.2rem;
@@ -2323,6 +2392,12 @@ body.cursor-hover .cursor-dot {
   .premium-nav {
     padding: 12px 5vw !important;
     font-size: 13px !important;
+  }
+  .premium-nav.nav-glass {
+    padding: 10px 20px !important;
+    max-width: 92vw !important;
+    width: auto !important;
+    top: 10px !important;
   }
   .nav-center,
   .nav-right {
