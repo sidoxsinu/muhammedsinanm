@@ -212,6 +212,10 @@ section {
   margin-inline: auto;
 }
 
+#about {
+  padding-bottom: 1.5rem;
+}
+
 .section-inner {
   display: flex;
   flex-direction: column;
@@ -702,62 +706,288 @@ section h2, section h3 {
   gap: 24px;
 }
 
-/* TESTIMONIALS & QUOTES */
+/* TESTIMONIALS & QUOTES — CARD SWAP */
 .testimonials-section {
-  padding: 40px 0;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
+  padding: 30px 0;
+  overflow: visible;
+  background: transparent;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.marquee-track {
+.testimonials-wrapper {
   display: flex;
-  overflow: hidden;
-  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  height: 340px;
+  position: relative;
+  overflow: visible;
+  width: 100%;
 }
 
-@keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.card-swap-container {
+  position: relative;
+  perspective: 1200px;
+  overflow: visible;
 }
 
-.marquee-inner {
+.card-swap-container .card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(22, 22, 28, 0.95), rgba(14, 14, 18, 0.98));
+  padding: 40px 44px;
   display: flex;
-  gap: 3rem;
-  padding-left: 3rem;
-  width: max-content;
-  animation: marqueeScroll 25s linear infinite;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-sizing: border-box;
+  cursor: default;
+  transition: none !important;
 }
 
-.marquee-inner:hover {
-  animation-play-state: paused;
-}
-
-.quote-card {
-  flex: 0 0 auto;
-  width: max-content;
-  max-width: 450px;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 24px 32px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.quote-text {
-  font-size: 1.1rem;
-  color: var(--text-primary);
+.card-swap-container .card .quote-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: rgba(240, 240, 245, 0.92);
+  font-family: 'Space Grotesk', sans-serif;
   font-style: italic;
-  margin-bottom: 12px;
-  line-height: 1.5;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.01em;
 }
 
-.quote-source {
-  font-size: 0.9rem;
+.card-swap-container .card .quote-source {
+  font-size: 0.85rem;
   color: #E8562A;
-  font-weight: 500;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+@media (max-width: 768px) {
+  .testimonials-wrapper {
+    height: 300px;
+  }
+  .card-swap-container .card {
+    padding: 24px 28px;
+  }
+  .card-swap-container .card .quote-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .card-swap-container .card .quote-source {
+    font-size: 0.8rem;
+  }
+  .card-swap-nav {
+    padding-inline: 15px;
+  }
+  .card-swap-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials-section {
+    padding: 24px 0 16px;
+    overflow: hidden;
+  }
+
+  .testimonials-wrapper {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .card-swap-container {
+    width: calc(100vw - 40px);
+    height: auto;
+    perspective: none;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .card-swap-container .card {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100% !important;
+    height: auto !important;
+    padding: 28px 24px;
+    border-radius: 16px;
+    transform: none !important;
+    opacity: 1;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(145deg, rgba(22, 22, 28, 0.95), rgba(14, 14, 18, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+    animation: none !important;
+  }
+
+  .card-swap-container .card.mobile-active {
+    display: flex;
+    animation: quoteSlideIn 0.45s cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
+
+  .card-swap-container .card .quote-text {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 14px;
+    color: rgba(240, 240, 245, 0.9);
+  }
+
+  .card-swap-container .card .quote-source {
+    font-size: 0.72rem;
+    letter-spacing: 1.2px;
+  }
+
+  /* Dot indicators */
+  .card-swap-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+  }
+
+  .card-swap-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .card-swap-dot.active {
+    width: 20px;
+    border-radius: 3px;
+    background: #E8562A;
+  }
+
+  /* Nav buttons below card */
+  .card-swap-nav {
+    position: static;
+    transform: none;
+    max-width: none;
+    width: auto;
+    gap: 12px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .card-swap-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes quoteSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card-swap-dots {
+  display: none;
+}
+
+.card-swap-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+  box-sizing: border-box;
+  padding-inline: 20px;
+}
+
+.card-swap-btn {
+  pointer-events: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(22, 22, 28, 0.8);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  line-height: 1;
+}
+
+.card-swap-btn:hover {
+  border-color: #E8562A;
+  color: #E8562A;
+  background: rgba(232, 86, 42, 0.15);
+  box-shadow: 0 0 20px rgba(232, 86, 42, 0.25);
+}
+
+.card-swap-btn:active {
+  transform: scale(0.92);
+}
+
+@media (max-width: 768px) {
+  .card-swap-nav {
+    max-width: 600px;
+    padding-inline: 16px;
+  }
+  .card-swap-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-swap-nav {
+    position: static;
+    transform: none;
+    max-width: none;
+    padding-inline: 0;
+  }
+  .card-swap-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
 }
 
 .event-list-item {

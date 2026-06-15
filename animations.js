@@ -102,7 +102,7 @@
 // FEATURE 4 — 3D CARD TILT ON HOVER
 (function initCardTilt() {
   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
-  const cards = document.querySelectorAll('.card, .split-card, .event-list-item');
+  const cards = document.querySelectorAll('.card:not(.card-swap-container .card), .split-card, .event-list-item');
 
   cards.forEach(card => {
     card.classList.add('tilt-card');

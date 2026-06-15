@@ -67,14 +67,20 @@
       "image": "https://muhammedsinan.in/images/profile-picture/bg-removed-black&white-pfp.webp",
       "email": "muhammedsinan.m67@gmail.com",
       "telephone": "+918590568566",
-      "jobTitle": "Full-Stack Developer",
+      "jobTitle": "Software Engineering Intern",
       "hasOccupation": {
         "@type": "Occupation",
-        "name": "Full-Stack Developer",
+        "name": "Software Engineering Intern",
         "occupationLocation": {
           "@type": "Country",
           "name": "India"
         }
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Torcue Digital Inc.",
+        "alternateName": "Toric Software Labs Private Limited",
+        "url": "https://www.torcue.com"
       },
       "address": {
         "@type": "PostalAddress",
@@ -179,8 +185,8 @@
     <link
         href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iJTIzZmZmZmZmIi8+PHRleHQgeD0iNTAiIHk9IjY1IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iNDUiIGZpbGw9IiUyMzBhMGYxZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U008L3RleHQ+PC9zdmc+"
         rel="icon" />
-    <link rel="preload" href="Style.css?v=50" as="style" />
-    <link href="Style.css?v=50" rel="stylesheet" />
+    <link rel="preload" href="Style.css?v=59" as="style" />
+    <link href="Style.css?v=59" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap"
         rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap" rel="stylesheet" /></noscript>
@@ -189,6 +195,7 @@
     <script defer src="dot-field.js"></script>
     <script defer src="staggered-menu.js"></script>
     <script defer src="click-spark.js"></script>
+    <script defer src="card-swap.js?v=6"></script>
 </head>
 
 <body>
@@ -389,38 +396,27 @@
                 </div>
             </div>
         </section>
-        <!-- TESTIMONIALS MARQUEE -->
+        <!-- TESTIMONIALS CARD SWAP -->
         <section aria-label="Recognition quotes" class="testimonials-section">
-            <div class="marquee-track" id="marquee-track">
-                <div class="marquee-inner">
-                    <div class="quote-card">
+            <div class="testimonials-wrapper">
+                <div class="card-swap-container" id="testimonials-card-swap">
+                    <div class="card">
                         <p class="quote-text">"Was found punctual and inquisitive throughout the programme."</p>
-                        <p class="quote-source reveal-block">— Suvidha Foundation, Research Internship</p>
+                        <p class="quote-source">— Suvidha Foundation, Research Internship</p>
                     </div>
-                    <div class="quote-card">
-                        <p class="quote-text">"Recognized for technical excellence and innovation among all competing
-                            teams."</p>
-                        <p class="quote-source reveal-block">— MuLearn NSSCE, Build with AI Hackathon</p>
+                    <div class="card">
+                        <p class="quote-text">"Recognized for technical excellence and innovation among all competing teams."</p>
+                        <p class="quote-source">— MuLearn NSSCE, Build with AI Hackathon</p>
                     </div>
-                    <div class="quote-card">
-                        <p class="quote-text">"Active participation, critical thinking ability, and contribution towards
-                            nurturing creativity and technical excellence."</p>
-                        <p class="quote-source reveal-block">— YIP 8.0, K-DISC Government of Kerala</p>
+                    <div class="card">
+                        <p class="quote-text">"Active participation, critical thinking ability, and contribution towards nurturing creativity and technical excellence."</p>
+                        <p class="quote-source">— YIP 8.0, K-DISC Government of Kerala</p>
                     </div>
-                    <div class="quote-card">
-                        <p class="quote-text">"Was found punctual and inquisitive throughout the programme."</p>
-                        <p class="quote-source reveal-block">— Suvidha Foundation, Research Internship</p>
-                    </div>
-                    <div class="quote-card">
-                        <p class="quote-text">"Recognized for technical excellence and innovation among all competing
-                            teams."</p>
-                        <p class="quote-source reveal-block">— MuLearn NSSCE, Build with AI Hackathon</p>
-                    </div>
-                    <div class="quote-card">
-                        <p class="quote-text">"Active participation, critical thinking ability, and contribution towards
-                            nurturing creativity and technical excellence."</p>
-                        <p class="quote-source reveal-block">— YIP 8.0, K-DISC Government of Kerala</p>
-                    </div>
+                </div>
+                <div class="card-swap-dots" id="card-swap-dots" aria-label="Quote indicators"></div>
+                <div class="card-swap-nav">
+                    <button class="card-swap-btn" id="card-swap-prev" aria-label="Previous quote">‹</button>
+                    <button class="card-swap-btn" id="card-swap-next" aria-label="Next quote">›</button>
                 </div>
             </div>
         </section>
@@ -450,6 +446,8 @@
                             <div class="journey-content bg-alt">
                                 <div class="journey-dot"></div>
                                 <ul class="journey-list">
+                                    <li><strong>Software Engineering Intern</strong>Torcue Digital Inc. · Infopark, Kochi</li>
+                                    <li><strong>Co-CFO, IEDC CCE</strong>Innovation & Entrepreneurship Development Centre</li>
                                     <li><strong>Research Intern</strong>Suvidha Foundation · AI &amp; Dev workflows</li>
                                     <li><strong>BeachHack Season 7</strong>Finalist · HackForChrist</li>
                                 </ul>
@@ -798,6 +796,42 @@
                     <div class="card fade-in-up reveal-block exp-card-layout">
                         <div class="exp-card-text">
                             <div class="card-header">
+                                <h4>Software Engineering Intern</h4>
+                                <span class="badge" style="color: var(--accent-red); font-weight: 500; font-size: 14px;">Current</span>
+                            </div>
+                            <p class="reveal-block"
+                                style="color: var(--text-primary); font-size: 16px; font-weight: 600; margin-bottom: 4px;">
+                                Torcue Digital Inc. (Toric Software Labs Pvt. Ltd.)</p>
+                            <p class="reveal-block"
+                                style="color: var(--accent-red); font-size: 14px; font-weight: 500; margin-bottom: 12px;">
+                                Jun 2026 – Present · 6 months</p>
+                            <p class="reveal-block">Software Engineering Intern at Torcue Digital Inc., based at Transasia Cyberpark, Infopark Phase II, Kochi. Working on software development in a professional product engineering environment.</p>
+                            <p class="reveal-block"
+                                style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+                                <strong>Location:</strong> Infopark Phase II, Kochi, Kerala
+                            </p>
+                            <a class="btn" href="https://www.torcue.com" rel="noopener noreferrer"
+                                style="display:inline-block; text-align: center;" target="_blank"><span>Visit Company ↗</span></a>
+                        </div>
+                    </div>
+                    <div class="card fade-in-up reveal-block exp-card-layout">
+                        <div class="exp-card-text">
+                            <div class="card-header">
+                                <h4>Co-CFO, IEDC CCE</h4>
+                                <span class="badge" style="color: var(--accent-red); font-weight: 500; font-size: 14px;">Current</span>
+                            </div>
+                            <p class="reveal-block"
+                                style="color: var(--text-primary); font-size: 16px; font-weight: 600; margin-bottom: 4px;">
+                                Innovation &amp; Entrepreneurship Development Centre</p>
+                            <p class="reveal-block"
+                                style="color: var(--accent-red); font-size: 14px; font-weight: 500; margin-bottom: 12px;">
+                                Jun 2026 – Present</p>
+                            <p class="reveal-block">Selected as Co-Chief Financial Officer of IEDC at Christ College of Engineering. IEDC is a flagship initiative by Kerala Startup Mission (KSUM) that fosters innovation and entrepreneurship in academic institutions — organizing hackathons, mentorship programs, startup incubation, and industry connects.</p>
+                        </div>
+                    </div>
+                    <div class="card fade-in-up reveal-block exp-card-layout">
+                        <div class="exp-card-text">
+                            <div class="card-header">
                                 <h4>Research Intern</h4>
                                 <span class="badge">Internship</span>
                             </div>
@@ -906,7 +940,7 @@
                         <ul>
                             <li>Community of Developers (Aug 2025 - Present)</li>
                             <li>FOSS CCE (Dec 2025 - Present)</li>
-                            <li>IEDC - Innovation &amp; Entrepreneurship Development Centre (Aug 2025 - Present)</li>
+                            <li>IEDC - Innovation &amp; Entrepreneurship Development Centre · Co-CFO (Jun 2026 - Present)</li>
                         </ul>
                     </div>
                 </div>
@@ -1877,7 +1911,7 @@
         });
     </script>
     <div class="cursor-dot" id="cursorDot"></div>
-    <script defer="" src="animations.js?v=28"></script>
+    <script defer="" src="animations.js?v=29"></script>
 </body>
 
 </html>
