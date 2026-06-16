@@ -1288,7 +1288,8 @@ section h2, section h3 {
   font-size: clamp(2.2rem, 5vw, 4rem);
   font-weight: 700;
   color: #fff;
-  margin: 0 0 1rem;
+  margin: 0 auto 1rem;
+  max-width: 900px;
   line-height: 1.1;
 }
 
@@ -3133,38 +3134,10 @@ body.cursor-hover .cursor-dot {
   color: var(--text-primary);
   font-family: var(--font-heading);
   text-align: center;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
   cursor: pointer;
   padding: 24px;
   transform-style: preserve-3d;
-}
-
-.skill-card-wrapper:hover .skill-card {
-  transform: translateY(-8px) translateZ(35px);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-}
-
-.skill-card-wrapper:hover .skill-card[data-category="frontend"] {
-  border-color: rgba(229, 77, 46, 0.4);
-  box-shadow: 0 15px 35px rgba(229, 77, 46, 0.15), 0 0 15px rgba(229, 77, 46, 0.05);
-}
-
-.skill-card-wrapper:hover .skill-card[data-category="backend"] {
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15), 0 0 15px rgba(59, 130, 246, 0.05);
-}
-
-.skill-card-wrapper:hover .skill-card[data-category="ai"] {
-  border-color: rgba(168, 85, 247, 0.4);
-  box-shadow: 0 15px 35px rgba(168, 85, 247, 0.15), 0 0 15px rgba(168, 85, 247, 0.05);
-}
-
-.skill-card-wrapper:hover .skill-card[data-category="design"] {
-  border-color: rgba(236, 72, 153, 0.4);
-  box-shadow: 0 15px 35px rgba(236, 72, 153, 0.15), 0 0 15px rgba(236, 72, 153, 0.05);
 }
 
 .skill-icon-container {
@@ -3177,33 +3150,6 @@ body.cursor-hover .cursor-dot {
   justify-content: center;
   margin-bottom: 12px;
   color: var(--text-secondary);
-  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
-
-.skill-card-wrapper:hover .skill-icon-container {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-primary);
-  transform: scale(1.1);
-}
-
-.skill-card-wrapper:hover .skill-card[data-category="frontend"] .skill-icon-container {
-  background: rgba(229, 77, 46, 0.15);
-  color: var(--accent-red);
-}
-
-.skill-card-wrapper:hover .skill-card[data-category="backend"] .skill-icon-container {
-  background: rgba(59, 130, 246, 0.15);
-  color: #3b82f6;
-}
-
-.skill-card-wrapper:hover .skill-card[data-category="ai"] .skill-icon-container {
-  background: rgba(168, 85, 247, 0.15);
-  color: #a855f7;
-}
-
-.skill-card-wrapper:hover .skill-card[data-category="design"] .skill-icon-container {
-  background: rgba(236, 72, 153, 0.15);
-  color: #ec4899;
 }
 
 .skill-icon-container svg {
@@ -3219,3 +3165,5 @@ body.cursor-hover .cursor-dot {
   letter-spacing: 0.5px;
   color: var(--text-primary);
 }
+
+
