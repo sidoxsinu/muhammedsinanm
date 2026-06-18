@@ -2604,24 +2604,8 @@
                     }
                 }, { passive: true });
 
-                // Redirect vertical wheel scroll to horizontal scroll up to 1 round, then let it scroll normally to next section/footer
-                viewport.addEventListener('wheel', e => {
-                    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-                        ensureDimensions();
-                        const threshold = setWidth > 0 ? setWidth : 1500;
-
-                        if (accumulatedScrollY < threshold) {
-                            e.preventDefault();
-                            viewport.scrollLeft += e.deltaY * 1.2; // slight multiplier for better responsiveness
-                            accumulatedScrollY += Math.abs(e.deltaY);
-                        }
-
-                        clearTimeout(wheelTimeout);
-                        wheelTimeout = setTimeout(() => {
-                            accumulatedScrollY = 0;
-                        }, 800);
-                    }
-                }, { passive: false });
+                // Removed the vertical wheel scroll hijack to fix the scroll trap functional error.
+                // Users can still drag-to-scroll or rely on auto-scroll, and vertical scrolling remains natural.
 
                 // 5. Drag-to-scroll (mouse) & Click Handling
                 let isDown = false, startX;
