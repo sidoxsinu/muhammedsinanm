@@ -463,27 +463,6 @@ window.toggleDropdown = function (button) {
   });
 })();
 
-// FEATURE: MOBILE NAV TOGGLE
-(function initMobileNav() {
-  const hamburger = document.querySelector('.nav-hamburger');
-  const menu = document.getElementById('mobile-nav-menu');
-  if (!hamburger || !menu) return;
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    menu.classList.toggle('open');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-  });
-
-  // Close on any link click
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      menu.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-})();
 
 // FEATURE 11 — GLASSMORPHISM FLOATING NAV ON SCROLL
 // Nav transforms from full-width transparent to a floating frosted-glass pill

@@ -185,66 +185,20 @@
     <link
         href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iJTIzZmZmZmZmIi8+PHRleHQgeD0iNTAiIHk9IjY1IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iNDUiIGZpbGw9IiUyMzBhMGYxZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U008L3RleHQ+PC9zdmc+"
         rel="icon" />
-    <link rel="preload" href="Style.css?v=59" as="style" />
-    <link href="Style.css?v=59" rel="stylesheet" />
+    <link rel="preload" href="css/Style.css?v=59" as="style" />
+    <link href="css/Style.css?v=59" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap"
         rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&amp;f[]=space-grotesk@300,400,1&amp;display=swap" rel="stylesheet" /></noscript>
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-    <script defer src="dot-field.js"></script>
-    <script defer src="staggered-menu.js"></script>
-    <script defer src="click-spark.js"></script>
-    <script defer src="card-swap.js?v=6"></script>
+    <script defer src="js/dot-field.js"></script>
+    <script defer src="js/staggered-menu.js"></script>
+    <script defer src="js/click-spark.js"></script>
+    <script defer src="js/card-swap.js?v=6"></script>
 </head>
 
 <body>
-    <!-- READING PROGRESS BAR -->
-    <div id="reading-progress"></div>
-    <!-- GRAIN / NOISE OVERLAY -->
-    <svg aria-hidden="true" style="display:none">
-        <filter id="grain-filter">
-            <feturbulence basefrequency="0.65" numoctaves="3" stitchtiles="stitch" type="fractalNoise"></feturbulence>
-            <fecolormatrix type="saturate" values="0"></fecolormatrix>
-        </filter>
-    </svg>
-    <div aria-hidden="true" id="noise-overlay"></div>
-    <!-- CUSTOM CURSOR -->
-    <div aria-hidden="true" id="cursor-dot"></div>
-    <!-- SHARE BUTTON + POPUP -->
-    <div aria-label="Share portfolio" id="share-btn" title="Share">
-        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-            stroke-width="2" viewBox="0 0 24 24" width="18">
-            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-            <polyline points="16 6 12 2 8 6"></polyline>
-            <line x1="12" x2="12" y1="2" y2="15"></line>
-        </svg>
-    </div>
-    <div aria-hidden="true" id="share-popup">
-        <a href="#" id="share-linkedin" rel="noopener noreferrer" target="_blank">LinkedIn ↗</a>
-        <a href="#" id="share-whatsapp" rel="noopener noreferrer" target="_blank">WhatsApp ↗</a>
-        <a href="#" id="share-twitter" rel="noopener noreferrer" target="_blank">Twitter / X ↗</a>
-        <a href="#" id="share-instagram">Instagram ↗</a>
-        <a href="#" id="share-copy">Copy Link</a>
-    </div>
-    <!-- TOAST -->
-    <div id="share-toast"></div>
-    <!-- SCROLLSPY -->
-    <div aria-label="Page sections" id="scrollspy">
-        <div class="spy-dot" data-section="about" title="About"><span class="spy-tip">About</span></div>
-        <div class="spy-dot" data-section="journey" title="Journey"><span class="spy-tip">Journey</span></div>
-        <div class="spy-dot" data-section="education" title="Education"><span class="spy-tip">Education</span></div>
-        <div class="spy-dot" data-section="projects" title="Projects"><span class="spy-tip">Projects</span></div>
-        <div class="spy-dot" data-section="achievements" title="Achievements"><span class="spy-tip">Achievements</span>
-        </div>
-        <div class="spy-dot" data-section="experience" title="Experience"><span class="spy-tip">Experience</span></div>
-        <div class="spy-dot" data-section="skills" title="Skills"><span class="spy-tip">Skills</span></div>
-        <div class="spy-dot" data-section="clubs" title="Clubs"><span class="spy-tip">Clubs</span></div>
-        <div class="spy-dot" data-section="hackathons" title="Hackathons"><span class="spy-tip">Hackathons</span></div>
-        <div class="spy-dot" data-section="certifications" title="Certifications"><span
-                class="spy-tip">Certifications</span></div>
-        <div class="spy-dot" data-section="contact" title="Let's Talk!"><span class="spy-tip">Let's Talk!</span></div>
-    </div>
     <div class="site-wrapper">
         <!-- NAV -->
         <nav class="premium-nav">
@@ -2604,9 +2558,15 @@
                     }
                 }, { passive: true });
 
-                // Removed the vertical wheel scroll hijack to fix the scroll trap functional error.
-                // Users can still drag-to-scroll or rely on auto-scroll, and vertical scrolling remains natural.
-
+                // Added vertical wheel scroll hijack to scroll the carousel for one round
+                viewport.addEventListener('wheel', (e) => {
+                    ensureDimensions();
+                    if (setWidth > 0 && Math.abs(accumulatedScrollY) < setWidth) {
+                        e.preventDefault();
+                        viewport.scrollLeft += e.deltaY;
+                        accumulatedScrollY += Math.abs(e.deltaY);
+                    }
+                }, { passive: false });
                 // 5. Drag-to-scroll (mouse) & Click Handling
                 let isDown = false, startX;
                 let totalDelta = 0;
@@ -2826,7 +2786,7 @@
         });
     </script>
     <div class="cursor-dot" id="cursorDot"></div>
-    <script defer="" src="animations.js?v=29"></script>
+    <script defer="" src="js/animations.js?v=29"></script>
 </body>
 
 </html>

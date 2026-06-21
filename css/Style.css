@@ -641,17 +641,6 @@ section h2, section h3 {
   font-size: 1.2rem;
 }
 
-/* Clean up old UI */
-#reading-progress, 
-#noise-overlay,
-#cursor-dot,
-#share-btn,
-#share-popup,
-#share-toast,
-#scrollspy,
-#mobile-nav-menu {
-  display: none !important;
-}
 
 /* ==========================================================================
    MAGNETIC RIPPLE BUTTONS
