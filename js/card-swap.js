@@ -186,28 +186,48 @@ class CardSwap {
     let startY = 0;
     let tracking = false;
 
-    this.container.addEventListener('touchstart', (e) => {
-      if (!this.isMobileMode) return;
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
+    const handleStart = (x, y) => {
+      startX = x;
+      startY = y;
       tracking = true;
-    }, { passive: true });
+    };
 
-    this.container.addEventListener('touchend', (e) => {
-      if (!this.isMobileMode || !tracking) return;
+    const handleEnd = (x, y) => {
+      if (!tracking) return;
       tracking = false;
-      const diffX = e.changedTouches[0].clientX - startX;
-      const diffY = e.changedTouches[0].clientY - startY;
-      // Only trigger if horizontal swipe > vertical
+      const diffX = x - startX;
+      const diffY = y - startY;
       if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
         if (diffX < 0) {
-          this.mobileNext();
+          if (this.isMobileMode) this.mobileNext();
+          else this.swap();
         } else {
-          this.mobilePrev();
+          if (this.isMobileMode) this.mobilePrev();
+          else this.swapPrev();
         }
         this.resetTimer();
       }
+    };
+
+    this.container.addEventListener('touchstart', (e) => {
+      handleStart(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: true });
+
+    this.container.addEventListener('touchend', (e) => {
+      handleEnd(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+    }, { passive: true });
+
+    this.container.addEventListener('mousedown', (e) => {
+      handleStart(e.clientX, e.clientY);
+    });
+
+    this.container.addEventListener('mouseup', (e) => {
+      handleEnd(e.clientX, e.clientY);
+    });
+
+    this.container.addEventListener('mouseleave', (e) => {
+      if (tracking) handleEnd(e.clientX, e.clientY);
+    });
   }
 
   // ── Init ──
@@ -223,6 +243,8 @@ class CardSwap {
       });
       this.start();
     }
+
+    this.setupSwipe();
 
     // Resize handler — switch between modes
     let resizeTimer;
