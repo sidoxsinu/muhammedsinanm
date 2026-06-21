@@ -2162,9 +2162,11 @@ body.cursor-hover .cursor-dot {
   * { cursor: auto !important; }
   a, button, [role="button"] { cursor: pointer !important; }
 
-  /* 4 — 3D card tilt / shine */
+  /* 4 — 3D card tilt / shine (exclude pile cards so GSAP card-pile can animate them) */
   .tilt-shine { display: none !important; }
-  .card, .split-card, .event-list-item {
+  .card:not(.card-pile-container > .card),
+  .split-card:not(.card-pile-container > .split-card),
+  .event-list-item {
     transform: none !important;
     perspective: none !important;
   }
@@ -2324,19 +2326,21 @@ body.cursor-hover .cursor-dot {
   }
   .journey-year { font-size: 2rem; }
 
-  /* 7 — STACKED CARDS: STICKY STACK ON MOBILE */
-  /* Replaces the desktop drop-from-top JS animation with a smooth CSS scroll-up sticky stack */
-  .projects .card,
-  .projects .split-card,
-  .clubs-list .club-item,
-  .events-list .event-item,
-  .skills-grid .skill-category {
-    position: sticky !important;
-    text-align: left !important;
-    filter: none !important;
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
+  /* 7 — CARD PILE: GSAP PINNED DROP ANIMATION ON MOBILE */
+  /* The screen pins and cards drop onto each other one-by-one, synced to scroll.
+     JS (Feature 10) handles the pin + drop animation; CSS just needs to support the grid overlap. */
+
+  /* Card-pile container: tighter sizing for mobile */
+  .card-pile-container {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Cards inside the pile need full width and proper stacking */
+  .card-pile-container > .card,
+  .card-pile-container > .split-card {
+    width: 100% !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3) !important;
   }
 
   /* Give skill-category cards the same card look as other stacked sections on mobile */
@@ -2347,18 +2351,6 @@ body.cursor-hover .cursor-dot {
     padding: 28px 24px;
     margin-bottom: 16px;
   }
-  
-  /* Stagger the sticky top offsets so they stack into a deck */
-  .projects > :nth-child(1), .clubs-list > :nth-child(1), .events-list > :nth-child(1), .skills-grid > :nth-child(1) { top: 90px !important; }
-  .projects > :nth-child(2), .clubs-list > :nth-child(2), .events-list > :nth-child(2), .skills-grid > :nth-child(2) { top: 102px !important; }
-  .projects > :nth-child(3), .clubs-list > :nth-child(3), .events-list > :nth-child(3), .skills-grid > :nth-child(3) { top: 114px !important; }
-  .projects > :nth-child(4), .clubs-list > :nth-child(4), .events-list > :nth-child(4), .skills-grid > :nth-child(4) { top: 126px !important; }
-  .projects > :nth-child(5), .clubs-list > :nth-child(5), .events-list > :nth-child(5), .skills-grid > :nth-child(5) { top: 138px !important; }
-  .projects > :nth-child(6), .clubs-list > :nth-child(6), .events-list > :nth-child(6), .skills-grid > :nth-child(6) { top: 150px !important; }
-  .projects > :nth-child(7), .clubs-list > :nth-child(7), .events-list > :nth-child(7), .skills-grid > :nth-child(7) { top: 162px !important; }
-  .projects > :nth-child(8), .clubs-list > :nth-child(8), .events-list > :nth-child(8), .skills-grid > :nth-child(8) { top: 174px !important; }
-  .projects > :nth-child(9), .clubs-list > :nth-child(9), .events-list > :nth-child(9), .skills-grid > :nth-child(9) { top: 186px !important; }
-  .projects > :nth-child(10), .clubs-list > :nth-child(10), .events-list > :nth-child(10), .skills-grid > :nth-child(10) { top: 198px !important; }
   /* Align card links to the left in Achievements, Projects, and Experience on mobile */
   .projects .card .minimal-link,
   .projects .card .card-link,

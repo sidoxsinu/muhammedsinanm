@@ -370,20 +370,21 @@ window.toggleDropdown = function (button) {
 
 
 
-// FEATURE 10 — CARD PILE BUILD-UP
+// FEATURE 10 — CARD PILE BUILD-UP (Desktop + Mobile)
 // Phase 1: Section heading is visible alone.
-// Phase 2: Each ~70 vh of scrolling drops the next card from above,
+// Phase 2: Each scroll segment drops the next card from above,
 //          landing on the pile and fanning out with slight rotations for a "dealt deck" look.
+// On mobile (≤768px): screen pins and cards drop one-by-one with no rotation,
+//          creating a clean stacking effect synced to scroll.
 (function initCardPile() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-  
-  // Disable GSAP drop-from-top card pile on mobile (uses CSS sticky stack instead)
-  if (window.innerWidth <= 768) return;
+
+  const isMobile = window.innerWidth <= 768;
 
   // ONLY target .projects containers to avoid breaking skills grids or dropdowns
   const containers = document.querySelectorAll('#projects .projects, #achievements .projects, #experience .projects');
   
-  // Alternating rotation offsets → natural "dealt deck" appearance
+  // Alternating rotation offsets → natural "dealt deck" appearance (desktop only)
   const ROTS = [0, -4, 3.5, -6, 5, -2.5, 4.5, -3, 6, -1, 3, -5];
 
   containers.forEach(container => {
@@ -398,17 +399,17 @@ window.toggleDropdown = function (button) {
     container.classList.add('card-pile-container');
 
     const vh = window.innerHeight;
-    const scrollPerCard = 0.70;
+    // Mobile: faster pacing (less scroll per card) since cards are taller in column layout
+    const scrollPerCard = isMobile ? 0.55 : 0.70;
     const pinDistance = cards.length * vh * scrollPerCard;
     
-    // We don't need to manually stretch the section or use fragile CSS sticky.
-    // GSAP will pin the inner section automatically and add the required spacing!
+    // GSAP will pin the inner section automatically and add the required spacing
     ScrollTrigger.create({
       trigger: section,
-      start: 'top 0px', // Pin at the very top of the screen to move everything upwards
+      start: 'top 0px',
       end: `+=${pinDistance}`,
-      pin: sectionInner, // Pin the inner wrapper
-      pinSpacing: true, // Automatically adds padding to the parent
+      pin: sectionInner,
+      pinSpacing: true,
     });
 
     // 3. Set up cards
@@ -417,41 +418,39 @@ window.toggleDropdown = function (button) {
       gsap.killTweensOf(card);
       card.classList.remove('fade-in-up', 'reveal-block', 'reveal-text', 'fly-left', 'fly-right');
 
-      // Adaptive layout variables
-      const startScale = 0.9;
+      // Adaptive layout variables — mobile gets no rotation, smaller offsets
+      const startScale = isMobile ? 0.95 : 0.9;
       const targetScale = 1;
-      const rotMult = 1;
-      const yStep = 15;
+      const rotMult = isMobile ? 0 : 1;      // No rotation on mobile
+      const yStep = isMobile ? 8 : 15;        // Tighter stacking on mobile
 
-      // Set initial state: hidden, high above
+      // Set initial state: hidden off-screen (below on mobile, above on desktop)
+      const startY = isMobile ? 300 : -160;
       gsap.set(card, { clearProps: 'transform,opacity,filter' });
-      gsap.set(card, { y: -160, opacity: 0, scale: startScale, rotation: 0, zIndex: i + 1 });
+      gsap.set(card, { y: startY, opacity: 0, scale: startScale, rotation: 0, zIndex: i + 1 });
       card.style.removeProperty('--card-index');
 
       // 4. ScrollTrigger: drop each card when its threshold is reached
-      // We calculate when this specific card should drop based on how far we've scrolled into the pin.
       const dropOffset = (i + 0.3) * (vh * scrollPerCard);
       
       ScrollTrigger.create({
-        trigger: section, // We use the section as trigger
-        // This fires when the section has scrolled up by `dropOffset` pixels PAST the 0px mark
+        trigger: section,
         start: () => `top ${0 - dropOffset}px`,
         onEnter() {
           gsap.killTweensOf(card);
           gsap.to(card, {
-            y: (i * yStep), // pile offset deeper per card
+            y: (i * yStep),
             opacity: 1,
             scale: targetScale,
             rotation: ROTS[i % ROTS.length] * rotMult,
-            duration: 0.8,
-            ease: 'back.out(1.2)',
+            duration: isMobile ? 0.6 : 0.8,
+            ease: isMobile ? 'power3.out' : 'back.out(1.2)',
           });
         },
         onLeaveBack() {
-          // Reverse: card flies back above the pile
           gsap.killTweensOf(card);
           gsap.to(card, {
-            y: -160,
+            y: startY,
             opacity: 0,
             scale: startScale,
             rotation: 0,
