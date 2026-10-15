@@ -14,6 +14,111 @@
   }
 })();
 
+// FEATURE 1B — HERO ENTRANCE, SCRAMBLE TYPEWRITER & PARALLAX
+(function initHeroEntrance() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(".premium-nav", { y: -20, opacity: 0, duration: 0.3, ease: "power2.out" });
+
+  function scrambleType(el, text, { charDelay = 80, scrambleFrames = 5, onComplete } = {}) {
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let resolved = 0, frame = 0;
+    el.textContent = '';
+    const tick = setInterval(() => {
+      frame++;
+      const next = (resolved < text.length && text[resolved] !== ' ')
+        ? CHARS[Math.floor(Math.random() * CHARS.length)] : (resolved < text.length ? ' ' : '');
+      el.textContent = text.substring(0, resolved) + next;
+      if (frame >= scrambleFrames) {
+        frame = 0;
+        if (resolved < text.length) resolved++;
+      }
+      if (resolved >= text.length) {
+        clearInterval(tick);
+        el.textContent = text;
+        if (onComplete) onComplete();
+      }
+    }, charDelay / scrambleFrames);
+  }
+
+  gsap.set(".hero-title", { opacity: 1 });
+  const line1 = document.querySelector(".scramble-line1");
+  const line2 = document.querySelector(".scramble-line2");
+
+  function startTyping() {
+    if (!line1 || !line2) return;
+    line1.textContent = '';
+    line2.textContent = '';
+    
+    setTimeout(() => {
+      line1.classList.add("typing-active");
+      scrambleType(line1, "Muhammed", {
+        charDelay: 90, scrambleFrames: 6,
+        onComplete: () => {
+          line1.classList.remove("typing-active");
+          line2.classList.add("typing-active");
+          scrambleType(line2, "Sinan M", {
+            charDelay: 90, scrambleFrames: 6,
+            onComplete: () => {
+              line2.classList.remove("typing-active");
+            }
+          });
+        }
+      });
+    }, 100);
+  }
+
+  if (document.readyState === 'complete') {
+    startTyping();
+  } else {
+    window.addEventListener('load', startTyping, { once: true });
+  }
+
+  // Keep hero-pfp fully visible from the start so it registers as LCP.
+  gsap.from(".hero-pfp", { scale: 1.05, duration: 0.6, ease: "power2.out" });
+  gsap.from(".hero-socials a", { x: -10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
+  gsap.from(".hero-roles p", { x: 10, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
+  gsap.from(".scroll-circle-wrapper", { opacity: 0, scale: 0.8, duration: 0.6, delay: 0.6, ease: "power2.out" });
+
+  // Parallax Hero Image (Branched for Desktop vs Mobile)
+  if (window.innerWidth <= 768) {
+    gsap.to(".hero-pfp", {
+      y: "10vh",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero-premium",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  } else {
+    gsap.to(".hero-pfp", {
+      yPercent: 15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero-premium",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  }
+
+  gsap.to('.scroll-circle-svg', {
+    rotation: 720,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: document.body,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: true
+    }
+  });
+})();
+
+
 // FEATURE 2 — SCROLL-TRIGGERED TEXT REVEAL ANIMATIONS
 (function initScrollReveal() {
   if (typeof gsap === 'undefined') return;
@@ -102,7 +207,7 @@
 // FEATURE 4 — 3D CARD TILT ON HOVER
 (function initCardTilt() {
   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
-  const cards = document.querySelectorAll('.card:not(.card-swap-container .card), .split-card, .event-list-item');
+  const cards = document.querySelectorAll('.card, .split-card, .event-list-item');
 
   cards.forEach(card => {
     card.classList.add('tilt-card');

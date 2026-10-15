@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /venv/
+Disallow: /*.py$
+Disallow: /libs/
+Disallow: /Style_backup.css
+Disallow: /index_backup.html
+
+Sitemap: https://muhammedsinan.in/sitemap.xml
+
+# Verified crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
