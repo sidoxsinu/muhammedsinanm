@@ -1,32 +1,31 @@
 {
   "name": "muhammed-sinan-portfolio",
-  "version": "1.0.0",
-  "description": "Source code for Muhammed Sinan M's personal portfolio website (https://muhammedsinan.in).",
-  "type": "module",
+  "version": "2.0.0",
+  "description": "Personal portfolio of Muhammed Sinan M — Full-Stack Developer & AI Enthusiast.",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sidoxsinu/cv.git"
+  "dependencies": {
+    "next": "16.4.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   },
-  "keywords": [
-    "portfolio",
-    "cv",
-    "developer",
-    "full-stack",
-    "gsap",
-    "interactive"
-  ],
-  "author": "Muhammed Sinan M <muhammedsinan.m67@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sidoxsinu/cv/issues"
-  },
-  "homepage": "https://github.com/sidoxsinu/cv#readme",
   "devDependencies": {
-    "vite": "^8.3.4"
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.1",
+    "prettier": "^3.5.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
