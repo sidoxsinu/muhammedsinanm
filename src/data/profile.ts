@@ -17,3 +17,5 @@ export const PROFILE_DATA: Profile = {
   resumeUrl: '/assets/documents/resume/muhammed-sinan-resume.pdf',
   profileImage: '/assets/images/profile/muhammed-sinan-profile.webp',
 };
+
+export const PROFILE = PROFILE_DATA;

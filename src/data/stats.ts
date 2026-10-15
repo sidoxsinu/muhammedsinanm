@@ -17,3 +17,5 @@ export const STATS_DATA: StatItem[] = [
     label: 'AWARDS',
   },
 ];
+
+export const STATS = STATS_DATA;

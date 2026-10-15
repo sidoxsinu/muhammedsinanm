@@ -9,6 +9,12 @@
       ]
     },
     {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
       "source": "/images/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
@@ -18,7 +24,7 @@
   "redirects": [
     {
       "source": "/resume",
-      "destination": "/images/Resume/Muhammed Sinan M.pdf",
+      "destination": "/assets/documents/resume/muhammed-sinan-resume.pdf",
       "permanent": false
     }
   ]
