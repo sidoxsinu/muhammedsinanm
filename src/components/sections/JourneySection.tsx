@@ -1,78 +1,227 @@
 'use client';
 
-import React, { useState } from 'react';
-import { JOURNEY_DATA } from '@/data/journey';
-import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { AnimateIn } from '@/components/ui/AnimateIn';
+import React, { useEffect, useRef } from 'react';
 
 export function JourneySection() {
-  const [selectedYear, setSelectedYear] = useState<string>(JOURNEY_DATA[0].year);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
-  const currentYearData =
-    JOURNEY_DATA.find((item) => item.year === selectedYear) || JOURNEY_DATA[0];
+  const scrollPrev = () => {
+    if (viewportRef.current) {
+      const scrollAmount = window.innerWidth <= 768 ? 280 : 350;
+      viewportRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const scrollNext = () => {
+    if (viewportRef.current) {
+      const scrollAmount = window.innerWidth <= 768 ? 280 : 350;
+      viewportRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    function updateCarousel3D() {
+      if (!viewport) return;
+      const cards = viewport.querySelectorAll<HTMLElement>('.jtl-card');
+      if (!cards.length) return;
+
+      const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
+
+      cards.forEach((card) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const distance = cardCenter - viewportCenter;
+
+        const maxRotation = 35;
+        const rotationFactor = distance / (viewport.clientWidth / 1.5);
+        let rotateY = rotationFactor * -maxRotation;
+        rotateY = Math.max(-maxRotation, Math.min(maxRotation, rotateY));
+
+        const zTranslate = Math.abs(rotationFactor) * -200;
+        const scale = Math.max(0.7, 1 - Math.abs(rotationFactor) * 0.2);
+
+        card.style.transform = `perspective(1200px) translateZ(${zTranslate}px) rotateY(${rotateY}deg) scale(${scale})`;
+      });
+    }
+
+    updateCarousel3D();
+    const handleScroll = () => {
+      requestAnimationFrame(updateCarousel3D);
+    };
+
+    viewport.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      viewport.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <section id="journey" aria-label="Career journey" className="py-20 sm:py-28 border-t border-[var(--border-subtle)]">
-      <Container>
-        <AnimateIn>
-          <SectionHeading
-            label="Journey"
-            title="Career Timeline"
-            description="Milestones, leadership roles, and growth over the years."
-          />
-        </AnimateIn>
-
-        {/* Year Pills Navigation */}
-        <div className="flex gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-          {JOURNEY_DATA.map((item) => {
-            const isSelected = item.year === selectedYear;
-            return (
-              <button
-                key={item.year}
-                onClick={() => setSelectedYear(item.year)}
-                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer flex-shrink-0 ${
-                  isSelected
-                    ? 'bg-[var(--accent-red)] text-white font-semibold shadow-md shadow-[var(--accent-red)]/20'
-                    : 'bg-white/5 text-[var(--text-secondary)] hover:text-white hover:bg-white/10 border border-[var(--border-subtle)]'
-                }`}
-              >
-                {item.year} ({item.milestones.length})
-              </button>
-            );
-          })}
+    <section aria-label="Career journey" className="jtl-section" id="journey">
+      <div className="section-inner">
+        <div className="journey-header-top">
+          <div>
+            <span className="section-label">{'// Journey'}</span>
+            <h2 className="fade-in-up reveal-text">My Journey And Milestones</h2>
+            <p className="section-desc jtl-subtitle reveal-block">
+              From student to builder — every milestone that shaped me.
+            </p>
+          </div>
+          <div className="journey-nav-buttons fade-in-up reveal-block">
+            <button aria-label="Previous" className="jtl-nav-btn prev" id="jtl-new-prev" onClick={scrollPrev}>
+              <span>‹</span>
+            </button>
+            <button aria-label="Next" className="jtl-nav-btn next" id="jtl-new-next" onClick={scrollNext}>
+              <span>›</span>
+            </button>
+          </div>
         </div>
-
-        {/* Active Year Milestones Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {currentYearData.milestones.map((milestone, idx) => (
-            <AnimateIn
-              key={`${currentYearData.year}-${milestone.title}-${idx}`}
-              delayMs={idx * 60}
-              className="h-full"
-            >
-              <div className="h-full p-6 rounded-[var(--radius-lg)] bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-white/20 transition-all duration-200 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-mono text-[var(--accent-red)] font-semibold">
-                      {currentYearData.year}
-                    </span>
-                    <span className="text-[10px] font-mono text-[var(--text-muted)]">
-                      #{String(idx + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <h4 className="text-lg font-bold text-white mb-2 leading-snug">
-                    {milestone.title}
-                  </h4>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {milestone.description}
-                  </p>
-                </div>
+      </div>
+      <div className="journey-timeline-container fade-in-up reveal-block">
+        <div className="journey-timeline-viewport" id="journey-timeline-viewport" ref={viewportRef}>
+          <div className="journey-timeline-track">
+            {/* 2026 */}
+            <div className="journey-column">
+              <div className="journey-year-container">
+                <h4 className="journey-year">2026</h4>
               </div>
-            </AnimateIn>
-          ))}
+              <div className="journey-content bg-alt">
+                <div className="journey-dot" />
+                <ul className="journey-list">
+                  <li>
+                    <strong>Software Engineering Intern</strong>Torcue Digital Inc. · Infopark, Kochi
+                  </li>
+                  <li>
+                    <strong>Co-CFO, IEDC CCE</strong>Innovation &amp; Entrepreneurship Development Centre
+                  </li>
+                  <li>
+                    <strong>Research Intern</strong>Suvidha Foundation · AI &amp; Dev workflows
+                  </li>
+                  <li>
+                    <strong>IEEE IAS Webmaster</strong>IEEE Industry Applications Society · CCE Student Branch
+                  </li>
+                  <li>
+                    <strong>IEEE CS Webmaster</strong>IEEE Computer Society · CCE Student Branch
+                  </li>
+                  <li>
+                    <strong>Design Lead</strong>IEEE Kerala Section JC (CTS/Nano/EDS)
+                  </li>
+                  <li>
+                    <strong>Learning Coordinator</strong>TinkerHub CCE
+                  </li>
+                  <li>
+                    <strong>BeachHack Season 7</strong>Finalist · HackForChrist
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 2025 */}
+            <div className="journey-column">
+              <div className="journey-year-container">
+                <h4 className="journey-year">2025</h4>
+              </div>
+              <div className="journey-content">
+                <div className="journey-dot" />
+                <ul className="journey-list">
+                  <li>
+                    <strong>First Hackathon Win</strong>WEBATHON 2025 · Second Prize
+                  </li>
+                  <li>
+                    <strong>Full-Stack Foundations</strong>Built projects across Python, React (MERN), and Java
+                  </li>
+                  <li>
+                    <strong>B.Tech CS Started</strong>Joined Christ College of Engineering
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 2024 */}
+            <div className="journey-column">
+              <div className="journey-year-container">
+                <h4 className="journey-year">2024</h4>
+              </div>
+              <div className="journey-content bg-alt">
+                <div className="journey-dot" />
+                <ul className="journey-list">
+                  <li>
+                    <strong>NSS Event Lead</strong>Led various campaigns, events, and programs as part of NSS and raised
+                    ₹1 Lakh+
+                  </li>
+                  <li>
+                    <strong>IT Fair Champion</strong>First place at school &amp; sub-district levels; Participated at
+                    district level
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 2023 */}
+            <div className="journey-column">
+              <div className="journey-year-container">
+                <h4 className="journey-year">2023</h4>
+              </div>
+              <div className="journey-content">
+                <div className="journey-dot" />
+                <ul className="journey-list">
+                  <li>
+                    <strong>NSS Volunteer Leader</strong>Started volunteership &amp; selected as leader (served till
+                    2025)
+                  </li>
+                  <li>
+                    <strong>Higher Secondary</strong>Completed Science from MES HSS Irimbiliyam
+                  </li>
+                  <li>
+                    <strong>IT Fair Champion</strong>First place at school &amp; sub-district levels; Participated at
+                    district level
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 2022 */}
+            <div className="journey-column">
+              <div className="journey-year-container">
+                <h4 className="journey-year">2022</h4>
+              </div>
+              <div className="journey-content bg-alt">
+                <div className="journey-dot" />
+                <ul className="journey-list">
+                  <li>
+                    <strong>Game Development</strong>Built and published my first game
+                  </li>
+                  <li>
+                    <strong>Little KITES Bootcamp</strong>Attended district level Little KITES programming bootcamp
+                  </li>
+                  <li>
+                    <strong>IT Fair Champion</strong>First place at school &amp; sub-district levels; Participated at
+                    district level
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 2021 */}
+            <div className="journey-column">
+              <div className="journey-year-container">
+                <h4 className="journey-year">2021</h4>
+              </div>
+              <div className="journey-content">
+                <div className="journey-dot" />
+                <ul className="journey-list">
+                  <li>
+                    <strong>IT Fair Champion</strong>First place in programming at school &amp; sub-district levels;
+                    Participated at district level
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

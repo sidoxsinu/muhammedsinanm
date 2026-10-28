@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "./tokens.css";
+@import "./Style.css";
+@import "./accordion-gallery.css";
 
 @theme inline {
   --color-bg-primary: var(--bg-primary);
@@ -18,36 +20,6 @@
   --color-border-subtle: var(--border-subtle);
   --color-border-highlight: var(--border-highlight);
   --color-border-gold: var(--border-gold);
-}
-
-html {
-  scroll-behavior: smooth;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-}
-
-body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  min-height: 100vh;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Custom Scrollbar for Horizontal Viewports */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Accessible focus visible outlines */
-:focus-visible {
-  outline: 2px solid var(--accent-orange);
-  outline-offset: 3px;
 }
 
 /* Reduced motion preference */

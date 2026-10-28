@@ -1,95 +1,183 @@
 'use client';
 
 import React, { useState } from 'react';
-import { EVENTS } from '@/data/events';
-import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Badge } from '@/components/ui/Badge';
-import { AnimateIn } from '@/components/ui/AnimateIn';
 
 export function EventsSection() {
-  const [openInstitutions, setOpenInstitutions] = useState<Record<string, boolean>>({
-    'Christ College of Engineering (CCE)': true,
-    'NSS Palakkad / μLearn': true,
-  });
+  const [activeItems, setActiveItems] = useState<Record<string, boolean>>({});
 
-  const toggle = (inst: string) => {
-    setOpenInstitutions((prev) => ({ ...prev, [inst]: !prev[inst] }));
+  const toggle = (key: string) => {
+    setActiveItems((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   return (
-    <section id="hackathons" className="py-20 sm:py-28 border-t border-[var(--border-subtle)]">
-      <Container size="narrow">
-        <AnimateIn>
-          <SectionHeading
-            label="Hackathons"
-            title="Hackathons & Events"
-            description="Competitive hackathons, bootcamps, workshops, and technical conferences across 7 institutions."
-          />
-        </AnimateIn>
+    <section id="hackathons">
+      <div className="section-inner">
+        <span className="section-label">{'// Hackathons'}</span>
+        <h2 className="fade-in-up reveal-text">Hackathons &amp; Events</h2>
+        <div className="events-list">
+          {/* Christ College of Engineering */}
+          <div className={`event-item reveal-block ${activeItems['cce'] ? 'active' : ''}`}>
+            <button
+              className={`event-dropdown ${activeItems['cce'] ? 'active' : ''}`}
+              type="button"
+              onClick={() => toggle('cce')}
+            >
+              <span>Christ College of Engineering (CCE)</span>
+              <span className="dropdown-arrow">▼</span>
+            </button>
+            <div className="event-content">
+              <div className="event-list-item">
+                <h4 className="event-name">BeachHack Season 7</h4>
+                <span className="event-result">Finalist</span>
+              </div>
+              <div className="event-list-item">
+                <h4 className="event-name">WEBATHON 2025</h4>
+                <span className="event-result">Second Prize</span>
+              </div>
+              <div className="event-list-item">
+                <h4 className="event-name">Code a Pookalam</h4>
+                <span className="event-result">Participant</span>
+              </div>
+              <div className="event-list-item">
+                <h4 className="event-name">TECHLETICS 4.0 Quake Clash</h4>
+                <span className="event-result">Participant</span>
+              </div>
+              <div className="event-list-item">
+                <h4 className="event-name">DEVMODE:UNITY UNLEASHED</h4>
+                <span className="event-result">Participant</span>
+              </div>
+              <div className="event-list-item">
+                <h4 className="event-name">EVOLV 2.0</h4>
+                <span className="event-result">Participant</span>
+              </div>
+              <div className="event-list-item">
+                <h4 className="event-name">FOSS RELAY CODING</h4>
+                <span className="event-result">Participant</span>
+              </div>
+              <div className="event-list-item">
+                <h4 className="event-name">JUMPSTART 8.0</h4>
+                <span className="event-result">Participant</span>
+              </div>
+            </div>
+          </div>
 
-        <div className="space-y-4">
-          {EVENTS.map((group, idx) => {
-            const isOpen = !!openInstitutions[group.institution];
-            return (
-              <AnimateIn key={group.institution} delayMs={idx * 50}>
-                <div className="rounded-[var(--radius-lg)] bg-[var(--bg-card)] border border-[var(--border-subtle)] overflow-hidden">
-                  <button
-                    onClick={() => toggle(group.institution)}
-                    aria-expanded={isOpen}
-                    className="w-full p-4 sm:p-5 flex items-center justify-between text-left hover:bg-white/[0.02] transition-colors cursor-pointer"
-                  >
-                    <span className="text-base sm:text-lg font-bold text-white">
-                      {group.institution}
-                    </span>
-                    <div className="flex items-center gap-3">
-                      <span className="text-xs font-mono text-[var(--text-muted)]">
-                        {group.events.length} event{group.events.length > 1 ? 's' : ''}
-                      </span>
-                      <span
-                        className={`text-xs text-[var(--accent-red)] transform transition-transform duration-300 ${
-                          isOpen ? 'rotate-180' : 'rotate-0'
-                        }`}
-                      >
-                        ▼
-                      </span>
-                    </div>
-                  </button>
+          {/* VIT Vellore */}
+          <div className={`event-item reveal-block ${activeItems['vit'] ? 'active' : ''}`}>
+            <button
+              className={`event-dropdown ${activeItems['vit'] ? 'active' : ''}`}
+              type="button"
+              onClick={() => toggle('vit')}
+            >
+              <span>VIT Vellore</span>
+              <span className="dropdown-arrow">▼</span>
+            </button>
+            <div className="event-content">
+              <div className="event-list-item">
+                <h4 className="event-name">HackBattle</h4>
+                <span className="event-result">Participant</span>
+              </div>
+            </div>
+          </div>
 
-                  {isOpen && (
-                    <div className="px-4 pb-4 sm:px-5 border-t border-white/5 pt-3 space-y-2.5">
-                      {group.events.map((event) => (
-                        <div
-                          key={event.name}
-                          className="flex items-center justify-between py-1.5 border-b border-white/[0.03] last:border-b-0"
-                        >
-                          <span className="text-xs sm:text-sm text-neutral-300 font-medium">
-                            {event.name}
-                          </span>
-                          {event.result && (
-                            <Badge
-                              variant={
-                                event.result.includes('Prize') || event.result.includes('Best')
-                                  ? 'accent'
-                                  : event.result === 'Finalist'
-                                  ? 'gold'
-                                  : 'outline'
-                              }
-                              size="sm"
-                            >
-                              {event.result}
-                            </Badge>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </AnimateIn>
-            );
-          })}
+          {/* Rajagiri */}
+          <div className={`event-item reveal-block ${activeItems['rajagiri'] ? 'active' : ''}`}>
+            <button
+              className={`event-dropdown ${activeItems['rajagiri'] ? 'active' : ''}`}
+              type="button"
+              onClick={() => toggle('rajagiri')}
+            >
+              <span>Rajagiri School of Engineering &amp; Technology</span>
+              <span className="dropdown-arrow">▼</span>
+            </button>
+            <div className="event-content">
+              <div className="event-list-item">
+                <h4 className="event-name">HackQuest &apos;25</h4>
+                <span className="event-result">Participant</span>
+              </div>
+            </div>
+          </div>
+
+          {/* NIT Calicut */}
+          <div className={`event-item reveal-block ${activeItems['nitc'] ? 'active' : ''}`}>
+            <button
+              className={`event-dropdown ${activeItems['nitc'] ? 'active' : ''}`}
+              type="button"
+              onClick={() => toggle('nitc')}
+            >
+              <span>NIT Calicut</span>
+              <span className="dropdown-arrow">▼</span>
+            </button>
+            <div className="event-content">
+              <div className="event-list-item">
+                <h4 className="event-name">IEEE YESS&apos;25</h4>
+                <span className="event-result">Participant</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Tech Maghi / IIT Hyderabad */}
+          <div className={`event-item reveal-block ${activeItems['iith'] ? 'active' : ''}`}>
+            <button
+              className={`event-dropdown ${activeItems['iith'] ? 'active' : ''}`}
+              type="button"
+              onClick={() => toggle('iith')}
+            >
+              <span>IIT Hyderabad &amp; Tech Maghi</span>
+              <span className="dropdown-arrow">▼</span>
+            </button>
+            <div className="event-content">
+              <div className="event-list-item">
+                <h4 className="event-name">AI Cyber Security Workshop</h4>
+                <span className="event-result">Participant</span>
+              </div>
+              <div className="event-list-item">
+                <h4 className="event-name">Agentic AI Boot Camp</h4>
+                <span className="event-result">Participant</span>
+              </div>
+            </div>
+          </div>
+
+          {/* NSS Palakkad / μLearn */}
+          <div className={`event-item reveal-block ${activeItems['nss'] ? 'active' : ''}`}>
+            <button
+              className={`event-dropdown ${activeItems['nss'] ? 'active' : ''}`}
+              type="button"
+              onClick={() => toggle('nss')}
+            >
+              <span>NSS Palakkad / μLearn</span>
+              <span className="dropdown-arrow">▼</span>
+            </button>
+            <div className="event-content">
+              <div className="event-list-item">
+                <h4 className="event-name">Build With AI 2026 Hackathon</h4>
+                <span className="event-result">Best Technical Project</span>
+              </div>
+            </div>
+          </div>
+
+          {/* K-DISC */}
+          <div className={`event-item reveal-block ${activeItems['kdisc'] ? 'active' : ''}`}>
+            <button
+              className={`event-dropdown ${activeItems['kdisc'] ? 'active' : ''}`}
+              type="button"
+              onClick={() => toggle('kdisc')}
+            >
+              <span>K-DISC / Government of Kerala</span>
+              <span className="dropdown-arrow">▼</span>
+            </button>
+            <div className="event-content">
+              <div className="event-list-item">
+                <h4 className="event-name">YIP 8.0 Idea Submission</h4>
+                <span className="event-result">Participant</span>
+              </div>
+              <div className="event-list-item">
+                <h4 className="event-name">YIP 8.0 VOS Training</h4>
+                <span className="event-result">Participant</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

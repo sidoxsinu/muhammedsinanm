@@ -1,119 +1,248 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { FEATURED_PROJECTS } from '@/data/featured';
-import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { AnimateIn } from '@/components/ui/AnimateIn';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 export function FeaturedSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const root = containerRef.current;
+    if (!root || typeof window === 'undefined') return;
+
+    const items = [
+      {
+        image: 'images/project-images/AvenWing.webp',
+        quote: 'Premium e-commerce platform featuring an interactive product gallery, GSAP animations, and direct WhatsApp checkout.',
+        source: 'AvenWing',
+        label: 'AvenWing',
+        link: '#project-avenwing',
+      },
+      {
+        image: 'images/project-images/Parackal-Travel-Hub.webp',
+        quote: 'Full-stack bilingual travel booking platform with custom inquiry flows and responsive design.',
+        source: 'Parackal Travels Hub',
+        label: 'Parackal Travels Hub',
+        link: '#project-parackal',
+      },
+      {
+        image: 'images/project-images/Next-Gen-Ai-Assistant.webp',
+        quote: 'Award-winning multi-modal AI assistant powered by Groq Llama 3.3 for real-time voice interaction.',
+        source: 'Next Gen AI Assistant',
+        label: 'Next Gen AI Assistant',
+        link: '#project-ai-assistant',
+      },
+      {
+        image: 'images/project-images/Pylon.webp',
+        quote: 'Zero-dependency scholarship discovery platform with real-time filtering and custom search algorithms.',
+        source: 'Pylon',
+        label: 'Pylon',
+        link: '#project-pylon',
+      },
+      {
+        image: 'images/project-images/CodeBurry.webp',
+        quote: 'Gamified frontend development learning platform with interactive coding challenges and an XP-based reward system.',
+        source: 'CodeBurry',
+        label: 'CodeBurry',
+        link: '#project-codeburry',
+      },
+    ];
+
+    const defaultIndex = 2;
+    const accentColor = '#e8562a';
+    const overlayColor = '#060010';
+    const textColor = '#ffffff';
+    const height = 460;
+    const gap = 10;
+    const radius = 16;
+    const expandRatio = 0.52;
+    const duration = 0.6;
+    const ease = 'power3.out';
+    const parallax = 0.5;
+    const tilt = 8;
+    const stagger = 0.06;
+    const showLabels = true;
+    const grayscale = true;
+    const count = items.length;
+    let active = Math.min(Math.max(defaultIndex, 0), count - 1);
+    const prefersReduced = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+
+    let tl: gsap.core.Timeline | null = null;
+    let mediaSize = 320;
+
+    // Render DOM
+    root.classList.add('accordion-gallery');
+    root.style.setProperty('--ag-accent', accentColor);
+    root.style.setProperty('--ag-overlay', overlayColor);
+    root.style.setProperty('--ag-text', textColor);
+    root.style.setProperty('--ag-gap', `${gap}px`);
+    root.style.setProperty('--ag-radius', `${radius}px`);
+    root.style.height = `${height}px`;
+    root.setAttribute('role', 'list');
+    root.setAttribute('aria-label', 'Quotes gallery');
+
+    root.innerHTML = items
+      .map((item, i) => {
+        const isActive = i === active;
+        const tag = item.link ? 'a' : 'div';
+        return `
+          <${tag} class="ag-panel ${isActive ? 'ag-panel--active' : ''}" 
+            style="border-radius: ${radius}px;" 
+            ${item.link ? `href="${item.link}"` : ''} 
+            data-index="${i}"
+            role="listitem" 
+            tabindex="0" 
+            ${isActive ? 'aria-current="true"' : ''} 
+            aria-label="${item.label}">
+            
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media">
+                <img src="${item.image}" alt="" draggable="false" />
+              </span>
+              <span class="ag-panel__overlay" aria-hidden="true"></span>
+            </span>
+            
+            ${
+              showLabels
+                ? `
+              <span class="ag-panel__label" aria-hidden="true">
+                <span class="ag-panel__bar"></span>
+                <span class="ag-panel__text">
+                  ${item.quote}
+                  <span class="ag-panel__source">${item.source}</span>
+                </span>
+              </span>
+            `
+                : ''
+            }
+          </${tag}>
+        `;
+      })
+      .join('');
+
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('.ag-panel'));
+    const mediaElements = Array.from(root.querySelectorAll<HTMLElement>('.ag-panel__media'));
+    const barElements = Array.from(root.querySelectorAll<HTMLElement>('.ag-panel__bar'));
+    const textElements = Array.from(root.querySelectorAll<HTMLElement>('.ag-panel__text'));
+
+    function measure() {
+      if (!root) return;
+      const rect = root.getBoundingClientRect();
+      const total = rect.width;
+      const usable = Math.max(total - gap * (count - 1), 120);
+      const size = Math.max(140, usable * Math.min(Math.max(expandRatio, 0.2), 0.9) * 1.22);
+      mediaSize = size;
+      root.style.setProperty('--ag-media-size', `${size}px`);
+    }
+
+    function applyLayout(animate = true) {
+      if (!panels.length || typeof gsap === 'undefined') return;
+
+      const r = Math.min(Math.max(expandRatio, 0.2), 0.9);
+      const grow = count > 1 ? (r * (count - 1)) / (1 - r) : 1;
+
+      if (tl) tl.kill();
+      const dur = animate && !prefersReduced ? duration : 0;
+      tl = gsap.timeline();
+
+      panels.forEach((panel, i) => {
+        const isActive = i === active;
+        const media = mediaElements[i];
+        const bar = barElements[i];
+        const text = textElements[i];
+
+        const rot = isActive ? 0 : i < active ? tilt : -tilt;
+
+        tl!.to(panel, { flexGrow: isActive ? grow : 1, rotateY: rot, duration: dur, ease: ease }, 0);
+
+        if (media) {
+          const drift = Math.max(-1.5, Math.min(1.5, active - i));
+          const shift = drift * parallax * mediaSize * 0.06;
+          const gray = grayscale ? (isActive ? 0 : 1) : 0;
+          tl!.to(
+            media,
+            {
+              xPercent: -50,
+              yPercent: -50,
+              x: isActive ? 0 : shift,
+              y: 0,
+              '--ag-gray': gray,
+              '--ag-dim': isActive ? 0 : 0.35,
+              duration: dur,
+              ease: ease,
+            } as gsap.TweenVars,
+            0
+          );
+        }
+
+        if (showLabels && bar && text) {
+          if (isActive) {
+            tl!.to(
+              [bar, text],
+              { opacity: 1, x: 0, duration: dur, ease: ease, stagger: prefersReduced ? 0 : stagger },
+              0
+            );
+          } else {
+            tl!.to([bar, text], { opacity: 0, x: -14, duration: dur * 0.6, ease: ease }, 0);
+          }
+        }
+      });
+    }
+
+    function setActive(i: number) {
+      if (active === i) return;
+
+      panels[active].classList.remove('ag-panel--active');
+      panels[active].removeAttribute('aria-current');
+
+      active = i;
+
+      panels[active].classList.add('ag-panel--active');
+      panels[active].setAttribute('aria-current', 'true');
+
+      applyLayout(true);
+    }
+
+    panels.forEach((panel, i) => {
+      panel.addEventListener('mouseenter', () => setActive(i));
+      panel.addEventListener('focus', () => setActive(i));
+      panel.addEventListener('click', (e) => {
+        if (i !== active) {
+          e.preventDefault();
+          setActive(i);
+        }
+      });
+      panel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          setActive((i + 1) % count);
+          panels[(i + 1) % count].focus();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          setActive((i - 1 + count) % count);
+          panels[(i - 1 + count) % count].focus();
+        }
+      });
+    });
+
+    const resizeObserver = new ResizeObserver(() => measure());
+    resizeObserver.observe(root);
+
+    measure();
+    applyLayout(false);
+
+    return () => {
+      resizeObserver.disconnect();
+      if (tl) tl.kill();
+      root.innerHTML = '';
+    };
+  }, []);
 
   return (
-    <section aria-label="Featured Projects Showcase" className="py-20 sm:py-28 overflow-hidden">
-      <Container>
-        <AnimateIn>
-          <SectionHeading
-            label="Featured Showcase"
-            title="Featured Projects"
-            description="Selected client works, award winners, and engineering highlights."
-          />
-        </AnimateIn>
-
-        {/* Responsive Showcase: Accordion on desktop, horizontal scroll on mobile */}
-        <div className="hidden lg:flex gap-4 h-[440px]">
-          {FEATURED_PROJECTS.map((project, index) => {
-            const isActive = activeIndex === index;
-            return (
-              <div
-                key={project.title}
-                onClick={() => setActiveIndex(index)}
-                onMouseEnter={() => setActiveIndex(index)}
-                className={`relative rounded-[var(--radius-xl)] overflow-hidden cursor-pointer transition-all duration-500 ease-out border border-[var(--border-subtle)] ${
-                  isActive ? 'flex-[3.5] border-white/30 shadow-2xl' : 'flex-1 hover:border-white/20'
-                }`}
-              >
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className={`object-cover object-center transition-transform duration-700 ${
-                    isActive ? 'scale-105' : 'scale-100 grayscale brightness-50'
-                  }`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-
-                {/* Content Overlay */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  {isActive ? (
-                    <div className="animate-fadeIn">
-                      <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-red)] block mb-1">
-                        {project.source}
-                      </span>
-                      <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                      <p className="text-sm text-neutral-300 max-w-lg mb-4 line-clamp-3">
-                        {project.quote}
-                      </p>
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-white bg-[var(--accent-red)] px-4 py-2 rounded-full hover:bg-[var(--accent-orange)] transition-colors"
-                      >
-                        Explore Project ↗
-                      </a>
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono text-neutral-400">0{index + 1}</span>
-                      <h4 className="text-sm font-semibold text-white truncate">{project.title}</h4>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Mobile/Tablet Card Scroll-Snap */}
-        <div className="lg:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar -mx-4 px-4 sm:-mx-6 sm:px-6">
-          {FEATURED_PROJECTS.map((project) => (
-            <div
-              key={project.title}
-              className="min-w-[280px] sm:min-w-[340px] flex-shrink-0 snap-center rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-card)] relative flex flex-col h-[380px]"
-            >
-              <div className="relative h-44 w-full flex-shrink-0">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute top-3 left-3 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-[var(--accent-red)] uppercase border border-white/10">
-                  {project.source}
-                </div>
-              </div>
-              <div className="p-5 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-xs text-[var(--text-secondary)] line-clamp-3 leading-relaxed">
-                    {project.quote}
-                  </p>
-                </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--accent-red)] hover:underline"
-                >
-                  View Live ↗
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Container>
+    <section aria-label="Featured Projects Showcase" className="testimonials-section" style={{ padding: '40px 0', overflow: 'visible' }}>
+      <div className="testimonials-wrapper" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+        <div id="testimonials-accordion" ref={containerRef} />
+      </div>
     </section>
   );
 }

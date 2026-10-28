@@ -1,18 +1,22 @@
 :root {
-  /* Colors */
-  --bg-primary: #111111;
+  /* Core Brand Tokens (Verbatim from Original Site) */
+  --bg-color: #111111;
+  --text-primary: #ffffff;
+  --text-secondary: #999999;
+  --accent-red: #E54D2E;
+  --accent-orange: #E8562A;
+  
+  --font-heading: 'General Sans', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  /* Semantic Aliases */
+  --bg-primary: var(--bg-color);
   --bg-secondary: #161616;
   --bg-card: #1a1a1a;
   --bg-card-hover: #222222;
-  
-  --text-primary: #ffffff;
-  --text-secondary: #999999;
   --text-muted: #666666;
-  
-  --accent-red: #E54D2E;
-  --accent-orange: #E8562A;
   --gold-accent: #c9a84c;
-  
+
   /* Borders */
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-highlight: rgba(255, 255, 255, 0.16);

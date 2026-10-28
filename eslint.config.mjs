@@ -13,6 +13,7 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     "content-kit/**",
     "nextjs-scaffold/**",
+    "_original/**",
   ]),
 ]);
 

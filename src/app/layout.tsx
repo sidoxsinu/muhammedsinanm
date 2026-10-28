@@ -1,14 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import { Space_Grotesk } from 'next/font/google';
 import '@/styles/globals.css';
 import { PROFILE } from '@/data/profile';
 import { SITE_CONFIG } from '@/lib/site-config';
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-heading',
-});
 
 export const viewport: Viewport = {
   themeColor: '#111111',
@@ -220,8 +213,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${spaceGrotesk.variable}`}>
+    <html lang="en">
       <head>
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="dns-prefetch" href="https://github.com" />
+        <link rel="dns-prefetch" href="https://linkedin.com" />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/profile-picture/bg-removed-black&white-pfp.webp"
+          type="image/webp"
+        />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@500&f[]=space-grotesk@300,400,1&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }}
@@ -235,9 +242,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProfilePage) }}
         />
       </head>
-      <body className="font-sans antialiased bg-[var(--bg-primary)] text-[var(--text-primary)]">
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

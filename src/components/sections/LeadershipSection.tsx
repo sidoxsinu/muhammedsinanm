@@ -1,51 +1,93 @@
 'use client';
 
 import React from 'react';
-import { LEADERSHIP } from '@/data/leadership';
-import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Badge } from '@/components/ui/Badge';
-import { AnimateIn } from '@/components/ui/AnimateIn';
 
 export function LeadershipSection() {
   return (
-    <section id="leadership" className="py-20 sm:py-28 border-t border-[var(--border-subtle)]">
-      <Container size="narrow">
-        <AnimateIn>
-          <SectionHeading
-            label="Leadership"
-            title="Leadership Roles"
-            description="Positions of responsibility across IEEE, entrepreneurial cells, and student communities."
-          />
-        </AnimateIn>
+    <section id="leadership" style={{ padding: '80px 0' }}>
+      <div className="section-inner" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <span className="section-label">{'// Leadership'}</span>
+        <h2 className="fade-in-up reveal-text">Leadership Roles</h2>
 
-        <div className="divide-y divide-[var(--border-subtle)] border-y border-[var(--border-subtle)]">
-          {LEADERSHIP.map((item, idx) => (
-            <AnimateIn key={`${item.role}-${item.organization}`} delayMs={idx * 50}>
-              <div className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-6 group hover:bg-white/[0.02] px-3 -mx-3 rounded-lg transition-colors">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[var(--accent-red)] transition-colors">
-                      {item.role}
-                    </h3>
-                    {item.badge && (
-                      <Badge variant="outline" size="sm">
-                        {item.badge}
-                      </Badge>
-                    )}
-                  </div>
-                  <p className="text-sm text-[var(--text-secondary)] mt-1">
-                    {item.organization}
-                  </p>
-                </div>
-                <div className="text-xs sm:text-sm font-mono text-[var(--text-muted)] sm:text-right flex-shrink-0">
-                  {item.period}
-                </div>
-              </div>
-            </AnimateIn>
-          ))}
+        <div className="leadership-list">
+          <div className="leadership-row">
+            <div className="leadership-date">
+              Jun 2026{' '}
+              <span style={{ fontSize: '10px', color: 'var(--text-secondary)', marginLeft: '8px' }}>PRESENT</span>
+            </div>
+            <div className="leadership-title-group">
+              <div className="leadership-title">Co-CFO</div>
+              <span className="leadership-desc">Innovation &amp; Entrepreneurship Development Centre (IEDC CCE)</span>
+            </div>
+          </div>
+
+          <div className="leadership-row">
+            <div className="leadership-date">
+              2026{' '}
+              <span style={{ fontSize: '10px', color: 'var(--text-secondary)', marginLeft: '8px' }}>PRESENT</span>
+            </div>
+            <div className="leadership-title-group">
+              <div className="leadership-title">Webmaster</div>
+              <span className="leadership-desc">IEEE Industry Applications Society (IAS), CCE Student Branch</span>
+            </div>
+          </div>
+
+          <div className="leadership-row">
+            <div className="leadership-date">
+              2026{' '}
+              <span style={{ fontSize: '10px', color: 'var(--text-secondary)', marginLeft: '8px' }}>PRESENT</span>
+            </div>
+            <div className="leadership-title-group">
+              <div className="leadership-title">Webmaster</div>
+              <span className="leadership-desc">IEEE Computer Society (CS), CCE Student Branch</span>
+            </div>
+          </div>
+
+          <div className="leadership-row">
+            <div className="leadership-date">
+              2026{' '}
+              <span style={{ fontSize: '10px', color: 'var(--text-secondary)', marginLeft: '8px' }}>PRESENT</span>
+            </div>
+            <div className="leadership-title-group">
+              <div className="leadership-title">Design Lead</div>
+              <span className="leadership-desc">IEEE Kerala Section Joint Chapter (CTS/Nano/EDS)</span>
+            </div>
+          </div>
+
+          <div className="leadership-row">
+            <div className="leadership-date">
+              2026{' '}
+              <span style={{ fontSize: '10px', color: 'var(--text-secondary)', marginLeft: '8px' }}>PRESENT</span>
+            </div>
+            <div className="leadership-title-group">
+              <div className="leadership-title">Learning Coordinator</div>
+              <span className="leadership-desc">TinkerHub CCE</span>
+            </div>
+          </div>
+
+          <div className="leadership-row">
+            <div className="leadership-date">
+              2026{' '}
+              <span style={{ fontSize: '10px', color: 'var(--text-secondary)', marginLeft: '8px' }}>PRESENT</span>
+            </div>
+            <div className="leadership-title-group">
+              <div className="leadership-title">Team Member</div>
+              <span className="leadership-desc">IEDC Kerala Startup Mission NEST</span>
+            </div>
+          </div>
+
+          <div className="leadership-row">
+            <div className="leadership-date">
+              Jun 2023{' '}
+              <span style={{ fontSize: '10px', color: 'var(--text-secondary)', marginLeft: '8px' }}>MAR 2025</span>
+            </div>
+            <div className="leadership-title-group">
+              <div className="leadership-title">NSS Volunteer Leader</div>
+              <span className="leadership-desc">National Service Scheme (240+ certified volunteer hours)</span>
+            </div>
+          </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
