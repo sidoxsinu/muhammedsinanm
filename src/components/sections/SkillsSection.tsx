@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from 'react';
 
+import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
 import { TabItem, Tabs } from '@/components/ui/Tabs';
 import { SKILL_CATEGORIES } from '@/data/skills';
@@ -211,19 +212,12 @@ export function SkillsSection() {
 
   return (
     <section id="skills" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-      {/* Header */}
-      <div className="mb-10 space-y-3 text-center">
-        <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
-          {'// Core Capabilities'}
-        </span>
-        <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
-          Skills &amp; Technologies
-        </h2>
-        <p className="mx-auto max-w-xl text-sm text-neutral-400 sm:text-base">
-          Languages, frameworks, and modern tools I leverage to build resilient full-stack systems
-          and production AI agents.
-        </p>
-      </div>
+      <SectionHeading
+        badge="// Core Capabilities"
+        title="Skills & Technologies"
+        description="Languages, frameworks, and modern tools I leverage to build resilient full-stack systems and production AI agents."
+        align="center"
+      />
 
       {/* Tabs */}
       <div className="mb-10 flex justify-center overflow-x-auto pb-2">

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import { ProjectCard } from '@/components/ui/ProjectCard';
+import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PROJECTS } from '@/data/projects';
 
 export function ProjectsSection() {
@@ -12,29 +13,13 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-      {/* Section Header */}
-      <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-        <div className="space-y-3">
-          <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
-            {'// Selected Works'}
-          </span>
-          <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
-            Featured Projects
-          </h2>
-          <p className="max-w-xl text-sm text-neutral-400 sm:text-base">
-            Handcrafted production systems, client platforms, and award-winning AI projects built
-            with modern web technologies.
-          </p>
-        </div>
-
-        <Link
-          href="/projects"
-          className="group inline-flex items-center gap-2 self-start text-sm font-semibold text-[var(--accent-orange)] transition-colors hover:text-white md:self-auto"
-        >
-          <span>View All {PROJECTS.length} Projects</span>
-          <span className="transition-transform group-hover:translate-x-1">→</span>
-        </Link>
-      </div>
+      <SectionHeading
+        badge="// Selected Works"
+        title="Featured Projects"
+        description="Handcrafted production systems, client platforms, and award-winning AI projects built with modern web technologies."
+        ctaText={`View All ${PROJECTS.length} Projects`}
+        ctaHref="/projects"
+      />
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">

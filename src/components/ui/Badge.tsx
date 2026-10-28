@@ -1,40 +1,25 @@
 import React from 'react';
 
-import { cn } from '@/lib/utils';
+export type BadgeVariant = 'orange' | 'dark' | 'outline' | 'subtle';
 
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: 'default' | 'accent' | 'outline' | 'gold';
-  size?: 'sm' | 'md';
+  variant?: BadgeVariant;
+  children: React.ReactNode;
+  className?: string;
 }
 
-export function Badge({
-  children,
-  variant = 'default',
-  size = 'md',
-  className,
-  ...props
-}: BadgeProps) {
+export function Badge({ variant = 'orange', children, className = '', ...props }: BadgeProps) {
   const variantStyles = {
-    default: 'bg-white/5 text-[var(--text-secondary)] border border-[var(--border-subtle)]',
-    accent:
-      'bg-[var(--accent-red)]/15 text-[var(--accent-red)] border border-[var(--accent-red)]/40',
-    outline: 'border border-[var(--border-subtle)] text-[var(--text-secondary)] bg-transparent',
-    gold: 'bg-[var(--gold-accent)]/15 text-[var(--gold-accent)] border border-[var(--border-gold)]',
+    orange:
+      'border border-[var(--accent-orange)] bg-[var(--accent-orange)]/15 text-[var(--accent-orange)]',
+    dark: 'border border-white/10 bg-black/60 text-neutral-300',
+    outline: 'border border-white/[0.08] bg-white/[0.05] text-neutral-400 font-mono',
+    subtle: 'border border-white/[0.06] bg-white/[0.05] text-neutral-300',
   }[variant];
-
-  const sizeStyles = {
-    sm: 'text-[11px] px-2 py-0.5 tracking-wider',
-    md: 'text-xs px-2.5 py-1 tracking-normal',
-  }[size];
 
   return (
     <span
-      className={cn(
-        'inline-flex items-center rounded-full font-medium uppercase transition-colors',
-        variantStyles,
-        sizeStyles,
-        className,
-      )}
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold backdrop-blur-md ${variantStyles} ${className}`}
       {...props}
     >
       {children}

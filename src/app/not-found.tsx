@@ -1,7 +1,6 @@
-import Link from 'next/link';
-
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/sections/Footer';
+import { Button } from '@/components/ui/Button';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
 
 export default function NotFound() {
@@ -25,19 +24,21 @@ export default function NotFound() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Link
+            <Button
               href="/"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-orange)] px-6 py-3 font-mono text-xs font-semibold tracking-wider text-white uppercase transition-all hover:bg-orange-600 hover:shadow-lg"
+              variant="primary"
+              className="bg-[var(--accent-orange)] font-mono text-xs tracking-wider uppercase hover:bg-orange-600"
             >
               <span>← Return Home</span>
-            </Link>
+            </Button>
 
-            <Link
+            <Button
               href="/projects"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 font-mono text-xs font-semibold tracking-wider text-neutral-300 uppercase transition-colors hover:border-white/20 hover:text-white"
+              variant="secondary"
+              className="font-mono text-xs tracking-wider uppercase"
             >
               <span>Explore Projects →</span>
-            </Link>
+            </Button>
           </div>
         </SpotlightCard>
       </main>

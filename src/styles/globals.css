@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 @import './tokens.css';
 @import './Style.css';
-@import './accordion-gallery.css';
 
 @theme inline {
   --color-bg-primary: var(--bg-primary);

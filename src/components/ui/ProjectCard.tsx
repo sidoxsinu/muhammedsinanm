@@ -3,6 +3,7 @@
 import React from 'react';
 import { Project } from '@/types';
 
+import { Badge } from './Badge';
 import { SpotlightCard } from './SpotlightCard';
 
 interface ProjectCardProps {
@@ -28,15 +29,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {/* Top Badges */}
           <div className="pointer-events-none absolute top-3 right-3 left-3 flex items-center justify-between">
             {project.badge ? (
-              <span className="rounded-full bg-[var(--accent-orange)] px-2.5 py-1 text-xs font-semibold text-white shadow-md backdrop-blur-md">
+              <Badge variant="orange" className="bg-[var(--accent-orange)] text-white shadow-md">
                 {project.badge}
-              </span>
+              </Badge>
             ) : (
               <span />
             )}
-            <span className="rounded-full border border-white/10 bg-black/60 px-2.5 py-1 text-xs font-medium text-neutral-300 backdrop-blur-md">
-              {project.year}
-            </span>
+            <Badge variant="dark">{project.year}</Badge>
           </div>
         </div>
 
@@ -58,12 +57,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (
-                <span
+                <Badge
                   key={tag}
-                  className="rounded-md border border-white/[0.06] bg-white/[0.05] px-2 py-0.5 text-[11px] font-medium text-neutral-300"
+                  variant="subtle"
+                  className="rounded-md px-2 py-0.5 text-[11px] font-normal"
                 >
                   {tag}
-                </span>
+                </Badge>
               ))}
             </div>
 

@@ -24,14 +24,6 @@ export interface StatItem {
   label: string;
 }
 
-export interface FeaturedProject {
-  title: string;
-  quote: string;
-  source: string;
-  image: string;
-  link: string;
-}
-
 export interface Milestone {
   title: string;
   description: string;
@@ -134,10 +126,4 @@ export interface CertificateCard {
   name: string;
   thumbnail: string;
   documentUrl: string;
-}
-
-export interface SectionConfigItem {
-  id: string;
-  enabled: boolean;
-  label: string;
 }
