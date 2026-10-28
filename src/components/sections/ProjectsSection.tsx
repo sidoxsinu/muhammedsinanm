@@ -325,7 +325,7 @@ export function ProjectsSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 loading="lazy"
-                src="images/project-images/Next-Gen-Ai-Assistant.webp"
+                src="/images/project-images/Next-Gen-Ai-Assistant.webp"
                 alt="Next Gen AI Assistant Preview"
                 className="project-preview-img"
               />
@@ -373,7 +373,7 @@ export function ProjectsSection() {
             </div>
             <div className="split-card-image">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img loading="lazy" src="images/project-images/Pylon.webp" alt="Pylon Preview" className="project-preview-img" />
+              <img loading="lazy" src="/images/project-images/Pylon.webp" alt="Pylon Preview" className="project-preview-img" />
             </div>
           </div>
 
@@ -409,7 +409,7 @@ export function ProjectsSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 loading="lazy"
-                src="images/project-images/UniversityHub.webp"
+                src="/images/project-images/UniversityHub.webp"
                 alt="UniversityHub Preview"
                 className="project-preview-img"
               />
@@ -460,7 +460,7 @@ export function ProjectsSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 loading="lazy"
-                src="images/project-images/CodeBurry.webp"
+                src="/images/project-images/CodeBurry.webp"
                 alt="CodeBurry Preview"
                 className="project-preview-img"
               />
@@ -499,7 +499,7 @@ export function ProjectsSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 loading="lazy"
-                src="images/project-images/SilentGuard.webp"
+                src="/images/project-images/SilentGuard.webp"
                 alt="SilentGuard Preview"
                 className="project-preview-img"
               />
