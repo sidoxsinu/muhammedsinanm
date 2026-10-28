@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export function ContactSection() {
   return (
@@ -21,7 +22,7 @@ export function ContactSection() {
         </a>
       </div>
       <div className="cta-social-pills fade-in-up reveal-block">
-        <a href="#about" className="social-pill profile-pill">
+        <Link href="/about" className="social-pill profile-pill">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/profile-picture/bg-removed-black&white-pfp.webp"
@@ -29,7 +30,7 @@ export function ContactSection() {
             alt="Muhammed Sinan M - Computer Science Student"
           />
           <span>Muhammed Sinan M</span>
-        </a>
+        </Link>
         <a
           rel="me noopener noreferrer"
           target="_blank"

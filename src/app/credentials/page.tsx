@@ -106,7 +106,7 @@ export default function CredentialsPage() {
               {CERTIFICATE_CARDS.map((cert) => (
                 <a
                   key={cert.number}
-                  href={cert.documentUrl}
+                  href={encodeURI(cert.documentUrl)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group block outline-none"
@@ -115,7 +115,7 @@ export default function CredentialsPage() {
                     <div className="relative aspect-[4/3] overflow-hidden border-b border-white/[0.06] bg-neutral-900">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={cert.thumbnail}
+                        src={encodeURI(cert.thumbnail)}
                         alt={cert.name}
                         loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"

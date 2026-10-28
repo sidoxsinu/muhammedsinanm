@@ -3,6 +3,9 @@ import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
 
 import { SITE_CONFIG } from '@/lib/site-config';
+import { ClickSpark } from '@/components/ui/ClickSpark';
+import { CustomCursor } from '@/components/ui/CustomCursor';
+import { GlobalEffects } from '@/components/ui/GlobalEffects';
 import { PROFILE } from '@/data/profile';
 
 export const viewport: Viewport = {
@@ -254,7 +257,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProfilePage) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <CustomCursor />
+        <ClickSpark />
+        <GlobalEffects />
+        {children}
+      </body>
     </html>
   );
 }

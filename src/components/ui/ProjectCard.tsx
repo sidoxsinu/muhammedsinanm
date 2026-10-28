@@ -68,8 +68,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
 
             {/* Links */}
-            <div className="flex items-center gap-3 border-t border-white/[0.06] pt-2">
-              {project.links.live && (
+            <div className="flex items-center justify-between border-t border-white/[0.06] pt-2">
+              {project.links.live ? (
                 <a
                   href={project.links.live}
                   target="_blank"
@@ -91,6 +91,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     />
                   </svg>
                 </a>
+              ) : (
+                <span />
               )}
 
               {project.links.repo && (
@@ -98,7 +100,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   href={project.links.repo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="ml-auto inline-flex items-center gap-1.5 text-xs font-medium text-neutral-400 transition-colors hover:text-white sm:text-sm"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-400 transition-colors hover:text-white sm:text-sm"
                 >
                   <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                     <path

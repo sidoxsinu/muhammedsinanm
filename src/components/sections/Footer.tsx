@@ -182,20 +182,25 @@ export function Footer() {
             >
               Instagram
             </a>
-            <a
+            <button
+              type="button"
               aria-label="Print Portfolio"
-              href="#"
               onClick={handlePrint}
               style={{
                 color: 'var(--accent-red)',
                 textDecoration: 'none',
                 fontSize: '14px',
                 fontWeight: 600,
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                textAlign: 'left',
+                cursor: 'pointer',
               }}
               title="Print Portfolio"
             >
               Print Portfolio
-            </a>
+            </button>
           </div>
         </div>
       </div>

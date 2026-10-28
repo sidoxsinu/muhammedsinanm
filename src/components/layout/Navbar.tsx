@@ -334,7 +334,11 @@ export function Navbar() {
         <div className="nav-right">
           <Link
             href="/contact"
-            className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-white transition-all hover:bg-[var(--accent-orange)]"
+            className={`rounded-full px-4 py-1.5 text-xs font-medium transition-all ${
+              pathname === '/contact'
+                ? 'bg-[var(--accent-orange)] text-white shadow-md'
+                : 'bg-white/10 text-white hover:bg-[var(--accent-orange)]'
+            }`}
           >
             Let&apos;s Talk!
           </Link>
