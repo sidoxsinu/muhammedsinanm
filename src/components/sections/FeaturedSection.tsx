@@ -12,35 +12,35 @@ export function FeaturedSection() {
 
     const items = [
       {
-        image: 'images/project-images/AvenWing.webp',
+        image: '/images/project-images/AvenWing.webp',
         quote: 'Premium e-commerce platform featuring an interactive product gallery, GSAP animations, and direct WhatsApp checkout.',
         source: 'AvenWing',
         label: 'AvenWing',
         link: '#project-avenwing',
       },
       {
-        image: 'images/project-images/Parackal-Travel-Hub.webp',
+        image: '/images/project-images/Parackal-Travel-Hub.webp',
         quote: 'Full-stack bilingual travel booking platform with custom inquiry flows and responsive design.',
         source: 'Parackal Travels Hub',
         label: 'Parackal Travels Hub',
         link: '#project-parackal',
       },
       {
-        image: 'images/project-images/Next-Gen-Ai-Assistant.webp',
+        image: '/images/project-images/Next-Gen-Ai-Assistant.webp',
         quote: 'Award-winning multi-modal AI assistant powered by Groq Llama 3.3 for real-time voice interaction.',
         source: 'Next Gen AI Assistant',
         label: 'Next Gen AI Assistant',
         link: '#project-ai-assistant',
       },
       {
-        image: 'images/project-images/Pylon.webp',
+        image: '/images/project-images/Pylon.webp',
         quote: 'Zero-dependency scholarship discovery platform with real-time filtering and custom search algorithms.',
         source: 'Pylon',
         label: 'Pylon',
         link: '#project-pylon',
       },
       {
-        image: 'images/project-images/CodeBurry.webp',
+        image: '/images/project-images/CodeBurry.webp',
         quote: 'Gamified frontend development learning platform with interactive coding challenges and an XP-based reward system.',
         source: 'CodeBurry',
         label: 'CodeBurry',
@@ -225,7 +225,10 @@ export function FeaturedSection() {
       });
     });
 
-    const resizeObserver = new ResizeObserver(() => measure());
+    const resizeObserver = new ResizeObserver(() => {
+      measure();
+      applyLayout(false);
+    });
     resizeObserver.observe(root);
 
     measure();

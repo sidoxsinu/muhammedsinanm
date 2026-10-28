@@ -20,7 +20,8 @@ export function ClickSpark() {
     if (!ctx) return;
 
     let sparks: Spark[] = [];
-    let animationId: number;
+    let animationId: number | null = null;
+    let isAnimating = false;
     const duration = 400;
     const sparkRadius = 15;
     const sparkSize = 10;
@@ -30,6 +31,9 @@ export function ClickSpark() {
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      if (!isAnimating) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
     };
 
     resizeCanvas();
@@ -66,10 +70,14 @@ export function ClickSpark() {
         return true;
       });
 
-      animationId = requestAnimationFrame(draw);
+      if (sparks.length > 0) {
+        animationId = requestAnimationFrame(draw);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        isAnimating = false;
+        animationId = null;
+      }
     };
-
-    animationId = requestAnimationFrame(draw);
 
     const handleClick = (e: MouseEvent) => {
       const x = e.clientX;
@@ -84,6 +92,11 @@ export function ClickSpark() {
           startTime: now,
         });
       }
+
+      if (!isAnimating) {
+        isAnimating = true;
+        animationId = requestAnimationFrame(draw);
+      }
     };
 
     document.addEventListener('click', handleClick);
@@ -91,7 +104,7 @@ export function ClickSpark() {
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       document.removeEventListener('click', handleClick);
-      cancelAnimationFrame(animationId);
+      if (animationId) cancelAnimationFrame(animationId);
     };
   }, []);
 

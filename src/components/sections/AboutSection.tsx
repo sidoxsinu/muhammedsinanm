@@ -50,8 +50,8 @@ export function AboutSection() {
       const vh = window.innerHeight;
       const isMobile = window.innerWidth <= 768;
 
-      const start = isMobile ? vh * 0.85 : vh * 0.6;
-      const end = isMobile ? vh * 0.0 : vh * -0.4;
+      const start = isMobile ? vh * 0.85 : vh * 0.8;
+      const end = isMobile ? vh * 0.15 : vh * 0.15;
 
       let progress = (start - rect.top) / (start - end);
       progress = Math.max(0, Math.min(1, progress));

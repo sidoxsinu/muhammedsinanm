@@ -225,7 +225,7 @@ export function ProjectsSection() {
             </div>
             <div className="split-card-image">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img loading="lazy" src="images/project-images/AvenWing.webp" alt="AvenWing Preview" className="project-preview-img" />
+              <img loading="lazy" src="/images/project-images/AvenWing.webp" alt="AvenWing Preview" className="project-preview-img" />
             </div>
           </div>
 
@@ -274,7 +274,7 @@ export function ProjectsSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 loading="lazy"
-                src="images/project-images/Parackal-Travel-Hub.webp"
+                src="/images/project-images/Parackal-Travel-Hub.webp"
                 alt="Parackal Travels Hub Preview"
                 className="project-preview-img"
               />

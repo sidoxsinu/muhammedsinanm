@@ -11,7 +11,7 @@ export const PROJECTS: Project[] = [
     links: {
       live: 'https://avenwing.com',
     },
-    image: '/assets/images/project-images/avenwing.webp',
+    image: '/assets/images/projects/avenwing.webp',
     featured: true,
     badge: 'Freelance',
   },
@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
     links: {
       live: 'https://parackaltravelhub.com',
     },
-    image: '/assets/images/project-images/parackal-travel-hub.webp',
+    image: '/assets/images/projects/parackal-travel-hub.webp',
     featured: true,
     badge: 'Freelance',
   },
@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
       live: 'https://next-gen-ai-assistant-system.vercel.app',
       repo: 'https://github.com/sidoxsinu/next-gen-ai-assistant-system',
     },
-    image: '/assets/images/project-images/next-gen-ai-assistant.webp',
+    image: '/assets/images/projects/next-gen-ai-assistant.webp',
     featured: true,
     badge: 'Best Tech Project',
     recognition: {
@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
       live: 'https://pylon-topaz.vercel.app',
       repo: 'https://github.com/sidoxsinu/Pylon',
     },
-    image: '/assets/images/project-images/pylon.webp',
+    image: '/assets/images/projects/pylon.webp',
     featured: true,
     badge: 'Second Prize (WEBATHON)',
   },
@@ -72,7 +72,7 @@ export const PROJECTS: Project[] = [
     links: {
       repo: 'https://github.com/sidoxsinu/universityhub',
     },
-    image: '/assets/images/project-images/universityhub.webp',
+    image: '/assets/images/projects/universityhub.webp',
     featured: false,
   },
   {
@@ -86,7 +86,7 @@ export const PROJECTS: Project[] = [
       live: 'https://code-burry.vercel.app',
       repo: 'https://github.com/sidoxsinu/CodeBurry',
     },
-    image: '/assets/images/project-images/codeburry.webp',
+    image: '/assets/images/projects/codeburry.webp',
     featured: true,
   },
   {
@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     links: {
       repo: 'https://github.com/sidoxsinu/SilentGuard',
     },
-    image: '/assets/images/project-images/silentguard.webp',
+    image: '/assets/images/projects/silentguard.webp',
     featured: false,
   },
   {
@@ -112,7 +112,7 @@ export const PROJECTS: Project[] = [
     links: {
       repo: 'https://github.com/sidoxsinu/AI-Voice-Assistant',
     },
-    image: '/assets/images/project-images/aivoiceassistant.webp',
+    image: '/assets/images/projects/ai-voice-assistant.webp',
     featured: false,
   },
 ];

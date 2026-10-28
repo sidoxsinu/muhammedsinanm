@@ -250,16 +250,18 @@ export function Navbar() {
     <>
       {/* NAV */}
       <nav className="premium-nav" ref={navRef}>
-        <a href="#" className="nav-left" onClick={scrollToTop}>
-          © Muhammed Sinan M
-        </a>
+        <div className="nav-left">
+          <a href="#" className="nav-brand" onClick={scrollToTop}>
+            © Muhammed Sinan M
+          </a>
+        </div>
         <div className="nav-center">
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#fan-carousel">Certifications</a>
           <a
-            href="images/Resume/Muhammed Sinan M.pdf"
+            href="/images/Resume/Muhammed%20Sinan%20M.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-resume"
@@ -369,8 +371,9 @@ export function Navbar() {
               <li className="sm-panel-itemWrap" style={{ marginTop: '1rem' }}>
                 <a
                   className="sm-panel-item"
-                  href="images/Resume/Muhammed Sinan M.pdf"
+                  href="/images/Resume/Muhammed%20Sinan%20M.pdf"
                   target="_blank"
+                  rel="noopener noreferrer"
                   data-index="11"
                   style={{ color: '#E54D2E' }}
                   onClick={closeMenu}
@@ -388,7 +391,7 @@ export function Navbar() {
                   </a>
                 </li>
                 <li className="sm-socials-item">
-                  <a href="https://www.linkedin.com/in/muhammed-sinan-m/" target="_blank" rel="noopener noreferrer" className="sm-socials-link">
+                  <a href="https://www.linkedin.com/in/sidoxsinu/" target="_blank" rel="noopener noreferrer" className="sm-socials-link">
                     LinkedIn
                   </a>
                 </li>

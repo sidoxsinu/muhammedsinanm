@@ -113,8 +113,11 @@ export function GlobalEffects() {
           const rect = el.getBoundingClientRect();
           const cx = rect.left + rect.width / 2;
           const cy = rect.top + rect.height / 2;
-          const dx = (e.clientX - cx) * 0.15;
-          const dy = (e.clientY - cy) * 0.15;
+          const rawDx = (e.clientX - cx) * 0.15;
+          const rawDy = (e.clientY - cy) * 0.15;
+          const maxOffset = 14;
+          const dx = Math.max(-maxOffset, Math.min(maxOffset, rawDx));
+          const dy = Math.max(-maxOffset, Math.min(maxOffset, rawDy));
           el.style.transform = `translate(${dx}px, ${dy}px)`;
         };
 

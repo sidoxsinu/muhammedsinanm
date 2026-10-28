@@ -94,8 +94,9 @@ export function DotField() {
       mouse.prevY = mouse.y;
     }
 
+    let isVisible = true;
     function tick() {
-      if (!ctx) return;
+      if (!ctx || !isVisible) return;
       frameCount++;
       const len = dots.length;
       const { w, h } = size;
@@ -173,9 +174,25 @@ export function DotField() {
     const speedInterval = setInterval(updateMouseSpeed, 20);
     window.addEventListener('resize', onResize);
     window.addEventListener('mousemove', onMouseMove, { passive: true });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(tick);
+        } else {
+          cancelAnimationFrame(rafId);
+        }
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(container);
+
     rafId = requestAnimationFrame(tick);
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(rafId);
       clearInterval(speedInterval);
       clearTimeout(resizeTimer);

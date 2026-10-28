@@ -70,7 +70,8 @@ a {
 }
 
 .premium-nav a,
-.premium-nav .nav-left,
+.premium-nav .nav-brand,
+.premium-nav .nav-left a,
 .premium-nav .nav-center a,
 .premium-nav .nav-right a {
   color: #000000;
@@ -78,9 +79,10 @@ a {
 }
 
 .premium-nav a:hover,
+.premium-nav .nav-brand:hover,
+.premium-nav .nav-left a:hover,
 .premium-nav .nav-center a:hover,
-.premium-nav .nav-right a:hover,
-.premium-nav .nav-left:hover {
+.premium-nav .nav-right a:hover {
   color: #E8562A !important;
 }
 
@@ -117,11 +119,18 @@ a {
   display: flex;
   justify-content: flex-start;
   white-space: nowrap;
+  pointer-events: none;
   transition:
     flex-grow 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     flex-basis 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     font-size 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     letter-spacing 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.premium-nav .nav-left a,
+.premium-nav .nav-brand {
+  pointer-events: auto;
+  display: inline-block;
 }
 
 .premium-nav .nav-right {
@@ -130,9 +139,15 @@ a {
   display: flex;
   justify-content: flex-end;
   white-space: nowrap;
+  pointer-events: none;
   transition:
     flex-grow 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     flex-basis 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.premium-nav .nav-right a {
+  pointer-events: auto;
+  display: inline-block;
 }
 
 /* ── GLASSMORPHISM FLOATING NAV STATE ── */
@@ -148,7 +163,8 @@ a {
 }
 
 .premium-nav.nav-glass a,
-.premium-nav.nav-glass .nav-left,
+.premium-nav.nav-glass .nav-brand,
+.premium-nav.nav-glass .nav-left a,
 .premium-nav.nav-glass .nav-center a,
 .premium-nav.nav-glass .nav-right a {
   color: #ffffff;
@@ -200,7 +216,8 @@ a {
 
 .premium-nav.nav-glass .nav-center a,
 .premium-nav.nav-glass .nav-right a,
-.premium-nav.nav-glass .nav-left {
+.premium-nav.nav-glass .nav-brand,
+.premium-nav.nav-glass .nav-left a {
   font-size: 12px;
   letter-spacing: 0.04em;
 }
@@ -366,6 +383,12 @@ section {
 
 #about {
   padding-bottom: 1.5rem;
+}
+
+#about h2 {
+  font-size: clamp(2.2rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  margin-bottom: 20px;
 }
 
 .section-inner {
@@ -733,12 +756,12 @@ section h2, section h3 {
    IMAGE 1 & 2: TYPOGRAPHY AND SPLIT LAYOUTS
    ========================================================================== */
 .large-intro-text {
-  font-size: 4rem;
-  line-height: 1.1;
+  font-size: clamp(1.85rem, 2.4vw, 2.25rem);
+  line-height: 1.35;
   font-weight: 500;
-  max-width: 1000px;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
+  max-width: 960px;
+  letter-spacing: -0.02em;
+  color: transparent;
 }
 
 .split-card {
@@ -1251,7 +1274,8 @@ section h2, section h3 {
     min-height: 300px;
   }
   .large-intro-text {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+    line-height: 1.4;
   }
 }
 
@@ -2307,9 +2331,14 @@ body.cursor-hover .cursor-dot {
   }
 
   /* 4 — ABOUT SECTION: TYPOGRAPHY */
+  #about h2 {
+    font-size: clamp(1.75rem, 6vw, 2.1rem);
+    margin-bottom: 16px;
+  }
+
   .large-intro-text {
-    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
-    line-height: 1.45;
+    font-size: clamp(1.15rem, 4.2vw, 1.4rem);
+    line-height: 1.5;
     padding-inline: 0;
     margin-bottom: 0 !important;
   }

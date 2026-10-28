@@ -15,12 +15,19 @@ export function HeroSection() {
 
     const isMobile = window.innerWidth <= 768;
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Scramble typewriter function
     function scrambleType(
       el: HTMLElement,
       text: string,
       { charDelay = 80, scrambleFrames = 5, onComplete }: { charDelay?: number; scrambleFrames?: number; onComplete?: () => void } = {}
     ) {
+      if (prefersReducedMotion) {
+        el.textContent = text;
+        if (onComplete) onComplete();
+        return undefined;
+      }
       const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       let resolved = 0,
         frame = 0;
@@ -137,21 +144,10 @@ export function HeroSection() {
       },
     });
 
-    const scrollCircleSvgTween = gsap.to('.scroll-circle-svg', {
-      rotation: 720,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: document.body,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: true,
-      },
-    });
-
     return () => {
       clearTimeout(timer1);
-      clearInterval(tick1);
-      clearInterval(tick2);
+      if (tick1) clearInterval(tick1);
+      if (tick2) clearInterval(tick2);
       heroPfpTween.kill();
       heroSocialsTween.kill();
       heroRolesTween.kill();
@@ -159,7 +155,6 @@ export function HeroSection() {
       pfpParallaxTween.kill();
       nameTween.kill();
       subtitleTween.kill();
-      scrollCircleSvgTween.kill();
     };
   }, []);
 
@@ -248,7 +243,7 @@ export function HeroSection() {
       <div className="hero-content">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="images/profile-picture/bg-removed-black&white-pfp.webp"
+          src="/images/profile-picture/bg-removed-black&white-pfp.webp"
           alt="Muhammed Sinan M — Full-Stack Developer and AI Enthusiast from Kerala, India"
           className="hero-pfp hero-portrait"
         />
