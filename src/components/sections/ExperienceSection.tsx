@@ -132,7 +132,7 @@ export function ExperienceSection() {
               <img
                 loading="lazy"
                 alt="Internship Certificate"
-                src="images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.webp"
+                src="/images/certificates/WhatsApp Image 2026-04-25 at 17.55.23.webp"
                 style={{
                   width: '100%',
                   height: '160px',

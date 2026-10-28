@@ -539,7 +539,7 @@ export function ProjectsSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 loading="lazy"
-                src="images/project-images/AIVoiceAssistant.webp"
+                src="/images/project-images/AIVoiceAssistant.webp"
                 alt="AI Voice Assistant Preview"
                 className="project-preview-img"
               />

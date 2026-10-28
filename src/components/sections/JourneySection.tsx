@@ -19,45 +19,6 @@ export function JourneySection() {
     }
   };
 
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-
-    function updateCarousel3D() {
-      if (!viewport) return;
-      const cards = viewport.querySelectorAll<HTMLElement>('.jtl-card');
-      if (!cards.length) return;
-
-      const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
-
-      cards.forEach((card) => {
-        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-        const distance = cardCenter - viewportCenter;
-
-        const maxRotation = 35;
-        const rotationFactor = distance / (viewport.clientWidth / 1.5);
-        let rotateY = rotationFactor * -maxRotation;
-        rotateY = Math.max(-maxRotation, Math.min(maxRotation, rotateY));
-
-        const zTranslate = Math.abs(rotationFactor) * -200;
-        const scale = Math.max(0.7, 1 - Math.abs(rotationFactor) * 0.2);
-
-        card.style.transform = `perspective(1200px) translateZ(${zTranslate}px) rotateY(${rotateY}deg) scale(${scale})`;
-      });
-    }
-
-    updateCarousel3D();
-    const handleScroll = () => {
-      requestAnimationFrame(updateCarousel3D);
-    };
-
-    viewport.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      viewport.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <section aria-label="Career journey" className="jtl-section" id="journey">
       <div className="section-inner">
