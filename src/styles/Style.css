@@ -1694,8 +1694,8 @@ body.cursor-hover .cursor-dot {
     justify-content: center;
     text-align: center;
     padding: 100px 5vw;
-    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.02));
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
+    border-top: none;
 }
 
 .cta-content {
