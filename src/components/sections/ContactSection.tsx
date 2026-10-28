@@ -22,6 +22,7 @@ export function ContactSection() {
       </div>
       <div className="cta-social-pills fade-in-up reveal-block">
         <a href="#about" className="social-pill profile-pill">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/profile-picture/bg-removed-black&white-pfp.webp"
             fetchPriority="high"

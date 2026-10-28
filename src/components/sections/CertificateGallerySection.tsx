@@ -369,6 +369,7 @@ export function CertificateGallerySection() {
                 }}
               >
                 <div className="cert-card-inner">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={card.thumbnail} alt={card.name} loading="lazy" />
                 </div>
                 <div className="cert-card-footer">
