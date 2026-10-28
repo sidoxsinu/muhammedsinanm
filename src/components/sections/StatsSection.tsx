@@ -21,6 +21,12 @@ export function StatsSection() {
           const el = entry.target as HTMLElement;
           const target = parseInt(el.dataset.target || '0', 10);
           const suffix = el.dataset.suffix || '';
+
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            el.textContent = target + suffix;
+            return;
+          }
+
           const duration = 1800;
           const startTime = performance.now();
 
