@@ -19,7 +19,7 @@ const CHARS_DATA = ABOUT_SEGMENTS.flatMap((segment) =>
   Array.from(segment.text).map((ch) => ({
     char: ch,
     isKey: segment.isKey,
-  }))
+  })),
 );
 
 export function AboutSection() {
@@ -92,7 +92,7 @@ export function AboutSection() {
           }
         });
       },
-      { rootMargin: '400px 0px 400px 0px' }
+      { rootMargin: '400px 0px 400px 0px' },
     );
 
     observer.observe(section);

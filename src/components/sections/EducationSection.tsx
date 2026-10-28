@@ -12,7 +12,9 @@ export function EducationSection() {
           <div className="timeline-item">
             <div className="timeline-marker" />
             <h4>B.Tech in Computer Science &amp; Engineering</h4>
-            <p className="meta reveal-block">Christ College of Engineering, Irinjalakuda | 2025–2029</p>
+            <p className="meta reveal-block">
+              Christ College of Engineering, Irinjalakuda | 2025–2029
+            </p>
           </div>
           <div className="timeline-item">
             <div className="timeline-marker" />

@@ -1,11 +1,16 @@
 'use client';
 
 import React from 'react';
+
 import { CertificateGallerySection } from './CertificateGallerySection';
 
 export function CertificationsSection() {
   return (
-    <section className="bg-light" id="certifications" aria-label="Certifications — Muhammed Sinan M">
+    <section
+      className="bg-light"
+      id="certifications"
+      aria-label="Certifications — Muhammed Sinan M"
+    >
       <div className="section-inner">
         <div className="certs-languages-wrapper">
           <div>
@@ -26,7 +31,9 @@ export function CertificationsSection() {
             </ul>
           </div>
         </div>
-        <p className="section-desc reveal-block">Click any certificate to view the full document.</p>
+        <p className="section-desc reveal-block">
+          Click any certificate to view the full document.
+        </p>
         <CertificateGallerySection />
       </div>
     </section>

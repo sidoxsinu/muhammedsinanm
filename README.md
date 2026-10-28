@@ -94,6 +94,7 @@ Official personal portfolio website for **Muhammed Sinan M** ([muhammedsinan.in]
 ### Prerequisites
 
 Ensure you have Node.js 20 or later installed:
+
 ```bash
 node -v   # v20.x or higher
 ```
@@ -107,14 +108,17 @@ npm install
 ### Development Server
 
 Run the development server with Turbopack:
+
 ```bash
 npm run dev
 ```
+
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Quality Checks & Type Safety
 
 Run ESLint and TypeScript checks:
+
 ```bash
 npm run lint         # Check for lint issues with ESLint
 npx tsc --noEmit     # Verify TypeScript types with 0 errors
@@ -123,6 +127,7 @@ npx tsc --noEmit     # Verify TypeScript types with 0 errors
 ### Production Build
 
 Create an optimized static production build:
+
 ```bash
 npm run build
 ```
@@ -132,6 +137,7 @@ npm run build
 ## ⚙️ How to Customize & Extend
 
 ### 1. How to Add or Remove a Section
+
 Section order and visibility are managed from a single central file:
 [`src/data/sections-config.ts`](src/data/sections-config.ts)
 
@@ -147,11 +153,14 @@ export const SECTIONS_CONFIG: SectionConfigItem[] = [
 ```
 
 To permanently remove a section component:
+
 1. Delete the component file from `src/components/sections/`.
 2. Remove its entry from `SECTIONS_CONFIG` and the mapping in `src/app/page.tsx`.
 
 ### 2. How to Edit Content
+
 All content is strictly separated from presentation logic in `src/data/`:
+
 - **Personal Details / Bio**: Edit `src/data/profile.ts`
 - **Projects**: Edit `src/data/projects.ts` (title, tags, links, descriptions, image)
 - **Experience / Work**: Edit `src/data/experience.ts`
@@ -160,6 +169,7 @@ All content is strictly separated from presentation logic in `src/data/`:
 - **Skills**: Edit `src/data/skills.ts`
 
 ### 3. How to Restyle the Site (Design Tokens)
+
 All color palettes, typography variables, radii, and container widths are defined in one central token file:
 [`src/styles/tokens.css`](src/styles/tokens.css)
 
@@ -169,12 +179,12 @@ All color palettes, typography variables, radii, and container widths are define
   --bg-primary: #111111;
   --bg-secondary: #161616;
   --bg-card: #1a1a1a;
-  
+
   --text-primary: #ffffff;
   --text-secondary: #999999;
-  
-  --accent-red: #E54D2E;
-  --accent-orange: #E8562A;
+
+  --accent-red: #e54d2e;
+  --accent-orange: #e8562a;
   --gold-accent: #c9a84c;
 
   /* Radii */
@@ -182,10 +192,13 @@ All color palettes, typography variables, radii, and container widths are define
   --radius-xl: 24px;
 }
 ```
+
 Modifying a variable here updates the entire site instantly.
 
 ### 4. How to Deploy to Vercel
+
 This repository is configured for native deployment on Vercel:
+
 1. Push your branch to GitHub.
 2. Import the repository in the Vercel Dashboard (framework preset will auto-detect as Next.js).
 3. All routing, security headers (`vercel.json`), redirects (`/resume`), and static generation will work automatically.

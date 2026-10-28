@@ -20,7 +20,7 @@ export function CustomCursor() {
 
     const onMouseOver = (e: MouseEvent) => {
       const target = (e.target as HTMLElement | null)?.closest?.(
-        'a, button, .fan-card, .project-card, .accordion-header, [role="button"], .split-card, .ag-panel, .cert-card, .skill-card, input, textarea, select'
+        'a, button, .fan-card, .project-card, .accordion-header, [role="button"], .split-card, .ag-panel, .cert-card, .skill-card, input, textarea, select',
       );
       if (target) {
         document.body.classList.add('cursor-hover');

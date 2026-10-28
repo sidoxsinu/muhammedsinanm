@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { cn } from '@/lib/utils';
 
 interface SectionHeadingProps {
@@ -20,14 +21,20 @@ export function SectionHeading({
 
   return (
     <div className={cn('mb-10 md:mb-12', isCenter && 'text-center', className)}>
-      <span className="inline-block text-xs uppercase font-mono tracking-widest text-[var(--text-muted)] mb-3">
-        {'// '}{label}
+      <span className="mb-3 inline-block font-mono text-xs tracking-widest text-[var(--text-muted)] uppercase">
+        {'// '}
+        {label}
       </span>
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+      <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl lg:text-5xl">
         {title}
       </h2>
       {description && (
-        <p className={cn('mt-3 text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl', isCenter && 'mx-auto')}>
+        <p
+          className={cn(
+            'mt-3 max-w-2xl text-base text-[var(--text-secondary)] sm:text-lg',
+            isCenter && 'mx-auto',
+          )}
+        >
           {description}
         </p>
       )}

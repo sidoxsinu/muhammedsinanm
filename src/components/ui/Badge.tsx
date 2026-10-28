@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { cn } from '@/lib/utils';
 
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -15,7 +16,8 @@ export function Badge({
 }: BadgeProps) {
   const variantStyles = {
     default: 'bg-white/5 text-[var(--text-secondary)] border border-[var(--border-subtle)]',
-    accent: 'bg-[var(--accent-red)]/15 text-[var(--accent-red)] border border-[var(--accent-red)]/40',
+    accent:
+      'bg-[var(--accent-red)]/15 text-[var(--accent-red)] border border-[var(--accent-red)]/40',
     outline: 'border border-[var(--border-subtle)] text-[var(--text-secondary)] bg-transparent',
     gold: 'bg-[var(--gold-accent)]/15 text-[var(--gold-accent)] border border-[var(--border-gold)]',
   }[variant];
@@ -28,10 +30,10 @@ export function Badge({
   return (
     <span
       className={cn(
-        'inline-flex items-center font-medium rounded-full uppercase transition-colors',
+        'inline-flex items-center rounded-full font-medium uppercase transition-colors',
         variantStyles,
         sizeStyles,
-        className
+        className,
       )}
       {...props}
     >

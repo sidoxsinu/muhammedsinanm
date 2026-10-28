@@ -83,7 +83,11 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, transparent 20%, color-mix(in srgb, var(--ag-overlay) 90%, transparent) 100%),
+    linear-gradient(
+      180deg,
+      transparent 20%,
+      color-mix(in srgb, var(--ag-overlay) 90%, transparent) 100%
+    ),
     color-mix(in srgb, var(--ag-overlay) calc(var(--ag-dim, 0.35) * 100%), transparent);
 }
 
@@ -104,7 +108,7 @@
   width: 3px;
   /* Make the bar taller to match multi-line text */
   height: auto;
-  align-self: stretch; 
+  align-self: stretch;
   border-radius: 3px;
   background: var(--ag-accent);
   opacity: 0;

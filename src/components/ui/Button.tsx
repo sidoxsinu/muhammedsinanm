@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+
 import { cn } from '@/lib/utils';
 
 interface ButtonBaseProps {
@@ -28,12 +29,10 @@ export function Button({
   const variantStyles = {
     primary:
       'bg-[var(--accent-red)] text-white hover:bg-[var(--accent-orange)] shadow-lg shadow-[var(--accent-red)]/20',
-    secondary:
-      'bg-white/10 text-white hover:bg-white/15 border border-[var(--border-subtle)]',
+    secondary: 'bg-white/10 text-white hover:bg-white/15 border border-[var(--border-subtle)]',
     outline:
       'bg-transparent text-white border border-[var(--border-subtle)] hover:border-white/40 hover:bg-white/5',
-    ghost:
-      'bg-transparent text-[var(--text-secondary)] hover:text-white hover:bg-white/5',
+    ghost: 'bg-transparent text-[var(--text-secondary)] hover:text-white hover:bg-white/5',
   }[variant];
 
   const sizeStyles = {
@@ -45,10 +44,11 @@ export function Button({
   const combinedClasses = cn(baseStyles, variantStyles, sizeStyles, className);
 
   if ('href' in props && props.href) {
-    const { href, external, ...anchorProps } = props as React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-      href: string;
-      external?: boolean;
-    };
+    const { href, external, ...anchorProps } =
+      props as React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+        href: string;
+        external?: boolean;
+      };
 
     if (external || href.startsWith('http') || href.endsWith('.pdf')) {
       return (

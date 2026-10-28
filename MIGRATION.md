@@ -7,6 +7,7 @@ This document summarizes the complete architectural migration and refactoring of
 ## 1. What Was Removed
 
 ### Heavy Animation Libraries & Runtime Scripts
+
 - **GSAP & ScrollTrigger**: Fully dropped both CDN dependencies and local script bindings.
 - **Custom Cursor Dot (`#cursorDot`)**: Removed mouse-tracking circle cursor and lag filters.
 - **Click-Spark Particles (`js/click-spark.js`)**: Removed HTML canvas event listener spawning sparkle particles on user click.
@@ -17,6 +18,7 @@ This document summarizes the complete architectural migration and refactoring of
 - **Button Glow Cursor Tracking**: Replaced with standard CSS focus and hover styles.
 
 ### Legacy Files Deleted
+
 - `index.html` (190 KB monolithic markup file)
 - `css/Style.css` and `css/accordion-gallery.css`
 - `js/animations.js`, `js/carousel-3d.js`, `js/click-spark.js`, `js/dot-field.js`, `js/staggered-menu.js`, and `js/accordion-gallery.js`
@@ -27,19 +29,19 @@ This document summarizes the complete architectural migration and refactoring of
 
 ## 2. What Replaced It
 
-| Feature / Section | Legacy Vanilla Implementation | New Next.js (React + TypeScript) Architecture |
-| :--- | :--- | :--- |
-| **Framework & Engine** | Vite + vanilla HTML/CSS/JS | Next.js 16 (App Router) + React 19 + TypeScript + Node 20 |
-| **Styling & Tokens** | Multiple CSS files with hardcoded values | Tailwind CSS v4 with single token file `src/styles/tokens.css` |
-| **Content Layer** | Hardcoded directly in `index.html` | 15 typed data modules in `src/data/` with strict TypeScript models |
-| **Section Control** | Monolithic linear DOM | `src/data/sections-config.ts` (toggle visibility or reorder in 1 line) |
-| **Navigation** | Staggered GSAP animated full-screen menu | Floating glassmorphism navbar + accessible dialog mobile drawer |
-| **Scroll Animation** | ScrollTrigger tweens and scrubbers | Lightweight `useInView` hook (native `IntersectionObserver`) |
-| **Reduced Motion** | Partially respected | Strict `useReducedMotion` hook using `useSyncExternalStore` |
-| **Featured Showcase** | Custom JS accordion with fixed widths | Responsive desktop accordion + mobile horizontal scroll-snap |
-| **Certificate Gallery** | 3D coverflow carousel (`carousel-3d.js`) | Native CSS scroll-snap gallery with keyboard navigation and prev/next controls |
-| **SEO & Schemas** | Static HTML meta and script tags | Built-in Next.js Metadata API, dynamic `sitemap.ts`, `robots.ts`, and JSON-LD (`Person`, `WebSite`, `ProfilePage`) |
-| **Resume Redirect** | Vercel rewrite | Dual-layer: `next.config.ts` redirect, route handler `app/resume/route.ts`, and `vercel.json` |
+| Feature / Section       | Legacy Vanilla Implementation            | New Next.js (React + TypeScript) Architecture                                                                      |
+| :---------------------- | :--------------------------------------- | :----------------------------------------------------------------------------------------------------------------- |
+| **Framework & Engine**  | Vite + vanilla HTML/CSS/JS               | Next.js 16 (App Router) + React 19 + TypeScript + Node 20                                                          |
+| **Styling & Tokens**    | Multiple CSS files with hardcoded values | Tailwind CSS v4 with single token file `src/styles/tokens.css`                                                     |
+| **Content Layer**       | Hardcoded directly in `index.html`       | 15 typed data modules in `src/data/` with strict TypeScript models                                                 |
+| **Section Control**     | Monolithic linear DOM                    | `src/data/sections-config.ts` (toggle visibility or reorder in 1 line)                                             |
+| **Navigation**          | Staggered GSAP animated full-screen menu | Floating glassmorphism navbar + accessible dialog mobile drawer                                                    |
+| **Scroll Animation**    | ScrollTrigger tweens and scrubbers       | Lightweight `useInView` hook (native `IntersectionObserver`)                                                       |
+| **Reduced Motion**      | Partially respected                      | Strict `useReducedMotion` hook using `useSyncExternalStore`                                                        |
+| **Featured Showcase**   | Custom JS accordion with fixed widths    | Responsive desktop accordion + mobile horizontal scroll-snap                                                       |
+| **Certificate Gallery** | 3D coverflow carousel (`carousel-3d.js`) | Native CSS scroll-snap gallery with keyboard navigation and prev/next controls                                     |
+| **SEO & Schemas**       | Static HTML meta and script tags         | Built-in Next.js Metadata API, dynamic `sitemap.ts`, `robots.ts`, and JSON-LD (`Person`, `WebSite`, `ProfilePage`) |
+| **Resume Redirect**     | Vercel rewrite                           | Dual-layer: `next.config.ts` redirect, route handler `app/resume/route.ts`, and `vercel.json`                      |
 
 ---
 
@@ -66,6 +68,7 @@ Every piece of content from `index.html` was audited and migrated verbatim:
 ## 4. Asset Audit & Inventory Findings
 
 All **45 binary files** were audited and mapped:
+
 - **Resume PDF**: `images/Resume/Muhammed Sinan M.pdf` (mirrored in `public/assets/documents/resume/muhammed-sinan-resume.pdf`).
 - **Brand Assets**: `og-image.jpg`, `apple-touch-icon.png`, `favicon.ico`.
 - **Profile Picture**: `bg-removed-black&white-pfp.webp`.
@@ -74,6 +77,7 @@ All **45 binary files** were audited and mapped:
 - **23 Certificate Documents**: 10 PDFs and 13 WebPs in `public/assets/documents/certificates/` and `public/images/certificates/`.
 
 ### Unused Assets Check
+
 Every single binary asset in the repository is actively referenced by either the typed data layer, metadata API, or certificate gallery. **Zero orphaned assets were found.** Both the clean kebab-case paths (`/assets/...`) and the original legacy paths (`/images/...`) are populated in `public/` so that no legacy bookmarks or links break.
 
 ---

@@ -15,6 +15,7 @@ This restoration project successfully returned Muhammed Sinan M's personal portf
 ## 2. Core Restorations
 
 ### 2.1 Design System & Typography
+
 - **Stylesheets Restored:** `src/styles/Style.css` and `src/styles/accordion-gallery.css` restored verbatim from commit `183245f`.
 - **CSS Variables & Tokens:** `src/styles/tokens.css` restored with verbatim values:
   - `--bg-color: #111111`
@@ -27,6 +28,7 @@ This restoration project successfully returned Muhammed Sinan M's personal portf
 - **Global Styles:** `src/styles/globals.css` updated to load `tokens.css`, `Style.css`, and `accordion-gallery.css`.
 
 ### 2.2 Global Interactive UI Primitives
+
 - **Custom Cursor (`src/components/ui/CustomCursor.tsx`):**
   - Restored `#cursorDot` element with `mix-blend-mode: difference`.
   - Added smooth mouse-tracking and hover state scaling (`.cursor-hover`) on interactive elements (`a, button, [role="button"], .split-card, .ag-panel, .cert-card`).
@@ -44,6 +46,7 @@ This restoration project successfully returned Muhammed Sinan M's personal portf
   - Back-to-top floating button (`#back-to-top`) with smooth scroll to top.
 
 ### 2.3 Navigation & Header
+
 - **Desktop Navigation (`src/components/layout/Navbar.tsx`):**
   - Fixed top `.premium-nav` with anchor links (`About`, `Projects`, `Experience`, `Certifications`, `Resume`, `Let's Talk!`).
   - IntersectionObserver triggers `.nav-glass` morph when scrolling past the hero.
@@ -54,6 +57,7 @@ This restoration project successfully returned Muhammed Sinan M's personal portf
   - Morphing hamburger icon that transitions to an animated cross (`.sm-icon-line-v`).
 
 ### 2.4 Restored Sections & Interaction Engines
+
 1. **Hero Section (`src/components/sections/HeroSection.tsx`):**
    - Canvas `DotField`, social icon links, role badges.
    - Character scramble typewriter effect for "Muhammed" and "Sinan M".
@@ -110,6 +114,7 @@ This restoration project successfully returned Muhammed Sinan M's personal portf
     - `.footer-bottom` with `.copyright-pulse`.
 
 ### 2.5 Routing & Metadata
+
 - `/resume` redirect verified in `src/app/resume/route.ts`, `next.config.ts`, and `vercel.json` pointing to `/images/Resume/Muhammed Sinan M.pdf`.
 - Complete JSON-LD structured data (`ProfilePage`, `Person`, `WebSite`) restored in `src/app/layout.tsx`.
 - OpenGraph and Twitter meta tags preserved.

@@ -31,10 +31,20 @@ export function JourneySection() {
             </p>
           </div>
           <div className="journey-nav-buttons fade-in-up reveal-block">
-            <button aria-label="Previous" className="jtl-nav-btn prev" id="jtl-new-prev" onClick={scrollPrev}>
+            <button
+              aria-label="Previous"
+              className="jtl-nav-btn prev"
+              id="jtl-new-prev"
+              onClick={scrollPrev}
+            >
               <span>‹</span>
             </button>
-            <button aria-label="Next" className="jtl-nav-btn next" id="jtl-new-next" onClick={scrollNext}>
+            <button
+              aria-label="Next"
+              className="jtl-nav-btn next"
+              id="jtl-new-next"
+              onClick={scrollNext}
+            >
               <span>›</span>
             </button>
           </div>
@@ -52,16 +62,19 @@ export function JourneySection() {
                 <div className="journey-dot" />
                 <ul className="journey-list">
                   <li>
-                    <strong>Software Engineering Intern</strong>Torcue Digital Inc. · Infopark, Kochi
+                    <strong>Software Engineering Intern</strong>Torcue Digital Inc. · Infopark,
+                    Kochi
                   </li>
                   <li>
-                    <strong>Co-CFO, IEDC CCE</strong>Innovation &amp; Entrepreneurship Development Centre
+                    <strong>Co-CFO, IEDC CCE</strong>Innovation &amp; Entrepreneurship Development
+                    Centre
                   </li>
                   <li>
                     <strong>Research Intern</strong>Suvidha Foundation · AI &amp; Dev workflows
                   </li>
                   <li>
-                    <strong>IEEE IAS Webmaster</strong>IEEE Industry Applications Society · CCE Student Branch
+                    <strong>IEEE IAS Webmaster</strong>IEEE Industry Applications Society · CCE
+                    Student Branch
                   </li>
                   <li>
                     <strong>IEEE CS Webmaster</strong>IEEE Computer Society · CCE Student Branch
@@ -91,7 +104,8 @@ export function JourneySection() {
                     <strong>First Hackathon Win</strong>WEBATHON 2025 · Second Prize
                   </li>
                   <li>
-                    <strong>Full-Stack Foundations</strong>Built projects across Python, React (MERN), and Java
+                    <strong>Full-Stack Foundations</strong>Built projects across Python, React
+                    (MERN), and Java
                   </li>
                   <li>
                     <strong>B.Tech CS Started</strong>Joined Christ College of Engineering
@@ -109,12 +123,12 @@ export function JourneySection() {
                 <div className="journey-dot" />
                 <ul className="journey-list">
                   <li>
-                    <strong>NSS Event Lead</strong>Led various campaigns, events, and programs as part of NSS and raised
-                    ₹1 Lakh+
+                    <strong>NSS Event Lead</strong>Led various campaigns, events, and programs as
+                    part of NSS and raised ₹1 Lakh+
                   </li>
                   <li>
-                    <strong>IT Fair Champion</strong>First place at school &amp; sub-district levels; Participated at
-                    district level
+                    <strong>IT Fair Champion</strong>First place at school &amp; sub-district
+                    levels; Participated at district level
                   </li>
                 </ul>
               </div>
@@ -129,15 +143,15 @@ export function JourneySection() {
                 <div className="journey-dot" />
                 <ul className="journey-list">
                   <li>
-                    <strong>NSS Volunteer Leader</strong>Started volunteership &amp; selected as leader (served till
-                    2025)
+                    <strong>NSS Volunteer Leader</strong>Started volunteership &amp; selected as
+                    leader (served till 2025)
                   </li>
                   <li>
                     <strong>Higher Secondary</strong>Completed Science from MES HSS Irimbiliyam
                   </li>
                   <li>
-                    <strong>IT Fair Champion</strong>First place at school &amp; sub-district levels; Participated at
-                    district level
+                    <strong>IT Fair Champion</strong>First place at school &amp; sub-district
+                    levels; Participated at district level
                   </li>
                 </ul>
               </div>
@@ -155,11 +169,12 @@ export function JourneySection() {
                     <strong>Game Development</strong>Built and published my first game
                   </li>
                   <li>
-                    <strong>Little KITES Bootcamp</strong>Attended district level Little KITES programming bootcamp
+                    <strong>Little KITES Bootcamp</strong>Attended district level Little KITES
+                    programming bootcamp
                   </li>
                   <li>
-                    <strong>IT Fair Champion</strong>First place at school &amp; sub-district levels; Participated at
-                    district level
+                    <strong>IT Fair Champion</strong>First place at school &amp; sub-district
+                    levels; Participated at district level
                   </li>
                 </ul>
               </div>
@@ -174,8 +189,8 @@ export function JourneySection() {
                 <div className="journey-dot" />
                 <ul className="journey-list">
                   <li>
-                    <strong>IT Fair Champion</strong>First place in programming at school &amp; sub-district levels;
-                    Participated at district level
+                    <strong>IT Fair Champion</strong>First place in programming at school &amp;
+                    sub-district levels; Participated at district level
                   </li>
                 </ul>
               </div>

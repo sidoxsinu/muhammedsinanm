@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import { DotField } from '@/components/ui/DotField';
 
 export function HeroSection() {
@@ -21,7 +22,11 @@ export function HeroSection() {
     function scrambleType(
       el: HTMLElement,
       text: string,
-      { charDelay = 80, scrambleFrames = 5, onComplete }: { charDelay?: number; scrambleFrames?: number; onComplete?: () => void } = {}
+      {
+        charDelay = 80,
+        scrambleFrames = 5,
+        onComplete,
+      }: { charDelay?: number; scrambleFrames?: number; onComplete?: () => void } = {},
     ) {
       if (prefersReducedMotion) {
         el.textContent = text;
@@ -38,8 +43,8 @@ export function HeroSection() {
           resolved < text.length && text[resolved] !== ' '
             ? CHARS[Math.floor(Math.random() * CHARS.length)]
             : resolved < text.length
-            ? ' '
-            : '';
+              ? ' '
+              : '';
         el.textContent = text.substring(0, resolved) + next;
         if (frame >= scrambleFrames) {
           frame = 0;
@@ -87,8 +92,20 @@ export function HeroSection() {
 
     // Hero entrance animations
     const heroPfpTween = gsap.from('.hero-pfp', { scale: 1.05, duration: 0.6, ease: 'power2.out' });
-    const heroSocialsTween = gsap.from('.hero-socials a', { x: -10, opacity: 0, duration: 0.3, stagger: 0.05, ease: 'power2.out' });
-    const heroRolesTween = gsap.from('.hero-roles p', { x: 10, opacity: 0, duration: 0.3, stagger: 0.05, ease: 'power2.out' });
+    const heroSocialsTween = gsap.from('.hero-socials a', {
+      x: -10,
+      opacity: 0,
+      duration: 0.3,
+      stagger: 0.05,
+      ease: 'power2.out',
+    });
+    const heroRolesTween = gsap.from('.hero-roles p', {
+      x: 10,
+      opacity: 0,
+      duration: 0.3,
+      stagger: 0.05,
+      ease: 'power2.out',
+    });
     const scrollCircleTween = gsap.from('.scroll-circle-wrapper', {
       opacity: 0,
       scale: 0.8,
@@ -164,7 +181,13 @@ export function HeroSection() {
       <DotField />
 
       <div className="hero-socials">
-        <a className="social-icon" rel="me noopener noreferrer" target="_blank" href="https://github.com/sidoxsinu" aria-label="GitHub">
+        <a
+          className="social-icon"
+          rel="me noopener noreferrer"
+          target="_blank"
+          href="https://github.com/sidoxsinu"
+          aria-label="GitHub"
+        >
           <svg
             className="feather feather-github"
             fill="none"
@@ -180,7 +203,13 @@ export function HeroSection() {
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
           </svg>
         </a>
-        <a className="social-icon" rel="me noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/sidoxsinu/" aria-label="LinkedIn">
+        <a
+          className="social-icon"
+          rel="me noopener noreferrer"
+          target="_blank"
+          href="https://www.linkedin.com/in/sidoxsinu/"
+          aria-label="LinkedIn"
+        >
           <svg
             className="feather feather-linkedin"
             fill="none"
@@ -198,7 +227,13 @@ export function HeroSection() {
             <circle cx="4" cy="4" r="2" />
           </svg>
         </a>
-        <a className="social-icon" rel="me noopener noreferrer" target="_blank" href="https://x.com/sidoxsinu" aria-label="Twitter">
+        <a
+          className="social-icon"
+          rel="me noopener noreferrer"
+          target="_blank"
+          href="https://x.com/sidoxsinu"
+          aria-label="Twitter"
+        >
           <svg
             fill="none"
             height="20"
@@ -214,7 +249,13 @@ export function HeroSection() {
             <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
           </svg>
         </a>
-        <a className="social-icon" rel="me noopener noreferrer" target="_blank" href="https://www.instagram.com/sidoxsinu" aria-label="Instagram">
+        <a
+          className="social-icon"
+          rel="me noopener noreferrer"
+          target="_blank"
+          href="https://www.instagram.com/sidoxsinu"
+          aria-label="Instagram"
+        >
           <svg
             className="feather feather-instagram"
             fill="none"

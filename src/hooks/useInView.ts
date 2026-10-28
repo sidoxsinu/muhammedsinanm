@@ -6,9 +6,7 @@ interface UseInViewOptions extends IntersectionObserverInit {
   triggerOnce?: boolean;
 }
 
-export function useInView<T extends HTMLElement = HTMLDivElement>(
-  options: UseInViewOptions = {}
-) {
+export function useInView<T extends HTMLElement = HTMLDivElement>(options: UseInViewOptions = {}) {
   const { threshold = 0.15, root = null, rootMargin = '0px', triggerOnce = true } = options;
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
@@ -31,7 +29,7 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(
           setInView(false);
         }
       },
-      { threshold, root, rootMargin }
+      { threshold, root, rootMargin },
     );
 
     observer.observe(node);

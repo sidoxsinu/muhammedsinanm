@@ -1,22 +1,22 @@
-@import "tailwindcss";
-@import "./tokens.css";
-@import "./Style.css";
-@import "./accordion-gallery.css";
+@import 'tailwindcss';
+@import './tokens.css';
+@import './Style.css';
+@import './accordion-gallery.css';
 
 @theme inline {
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
   --color-bg-card: var(--bg-card);
   --color-bg-card-hover: var(--bg-card-hover);
-  
+
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
-  
+
   --color-accent-red: var(--accent-red);
   --color-accent-orange: var(--accent-orange);
   --color-gold-accent: var(--gold-accent);
-  
+
   --color-border-subtle: var(--border-subtle);
   --color-border-highlight: var(--border-highlight);
   --color-border-gold: var(--border-gold);
@@ -24,7 +24,9 @@
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

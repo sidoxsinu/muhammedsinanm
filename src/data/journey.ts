@@ -65,8 +65,7 @@ export const JOURNEY_DATA: JourneyYear[] = [
       },
       {
         title: 'IT Fair Champion',
-        description:
-          'First place at school & sub-district levels; Participated at district level',
+        description: 'First place at school & sub-district levels; Participated at district level',
       },
     ],
   },
@@ -83,8 +82,7 @@ export const JOURNEY_DATA: JourneyYear[] = [
       },
       {
         title: 'IT Fair Champion',
-        description:
-          'First place at school & sub-district levels; Participated at district level',
+        description: 'First place at school & sub-district levels; Participated at district level',
       },
     ],
   },
@@ -101,8 +99,7 @@ export const JOURNEY_DATA: JourneyYear[] = [
       },
       {
         title: 'IT Fair Champion',
-        description:
-          'First place at school & sub-district levels; Participated at district level',
+        description: 'First place at school & sub-district levels; Participated at district level',
       },
     ],
   },

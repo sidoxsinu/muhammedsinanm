@@ -1,12 +1,12 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
     rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
+      '*.css': {
+        loaders: ['@tailwindcss/turbopack'],
+        as: '*.css',
       },
     },
   },
@@ -16,8 +16,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/resume",
-        destination: "/images/Resume/Muhammed Sinan M.pdf",
+        source: '/resume',
+        destination: '/images/Resume/Muhammed Sinan M.pdf',
         permanent: false,
       },
     ];

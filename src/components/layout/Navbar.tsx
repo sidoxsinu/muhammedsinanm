@@ -1,10 +1,13 @@
 'use client';
 
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLElement>(null);
@@ -14,17 +17,23 @@ export function Navbar() {
   const closeTweenRef = useRef<gsap.core.Tween | null>(null);
   const isBusyRef = useRef(false);
 
-  const scrollToTop = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   // Nav entrance & glassmorphism morph on scroll
   useEffect(() => {
-    const hero = document.querySelector('.hero-premium');
-    if (!hero || !navRef.current) return;
-
     const navEl = navRef.current;
+    if (!navEl) return;
+
+    // For non-home pages, always keep the sleek floating glass bar
+    if (pathname !== '/') {
+      navEl.classList.add('nav-glass');
+      return;
+    }
+
+    const hero = document.querySelector('.hero-premium');
+    if (!hero) {
+      navEl.classList.add('nav-glass');
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -35,7 +44,7 @@ export function Navbar() {
           }
         });
       },
-      { threshold: 0.05 }
+      { threshold: 0.05 },
     );
 
     observer.observe(hero);
@@ -43,7 +52,7 @@ export function Navbar() {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   // Staggered menu animations
   const buildOpenTimeline = useCallback(() => {
@@ -59,7 +68,9 @@ export function Navbar() {
 
     const preLayers = Array.from(wrapper.querySelectorAll<HTMLElement>('.sm-prelayer'));
     const itemEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-itemLabel'));
-    const numberEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-list[data-numbering] .sm-panel-item'));
+    const numberEls = Array.from(
+      panel.querySelectorAll<HTMLElement>('.sm-panel-list[data-numbering] .sm-panel-item'),
+    );
     const socialTitle = panel.querySelector<HTMLElement>('.sm-socials-title');
     const socialLinks = Array.from(panel.querySelectorAll<HTMLElement>('.sm-socials-link'));
 
@@ -71,14 +82,24 @@ export function Navbar() {
     const tl = gsap.timeline({ paused: true });
 
     preLayers.forEach((el, i) => {
-      tl.fromTo(el, { xPercent: 100 }, { xPercent: 0, duration: 0.5, ease: 'power4.out' }, i * 0.07);
+      tl.fromTo(
+        el,
+        { xPercent: 100 },
+        { xPercent: 0, duration: 0.5, ease: 'power4.out' },
+        i * 0.07,
+      );
     });
 
     const lastTime = preLayers.length ? (preLayers.length - 1) * 0.07 : 0;
     const panelInsertTime = lastTime + (preLayers.length ? 0.08 : 0);
     const panelDuration = 0.65;
 
-    tl.fromTo(panel, { xPercent: 100 }, { xPercent: 0, duration: panelDuration, ease: 'power4.out' }, panelInsertTime);
+    tl.fromTo(
+      panel,
+      { xPercent: 100 },
+      { xPercent: 0, duration: panelDuration, ease: 'power4.out' },
+      panelInsertTime,
+    );
 
     if (itemEls.length) {
       const itemsStart = panelInsertTime + panelDuration * 0.15;
@@ -91,7 +112,7 @@ export function Navbar() {
           ease: 'power4.out',
           stagger: { each: 0.1, from: 'start' },
         },
-        itemsStart
+        itemsStart,
       );
 
       if (numberEls.length) {
@@ -103,7 +124,7 @@ export function Navbar() {
             '--sm-num-opacity': 1,
             stagger: { each: 0.08, from: 'start' },
           } as gsap.TweenVars,
-          itemsStart + 0.1
+          itemsStart + 0.1,
         );
       }
     }
@@ -124,7 +145,7 @@ export function Navbar() {
             stagger: { each: 0.08, from: 'start' },
             onComplete: () => gsap.set(socialLinks, { clearProps: 'opacity' }),
           },
-          socialsStart + 0.04
+          socialsStart + 0.04,
         );
       }
     }
@@ -135,9 +156,19 @@ export function Navbar() {
   const animateIcon = (opening: boolean) => {
     if (!iconRef.current) return;
     if (opening) {
-      gsap.to(iconRef.current, { rotate: 225, duration: 0.8, ease: 'power4.out', overwrite: 'auto' });
+      gsap.to(iconRef.current, {
+        rotate: 225,
+        duration: 0.8,
+        ease: 'power4.out',
+        overwrite: 'auto',
+      });
     } else {
-      gsap.to(iconRef.current, { rotate: 0, duration: 0.35, ease: 'power3.inOut', overwrite: 'auto' });
+      gsap.to(iconRef.current, {
+        rotate: 0,
+        duration: 0.35,
+        ease: 'power3.inOut',
+        overwrite: 'auto',
+      });
     }
   };
 
@@ -180,7 +211,9 @@ export function Navbar() {
       onComplete: () => {
         const itemEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-itemLabel'));
         if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
-        const numberEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-list[data-numbering] .sm-panel-item'));
+        const numberEls = Array.from(
+          panel.querySelectorAll<HTMLElement>('.sm-panel-list[data-numbering] .sm-panel-item'),
+        );
         if (numberEls.length) gsap.set(numberEls, { '--sm-num-opacity': 0 } as gsap.TweenVars);
         const socialTitle = panel.querySelector<HTMLElement>('.sm-socials-title');
         const socialLinks = Array.from(panel.querySelectorAll<HTMLElement>('.sm-socials-link'));
@@ -251,30 +284,62 @@ export function Navbar() {
       {/* NAV */}
       <nav className="premium-nav" ref={navRef}>
         <div className="nav-left">
-          <a href="#" className="nav-brand" onClick={scrollToTop}>
+          <Link
+            href="/"
+            className="nav-brand"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             © Muhammed Sinan M
-          </a>
+          </Link>
         </div>
+
         <div className="nav-center">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#fan-carousel">Certifications</a>
+          <Link
+            href="/"
+            className={pathname === '/' ? 'font-semibold text-[var(--accent-orange)]' : ''}
+          >
+            Home
+          </Link>
+          <Link
+            href="/projects"
+            className={pathname === '/projects' ? 'font-semibold text-[var(--accent-orange)]' : ''}
+          >
+            Projects
+          </Link>
+          <Link
+            href="/about"
+            className={pathname === '/about' ? 'font-semibold text-[var(--accent-orange)]' : ''}
+          >
+            About &amp; Journey
+          </Link>
+          <Link
+            href="/credentials"
+            className={
+              pathname === '/credentials' ? 'font-semibold text-[var(--accent-orange)]' : ''
+            }
+          >
+            Credentials
+          </Link>
           <a
             href="/images/Resume/Muhammed%20Sinan%20M.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-resume"
-            style={{ color: '#E8562A', fontWeight: 500 }}
+            style={{ color: '#E8562A', fontWeight: 600 }}
           >
-            Resume
+            Resume ↗
           </a>
         </div>
+
         <div className="nav-right">
-          <a href="https://contact.muhammedsinan.in" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="/contact"
+            className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-white transition-all hover:bg-[var(--accent-orange)]"
+          >
             Let&apos;s Talk!
-          </a>
+          </Link>
         </div>
+
         <button
           className="sm-toggle"
           aria-label="Open menu"
@@ -306,7 +371,11 @@ export function Navbar() {
         style={{ '--sm-accent': '#E54D2E' } as React.CSSProperties}
         ref={wrapperRef}
         onClick={(e) => {
-          if (isOpen && (e.target === wrapperRef.current || (e.target as HTMLElement).classList.contains('sm-prelayer'))) {
+          if (
+            isOpen &&
+            (e.target === wrapperRef.current ||
+              (e.target as HTMLElement).classList.contains('sm-prelayer'))
+          ) {
             closeMenu();
           }
         }}
@@ -315,58 +384,43 @@ export function Navbar() {
           <div className="sm-prelayer" style={{ background: '#111111' }} />
           <div className="sm-prelayer" style={{ background: '#222222' }} />
         </div>
-        <aside id="staggered-menu-panel" className="staggered-menu-panel" aria-hidden={!isOpen} ref={panelRef}>
+        <aside
+          id="staggered-menu-panel"
+          className="staggered-menu-panel"
+          aria-hidden={!isOpen}
+          ref={panelRef}
+        >
           <div className="sm-panel-inner">
             <ul className="sm-panel-list" role="list" data-numbering="true">
               <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#about" data-index="1" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">About</span>
-                </a>
+                <Link className="sm-panel-item" href="/" data-index="1" onClick={closeMenu}>
+                  <span className="sm-panel-itemLabel">Home</span>
+                </Link>
               </li>
               <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#journey" data-index="2" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">Journey</span>
-                </a>
-              </li>
-              <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#education" data-index="3" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">Education</span>
-                </a>
-              </li>
-              <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#projects" data-index="4" onClick={closeMenu}>
+                <Link className="sm-panel-item" href="/projects" data-index="2" onClick={closeMenu}>
                   <span className="sm-panel-itemLabel">Projects</span>
-                </a>
+                </Link>
               </li>
               <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#achievements" data-index="5" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">Achievements</span>
-                </a>
+                <Link className="sm-panel-item" href="/about" data-index="3" onClick={closeMenu}>
+                  <span className="sm-panel-itemLabel">About &amp; Journey</span>
+                </Link>
               </li>
               <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#experience" data-index="6" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">Experience</span>
-                </a>
+                <Link
+                  className="sm-panel-item"
+                  href="/credentials"
+                  data-index="4"
+                  onClick={closeMenu}
+                >
+                  <span className="sm-panel-itemLabel">Credentials &amp; Certs</span>
+                </Link>
               </li>
               <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#skills" data-index="7" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">Skills</span>
-                </a>
-              </li>
-              <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#clubs" data-index="8" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">Clubs</span>
-                </a>
-              </li>
-              <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#hackathons" data-index="9" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">Hackathons</span>
-                </a>
-              </li>
-              <li className="sm-panel-itemWrap">
-                <a className="sm-panel-item" href="#fan-carousel" data-index="10" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">Certifications</span>
-                </a>
+                <Link className="sm-panel-item" href="/contact" data-index="5" onClick={closeMenu}>
+                  <span className="sm-panel-itemLabel">Contact</span>
+                </Link>
               </li>
               <li className="sm-panel-itemWrap" style={{ marginTop: '1rem' }}>
                 <a
@@ -374,11 +428,11 @@ export function Navbar() {
                   href="/images/Resume/Muhammed%20Sinan%20M.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-index="11"
+                  data-index="6"
                   style={{ color: '#E54D2E' }}
                   onClick={closeMenu}
                 >
-                  <span className="sm-panel-itemLabel">Resume</span>
+                  <span className="sm-panel-itemLabel">Resume ↗</span>
                 </a>
               </li>
             </ul>
@@ -386,18 +440,33 @@ export function Navbar() {
               <h3 className="sm-socials-title">Socials</h3>
               <ul className="sm-socials-list" role="list">
                 <li className="sm-socials-item">
-                  <a href="https://github.com/sidoxsinu" target="_blank" rel="noopener noreferrer" className="sm-socials-link">
+                  <a
+                    href="https://github.com/sidoxsinu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sm-socials-link"
+                  >
                     GitHub
                   </a>
                 </li>
                 <li className="sm-socials-item">
-                  <a href="https://www.linkedin.com/in/sidoxsinu/" target="_blank" rel="noopener noreferrer" className="sm-socials-link">
+                  <a
+                    href="https://www.linkedin.com/in/sidoxsinu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sm-socials-link"
+                  >
                     LinkedIn
                   </a>
                 </li>
                 <li className="sm-socials-item">
-                  <a href="https://contact.muhammedsinan.in" target="_blank" rel="noopener noreferrer" className="sm-socials-link">
-                    Contact
+                  <a
+                    href="https://contact.muhammedsinan.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sm-socials-link"
+                  >
+                    Direct Portal ↗
                   </a>
                 </li>
               </ul>

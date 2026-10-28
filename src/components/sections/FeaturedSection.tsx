@@ -13,35 +13,40 @@ export function FeaturedSection() {
     const items = [
       {
         image: '/images/project-images/AvenWing.webp',
-        quote: 'Premium e-commerce platform featuring an interactive product gallery, GSAP animations, and direct WhatsApp checkout.',
+        quote:
+          'Premium e-commerce platform featuring an interactive product gallery, GSAP animations, and direct WhatsApp checkout.',
         source: 'AvenWing',
         label: 'AvenWing',
         link: '#project-avenwing',
       },
       {
         image: '/images/project-images/Parackal-Travel-Hub.webp',
-        quote: 'Full-stack bilingual travel booking platform with custom inquiry flows and responsive design.',
+        quote:
+          'Full-stack bilingual travel booking platform with custom inquiry flows and responsive design.',
         source: 'Parackal Travels Hub',
         label: 'Parackal Travels Hub',
         link: '#project-parackal',
       },
       {
         image: '/images/project-images/Next-Gen-Ai-Assistant.webp',
-        quote: 'Award-winning multi-modal AI assistant powered by Groq Llama 3.3 for real-time voice interaction.',
+        quote:
+          'Award-winning multi-modal AI assistant powered by Groq Llama 3.3 for real-time voice interaction.',
         source: 'Next Gen AI Assistant',
         label: 'Next Gen AI Assistant',
         link: '#project-ai-assistant',
       },
       {
         image: '/images/project-images/Pylon.webp',
-        quote: 'Zero-dependency scholarship discovery platform with real-time filtering and custom search algorithms.',
+        quote:
+          'Zero-dependency scholarship discovery platform with real-time filtering and custom search algorithms.',
         source: 'Pylon',
         label: 'Pylon',
         link: '#project-pylon',
       },
       {
         image: '/images/project-images/CodeBurry.webp',
-        quote: 'Gamified frontend development learning platform with interactive coding challenges and an XP-based reward system.',
+        quote:
+          'Gamified frontend development learning platform with interactive coding challenges and an XP-based reward system.',
         source: 'CodeBurry',
         label: 'CodeBurry',
         link: '#project-codeburry',
@@ -65,7 +70,9 @@ export function FeaturedSection() {
     const grayscale = true;
     const count = items.length;
     let active = Math.min(Math.max(defaultIndex, 0), count - 1);
-    const prefersReduced = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+    const prefersReduced = window.matchMedia
+      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      : false;
 
     let tl: gsap.core.Timeline | null = null;
     let mediaSize = 320;
@@ -153,7 +160,11 @@ export function FeaturedSection() {
 
         const rot = isActive ? 0 : i < active ? tilt : -tilt;
 
-        tl!.to(panel, { flexGrow: isActive ? grow : 1, rotateY: rot, duration: dur, ease: ease }, 0);
+        tl!.to(
+          panel,
+          { flexGrow: isActive ? grow : 1, rotateY: rot, duration: dur, ease: ease },
+          0,
+        );
 
         if (media) {
           const drift = Math.max(-1.5, Math.min(1.5, active - i));
@@ -171,7 +182,7 @@ export function FeaturedSection() {
               duration: dur,
               ease: ease,
             } as gsap.TweenVars,
-            0
+            0,
           );
         }
 
@@ -179,8 +190,14 @@ export function FeaturedSection() {
           if (isActive) {
             tl!.to(
               [bar, text],
-              { opacity: 1, x: 0, duration: dur, ease: ease, stagger: prefersReduced ? 0 : stagger },
-              0
+              {
+                opacity: 1,
+                x: 0,
+                duration: dur,
+                ease: ease,
+                stagger: prefersReduced ? 0 : stagger,
+              },
+              0,
             );
           } else {
             tl!.to([bar, text], { opacity: 0, x: -14, duration: dur * 0.6, ease: ease }, 0);
@@ -242,8 +259,15 @@ export function FeaturedSection() {
   }, []);
 
   return (
-    <section aria-label="Featured Projects Showcase" className="testimonials-section" style={{ padding: '40px 0', overflow: 'visible' }}>
-      <div className="testimonials-wrapper" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+    <section
+      aria-label="Featured Projects Showcase"
+      className="testimonials-section"
+      style={{ padding: '40px 0', overflow: 'visible' }}
+    >
+      <div
+        className="testimonials-wrapper"
+        style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}
+      >
         <div id="testimonials-accordion" ref={containerRef} />
       </div>
     </section>

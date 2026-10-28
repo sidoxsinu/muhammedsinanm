@@ -56,29 +56,46 @@ export function ExperienceSection() {
             <div className="exp-card-text">
               <div className="card-header">
                 <h4>Software Engineering Intern</h4>
-                <span className="badge" style={{ color: 'var(--accent-red)', fontWeight: 500, fontSize: '14px' }}>
+                <span
+                  className="badge"
+                  style={{ color: 'var(--accent-red)', fontWeight: 500, fontSize: '14px' }}
+                >
                   Current
                 </span>
               </div>
               <p
                 className="reveal-block"
-                style={{ color: 'var(--text-primary)', fontSize: '16px', fontWeight: 600, marginBottom: '4px' }}
+                style={{
+                  color: 'var(--text-primary)',
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  marginBottom: '4px',
+                }}
               >
                 Torcue Digital Inc. (Toric Software Labs Pvt. Ltd.)
               </p>
               <p
                 className="reveal-block"
-                style={{ color: 'var(--accent-red)', fontSize: '14px', fontWeight: 500, marginBottom: '12px' }}
+                style={{
+                  color: 'var(--accent-red)',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  marginBottom: '12px',
+                }}
               >
                 Jun 2026 – Present
               </p>
               <p className="reveal-block">
-                Building and shipping features across full-stack web applications in a professional product engineering
-                team. Working with JavaScript, React, and Node.js on client-facing software at Torcue Digital&apos;s
-                engineering office at Infopark Phase II, Kochi — contributing to product design, UI implementation, and
-                backend integration in a collaborative, deadline-driven environment.
+                Building and shipping features across full-stack web applications in a professional
+                product engineering team. Working with JavaScript, React, and Node.js on
+                client-facing software at Torcue Digital&apos;s engineering office at Infopark Phase
+                II, Kochi — contributing to product design, UI implementation, and backend
+                integration in a collaborative, deadline-driven environment.
               </p>
-              <p className="reveal-block" style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '20px' }}>
+              <p
+                className="reveal-block"
+                style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '20px' }}
+              >
                 <strong>Location:</strong> Transasia Cyberpark, Infopark Phase II, Kochi, Kerala
               </p>
               <a
@@ -102,20 +119,31 @@ export function ExperienceSection() {
               </div>
               <p
                 className="reveal-block"
-                style={{ color: 'var(--text-primary)', fontSize: '16px', fontWeight: 600, marginBottom: '4px' }}
+                style={{
+                  color: 'var(--text-primary)',
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  marginBottom: '4px',
+                }}
               >
                 Suvidha Foundation (Suvidha Mahila Mandal)
               </p>
               <p
                 className="reveal-block"
-                style={{ color: 'var(--accent-red)', fontSize: '14px', fontWeight: 500, marginBottom: '12px' }}
+                style={{
+                  color: 'var(--accent-red)',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  marginBottom: '12px',
+                }}
               >
                 25 Mar 2026 – 25 Apr 2026
               </p>
               <p className="reveal-block">
-                Completed a one-month research internship at Suvidha Foundation in collaboration with Code Karo Yaaro.
-                Worked on AI and development-related research workflows, prepared technical documentation, and contributed
-                to study resources. Recognized for punctuality and demonstrated inquisitiveness throughout the programme.
+                Completed a one-month research internship at Suvidha Foundation in collaboration
+                with Code Karo Yaaro. Worked on AI and development-related research workflows,
+                prepared technical documentation, and contributed to study resources. Recognized for
+                punctuality and demonstrated inquisitiveness throughout the programme.
               </p>
               <a
                 className="btn"

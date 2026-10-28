@@ -22,7 +22,7 @@ export function GlobalEffects() {
           () => {
             pfp.style.setProperty('will-change', 'transform', 'important');
           },
-          { once: true }
+          { once: true },
         );
       }
     }
@@ -46,7 +46,7 @@ export function GlobalEffects() {
             start: trigger88,
             toggleActions: 'play none none none',
           },
-        }
+        },
       );
     });
 
@@ -64,7 +64,7 @@ export function GlobalEffects() {
             trigger: el,
             start: trigger85,
           },
-        }
+        },
       );
     });
 
@@ -84,7 +84,7 @@ export function GlobalEffects() {
             trigger: list,
             start: trigger85,
           },
-        }
+        },
       );
     });
 
@@ -103,7 +103,7 @@ export function GlobalEffects() {
     const magneticCleanups: Array<() => void> = [];
     if (!isTouch) {
       const magneticEls = document.querySelectorAll<HTMLElement>(
-        'nav a, .contact-link, .btn-primary, .btn-secondary, .hero-cta, .magnetic-btn, .cta-btn, .btn, .social-pill'
+        'nav a, .contact-link, .btn-primary, .btn-secondary, .hero-cta, .magnetic-btn, .cta-btn, .btn, .social-pill',
       );
 
       magneticEls.forEach((el) => {
@@ -139,7 +139,7 @@ export function GlobalEffects() {
     const tiltCleanups: Array<() => void> = [];
     if (!isTouch) {
       const cards = document.querySelectorAll<HTMLElement>(
-        '.card:not(.card-swap-container .card), .split-card, .event-list-item'
+        '.card:not(.card-swap-container .card), .split-card, .event-list-item',
       );
 
       cards.forEach((card) => {
@@ -203,7 +203,7 @@ export function GlobalEffects() {
 
     // 5. BUTTON GLOW CURSOR TRACKING (--x, --y)
     const glowBtns = document.querySelectorAll<HTMLElement>(
-      '.carousel-nav-btn, .btn, .cta-btn, .social-pill'
+      '.carousel-nav-btn, .btn, .cta-btn, .social-pill',
     );
     const glowCleanups: Array<() => void> = [];
     glowBtns.forEach((btn) => {

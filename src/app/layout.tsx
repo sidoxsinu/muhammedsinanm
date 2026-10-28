@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next';
+
 import '@/styles/globals.css';
-import { PROFILE } from '@/data/profile';
+
 import { SITE_CONFIG } from '@/lib/site-config';
+import { PROFILE } from '@/data/profile';
 
 export const viewport: Viewport = {
   themeColor: '#111111',
@@ -85,7 +87,14 @@ const jsonLdPerson = {
   '@type': 'Person',
   '@id': 'https://muhammedsinan.in/#person',
   name: 'Muhammed Sinan M',
-  alternateName: ['sidoxsinu', 'Sinan M', 'Muhammed Sinan', 'Mohammed Sinan', 'Sinan', 'MohammedSinanM'],
+  alternateName: [
+    'sidoxsinu',
+    'Sinan M',
+    'Muhammed Sinan',
+    'Mohammed Sinan',
+    'Sinan',
+    'MohammedSinanM',
+  ],
   description:
     'Computer Science student, Full-Stack Developer, and AI Enthusiast from Irinjalakuda, Kerala, India. Award-winning developer and hackathon winner.',
   url: 'https://muhammedsinan.in/',

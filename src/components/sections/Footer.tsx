@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export function Footer() {
   const handlePrint = (e: React.MouseEvent) => {
@@ -33,7 +34,9 @@ export function Footer() {
             Building the future, one line at a time.
           </p>
           <div style={{ color: 'rgba(240,240,240,0.8)', fontSize: '14px', lineHeight: 1.8 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+            <div
+              style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}
+            >
               <svg
                 className="feather feather-mail"
                 fill="none"
@@ -57,7 +60,9 @@ export function Footer() {
                 muhammedsinan.m67@gmail.com
               </a>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+            <div
+              style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}
+            >
               <svg
                 className="feather feather-map-pin"
                 fill="none"
@@ -105,33 +110,39 @@ export function Footer() {
         </div>
         <div className="footer-col">
           <h4 style={{ color: '#f0f0f0', marginBottom: '20px', fontSize: '18px', fontWeight: 600 }}>
-            Quick Links
+            Navigation
           </h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <a
-              href="#about"
+            <Link
+              href="/"
               style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
             >
-              About
-            </a>
-            <a
-              href="#projects"
+              Home
+            </Link>
+            <Link
+              href="/projects"
               style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
             >
               Projects
-            </a>
-            <a
-              href="#experience"
+            </Link>
+            <Link
+              href="/about"
               style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
             >
-              Experience
-            </a>
-            <a
-              href="#achievements"
+              About &amp; Journey
+            </Link>
+            <Link
+              href="/credentials"
               style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
             >
-              Achievements
-            </a>
+              Credentials &amp; Awards
+            </Link>
+            <Link
+              href="/contact"
+              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
+            >
+              Contact
+            </Link>
           </div>
         </div>
         <div className="footer-col">

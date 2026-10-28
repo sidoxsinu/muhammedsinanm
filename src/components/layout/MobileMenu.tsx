@@ -2,8 +2,9 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { SOCIAL_LINKS } from '@/data/socials';
+
 import { PROFILE } from '@/data/profile';
+import { SOCIAL_LINKS } from '@/data/socials';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -58,17 +59,22 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       />
 
       {/* Drawer */}
-      <div className="relative z-10 w-full max-w-xs h-full bg-[var(--bg-secondary)] border-l border-[var(--border-subtle)] p-6 flex flex-col justify-between overflow-y-auto shadow-2xl">
+      <div className="relative z-10 flex h-full w-full max-w-xs flex-col justify-between overflow-y-auto border-l border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6 shadow-2xl">
         <div>
-          <div className="flex items-center justify-between pb-6 border-b border-[var(--border-subtle)]">
-            <span className="font-semibold text-white tracking-tight">Navigation</span>
+          <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-6">
+            <span className="font-semibold tracking-tight text-white">Navigation</span>
             <button
               onClick={onClose}
               aria-label="Close menu"
-              className="p-2 -mr-2 text-[var(--text-secondary)] hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-red)]"
+              className="-mr-2 rounded-lg p-2 text-[var(--text-secondary)] hover:text-white focus:ring-2 focus:ring-[var(--accent-red)] focus:outline-none"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -83,14 +89,14 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={onClose}
-                  className={`flex items-center justify-between py-2.5 px-3 rounded-lg text-sm font-medium transition-colors ${
+                  className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                     isHighlight
-                      ? 'text-[var(--accent-red)] font-semibold hover:bg-[var(--accent-red)]/10'
-                      : 'text-[var(--text-secondary)] hover:text-white hover:bg-white/5'
+                      ? 'font-semibold text-[var(--accent-red)] hover:bg-[var(--accent-red)]/10'
+                      : 'text-[var(--text-secondary)] hover:bg-white/5 hover:text-white'
                   }`}
                 >
                   <span>
-                    <span className="text-xs font-mono text-[var(--text-muted)] mr-2">
+                    <span className="mr-2 font-mono text-xs text-[var(--text-muted)]">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     {item.label}
@@ -102,9 +108,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   key={item.label}
                   href={item.href}
                   onClick={onClose}
-                  className="flex items-center py-2.5 px-3 rounded-lg text-sm font-medium text-[var(--text-secondary)] hover:text-white hover:bg-white/5 transition-colors"
+                  className="flex items-center rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-white/5 hover:text-white"
                 >
-                  <span className="text-xs font-mono text-[var(--text-muted)] mr-2">
+                  <span className="mr-2 font-mono text-xs text-[var(--text-muted)]">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   {item.label}
@@ -114,8 +120,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </nav>
         </div>
 
-        <div className="pt-6 border-t border-[var(--border-subtle)] mt-6">
-          <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)] block mb-3">
+        <div className="mt-6 border-t border-[var(--border-subtle)] pt-6">
+          <span className="mb-3 block font-mono text-xs tracking-widest text-[var(--text-muted)] uppercase">
             Socials
           </span>
           <div className="flex flex-wrap gap-3">
@@ -125,7 +131,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-[var(--text-secondary)] hover:text-[var(--accent-red)] transition-colors"
+                className="text-xs text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-red)]"
               >
                 {s.platform}
               </a>
@@ -134,7 +140,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               href={PROFILE.contactUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-[var(--accent-red)] font-medium hover:underline"
+              className="text-xs font-medium text-[var(--accent-red)] hover:underline"
             >
               Contact
             </a>

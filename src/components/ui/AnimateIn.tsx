@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 import { useInView } from '@/hooks/useInView';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { cn } from '@/lib/utils';
 
 interface AnimateInProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -53,7 +54,7 @@ export function AnimateIn({
       className={cn(
         'transition-all duration-700 ease-out will-change-[transform,opacity]',
         getDirectionClasses(),
-        className
+        className,
       )}
       {...props}
     >

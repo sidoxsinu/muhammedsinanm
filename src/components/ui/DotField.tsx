@@ -32,7 +32,16 @@ export function DotField() {
     if (!ctx) return;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let dots: Array<{ ax: number; ay: number; sx: number; sy: number; vx: number; vy: number; x: number; y: number }> = [];
+    let dots: Array<{
+      ax: number;
+      ay: number;
+      sx: number;
+      sy: number;
+      vx: number;
+      vy: number;
+      x: number;
+      y: number;
+    }> = [];
     const mouse = { x: -9999, y: -9999, prevX: -9999, prevY: -9999, speed: 0 };
     const size = { w: 0, h: 0, offsetX: 0, offsetY: 0 };
     let engagement = 0;
@@ -185,7 +194,7 @@ export function DotField() {
           cancelAnimationFrame(rafId);
         }
       },
-      { threshold: 0.01 }
+      { threshold: 0.01 },
     );
     observer.observe(container);
 

@@ -53,18 +53,31 @@ export function AchievementsSection() {
         <div className="projects">
           <div className="card fade-in-up reveal-block">
             <div className="card-header" style={{ marginBottom: '8px' }}>
-              <h4 style={{ margin: 0, color: 'var(--text-primary)', fontSize: '1.4rem', fontWeight: 500 }}>
+              <h4
+                style={{
+                  margin: 0,
+                  color: 'var(--text-primary)',
+                  fontSize: '1.4rem',
+                  fontWeight: 500,
+                }}
+              >
                 Best Technical Project — Build with AI Hackathon 2026
               </h4>
             </div>
             <p
               className="reveal-block"
-              style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '12px', fontWeight: 500 }}
+              style={{
+                fontSize: '0.85rem',
+                color: 'var(--text-secondary)',
+                marginBottom: '12px',
+                fontWeight: 500,
+              }}
             >
               Organized by Google for Developers / MuLearn NSSCE · Mar 2026
             </p>
             <p className="reveal-block" style={{ marginBottom: '16px' }}>
-              Next Gen AI Assistant recognized for technical excellence and innovation among all competing teams.
+              Next Gen AI Assistant recognized for technical excellence and innovation among all
+              competing teams.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <a
@@ -87,21 +100,38 @@ export function AchievementsSection() {
           </div>
           <div className="card fade-in-up reveal-block">
             <div className="card-header" style={{ marginBottom: '8px' }}>
-              <h4 style={{ margin: 0, color: 'var(--text-primary)', fontSize: '1.4rem', fontWeight: 500 }}>
+              <h4
+                style={{
+                  margin: 0,
+                  color: 'var(--text-primary)',
+                  fontSize: '1.4rem',
+                  fontWeight: 500,
+                }}
+              >
                 WEBATHON 2025 — Second Prize
               </h4>
             </div>
             <p
               className="reveal-block"
-              style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '12px', fontWeight: 500 }}
+              style={{
+                fontSize: '0.85rem',
+                color: 'var(--text-secondary)',
+                marginBottom: '12px',
+                fontWeight: 500,
+              }}
             >
               Organized by CSI CCE · 2025
             </p>
             <p className="reveal-block" style={{ marginBottom: '16px' }}>
-              Pylon — an all-in-one scholarship search platform — was recognized as Second Prize winner at WEBATHON 2025,
-              competing against teams from across the college.
+              Pylon — an all-in-one scholarship search platform — was recognized as Second Prize
+              winner at WEBATHON 2025, competing against teams from across the college.
             </p>
-            <a className="minimal-link" rel="me noopener noreferrer" target="_blank" href="https://github.com/sidoxsinu/Pylon">
+            <a
+              className="minimal-link"
+              rel="me noopener noreferrer"
+              target="_blank"
+              href="https://github.com/sidoxsinu/Pylon"
+            >
               View Project ↗
             </a>
           </div>

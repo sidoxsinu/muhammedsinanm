@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+
 import { CERTIFICATE_CARDS } from '@/data/certificates';
 
 export function CertificateGallerySection() {
@@ -13,7 +14,9 @@ export function CertificateGallerySection() {
     if (!viewport || !track) return;
 
     // 1. Clone the original cards — prepend + append full set copies
-    const originals = Array.from(track.querySelectorAll<HTMLElement>('.cert-card:not([data-clone])'));
+    const originals = Array.from(
+      track.querySelectorAll<HTMLElement>('.cert-card:not([data-clone])'),
+    );
     if (!originals.length) return;
 
     function cloneSet() {
