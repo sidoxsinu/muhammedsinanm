@@ -2337,8 +2337,8 @@ body.cursor-hover .cursor-dot {
   }
 
   .large-intro-text {
-    font-size: clamp(1.15rem, 4.2vw, 1.4rem);
-    line-height: 1.5;
+    font-size: clamp(1.45rem, 4.8vw, 1.8rem);
+    line-height: 1.35;
     padding-inline: 0;
     margin-bottom: 0 !important;
   }
