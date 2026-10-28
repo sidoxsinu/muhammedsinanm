@@ -20,6 +20,7 @@ export function EventsSection() {
             <button
               className={`event-dropdown ${activeItems['cce'] ? 'active' : ''}`}
               type="button"
+              aria-expanded={Boolean(activeItems['cce'])}
               onClick={() => toggle('cce')}
             >
               <span>Christ College of Engineering (CCE)</span>
@@ -66,6 +67,7 @@ export function EventsSection() {
             <button
               className={`event-dropdown ${activeItems['vit'] ? 'active' : ''}`}
               type="button"
+              aria-expanded={Boolean(activeItems['vit'])}
               onClick={() => toggle('vit')}
             >
               <span>VIT Vellore</span>
@@ -84,6 +86,7 @@ export function EventsSection() {
             <button
               className={`event-dropdown ${activeItems['rajagiri'] ? 'active' : ''}`}
               type="button"
+              aria-expanded={Boolean(activeItems['rajagiri'])}
               onClick={() => toggle('rajagiri')}
             >
               <span>Rajagiri School of Engineering &amp; Technology</span>
@@ -102,6 +105,7 @@ export function EventsSection() {
             <button
               className={`event-dropdown ${activeItems['nitc'] ? 'active' : ''}`}
               type="button"
+              aria-expanded={Boolean(activeItems['nitc'])}
               onClick={() => toggle('nitc')}
             >
               <span>NIT Calicut</span>
@@ -120,6 +124,7 @@ export function EventsSection() {
             <button
               className={`event-dropdown ${activeItems['iith'] ? 'active' : ''}`}
               type="button"
+              aria-expanded={Boolean(activeItems['iith'])}
               onClick={() => toggle('iith')}
             >
               <span>IIT Hyderabad &amp; Tech Maghi</span>
@@ -142,6 +147,7 @@ export function EventsSection() {
             <button
               className={`event-dropdown ${activeItems['nss'] ? 'active' : ''}`}
               type="button"
+              aria-expanded={Boolean(activeItems['nss'])}
               onClick={() => toggle('nss')}
             >
               <span>NSS Palakkad / μLearn</span>
@@ -160,6 +166,7 @@ export function EventsSection() {
             <button
               className={`event-dropdown ${activeItems['kdisc'] ? 'active' : ''}`}
               type="button"
+              aria-expanded={Boolean(activeItems['kdisc'])}
               onClick={() => toggle('kdisc')}
             >
               <span>K-DISC / Government of Kerala</span>
