@@ -13,7 +13,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
-  title: `${PROFILE.name} | Full-Stack Developer, AI Enthusiast & Software Engineer | Kerala`,
+  title: {
+    default: `${PROFILE.name} | Full-Stack Developer, AI Enthusiast & Software Engineer | Kerala`,
+    template: `%s | ${PROFILE.name}`,
+  },
   description:
     'Portfolio of Muhammed Sinan M — CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
   keywords: [
