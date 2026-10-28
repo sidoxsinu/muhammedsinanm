@@ -20,6 +20,7 @@ export function ClubsSection() {
             <button
               className={`club-dropdown ${activeClubs['ieee'] ? 'active' : ''}`}
               type="button"
+              aria-expanded={Boolean(activeClubs['ieee'])}
               onClick={() => toggle('ieee')}
             >
               <span className="club-title">IEEE Memberships</span>
@@ -47,6 +48,7 @@ export function ClubsSection() {
             <button
               className={`club-dropdown ${activeClubs['communities'] ? 'active' : ''}`}
               type="button"
+              aria-expanded={Boolean(activeClubs['communities'])}
               onClick={() => toggle('communities')}
             >
               <span className="club-title">Communities &amp; Organizations</span>
