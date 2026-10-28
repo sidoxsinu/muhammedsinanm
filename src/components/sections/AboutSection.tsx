@@ -10,7 +10,7 @@ const ABOUT_SEGMENTS = [
   { text: ' ', isKey: false },
   { text: 'Intern', isKey: true },
   {
-    text: ' at Torcue Digital, building full-stack software in a professional product engineering environment. Delivered two live freelance websites and built production-grade AI applications — including an award-winning AI assistant that won Best Technical Project at the Google Build with AI Hackathon 2026. Focused on full-stack development, AI-driven products, and scalable systems.',
+    text: ' at Torcue Digital, building scalable full-stack applications and production-grade AI products.',
     isKey: false,
   },
 ];
