@@ -28,7 +28,7 @@ export function AchievementsSection() {
         {ACHIEVEMENTS.map((award) => (
           <div
             key={award.title}
-            className="flex flex-col justify-between gap-5 rounded-[2px] border border-neutral-800 bg-[#161616] p-6 transition-colors hover:border-neutral-700 sm:p-7"
+            className="flex flex-col justify-between gap-5 rounded-2xl border border-neutral-800 bg-[#161616] p-6 transition-colors hover:border-neutral-700 sm:p-7"
           >
             <div className="space-y-3">
               <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--accent-orange)] uppercase">

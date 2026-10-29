@@ -46,7 +46,7 @@ export default function AboutPage() {
               <img
                 src="/images/profile-picture/bg-removed-black&white-pfp.webp"
                 alt={PROFILE.name}
-                className="h-24 w-24 shrink-0 rounded-[2px] border border-white/10 bg-neutral-900 object-cover sm:h-32 sm:w-32"
+                className="h-24 w-24 shrink-0 rounded-2xl border border-white/10 bg-neutral-900 object-cover sm:h-32 sm:w-32"
               />
               <div className="space-y-4">
                 <div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
                 ].map((l) => (
                   <div
                     key={l.lang}
-                    className="rounded-[2px] border border-white/[0.06] bg-white/[0.03] p-3"
+                    className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-3"
                   >
                     <div className="text-sm font-medium text-white">{l.lang}</div>
                     <div className="text-[11px] text-neutral-400">{l.level}</div>
@@ -179,7 +179,7 @@ export default function AboutPage() {
           {JOURNEY_DATA.map((jy) => (
             <div key={jy.year} className="relative">
               {/* Year Marker */}
-              <div className="absolute top-0 -left-[31px] h-4 w-4 rounded-[2px] border-4 border-[var(--bg-color)] bg-[var(--accent-orange)] sm:-left-[39px]" />
+              <div className="absolute top-0 -left-[31px] h-4 w-4 rounded-full border-4 border-[var(--bg-color)] bg-[var(--accent-orange)] sm:-left-[39px]" />
               <div className="mb-4">
                 <span className="font-heading text-2xl font-bold text-white">{jy.year}</span>
               </div>

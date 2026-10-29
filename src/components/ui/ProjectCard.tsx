@@ -11,7 +11,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className="h-full" data-testid="project-card">
-      <div className="group flex h-full flex-col rounded-[2px] border border-neutral-800 bg-[#161616] transition-colors duration-200 hover:border-[var(--accent-orange)]">
+      <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] transition-colors duration-200 hover:border-[var(--accent-orange)]">
         {/* Project Image Preview */}
         <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-neutral-800 bg-neutral-900">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -25,13 +25,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {/* Top Badges */}
           <div className="pointer-events-none absolute top-3 right-3 left-3 flex items-center justify-between">
             {project.badge ? (
-              <span className="rounded-[2px] border border-[var(--accent-orange)] bg-[#111111] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[var(--accent-orange)] uppercase">
+              <span className="rounded-full border border-[var(--accent-orange)] bg-[#111111] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[var(--accent-orange)] uppercase">
                 {project.badge}
               </span>
             ) : (
               <span />
             )}
-            <span className="rounded-[2px] border border-neutral-700 bg-black/90 px-2.5 py-0.5 font-mono text-[11px] text-neutral-300">
+            <span className="rounded-full border border-neutral-700 bg-black/90 px-2.5 py-0.5 font-mono text-[11px] text-neutral-300">
               {project.year}
             </span>
           </div>
@@ -55,7 +55,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-[2px] border border-neutral-800 bg-neutral-900 px-2 py-0.5 font-mono text-[11px] text-neutral-400"
+                  className="rounded-md border border-neutral-800 bg-neutral-900 px-2 py-0.5 font-mono text-[11px] text-neutral-400"
                 >
                   {tag}
                 </span>

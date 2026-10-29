@@ -100,7 +100,7 @@ export default function CredentialsPage() {
                     />
                     <Badge
                       variant="dark"
-                      className="absolute top-2 left-2 rounded-[2px] px-2 py-0.5 font-mono text-[10px]"
+                      className="absolute top-2 left-2 rounded-md px-2 py-0.5 font-mono text-[10px]"
                     >
                       {cert.number}
                     </Badge>
@@ -133,7 +133,7 @@ export default function CredentialsPage() {
                 {group.events.map((evt, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between gap-3 rounded-[2px] border border-white/[0.05] bg-white/[0.02] p-3"
+                    className="flex items-center justify-between gap-3 rounded-xl border border-white/[0.05] bg-white/[0.02] p-3"
                   >
                     <span className="text-sm font-medium text-neutral-200">{evt.name}</span>
                     {evt.result && (
@@ -169,7 +169,7 @@ export default function CredentialsPage() {
                 {club.items.map((item, idx) => (
                   <li
                     key={idx}
-                    className="flex items-start gap-2 rounded-[2px] border border-white/[0.04] bg-white/[0.02] p-2.5 text-sm text-neutral-300"
+                    className="flex items-start gap-2 rounded-xl border border-white/[0.04] bg-white/[0.02] p-2.5 text-sm text-neutral-300"
                   >
                     <span className="mt-0.5 text-[var(--accent-orange)]">•</span>
                     <span>{item}</span>

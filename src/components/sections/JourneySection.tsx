@@ -48,7 +48,7 @@ export function JourneySection() {
             type="button"
             aria-label="Previous timeline column"
             onClick={scrollPrev}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[2px] border border-neutral-800 bg-[#161616] font-mono text-sm text-neutral-300 transition-colors hover:border-[var(--accent-orange)] hover:text-white"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-neutral-800 bg-[#161616] font-mono text-sm text-neutral-300 transition-colors hover:border-[var(--accent-orange)] hover:text-white"
           >
             ‹
           </button>
@@ -56,7 +56,7 @@ export function JourneySection() {
             type="button"
             aria-label="Next timeline column"
             onClick={scrollNext}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[2px] border border-neutral-800 bg-[#161616] font-mono text-sm text-neutral-300 transition-colors hover:border-[var(--accent-orange)] hover:text-white"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-neutral-800 bg-[#161616] font-mono text-sm text-neutral-300 transition-colors hover:border-[var(--accent-orange)] hover:text-white"
           >
             ›
           </button>
@@ -72,7 +72,7 @@ export function JourneySection() {
         {JOURNEY_DATA.map((item) => (
           <div
             key={item.year}
-            className="w-[280px] shrink-0 rounded-[2px] border border-neutral-800 bg-[#161616] p-6 sm:w-[320px]"
+            className="w-[280px] shrink-0 rounded-2xl border border-neutral-800 bg-[#161616] p-6 sm:w-[320px]"
             style={{ scrollSnapAlign: 'start' }}
           >
             <div className="mb-4 flex items-center justify-between border-b border-neutral-800 pb-3">

@@ -28,7 +28,7 @@ export function EducationSection() {
         {EDUCATION_DATA.map((item) => (
           <div
             key={item.degree + item.institution}
-            className="flex flex-col justify-between gap-3 rounded-[2px] border border-neutral-800 bg-[#161616] p-6 transition-colors hover:border-neutral-700 sm:flex-row sm:items-center sm:p-7"
+            className="flex flex-col justify-between gap-3 rounded-2xl border border-neutral-800 bg-[#161616] p-6 transition-colors hover:border-neutral-700 sm:flex-row sm:items-center sm:p-7"
           >
             <div>
               <h3 className="text-xl font-semibold text-white">{item.degree}</h3>
@@ -36,7 +36,7 @@ export function EducationSection() {
             </div>
 
             <div className="self-start sm:self-auto">
-              <span className="rounded-[2px] border border-neutral-700 bg-neutral-900 px-3 py-1 font-mono text-xs text-neutral-300">
+              <span className="rounded-full border border-neutral-700 bg-neutral-900 px-3.5 py-1 font-mono text-xs text-neutral-300">
                 {item.period}
               </span>
             </div>

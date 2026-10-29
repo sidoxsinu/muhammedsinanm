@@ -4,6 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { DotField } from '@/components/ui/DotField';
+
 export function HeroSection() {
   const line1Ref = useRef<HTMLSpanElement>(null);
   const line2Ref = useRef<HTMLSpanElement>(null);
@@ -167,10 +169,16 @@ export function HeroSection() {
 
   return (
     <section className="hero-premium">
-      {/* Professional Status Bar (No emojis, No glow, Max 2px radius) */}
+      {/* Interactive Dotted Background Animation */}
+      <DotField />
+
+      {/* Aesthetic Status Pill */}
       <div className="absolute top-20 z-10 flex justify-center sm:top-24">
-        <div className="inline-flex items-center gap-2.5 rounded-[2px] border border-white/10 bg-[#161616] px-3.5 py-1.5 font-mono text-xs tracking-wider text-neutral-300 uppercase">
-          <span className="h-1.5 w-1.5 bg-[var(--accent-orange)]" />
+        <div className="inline-flex items-center gap-2.5 rounded-full border border-black/10 bg-black/5 px-4 py-1.5 font-mono text-xs tracking-wider text-neutral-800 shadow-sm backdrop-blur-sm">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent-orange)] opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent-orange)]" />
+          </span>
           <span>STATUS: OPEN TO REMOTE SDE INTERNSHIPS</span>
         </div>
       </div>

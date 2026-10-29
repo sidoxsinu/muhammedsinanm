@@ -93,7 +93,7 @@ export default function ContactPage() {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-[2px] border border-white/[0.06] bg-white/[0.03] p-3 text-center transition-all hover:border-[var(--accent-orange)]/40 hover:bg-white/[0.06]"
+              className="group rounded-xl border border-white/[0.06] bg-white/[0.03] p-3 text-center transition-all hover:border-[var(--accent-orange)]/40 hover:bg-white/[0.06]"
             >
               <div className="text-sm font-medium text-white transition-colors group-hover:text-[var(--accent-orange)]">
                 {s.platform}

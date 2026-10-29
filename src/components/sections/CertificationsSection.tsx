@@ -27,7 +27,7 @@ export function CertificationsSection() {
       {/* Top Split: Formal Certs & Languages */}
       <div className="mb-14 grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Formal Certs */}
-        <div className="rounded-[2px] border border-neutral-800 bg-[#161616] p-6 sm:p-7">
+        <div className="rounded-2xl border border-neutral-800 bg-[#161616] p-6 sm:p-7">
           <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)] uppercase">
             Formal Accreditations
           </h3>
@@ -42,7 +42,7 @@ export function CertificationsSection() {
                   {cert.issuer && <p className="text-xs text-neutral-400">{cert.issuer}</p>}
                 </div>
                 {cert.period && (
-                  <span className="shrink-0 rounded-[2px] border border-neutral-700 bg-neutral-900 px-2 py-0.5 font-mono text-[10px] text-neutral-300">
+                  <span className="shrink-0 rounded-full border border-neutral-700 bg-neutral-900 px-2.5 py-0.5 font-mono text-[10px] text-neutral-300">
                     {cert.period}
                   </span>
                 )}
@@ -52,7 +52,7 @@ export function CertificationsSection() {
         </div>
 
         {/* Languages */}
-        <div className="rounded-[2px] border border-neutral-800 bg-[#161616] p-6 sm:p-7">
+        <div className="rounded-2xl border border-neutral-800 bg-[#161616] p-6 sm:p-7">
           <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)] uppercase">
             Spoken Languages
           </h3>
@@ -60,7 +60,7 @@ export function CertificationsSection() {
             {SPOKEN_LANGUAGES.map((lang) => (
               <div
                 key={lang.name}
-                className="rounded-[2px] border border-neutral-800 bg-neutral-900/60 p-3"
+                className="rounded-xl border border-neutral-800 bg-neutral-900/60 p-3"
               >
                 <h4 className="text-sm font-semibold text-white">{lang.name}</h4>
                 <p className="font-mono text-xs text-neutral-400">{lang.proficiency}</p>
@@ -86,7 +86,7 @@ export function CertificationsSection() {
               href={encodeURI(card.documentUrl)}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col justify-between overflow-hidden rounded-[2px] border border-neutral-800 bg-[#161616] transition-colors hover:border-[var(--accent-orange)]"
+              className="group flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-800 bg-[#161616] transition-colors hover:border-[var(--accent-orange)]"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
                 {/* eslint-disable-next-line @next/next/no-img-element */}

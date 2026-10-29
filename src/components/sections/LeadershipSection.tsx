@@ -36,7 +36,7 @@ export function LeadershipSection() {
             </div>
 
             <div className="shrink-0 self-start sm:self-auto">
-              <span className="rounded-[2px] border border-neutral-700 bg-[#161616] px-3 py-1 font-mono text-xs text-neutral-300">
+              <span className="rounded-full border border-neutral-700 bg-[#161616] px-3.5 py-1 font-mono text-xs text-neutral-300">
                 {item.period}
               </span>
             </div>

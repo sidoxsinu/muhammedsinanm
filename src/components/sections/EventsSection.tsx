@@ -42,7 +42,7 @@ export function EventsSection() {
           return (
             <div
               key={group.institution}
-              className="rounded-[2px] border border-neutral-800 bg-[#161616]"
+              className="overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616]"
             >
               <button
                 type="button"
@@ -63,12 +63,12 @@ export function EventsSection() {
                     {group.events.map((ev, evIdx) => (
                       <div
                         key={evIdx}
-                        className="flex items-center justify-between gap-3 rounded-[2px] border border-neutral-800/80 bg-neutral-900/60 px-4 py-2.5"
+                        className="flex items-center justify-between gap-3 rounded-xl border border-neutral-800/80 bg-neutral-900/60 px-4 py-2.5"
                       >
                         <span className="text-sm font-medium text-white">{ev.name}</span>
                         {ev.result && (
                           <span
-                            className={`rounded-[2px] px-2 py-0.5 font-mono text-[10px] font-semibold uppercase ${
+                            className={`rounded-full px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase ${
                               ev.result.includes('Prize') ||
                               ev.result.includes('Winner') ||
                               ev.result.includes('Best')

@@ -116,7 +116,7 @@ export function FeaturedSection() {
               onMouseEnter={() => setActiveId(item.id)}
               onFocus={() => setActiveId(item.id)}
               onClick={() => setActiveId(item.id)}
-              className={`relative min-w-0 cursor-pointer overflow-hidden rounded-[2px] border transition-all duration-500 ease-out ${
+              className={`relative min-w-0 cursor-pointer overflow-hidden rounded-2xl border transition-all duration-500 ease-out ${
                 isActive
                   ? 'flex-[3.5] border-[var(--accent-orange)] bg-[#1a1a1a]'
                   : 'flex-1 border-neutral-800 bg-[#141414] hover:border-neutral-700'
@@ -140,7 +140,7 @@ export function FeaturedSection() {
               <div className="relative z-10 flex h-full flex-col justify-between p-5 sm:p-6">
                 {/* Header Badge */}
                 <div className="flex items-center justify-between gap-2">
-                  <span className="rounded-[2px] border border-white/10 bg-black/80 px-2 py-0.5 font-mono text-[10px] tracking-wider text-[var(--accent-orange)] uppercase">
+                  <span className="rounded-full border border-white/10 bg-black/80 px-3 py-0.5 font-mono text-[10px] tracking-wider text-[var(--accent-orange)] uppercase">
                     {item.badge}
                   </span>
                 </div>
@@ -161,7 +161,7 @@ export function FeaturedSection() {
                         {item.tech.map((t) => (
                           <span
                             key={t}
-                            className="rounded-[2px] border border-neutral-700 bg-neutral-900 px-2 py-0.5 font-mono text-[10px] text-neutral-400 uppercase"
+                            className="rounded-md border border-neutral-700 bg-neutral-900 px-2.5 py-0.5 font-mono text-[10px] text-neutral-400 uppercase"
                           >
                             {t}
                           </span>
@@ -173,7 +173,7 @@ export function FeaturedSection() {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 rounded-[2px] border border-[var(--accent-orange)] bg-[var(--accent-orange)] px-4 py-1.5 font-mono text-xs font-semibold tracking-wider text-white uppercase hover:bg-[#d94e24]"
+                          className="inline-flex items-center gap-2 rounded-full border border-[var(--accent-orange)] bg-[var(--accent-orange)] px-4 py-1.5 font-mono text-xs font-semibold tracking-wider text-white uppercase hover:bg-[#d94e24]"
                         >
                           <span>Explore Project</span>
                           <span>↗</span>

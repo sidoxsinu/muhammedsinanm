@@ -28,7 +28,7 @@ export function ExperienceSection() {
         {EXPERIENCES.map((exp) => (
           <div
             key={exp.role + exp.company}
-            className="flex flex-col justify-between gap-4 rounded-[2px] border border-neutral-800 bg-[#161616] p-6 transition-colors hover:border-neutral-700 sm:p-8"
+            className="flex flex-col justify-between gap-4 rounded-2xl border border-neutral-800 bg-[#161616] p-6 transition-colors hover:border-neutral-700 sm:p-8"
           >
             {/* Top row: Role & Badge */}
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -41,7 +41,7 @@ export function ExperienceSection() {
 
               {exp.badge && (
                 <div className="self-start sm:self-auto">
-                  <span className="rounded-[2px] border border-neutral-700 bg-neutral-900 px-2.5 py-1 font-mono text-[11px] font-semibold text-neutral-300 uppercase">
+                  <span className="rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 font-mono text-[11px] font-semibold text-neutral-300 uppercase">
                     {exp.badge}
                   </span>
                 </div>

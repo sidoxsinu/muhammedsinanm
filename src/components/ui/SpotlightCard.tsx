@@ -10,7 +10,7 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function SpotlightCard({ children, className = '', style, ...props }: SpotlightCardProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[2px] border border-neutral-800 bg-[#161616] transition-colors duration-200 hover:border-neutral-700 ${className}`}
+      className={`relative overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] transition-all duration-200 hover:border-neutral-700 ${className}`}
       style={style}
       {...props}
     >

@@ -38,7 +38,10 @@ export function ClubsSection() {
           const isOpen = openMap[club.title] ?? false;
 
           return (
-            <div key={club.title} className="rounded-[2px] border border-neutral-800 bg-[#161616]">
+            <div
+              key={club.title}
+              className="overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616]"
+            >
               <button
                 type="button"
                 onClick={() => toggle(club.title)}
