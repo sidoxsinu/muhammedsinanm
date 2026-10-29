@@ -14,6 +14,46 @@
 
 /* Note: Universal reset is handled by Tailwind preflight in @layer base */
 
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL NATIVE CURSOR SUPPRESSION
+   Never show original/OS cursor anywhere on the website on desktop
+   ───────────────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
+html.hide-native-cursor,
+html.hide-native-cursor body,
+html.hide-native-cursor *,
+html.hide-native-cursor *::before,
+html.hide-native-cursor *::after {
+  cursor: none !important;
+}
+
+@media (max-width: 768px), (pointer: coarse) {
+  #cursorDot {
+    display: none !important;
+  }
+  html.hide-native-cursor,
+  html.hide-native-cursor body,
+  html.hide-native-cursor *,
+  html.hide-native-cursor *::before,
+  html.hide-native-cursor *::after {
+    cursor: auto !important;
+  }
+  html.hide-native-cursor a,
+  html.hide-native-cursor button,
+  html.hide-native-cursor [role='button'] {
+    cursor: pointer !important;
+  }
+}
+
 html,
 body {
   overflow-x: hidden;
@@ -1614,23 +1654,38 @@ section h3:not([class*='text-']) {
   pointer-events: none;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: 99999;
   mix-blend-mode: difference;
   width: 16px;
   height: 16px;
   background: #ffffff;
+  opacity: 0;
+  border: 1px solid transparent;
   transition:
-    transform 0.1s ease,
-    width 0.2s ease,
-    height 0.2s ease,
-    background-color 0.2s ease;
+    opacity 0.2s ease,
+    width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Expand dot on hoverable elements */
+/* Expand dot and change color ONLY when hovering CLICKABLE elements */
 body.cursor-hover .cursor-dot {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  mix-blend-mode: normal;
   background: rgba(232, 86, 42, 0.9);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 16px rgba(232, 86, 42, 0.5);
+}
+
+/* Tactile press response on click */
+body.cursor-active .cursor-dot {
+  transform: translate(-50%, -50%) scale(0.85);
+  background: rgba(232, 86, 42, 1);
+  box-shadow: 0 0 24px rgba(232, 86, 42, 0.7);
 }
 
 /* ==========================================================================

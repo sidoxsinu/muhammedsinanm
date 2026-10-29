@@ -320,7 +320,16 @@ export function HeroSection() {
               </textPath>
             </text>
           </svg>
-          <div className="scroll-circle-icon scroll-circle-asterisk">
+          <div
+            className="scroll-circle-icon scroll-circle-asterisk"
+            role="button"
+            tabIndex={0}
+            aria-label="Scroll to explore"
+            onClick={() => {
+              const target = document.querySelector('#about') || document.querySelector('#projects');
+              target?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
             <svg
               viewBox="0 0 24 24"
               stroke="currentColor"
