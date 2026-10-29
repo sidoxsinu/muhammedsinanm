@@ -369,7 +369,7 @@ a {
 .hero-roles {
   position: absolute;
   right: 5vw;
-  bottom: 40px;
+  bottom: 24px;
   text-align: right;
   z-index: 10;
   mix-blend-mode: difference;
