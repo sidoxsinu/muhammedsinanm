@@ -17,7 +17,6 @@ const DAY_LABELS = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
 export function GitHubSection() {
   const [data, setData] = useState<GitHubData>(GITHUB_FALLBACK_DATA);
   const [activeDay, setActiveDay] = useState<ContributionDay | null>(null);
-  const [isLive, setIsLive] = useState(false);
 
   // Fetch live GitHub contributions on client with graceful fallback
   useEffect(() => {
@@ -67,7 +66,6 @@ export function GitHubSection() {
           longestStreak: longestStreak || prev.longestStreak,
           contributions: days,
         }));
-        setIsLive(true);
       })
       .catch(() => {
         // Fallback data remains active seamlessly
@@ -210,18 +208,6 @@ export function GitHubSection() {
               />
             </svg>
             <span className="font-mono text-xs font-medium text-white">github.com/sidoxsinu</span>
-            <span
-              className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px] ${
-                isLive
-                  ? 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
-                  : 'border border-neutral-700 bg-neutral-800 text-neutral-400'
-              }`}
-            >
-              <span
-                className={`h-1.5 w-1.5 rounded-full ${isLive ? 'animate-pulse bg-emerald-400' : 'bg-neutral-400'}`}
-              />
-              {isLive ? 'Live GitHub Sync' : 'Verified Snapshot'}
-            </span>
           </div>
 
           {/* Color Scale Legend */}
