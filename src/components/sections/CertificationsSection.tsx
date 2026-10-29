@@ -1,32 +1,32 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
-import { CERTIFICATE_CARDS, FORMAL_CERTIFICATIONS, SPOKEN_LANGUAGES } from '@/data/certificates';
+import { FORMAL_CERTIFICATIONS, SPOKEN_LANGUAGES } from '@/data/certificates';
 
 export function CertificationsSection() {
   return (
     <section
       id="certifications"
-      aria-label="Certifications & Languages"
+      aria-label="Languages & Accreditations"
       className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28"
     >
       <div className="mb-10 space-y-3">
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
-          {'// Credentials'}
+          {'// Languages & Accreditations'}
         </span>
         <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
-          Certifications &amp; Languages
+          Languages &amp; Accreditations
         </h2>
         <p className="max-w-xl text-sm leading-relaxed text-neutral-400 sm:text-base">
-          Formal credentials, spoken languages, and verified participation records from engineering
-          events.
+          Formal credentials, spoken languages, and professional engineering memberships.
         </p>
       </div>
 
-      {/* Top Split: Formal Certs & Languages */}
-      <div className="mb-14 grid grid-cols-1 gap-6 md:grid-cols-2">
-        {/* Formal Certs */}
+      {/* Split: Formal Accreditations & Languages */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {/* Formal Accreditations */}
         <div className="rounded-2xl border border-neutral-800 bg-[#161616] p-6 sm:p-7">
           <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)] uppercase">
             Formal Accreditations
@@ -70,45 +70,15 @@ export function CertificationsSection() {
         </div>
       </div>
 
-      {/* Verified Certificate Documents Gallery */}
-      <div>
-        <div className="mb-6 flex items-center justify-between">
-          <h3 className="font-mono text-xs font-semibold tracking-wider text-neutral-300 uppercase">
-            Verified Certificate Documents ({CERTIFICATE_CARDS.length})
-          </h3>
-          <span className="font-mono text-xs text-neutral-500">Click to Inspect Document</span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {CERTIFICATE_CARDS.map((card) => (
-            <a
-              key={card.number}
-              href={encodeURI(card.documentUrl)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-800 bg-[#161616] transition-colors hover:border-[var(--accent-orange)]"
-            >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={encodeURI(card.thumbnail)}
-                  alt={card.name}
-                  loading="lazy"
-                  className="h-full w-full object-cover object-center"
-                />
-              </div>
-
-              <div className="flex flex-col justify-between gap-1 p-2.5">
-                <span className="font-mono text-[10px] text-[var(--accent-orange)]">
-                  #{card.number}
-                </span>
-                <span className="line-clamp-2 text-xs font-medium text-neutral-300 transition-colors group-hover:text-white">
-                  {card.name}
-                </span>
-              </div>
-            </a>
-          ))}
-        </div>
+      {/* Link to Dedicated Credentials Page */}
+      <div className="mt-8 text-center">
+        <Link
+          href="/credentials"
+          className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-[#161616] px-5 py-2.5 font-mono text-xs font-semibold text-neutral-300 uppercase transition-colors hover:border-[var(--accent-orange)] hover:text-white"
+        >
+          <span>View Verified Certificate Documents in Credentials Catalog (23)</span>
+          <span>→</span>
+        </Link>
       </div>
     </section>
   );
