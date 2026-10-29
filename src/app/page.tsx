@@ -11,6 +11,7 @@ import { EventsSection } from '@/components/sections/EventsSection';
 import { ExperienceSection } from '@/components/sections/ExperienceSection';
 import { FeaturedSection } from '@/components/sections/FeaturedSection';
 import { Footer } from '@/components/sections/Footer';
+import { GitHubSection } from '@/components/sections/GitHubSection';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { JourneySection } from '@/components/sections/JourneySection';
 import { LeadershipSection } from '@/components/sections/LeadershipSection';
@@ -29,6 +30,7 @@ export default function Home() {
         <FeaturedSection />
         <ProjectsSection />
         <SkillsSection />
+        <GitHubSection />
         <ExperienceSection />
         <JourneySection />
         <EducationSection />
