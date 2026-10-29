@@ -1,14 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { ACHIEVEMENTS } from '@/data/achievements';
 
 export function AchievementsSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const drawersRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (idx: number) => {
     setExpandedIndex((prev) => (prev === idx ? null : idx));
   };
+
+  useEffect(() => {
+    if (expandedIndex !== null) {
+      const drawer = drawersRef.current[expandedIndex];
+      if (drawer) {
+        gsap.fromTo(
+          drawer,
+          { height: 0, opacity: 0 },
+          { height: 'auto', opacity: 1, duration: 0.32, ease: 'power2.out' },
+        );
+      }
+    }
+  }, [expandedIndex]);
 
   return (
     <section
@@ -56,9 +71,6 @@ export function AchievementsSection() {
                 </div>
 
                 <div className="flex shrink-0 items-center gap-3">
-                  <span className="hidden rounded-full border border-[var(--accent-orange)]/40 bg-[var(--accent-orange)]/10 px-3 py-0.5 font-mono text-[10px] font-semibold text-[var(--accent-orange)] uppercase sm:inline-block">
-                    Major Honor
-                  </span>
                   <span
                     className={`flex h-7 w-7 items-center justify-center rounded-full border border-neutral-700 bg-neutral-900 text-xs text-neutral-400 transition-all duration-300 group-hover:border-[var(--accent-orange)] group-hover:text-white ${
                       isExpanded ? 'rotate-180 border-[var(--accent-orange)] text-[var(--accent-orange)]' : ''
@@ -70,7 +82,12 @@ export function AchievementsSection() {
               </button>
 
               {isExpanded && (
-                <div className="mb-5 rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-6 shadow-xl transition-all duration-300">
+                <div
+                  ref={(el) => {
+                    drawersRef.current[idx] = el;
+                  }}
+                  className="mb-5 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-6 shadow-xl"
+                >
                   <div className="space-y-4">
                     {award.description && (
                       <p className="text-sm leading-relaxed text-neutral-300 sm:text-base">

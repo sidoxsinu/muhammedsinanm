@@ -1,14 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { EDUCATION_DATA } from '@/data/education';
 
 export function EducationSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const drawersRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (idx: number) => {
     setExpandedIndex((prev) => (prev === idx ? null : idx));
   };
+
+  useEffect(() => {
+    if (expandedIndex !== null) {
+      const drawer = drawersRef.current[expandedIndex];
+      if (drawer) {
+        gsap.fromTo(
+          drawer,
+          { height: 0, opacity: 0 },
+          { height: 'auto', opacity: 1, duration: 0.32, ease: 'power2.out' },
+        );
+      }
+    }
+  }, [expandedIndex]);
 
   return (
     <section
@@ -70,7 +85,12 @@ export function EducationSection() {
               </button>
 
               {isExpanded && (
-                <div className="mb-5 rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-6 shadow-xl transition-all duration-300">
+                <div
+                  ref={(el) => {
+                    drawersRef.current[idx] = el;
+                  }}
+                  className="mb-5 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-6 shadow-xl"
+                >
                   <div className="space-y-2.5">
                     <div className="flex items-center gap-2 font-mono text-xs text-neutral-400">
                       <span className="text-[var(--accent-orange)]">Institution:</span>
@@ -82,7 +102,9 @@ export function EducationSection() {
                     </div>
                     <div className="flex items-center gap-2 font-mono text-xs text-neutral-400">
                       <span className="text-[var(--accent-orange)]">Curriculum:</span>
-                      <span className="text-neutral-300">Core Computer Science, Systems Engineering, Algorithms, and Software Architecture.</span>
+                      <span className="text-neutral-300">
+                        Core Computer Science, Systems Engineering, Algorithms, and Software Architecture.
+                      </span>
                     </div>
                   </div>
                 </div>

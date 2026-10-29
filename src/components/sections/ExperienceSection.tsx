@@ -1,14 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { EXPERIENCES } from '@/data/experience';
 
 export function ExperienceSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const drawersRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (idx: number) => {
     setExpandedIndex((prev) => (prev === idx ? null : idx));
   };
+
+  useEffect(() => {
+    if (expandedIndex !== null) {
+      const drawer = drawersRef.current[expandedIndex];
+      if (drawer) {
+        gsap.fromTo(
+          drawer,
+          { height: 0, opacity: 0 },
+          { height: 'auto', opacity: 1, duration: 0.32, ease: 'power2.out' },
+        );
+      }
+    }
+  }, [expandedIndex]);
 
   return (
     <section
@@ -51,8 +66,8 @@ export function ExperienceSection() {
                         {exp.role}
                       </h3>
                       {exp.badge && (
-                        <span className="rounded-full border border-neutral-700 bg-neutral-900 px-2.5 py-0.5 font-mono text-[10px] font-semibold text-neutral-300 uppercase hidden sm:inline-block">
-                          {exp.badge}
+                        <span className="font-mono text-xs text-neutral-400 font-normal hidden sm:inline-block">
+                          {'// '}{exp.badge}
                         </span>
                       )}
                     </div>
@@ -77,7 +92,12 @@ export function ExperienceSection() {
               </button>
 
               {isExpanded && (
-                <div className="mb-5 rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-7 shadow-xl transition-all duration-300">
+                <div
+                  ref={(el) => {
+                    drawersRef.current[idx] = el;
+                  }}
+                  className="mb-5 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-7 shadow-xl"
+                >
                   <div className="space-y-4">
                     {exp.location && (
                       <div className="flex items-center gap-2 font-mono text-xs text-neutral-400">

@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { Project } from '@/types';
 
 interface ProjectCardProps {
@@ -9,14 +10,21 @@ interface ProjectCardProps {
   featured?: boolean;
 }
 
+const TILT_ANGLES = [-3.2, 2.4, -2.0, 3.2, -1.8, 2.6, -3.0, 2.2];
+
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
+  const previewRef = useRef<HTMLDivElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  const tiltAngle = TILT_ANGLES[(index ?? 0) % TILT_ANGLES.length];
+
   // Floating preview card dimensions & screen-clamped coordinates
-  const previewWidth = 280;
-  const previewHeight = 185;
+  const previewWidth = 270;
+  const previewHeight = 175;
 
   let left = mousePos.x + 24;
   let top = mousePos.y - previewHeight / 2;
@@ -27,6 +35,68 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     }
     top = Math.max(20, Math.min(top, window.innerHeight - previewHeight - 20));
   }
+
+  // GSAP quick in-animation for preview card on hover
+  useEffect(() => {
+    const el = previewRef.current;
+    if (!el) return;
+
+    if (isHovered && !isExpanded) {
+      gsap.killTweensOf(el);
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          scale: 0.88,
+          rotate: tiltAngle - 3.5,
+          y: 8,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          rotate: tiltAngle,
+          y: 0,
+          duration: 0.22,
+          ease: 'power2.out',
+        },
+      );
+    }
+  }, [isHovered, isExpanded, tiltAngle]);
+
+  // Handle unhover exit animation
+  const handleMouseLeave = () => {
+    const el = previewRef.current;
+    if (el) {
+      gsap.to(el, {
+        opacity: 0,
+        scale: 0.92,
+        duration: 0.18,
+        ease: 'power2.in',
+        onComplete: () => setIsHovered(false),
+      });
+    } else {
+      setIsHovered(false);
+    }
+  };
+
+  // GSAP smooth accordion expand & collapse
+  useEffect(() => {
+    const drawer = drawerRef.current;
+    if (!drawer) return;
+
+    if (isExpanded) {
+      gsap.fromTo(
+        drawer,
+        { height: 0, opacity: 0 },
+        {
+          height: 'auto',
+          opacity: 1,
+          duration: 0.35,
+          ease: 'power2.out',
+        },
+      );
+    }
+  }, [isExpanded]);
 
   return (
     <article
@@ -39,9 +109,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       onMouseMove={(e) => {
         setMousePos({ x: e.clientX, y: e.clientY });
       }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-      }}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Row trigger button */}
       <button
@@ -63,8 +131,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.title}
               </h3>
               {project.badge && (
-                <span className="rounded-full border border-[var(--accent-orange)]/40 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-[10px] font-semibold text-[var(--accent-orange)] uppercase hidden sm:inline-block">
-                  {project.badge}
+                <span className="font-mono text-xs text-[var(--accent-orange)] opacity-90 hidden sm:inline-block">
+                  {'// '}{project.badge}
                 </span>
               )}
             </div>
@@ -88,14 +156,16 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
       </button>
 
-      {/* Floating mini preview card on hover (hidden on touch/mobile or when expanded) */}
+      {/* Floating mini preview card with artistic angle & no badge */}
       {isHovered && !isExpanded && (
         <div
-          className="pointer-events-none fixed z-50 hidden md:block overflow-hidden rounded-2xl border border-white/20 bg-[#161616] shadow-[0_20px_50px_rgba(0,0,0,0.85)] transition-opacity duration-150 animate-in fade-in zoom-in-95"
+          ref={previewRef}
+          className="pointer-events-none fixed z-50 hidden md:block overflow-hidden rounded-2xl border border-white/20 bg-[#161616] shadow-[0_25px_60px_rgba(0,0,0,0.9)] will-change-transform"
           style={{
             left: `${left}px`,
             top: `${top}px`,
             width: `${previewWidth}px`,
+            transform: `rotate(${tiltAngle}deg)`,
           }}
         >
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-900">
@@ -106,13 +176,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               loading="eager"
               className="h-full w-full object-cover object-top"
             />
-            {project.badge && (
-              <div className="absolute top-2 left-2">
-                <span className="rounded-full border border-[var(--accent-orange)]/40 bg-[var(--accent-orange)]/20 px-2 py-0.5 font-mono text-[9px] font-semibold text-[var(--accent-orange)] backdrop-blur-md uppercase">
-                  {project.badge}
-                </span>
-              </div>
-            )}
           </div>
           <div className="flex items-center justify-between border-t border-white/10 bg-[#111111]/90 px-3 py-1.5 font-mono text-[10px]">
             <span className="truncate text-white font-medium">{project.title}</span>
@@ -121,11 +184,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
       )}
 
-      {/* Expanded details drawer on click */}
+      {/* Expanded details drawer on click with smooth GSAP accordion */}
       {isExpanded && (
-        <div className="mb-6 rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-7 shadow-xl transition-all duration-300">
+        <div
+          ref={drawerRef}
+          className="mb-6 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-7 shadow-xl"
+        >
           <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8 items-center">
-            {/* High-res Image preview */}
+            {/* High-res Image preview without badge overlay */}
             <div className="md:col-span-5">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -135,24 +201,21 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   loading="lazy"
                   className="h-full w-full object-cover object-top"
                 />
-                {project.badge && (
-                  <div className="absolute top-2.5 left-2.5">
-                    <span className="rounded-full border border-[var(--accent-orange)]/40 bg-[var(--accent-orange)]/20 px-2.5 py-0.5 font-mono text-[10px] font-semibold text-[var(--accent-orange)] backdrop-blur-md uppercase">
-                      {project.badge}
-                    </span>
-                  </div>
-                )}
               </div>
             </div>
 
             {/* Details & Actions */}
             <div className="flex flex-col justify-between space-y-4 md:col-span-7">
               <div className="space-y-3">
-                {project.recognition && (
-                  <p className="font-mono text-xs font-semibold text-[var(--accent-orange)]">
-                    ★ {project.recognition.text}
+                {project.recognition ? (
+                  <p className="font-mono text-xs font-semibold text-[var(--accent-orange)] opacity-95">
+                    {'// '}{project.recognition.text}
                   </p>
-                )}
+                ) : project.badge ? (
+                  <p className="font-mono text-xs font-semibold text-[var(--accent-orange)] opacity-95">
+                    {'// '}{project.badge}
+                  </p>
+                ) : null}
                 <p className="text-sm leading-relaxed text-neutral-300 sm:text-base">
                   {project.description}
                 </p>
