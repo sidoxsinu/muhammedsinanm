@@ -1,10 +1,15 @@
 'use client';
 
-import React from 'react';
-
+import React, { useState } from 'react';
 import { EDUCATION_DATA } from '@/data/education';
 
 export function EducationSection() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggle = (idx: number) => {
+    setExpandedIndex((prev) => (prev === idx ? null : idx));
+  };
+
   return (
     <section
       id="education"
@@ -24,26 +29,67 @@ export function EducationSection() {
         </p>
       </div>
 
-      <div className="space-y-4">
-        {EDUCATION_DATA.map((item) => (
-          <div
-            key={item.degree + item.institution}
-            className="flex flex-col justify-between gap-3 rounded-2xl border border-neutral-800 bg-[#161616] p-6 transition-colors hover:border-neutral-700 sm:flex-row sm:items-center sm:p-7"
-          >
-            <div>
-              <h3 className="text-base font-semibold text-white sm:text-lg leading-snug">
-                {item.degree}
-              </h3>
-              <p className="font-mono text-sm text-[var(--accent-orange)]">{item.institution}</p>
-            </div>
+      <div className="divide-y divide-neutral-800 border-y border-neutral-800">
+        {EDUCATION_DATA.map((item, idx) => {
+          const isExpanded = expandedIndex === idx;
 
-            <div className="self-start sm:self-auto">
-              <span className="rounded-full border border-neutral-700 bg-neutral-900 px-3.5 py-1 font-mono text-xs text-neutral-300">
-                {item.period}
-              </span>
+          return (
+            <div key={item.degree + item.institution} className="w-full">
+              <button
+                type="button"
+                onClick={() => toggle(idx)}
+                aria-expanded={isExpanded}
+                className="group flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left transition-colors duration-200"
+              >
+                <div className="flex min-w-0 items-center gap-4 sm:gap-6">
+                  <span className="font-mono text-xs font-semibold text-neutral-500 transition-colors group-hover:text-[var(--accent-orange)] sm:text-sm">
+                    {String(idx + 1).padStart(2, '0')}
+                  </span>
+                  <div className="min-w-0 space-y-1">
+                    <h3 className="truncate text-base font-semibold text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg leading-snug">
+                      {item.degree}
+                    </h3>
+                    <p className="truncate font-mono text-xs text-[var(--accent-orange)]">
+                      {item.institution}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex shrink-0 items-center gap-3">
+                  <span className="rounded-full border border-neutral-700 bg-[#161616] px-3.5 py-1 font-mono text-xs text-neutral-300">
+                    {item.period}
+                  </span>
+                  <span
+                    className={`flex h-7 w-7 items-center justify-center rounded-full border border-neutral-700 bg-neutral-900 text-xs text-neutral-400 transition-all duration-300 group-hover:border-[var(--accent-orange)] group-hover:text-white ${
+                      isExpanded ? 'rotate-180 border-[var(--accent-orange)] text-[var(--accent-orange)]' : ''
+                    }`}
+                  >
+                    ▼
+                  </span>
+                </div>
+              </button>
+
+              {isExpanded && (
+                <div className="mb-5 rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-6 shadow-xl transition-all duration-300">
+                  <div className="space-y-2.5">
+                    <div className="flex items-center gap-2 font-mono text-xs text-neutral-400">
+                      <span className="text-[var(--accent-orange)]">Institution:</span>
+                      <span className="text-white">{item.institution}</span>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-xs text-neutral-400">
+                      <span className="text-[var(--accent-orange)]">Timeline:</span>
+                      <span className="text-white">{item.period}</span>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-xs text-neutral-400">
+                      <span className="text-[var(--accent-orange)]">Curriculum:</span>
+                      <span className="text-neutral-300">Core Computer Science, Systems Engineering, Algorithms, and Software Architecture.</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

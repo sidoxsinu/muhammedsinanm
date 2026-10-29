@@ -9,7 +9,6 @@ import { ContactSection } from '@/components/sections/ContactSection';
 import { EducationSection } from '@/components/sections/EducationSection';
 import { EventsSection } from '@/components/sections/EventsSection';
 import { ExperienceSection } from '@/components/sections/ExperienceSection';
-import { FeaturedSection } from '@/components/sections/FeaturedSection';
 import { Footer } from '@/components/sections/Footer';
 import { GitHubSection } from '@/components/sections/GitHubSection';
 import { HeroSection } from '@/components/sections/HeroSection';
@@ -27,7 +26,6 @@ export default function Home() {
         <HeroSection />
         <StatsSection />
         <AboutSection />
-        <FeaturedSection />
         <ProjectsSection />
         <SkillsSection />
         <GitHubSection />

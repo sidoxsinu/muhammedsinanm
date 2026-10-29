@@ -8,11 +8,11 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PROJECTS } from '@/data/projects';
 
 export function ProjectsSection() {
-  // Show featured projects on home page
-  const featuredProjects = PROJECTS.filter((p) => p.featured).slice(0, 4);
+  // Show top featured & recognized projects on home page
+  const featuredProjects = PROJECTS.filter((p) => p.featured || p.badge).slice(0, 5);
 
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+    <section id="projects" aria-label="Featured Projects" className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24">
       <SectionHeading
         badge="// Selected Works"
         title="Featured Projects"
@@ -21,10 +21,10 @@ export function ProjectsSection() {
         ctaHref="/projects"
       />
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
-        {featuredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} featured={true} />
+      {/* Projects List */}
+      <div className="divide-y divide-neutral-800 border-y border-neutral-800">
+        {featuredProjects.map((project, idx) => (
+          <ProjectCard key={project.id} project={project} index={idx} />
         ))}
       </div>
 

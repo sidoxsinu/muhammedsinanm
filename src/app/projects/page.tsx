@@ -73,6 +73,7 @@ export default function ProjectsPage() {
 
   return (
     <PageShell
+      maxWidth="max-w-5xl"
       badge="// Works & Archives"
       title="All Projects"
       description="A comprehensive catalog of production web platforms, hackathon-winning AI assistants, open-source utilities, and freelance deliverables."
@@ -82,10 +83,10 @@ export default function ProjectsPage() {
         <Tabs tabs={tabs} activeTab={activeFilter} onChange={setActiveFilter} />
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
-        {filteredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+      {/* Projects List */}
+      <div className="divide-y divide-neutral-800 border-y border-neutral-800">
+        {filteredProjects.map((project, idx) => (
+          <ProjectCard key={project.id} project={project} index={idx} />
         ))}
       </div>
     </PageShell>
