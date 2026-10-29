@@ -324,10 +324,25 @@ export function Navbar() {
             href="/images/Resume/Muhammed%20Sinan%20M.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="nav-resume"
+            className="nav-resume group inline-flex items-center gap-1"
             style={{ color: '#E8562A', fontWeight: 600 }}
           >
-            Resume ↗
+            <span>Resume</span>
+            <svg
+              className="h-2.5 w-2.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </a>
         </div>
 
@@ -432,7 +447,24 @@ export function Navbar() {
                   style={{ color: '#E54D2E' }}
                   onClick={closeMenu}
                 >
-                  <span className="sm-panel-itemLabel">Resume ↗</span>
+                  <span className="sm-panel-itemLabel inline-flex items-center gap-1.5">
+                    <span>Resume</span>
+                    <svg
+                      className="h-3.5 w-3.5"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
                 </a>
               </li>
             </ul>
