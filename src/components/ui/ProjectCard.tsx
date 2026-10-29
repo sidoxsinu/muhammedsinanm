@@ -22,15 +22,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
             className="h-full w-full object-cover object-top"
           />
 
-          {/* Top Badges */}
-          <div className="pointer-events-none absolute top-3 right-3 left-3 flex items-center justify-between">
-            {project.badge ? (
-              <span className="rounded-full border border-[var(--accent-orange)] bg-[#111111] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[var(--accent-orange)] uppercase">
-                {project.badge}
-              </span>
-            ) : (
-              <span />
-            )}
+          {/* Top Year Badge */}
+          <div className="pointer-events-none absolute top-3 right-3">
             <span className="rounded-full border border-neutral-700 bg-black/90 px-2.5 py-0.5 font-mono text-[11px] text-neutral-300">
               {project.year}
             </span>
@@ -39,13 +32,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Content */}
         <div className="flex flex-grow flex-col justify-between gap-4 p-5 sm:p-6">
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             <h3 className="text-xl font-semibold tracking-tight text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-2xl">
               {project.title}
             </h3>
             <p className="line-clamp-3 text-sm leading-relaxed text-neutral-400">
               {project.description}
             </p>
+            {project.badge && (
+              <div className="pt-0.5">
+                <span className="inline-flex items-center rounded-full border border-[var(--accent-orange)]/40 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-[10px] font-semibold text-[var(--accent-orange)] uppercase">
+                  {project.badge}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Tags & Action Links */}

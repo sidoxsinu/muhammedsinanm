@@ -146,10 +146,18 @@ export function FeaturedSection() {
                   </h3>
 
                   {isActive ? (
-                    <div className="space-y-4">
+                    <div className="space-y-3.5">
                       <p className="max-w-xl text-sm leading-relaxed text-neutral-300">
                         {item.description}
                       </p>
+
+                      {item.badge && (
+                        <div>
+                          <span className="inline-flex rounded-full border border-[var(--accent-orange)]/40 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-[10px] font-semibold text-[var(--accent-orange)] uppercase">
+                            {item.badge}
+                          </span>
+                        </div>
+                      )}
 
                       <div className="flex flex-wrap gap-1.5">
                         {item.tech.map((t) => (
