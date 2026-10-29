@@ -7,8 +7,8 @@ export function ContactSection() {
   return (
     <section className="cta-section" id="contact-cta">
       <div className="cta-content">
-        <h2 className="cta-heading fade-in-up reveal-text">HAVE A PROJECT IN MIND?</h2>
-        <p className="cta-desc fade-in-up reveal-block">
+        <h2 className="cta-heading">HAVE A PROJECT IN MIND?</h2>
+        <p className="cta-desc">
           Together, we can create something clear and impactful. Let&apos;s collaborate to bring our
           ideas to life in a way that resonates with everyone.
         </p>
@@ -16,12 +16,12 @@ export function ContactSection() {
           href="https://contact.muhammedsinan.in"
           target="_blank"
           rel="noopener noreferrer"
-          className="cta-btn magnetic-btn fade-in-up reveal-block"
+          className="cta-btn magnetic-btn"
         >
           <span>Let&apos;s Talk! ↗</span>
         </a>
       </div>
-      <div className="cta-social-pills fade-in-up reveal-block">
+      <div className="cta-social-pills">
         <Link href="/about" className="social-pill profile-pill">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

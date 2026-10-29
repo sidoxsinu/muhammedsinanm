@@ -1293,10 +1293,10 @@ section h3:not([class*='text-']) {
   }
 }
 
-/* Helper for GSAP */
+/* Helper for animations */
 .fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
 }
 
 /* Typewriter blinking cursor - follows the active writing line */
