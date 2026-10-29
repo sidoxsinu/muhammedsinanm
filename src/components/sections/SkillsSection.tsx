@@ -37,7 +37,12 @@ export function SkillsSection() {
     const n = name.toLowerCase();
     if (n.includes('react')) {
       return (
-        <svg className="h-6 w-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          className="h-6 w-6 text-cyan-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <circle cx="12" cy="12" r="1.5" />
           <ellipse cx="12" cy="12" rx="3" ry="9" transform="rotate(30 12 12)" />
           <ellipse cx="12" cy="12" rx="3" ry="9" transform="rotate(90 12 12)" />
@@ -61,14 +66,26 @@ export function SkillsSection() {
     }
     if (n.includes('fastapi')) {
       return (
-        <svg className="h-6 w-6 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg
+          className="h-6 w-6 text-teal-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       );
     }
     if (n.includes('postgres')) {
       return (
-        <svg className="h-6 w-6 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg
+          className="h-6 w-6 text-sky-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
           <ellipse cx="12" cy="7" rx="8" ry="4" />
           <path d="M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7" />
           <path d="M4 12c0 2.21 3.58 4 8 4s8-1.79 8-4" />
@@ -84,7 +101,12 @@ export function SkillsSection() {
     }
     if (n.includes('python')) {
       return (
-        <svg className="h-6 w-6 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          className="h-6 w-6 text-amber-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <path d="M12 2C6.48 2 6 4.5 6 4.5V8h6V9H4s-2 .5-2 5 2 5 2 5h2v-3.5c0-1.5 1-2.5 2.5-2.5h6.5c1.5 0 2.5-1 2.5-2.5V4.5S17.52 2 12 2z" />
           <path d="M12 22c5.52 0 6-2.5 6-2.5V16h-6v-1h8s2-.5 2-5-2-5-2-5h-2v3.5c0 1.5-1 2.5-2.5 2.5H9c-1.5 0-2.5 1-2.5 2.5V19.5s-1.52 2.5 4 2.5z" />
         </svg>
@@ -92,7 +114,12 @@ export function SkillsSection() {
     }
     if (n.includes('javascript')) {
       return (
-        <svg className="h-6 w-6 text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          className="h-6 w-6 text-yellow-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <rect x="3" y="3" width="18" height="18" rx="2" />
           <path d="M16 8v8a2 2 0 01-2 2h-1M9 14a2 2 0 002 2 2 2 0 002-2v-4" />
         </svg>
@@ -100,7 +127,12 @@ export function SkillsSection() {
     }
     if (n.includes('typescript')) {
       return (
-        <svg className="h-6 w-6 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          className="h-6 w-6 text-blue-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <rect x="3" y="3" width="18" height="18" rx="2" />
           <path d="M7 9h6m-3 0v7M15 12h2a1.5 1.5 0 010 3h-2" />
         </svg>
@@ -108,7 +140,12 @@ export function SkillsSection() {
     }
     if (n.includes('node')) {
       return (
-        <svg className="h-6 w-6 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          className="h-6 w-6 text-emerald-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <path d="M12 2l9 5v10l-9 5-9-5V7l9-5z" />
           <circle cx="12" cy="12" r="3" />
         </svg>
@@ -123,7 +160,12 @@ export function SkillsSection() {
     }
     if (n.includes('docker')) {
       return (
-        <svg className="h-6 w-6 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          className="h-6 w-6 text-blue-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <rect x="4" y="10" width="3" height="3" />
           <rect x="8" y="10" width="3" height="3" />
           <rect x="12" y="10" width="3" height="3" />
@@ -134,14 +176,25 @@ export function SkillsSection() {
     }
     if (n.includes('three')) {
       return (
-        <svg className="h-6 w-6 text-purple-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg
+          className="h-6 w-6 text-purple-300"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
       );
     }
     if (n.includes('gsap')) {
       return (
-        <svg className="h-6 w-6 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          className="h-6 w-6 text-green-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
         </svg>
       );
@@ -156,7 +209,12 @@ export function SkillsSection() {
       n.includes('antigravity')
     ) {
       return (
-        <svg className="h-6 w-6 text-[var(--accent-orange)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          className="h-6 w-6 text-[var(--accent-orange)]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 18a8 8 0 118-8 8 8 0 01-8 8z" />
           <path d="M12 6v6l4 2" />
         </svg>
@@ -164,7 +222,13 @@ export function SkillsSection() {
     }
     if (n.includes('git') || n.includes('bitbucket') || n.includes('jira')) {
       return (
-        <svg className="h-6 w-6 text-orange-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg
+          className="h-6 w-6 text-orange-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
           <circle cx="18" cy="18" r="3" />
           <circle cx="6" cy="6" r="3" />
           <circle cx="6" cy="18" r="3" />
@@ -175,7 +239,12 @@ export function SkillsSection() {
     }
     if (n.includes('figma')) {
       return (
-        <svg className="h-6 w-6 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          className="h-6 w-6 text-purple-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <circle cx="16.5" cy="7.5" r="3.5" />
           <circle cx="7.5" cy="7.5" r="3.5" />
           <circle cx="7.5" cy="16.5" r="3.5" />
@@ -183,7 +252,12 @@ export function SkillsSection() {
       );
     }
     return (
-      <svg className="h-6 w-6 text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <svg
+        className="h-6 w-6 text-neutral-400"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
         <polyline points="16 18 22 12 16 6" />
         <polyline points="8 6 2 12 8 18" />
       </svg>

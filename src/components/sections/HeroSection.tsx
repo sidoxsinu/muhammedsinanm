@@ -182,7 +182,7 @@ export function HeroSection() {
 
       {/* Live Status Badge */}
       <div className="absolute top-24 z-10 flex justify-center sm:top-28">
-        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-950/40 px-3.5 py-1.5 font-mono text-xs text-emerald-400 backdrop-blur-md shadow-lg shadow-emerald-950/30">
+        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-950/40 px-3.5 py-1.5 font-mono text-xs text-emerald-400 shadow-lg shadow-emerald-950/30 backdrop-blur-md">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />

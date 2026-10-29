@@ -12,6 +12,7 @@
     "start": "next start",
     "lint": "eslint",
     "type-check": "tsc --noEmit",
+    "test": "node scripts/verify.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

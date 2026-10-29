@@ -2,19 +2,19 @@ import { StatItem } from '@/types';
 
 export const STATS_DATA: StatItem[] = [
   {
-    target: 27,
+    target: 30,
     suffix: '+',
-    label: 'HACKATHONS',
+    label: 'Hackathons',
   },
   {
-    target: 8,
+    target: 9,
     suffix: '+',
-    label: 'PROJECTS',
+    label: 'Projects',
   },
   {
     target: 2,
     suffix: '',
-    label: 'AWARDS',
+    label: 'Major Awards',
   },
 ];
 

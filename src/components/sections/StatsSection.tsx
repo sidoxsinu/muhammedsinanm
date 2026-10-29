@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef } from 'react';
 
+import { STATS } from '@/data/stats';
+
 export function StatsSection() {
   const stripRef = useRef<HTMLDivElement>(null);
 
@@ -60,48 +62,23 @@ export function StatsSection() {
         ref={stripRef}
         className="mx-auto flex max-w-5xl flex-col items-center justify-around gap-8 px-4 py-12 sm:flex-row sm:gap-6 sm:px-6 sm:py-16"
       >
-        <div className="flex flex-col items-center text-center">
-          <span
-            className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-            data-suffix="+"
-            data-target="30"
-          >
-            0
-          </span>
-          <span className="mt-2 font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
-            Hackathons
-          </span>
-        </div>
-
-        <div className="hidden h-12 w-px bg-white/10 sm:block" />
-
-        <div className="flex flex-col items-center text-center">
-          <span
-            className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-            data-suffix="+"
-            data-target="9"
-          >
-            0
-          </span>
-          <span className="mt-2 font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
-            Projects
-          </span>
-        </div>
-
-        <div className="hidden h-12 w-px bg-white/10 sm:block" />
-
-        <div className="flex flex-col items-center text-center">
-          <span
-            className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-            data-suffix=""
-            data-target="2"
-          >
-            0
-          </span>
-          <span className="mt-2 font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
-            Major Awards
-          </span>
-        </div>
+        {STATS.map((stat, idx) => (
+          <React.Fragment key={stat.label}>
+            <div className="flex flex-col items-center text-center">
+              <span
+                className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+                data-suffix={stat.suffix}
+                data-target={String(stat.target)}
+              >
+                0
+              </span>
+              <span className="mt-2 font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
+                {stat.label}
+              </span>
+            </div>
+            {idx < STATS.length - 1 && <div className="hidden h-12 w-px bg-white/10 sm:block" />}
+          </React.Fragment>
+        ))}
       </div>
     </section>
   );

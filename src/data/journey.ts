@@ -76,8 +76,7 @@ export const JOURNEY_DATA: JourneyYear[] = [
       },
       {
         title: 'Joined Community of Developers & FOSS CCE',
-        description:
-          'Active contributor to open-source student initiatives and developer circles.',
+        description: 'Active contributor to open-source student initiatives and developer circles.',
       },
     ],
   },
@@ -106,13 +105,11 @@ export const JOURNEY_DATA: JourneyYear[] = [
       },
       {
         title: 'Higher Secondary in Science',
-        description:
-          'Completed Higher Secondary Science from MES HSS Irimbiliyam, Kerala.',
+        description: 'Completed Higher Secondary Science from MES HSS Irimbiliyam, Kerala.',
       },
       {
         title: 'Sub-District IT Fair Winner',
-        description:
-          'First place in programming competitions at school and sub-district tiers.',
+        description: 'First place in programming competitions at school and sub-district tiers.',
       },
     ],
   },
