@@ -100,7 +100,6 @@ export function FeaturedSection() {
       {/* Accordion Gallery Showcase */}
       <div
         className="flex flex-col gap-2.5 md:h-[480px] md:flex-row"
-        role="tablist"
         aria-label="Project Preview Bar"
       >
         {FEATURED_ITEMS.map((item) => {
@@ -109,13 +108,8 @@ export function FeaturedSection() {
           return (
             <div
               key={item.id}
-              role="tab"
-              aria-selected={isActive}
-              tabIndex={0}
               onMouseEnter={() => setActiveId(item.id)}
-              onFocus={() => setActiveId(item.id)}
-              onClick={() => setActiveId(item.id)}
-              className={`relative min-w-0 cursor-pointer overflow-hidden rounded-2xl border transition-all duration-500 ease-out ${
+              className={`relative min-w-0 overflow-hidden rounded-2xl border transition-all duration-500 ease-out ${
                 isActive
                   ? 'flex-[3.5] border-[var(--accent-orange)] bg-[#1a1a1a]'
                   : 'flex-1 border-neutral-800 bg-[#141414] hover:border-neutral-700'

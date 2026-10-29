@@ -9,6 +9,11 @@ import { useEffect, useRef } from 'react';
 function isClickable(target: Element | null): boolean {
   if (!target || !(target instanceof Element)) return false;
 
+  // Explicit opt-out for hover-only data visualizers and decorative elements
+  if (target.closest('[data-no-cursor-hover="true"]')) {
+    return false;
+  }
+
   // 1. Interactive HTML anchor with href
   const anchor = target.closest('a');
   if (anchor && (anchor.hasAttribute('href') || anchor.hasAttribute('data-clickable'))) {

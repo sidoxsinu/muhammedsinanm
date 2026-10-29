@@ -255,11 +255,10 @@ export function GitHubSection() {
                     {week.map((day) => {
                       const isHovered = activeDay?.date === day.date;
                       return (
-                        <button
+                        <div
                           key={day.date}
-                          type="button"
+                          data-no-cursor-hover="true"
                           onMouseEnter={() => setActiveDay(day)}
-                          onFocus={() => setActiveDay(day)}
                           aria-label={`${day.count} contributions on ${day.date}`}
                           className={`h-[10px] w-[10px] rounded-[2px] transition-all duration-150 ${
                             isHovered
