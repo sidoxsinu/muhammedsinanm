@@ -5,7 +5,7 @@ import '@/styles/globals.css';
 import { SITE_CONFIG } from '@/lib/site-config';
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import { GlobalEffects } from '@/components/ui/GlobalEffects';
-import { GradualBlur } from '@/components/ui/GradualBlur';
+import { PageGradualBlur } from '@/components/ui/PageGradualBlur';
 import { PROFILE } from '@/data/profile';
 
 export const viewport: Viewport = {
@@ -258,27 +258,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <GradualBlur
-          target="page"
-          position="top"
-          height="5.5rem"
-          strength={1.8}
-          layers={8}
-          curve="bezier"
-          tint="rgba(17, 17, 17, 0.4)"
-          zIndex={40}
-        />
-        <GradualBlur
-          target="page"
-          position="bottom"
-          height="5rem"
-          strength={1.8}
-          layers={8}
-          curve="bezier"
-          tint="rgba(17, 17, 17, 0.5)"
-          zIndex={40}
-          autoHide
-        />
+        <PageGradualBlur />
         <CustomCursor />
         <GlobalEffects />
         {children}
