@@ -15,7 +15,7 @@ export function EducationSection() {
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
           {'// Academic Foundation'}
         </span>
-        <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
+        <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
           Education
         </h2>
         <p className="max-w-xl text-sm leading-relaxed text-neutral-400 sm:text-base">
@@ -31,7 +31,9 @@ export function EducationSection() {
             className="flex flex-col justify-between gap-3 rounded-2xl border border-neutral-800 bg-[#161616] p-6 transition-colors hover:border-neutral-700 sm:flex-row sm:items-center sm:p-7"
           >
             <div>
-              <h3 className="text-xl font-semibold text-white">{item.degree}</h3>
+              <h3 className="text-base font-semibold text-white sm:text-lg leading-snug">
+                {item.degree}
+              </h3>
               <p className="font-mono text-sm text-[var(--accent-orange)]">{item.institution}</p>
             </div>
 

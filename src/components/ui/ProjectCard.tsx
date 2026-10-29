@@ -33,7 +33,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {/* Content */}
         <div className="flex flex-grow flex-col justify-between gap-4 p-5 sm:p-6">
           <div className="space-y-2.5">
-            <h3 className="text-xl font-semibold tracking-tight text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-2xl">
+            <h3 className="text-base font-semibold tracking-tight text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg">
               {project.title}
             </h3>
             <p className="line-clamp-3 text-sm leading-relaxed text-neutral-400">

@@ -15,7 +15,7 @@ export function CertificationsSection() {
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
           {'// Credentials'}
         </span>
-        <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
+        <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
           Certifications &amp; Languages
         </h2>
         <p className="max-w-xl text-sm leading-relaxed text-neutral-400 sm:text-base">

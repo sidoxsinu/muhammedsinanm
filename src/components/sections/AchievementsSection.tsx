@@ -15,7 +15,7 @@ export function AchievementsSection() {
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
           {'// Recognition'}
         </span>
-        <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
+        <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
           Achievements &amp; Awards
         </h2>
         <p className="max-w-xl text-sm leading-relaxed text-neutral-400 sm:text-base">
@@ -34,7 +34,9 @@ export function AchievementsSection() {
               <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--accent-orange)] uppercase">
                 Major Honor
               </span>
-              <h3 className="text-xl leading-snug font-semibold text-white">{award.title}</h3>
+              <h3 className="text-base leading-snug font-semibold text-white sm:text-lg">
+                {award.title}
+              </h3>
               <p className="font-mono text-xs text-neutral-400">{award.organization}</p>
               {award.description && (
                 <p className="text-sm leading-relaxed text-neutral-300">{award.description}</p>

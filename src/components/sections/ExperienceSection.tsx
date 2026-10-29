@@ -15,7 +15,7 @@ export function ExperienceSection() {
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
           {'// Career Track'}
         </span>
-        <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
+        <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
           Work Experience
         </h2>
         <p className="max-w-xl text-sm leading-relaxed text-neutral-400 sm:text-base">
@@ -33,7 +33,9 @@ export function ExperienceSection() {
             {/* Top row: Role & Badge */}
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h3 className="text-xl font-semibold text-white sm:text-2xl">{exp.role}</h3>
+                <h3 className="text-base font-semibold text-white sm:text-lg leading-snug">
+                  {exp.role}
+                </h3>
                 <p className="font-mono text-sm font-medium text-[var(--accent-orange)]">
                   {exp.company}
                 </p>
