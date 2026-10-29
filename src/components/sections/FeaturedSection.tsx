@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
+import { PROJECTS } from '@/data/projects';
+
 interface FeaturedItem {
   id: string;
   title: string;
@@ -91,7 +93,7 @@ export function FeaturedSection() {
           href="/projects"
           className="font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)] uppercase hover:text-white"
         >
-          View Full Catalog (9 Projects) →
+          View Full Catalog ({PROJECTS.length} Projects) →
         </Link>
       </div>
 

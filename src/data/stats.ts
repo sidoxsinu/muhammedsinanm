@@ -7,12 +7,12 @@ export const STATS_DATA: StatItem[] = [
     label: 'Hackathons',
   },
   {
-    target: 9,
+    target: 10,
     suffix: '+',
     label: 'Projects',
   },
   {
-    target: 2,
+    target: 3,
     suffix: '',
     label: 'Major Awards',
   },

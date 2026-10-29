@@ -34,7 +34,7 @@ export function ProjectsSection() {
           href="/projects"
           className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-[#161616] px-6 py-3 font-mono text-xs font-semibold text-white uppercase transition-colors hover:border-[var(--accent-orange)] hover:bg-[var(--accent-orange)]"
         >
-          <span>Explore All 9 Projects in Full Catalog</span>
+          <span>Explore All {PROJECTS.length} Projects in Full Catalog</span>
           <span>→</span>
         </Link>
       </div>

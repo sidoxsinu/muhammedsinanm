@@ -27,7 +27,9 @@ export default function ProjectsPage() {
         id: 'ai',
         label: 'AI & Systems',
         count: PROJECTS.filter((p) =>
-          p.tags.some((t) => ['AI', 'AI/ML', 'Groq API', 'Python', 'FastAPI'].includes(t)),
+          p.tags.some((t) =>
+            ['AI', 'AI/ML', 'Groq API', 'Python', 'FastAPI', 'IoT', 'ESP32', 'BLE'].includes(t),
+          ),
         ).length,
       },
       {
@@ -54,7 +56,9 @@ export default function ProjectsPage() {
     }
     if (activeFilter === 'ai') {
       return PROJECTS.filter((p) =>
-        p.tags.some((t) => ['AI', 'AI/ML', 'Groq API', 'Python', 'FastAPI'].includes(t)),
+        p.tags.some((t) =>
+          ['AI', 'AI/ML', 'Groq API', 'Python', 'FastAPI', 'IoT', 'ESP32', 'BLE'].includes(t),
+        ),
       );
     }
     if (activeFilter === 'web') {

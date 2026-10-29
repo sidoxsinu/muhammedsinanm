@@ -15,6 +15,10 @@ export const EVENTS: EventGroup[] = [
     ],
   },
   {
+    institution: 'Sahrdaya College of Engineering & Technology (Autonomous)',
+    events: [{ name: 'IncluCode (IEEE)', result: 'Special Mention Award' }],
+  },
+  {
     institution: 'VIT Vellore',
     events: [{ name: 'HackBattle', result: 'Participant' }],
   },

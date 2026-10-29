@@ -15,6 +15,11 @@ export const JOURNEY_DATA: JourneyYear[] = [
           'Won top technical honors for Next-Gen AI Assistant System featuring real-time Groq LLaMA 3.3 and Whisper voice terminals.',
       },
       {
+        title: 'Special Mention Award - IncluCode (IEEE)',
+        description:
+          'Won Special Mention honors at Sahrdaya College of Engineering for BusCue, an audio-first Bluetooth BLE transit accessibility system.',
+      },
+      {
         title: 'GATE - Layover Companion',
         description:
           'Built and deployed a mobile-first layover quest and digital passport PWA for the LAYOVER hackathon at TinkerSpace Calicut.',

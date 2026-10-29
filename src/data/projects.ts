@@ -130,4 +130,21 @@ export const PROJECTS: Project[] = [
     image: '/assets/images/projects/universityhub.webp',
     featured: false,
   },
+  {
+    id: 'project-buscue',
+    title: 'BusCue - Audio-First Transit Accessibility',
+    description:
+      'Real-time audio-first bus arrival detection system for visually impaired and neurodivergent commuters. Interfaces custom ESP32 hardware beacon receivers with a Flutter conductor broadcasting app and Next.js fleet management dashboard. Awarded Special Mention at IncluCode (IEEE) at Sahrdaya College of Engineering (Autonomous).',
+    year: '2026',
+    tags: ['IoT', 'ESP32', 'Flutter', 'Next.js', 'Firebase', 'BLE'],
+    links: {
+      repo: 'https://github.com/tm-SicadaS/IncluCode',
+    },
+    image: '/assets/images/projects/buscue.webp',
+    featured: false,
+    badge: 'Special Mention IEEE',
+    recognition: {
+      text: 'Special Mention Award - IncluCode by IEEE at Sahrdaya College of Engineering (Autonomous) 2026',
+    },
+  },
 ];

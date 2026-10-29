@@ -18,6 +18,18 @@ export const ACHIEVEMENTS: Achievement[] = [
     ],
   },
   {
+    title: 'Special Mention Award - IncluCode (2026)',
+    organization: 'IEEE · Sahrdaya College of Engineering & Technology (Autonomous) · Jul 2026',
+    description:
+      'Awarded Special Mention for BusCue, an audio-first transit accessibility system combining an ESP32 hardware beacon receiver, Flutter conductor app, and Next.js fleet dashboard for visually impaired commuters.',
+    links: [
+      {
+        label: 'View Repository ↗',
+        url: 'https://github.com/tm-SicadaS/IncluCode',
+      },
+    ],
+  },
+  {
     title: 'Second Prize - Webathon 2025',
     organization: 'Computer Society of India (CSI) CCE · 2025',
     description:
