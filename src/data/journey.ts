@@ -5,36 +5,54 @@ export const JOURNEY_DATA: JourneyYear[] = [
     year: '2026',
     milestones: [
       {
-        title: 'Software Engineering Intern',
-        description: 'Torcue Digital Inc. · Infopark, Kochi',
+        title: 'Software Engineering Intern — Torcue Digital',
+        description:
+          'Delivering production tickets across full-stack web, AI workflows, and native iOS (Swift) on a full-time Agile schedule.',
       },
       {
-        title: 'Co-CFO, IEDC CCE',
-        description: 'Innovation & Entrepreneurship Development Centre',
+        title: 'Best Technical Project — Google Build with AI Hackathon',
+        description:
+          'Won top technical honors for Next-Gen AI Assistant System featuring real-time Groq LLaMA 3.3 and Whisper voice terminals.',
       },
       {
-        title: 'Research Intern',
-        description: 'Suvidha Foundation · AI & Dev workflows',
+        title: 'GATE — Layover Companion',
+        description:
+          'Built and deployed a mobile-first layover quest and digital passport PWA for the LAYOVER hackathon at TinkerSpace Calicut.',
       },
       {
-        title: 'IEEE IAS Webmaster',
-        description: 'IEEE Industry Applications Society · CCE Student Branch',
+        title: 'GhostOps Zero-Trust Tool',
+        description:
+          'Engineered a 36-hour hackathon dashboard mapping and revoking developer credentials across AWS IAM, GitHub, and Docker SSH sandbox.',
       },
       {
-        title: 'IEEE CS Webmaster',
-        description: 'IEEE Computer Society · CCE Student Branch',
+        title: 'Resource Person — Converge AI Workshop',
+        description:
+          'Invited by IEDC CCE to conduct hands-on training for 25–30 engineering students on modern AI developer tooling.',
       },
       {
-        title: 'Design Lead',
-        description: 'IEEE Kerala Section JC (CTS/Nano/EDS)',
+        title: 'Co-CFO — IEDC CCE',
+        description:
+          'Elected Co-Chief Financial Officer for the Innovation & Entrepreneurship Development Centre at Christ College of Engineering.',
       },
       {
-        title: 'Learning Coordinator',
-        description: 'TinkerHub CCE',
+        title: 'Research Intern — Suvidha Foundation',
+        description:
+          'Contributed to backend development and research workflows in collaboration with Code Karo Yaaro.',
       },
       {
-        title: 'BeachHack Season 7',
-        description: 'Finalist · HackForChrist',
+        title: 'BeachHack Season 7 Finalist',
+        description:
+          'Multi-stage competitive finalist selection among 100+ participating engineering teams.',
+      },
+      {
+        title: 'Design Lead & Webmaster — IEEE',
+        description:
+          'Design Lead for IEEE Kerala Section Joint Chapter (EDS/CT/Nano); Webmaster for IEEE CS & IAS Chapters.',
+      },
+      {
+        title: 'Learning Coordinator — TinkerHub CCE',
+        description:
+          'Coordinating and hosting campus tech cohorts, hack nights, and peer learning sessions.',
       },
     ],
   },
@@ -42,16 +60,24 @@ export const JOURNEY_DATA: JourneyYear[] = [
     year: '2025',
     milestones: [
       {
-        title: 'First Hackathon Win',
-        description: 'WEBATHON 2025 · Second Prize',
+        title: 'Webathon 2025 — Second Prize',
+        description:
+          'Won 2nd Prize for Pylon, an algorithmic multi-criteria scholarship search engine.',
       },
       {
-        title: 'Full-Stack Foundations',
-        description: 'Built projects across Python, React (MERN), and Java',
+        title: 'Commercial Freelance Web Development',
+        description:
+          'Delivered commercial production websites end-to-end, including ParackalTravelHub and AvenWing with SEO and GSAP choreography.',
       },
       {
-        title: 'B.Tech CS Started',
-        description: 'Joined Christ College of Engineering',
+        title: 'B.Tech CSE at Christ College of Engineering',
+        description:
+          'Joined KTU Computer Science & Engineering degree program, maintaining a 7.6/10 CGPA.',
+      },
+      {
+        title: 'Joined Community of Developers & FOSS CCE',
+        description:
+          'Active contributor to open-source student initiatives and developer circles.',
       },
     ],
   },
@@ -59,13 +85,14 @@ export const JOURNEY_DATA: JourneyYear[] = [
     year: '2024',
     milestones: [
       {
-        title: 'NSS Event Lead',
+        title: 'NSS Event Lead & Fundraiser',
         description:
-          'Led various campaigns, events, and programs as part of NSS and raised ₹1 Lakh+',
+          'Led campaigns and public service programs as NSS Volunteer Leader, raising ₹1 Lakh+ for community welfare.',
       },
       {
-        title: 'IT Fair Champion',
-        description: 'First place at school & sub-district levels; Participated at district level',
+        title: 'IT Fair Programming Champion',
+        description:
+          'First place at school & sub-district levels; represented sub-district at district-level competitions.',
       },
     ],
   },
@@ -73,16 +100,19 @@ export const JOURNEY_DATA: JourneyYear[] = [
     year: '2023',
     milestones: [
       {
-        title: 'NSS Volunteer Leader',
-        description: 'Started volunteership & selected as leader (served till 2025)',
+        title: 'NSS Volunteer Leadership',
+        description:
+          'Selected as NSS Volunteer Leader, completing 240+ certified hours of social service through 2025.',
       },
       {
-        title: 'Higher Secondary',
-        description: 'Completed Science from MES HSS Irimbiliyam',
+        title: 'Higher Secondary in Science',
+        description:
+          'Completed Higher Secondary Science from MES HSS Irimbiliyam, Kerala.',
       },
       {
-        title: 'IT Fair Champion',
-        description: 'First place at school & sub-district levels; Participated at district level',
+        title: 'Sub-District IT Fair Winner',
+        description:
+          'First place in programming competitions at school and sub-district tiers.',
       },
     ],
   },
@@ -90,16 +120,13 @@ export const JOURNEY_DATA: JourneyYear[] = [
     year: '2022',
     milestones: [
       {
-        title: 'Game Development',
-        description: 'Built and published my first game',
+        title: 'First Independent Game Published',
+        description: 'Engineered and launched my first playable game.',
       },
       {
-        title: 'Little KITES Bootcamp',
-        description: 'Attended district level Little KITES programming bootcamp',
-      },
-      {
-        title: 'IT Fair Champion',
-        description: 'First place at school & sub-district levels; Participated at district level',
+        title: 'Little KITES District Programming Bootcamp',
+        description:
+          'Selected for intensive district-level Little KITES software development bootcamp.',
       },
     ],
   },
@@ -107,9 +134,9 @@ export const JOURNEY_DATA: JourneyYear[] = [
     year: '2021',
     milestones: [
       {
-        title: 'IT Fair Champion',
+        title: 'First Coding Recognition',
         description:
-          'First place in programming at school & sub-district levels; Participated at district level',
+          'Won first place in school programming contests, launching my passion for software engineering.',
       },
     ],
   },

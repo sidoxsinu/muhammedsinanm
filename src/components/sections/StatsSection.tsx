@@ -64,7 +64,7 @@ export function StatsSection() {
           <span
             className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
             data-suffix="+"
-            data-target="27"
+            data-target="30"
           >
             0
           </span>
@@ -79,7 +79,7 @@ export function StatsSection() {
           <span
             className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
             data-suffix="+"
-            data-target="8"
+            data-target="9"
           >
             0
           </span>

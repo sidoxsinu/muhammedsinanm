@@ -3,21 +3,30 @@ import { ExperienceItem } from '@/types';
 export const EXPERIENCES: ExperienceItem[] = [
   {
     role: 'Software Engineering Intern',
-    badge: 'Current',
-    company: 'Torcue Digital Inc. (Toric Software Labs Pvt. Ltd.)',
-    period: 'Jun 2026 – Present',
+    badge: 'Current / 6 Mo+',
+    company: 'Torcue Digital (Client projects under NDA)',
+    period: 'May 2026 – Present',
     description:
-      "Building and shipping features across full-stack web applications in a professional product engineering team. Working with JavaScript, React, and Node.js on client-facing software at Torcue Digital's engineering office at Infopark Phase II, Kochi — contributing to product design, UI implementation, and backend integration in a collaborative, deadline-driven environment.",
+      'Delivering frontend, backend, AI-related, and iOS (Swift) tickets for production applications on a full-time schedule (6 months and ongoing). Working in a deadline-driven Agile team with sprint tickets tracked in Jira, codebases managed across Git and Bitbucket, and daily engineering stand-ups.',
     location: 'Transasia Cyberpark, Infopark Phase II, Kochi, Kerala',
     companyUrl: 'https://www.torcue.com',
   },
   {
-    role: 'Research Intern',
-    badge: 'Internship',
-    company: 'Suvidha Foundation (Suvidha Mahila Mandal)',
-    period: '25 Mar 2026 – 25 Apr 2026',
+    role: 'Freelance Web Developer',
+    badge: '5+ Client Sites',
+    company: 'Self-Employed (Independent Contractor)',
+    period: '2025 – Present',
     description:
-      'Completed a one-month research internship at Suvidha Foundation in collaboration with Code Karo Yaaro. Worked on AI and development-related research workflows, prepared technical documentation, and contributed to study resources. Recognized for punctuality and demonstrated inquisitiveness throughout the programme.',
+      'Delivered 5+ paid client websites end-to-end, covering UI/UX architecture, performance optimization, SEO, and production deployment. Built ParackalTravelHub, a bilingual (English/Malayalam) travel agency platform with LocalBusiness structured data, and AvenWing, a premium kinetic sculpture product website.',
+    location: 'Kerala, India (Remote)',
+  },
+  {
+    role: 'Research Intern',
+    badge: 'Completed',
+    company: 'Suvidha Foundation (Suvidha Mahila Mandal)',
+    period: 'Mar 2026 – Apr 2026',
+    description:
+      'Completed a one-month internship contributing to local backend development, research workflows, and technical troubleshooting in collaboration with Code Karo Yaaro.',
     verifyUrl: 'https://suvidhafoundationedutech.org/verify',
     certificateImage: '/assets/images/certificates/suvidha-research-intern.webp',
   },

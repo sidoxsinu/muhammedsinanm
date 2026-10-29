@@ -82,9 +82,9 @@ export const metadata: Metadata = {
   },
   other: {
     'geo.region': 'IN-KL',
-    'geo.placename': 'Irinjalakuda, Kerala, India',
-    'geo.position': '10.3439;76.2117',
-    ICBM: '10.3439, 76.2117',
+    'geo.placename': 'Valanchery, Kerala, India',
+    'geo.position': '10.8878;76.0683',
+    ICBM: '10.8878, 76.0683',
   },
 };
 
@@ -102,7 +102,7 @@ const jsonLdPerson = {
     'MohammedSinanM',
   ],
   description:
-    'Computer Science student, Full-Stack Developer, and AI Enthusiast from Irinjalakuda, Kerala, India. Award-winning developer and hackathon winner.',
+    'Computer Science student, Full-Stack Developer, and AI Enthusiast from Valanchery, Kerala, India. Award-winning developer and hackathon winner.',
   url: 'https://muhammedsinan.in/',
   image: 'https://muhammedsinan.in/images/profile-picture/bg-removed-black&white-pfp.webp',
   email: 'muhammedsinan.m67@gmail.com',
@@ -124,7 +124,7 @@ const jsonLdPerson = {
   },
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Irinjalakuda',
+    addressLocality: 'Valanchery',
     addressRegion: 'Kerala',
     addressCountry: 'IN',
   },

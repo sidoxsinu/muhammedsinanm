@@ -17,20 +17,26 @@ export default function ProjectsPage() {
         id: 'freelance',
         label: 'Freelance & Client',
         count: PROJECTS.filter(
-          (p) => p.badge?.includes('Freelance') || p.tags.includes('Freelance'),
+          (p) =>
+            p.badge?.includes('Client') ||
+            p.badge?.includes('Freelance') ||
+            p.tags.includes('Freelance'),
         ).length,
       },
       {
         id: 'ai',
         label: 'AI & Systems',
-        count: PROJECTS.filter((p) => p.tags.includes('AI') || p.tags.includes('AI/ML')).length,
+        count: PROJECTS.filter((p) =>
+          p.tags.some((t) => ['AI', 'AI/ML', 'Groq API', 'Python', 'FastAPI'].includes(t)),
+        ).length,
       },
       {
         id: 'web',
-        label: 'Web Applications',
-        count: PROJECTS.filter(
-          (p) =>
-            p.tags.includes('React') || p.tags.includes('Django') || p.tags.includes('HTML/CSS'),
+        label: 'Web & Hackathons',
+        count: PROJECTS.filter((p) =>
+          p.tags.some((t) =>
+            ['React', 'Next.js', 'Django', 'HTML5', 'HTML/CSS', 'JavaScript'].includes(t),
+          ),
         ).length,
       },
     ];
@@ -39,14 +45,23 @@ export default function ProjectsPage() {
   const filteredProjects = useMemo(() => {
     if (activeFilter === 'all') return PROJECTS;
     if (activeFilter === 'freelance') {
-      return PROJECTS.filter((p) => p.badge?.includes('Freelance') || p.tags.includes('Freelance'));
+      return PROJECTS.filter(
+        (p) =>
+          p.badge?.includes('Client') ||
+          p.badge?.includes('Freelance') ||
+          p.tags.includes('Freelance'),
+      );
     }
     if (activeFilter === 'ai') {
-      return PROJECTS.filter((p) => p.tags.includes('AI') || p.tags.includes('AI/ML'));
+      return PROJECTS.filter((p) =>
+        p.tags.some((t) => ['AI', 'AI/ML', 'Groq API', 'Python', 'FastAPI'].includes(t)),
+      );
     }
     if (activeFilter === 'web') {
-      return PROJECTS.filter(
-        (p) => p.tags.includes('React') || p.tags.includes('Django') || p.tags.includes('HTML/CSS'),
+      return PROJECTS.filter((p) =>
+        p.tags.some((t) =>
+          ['React', 'Next.js', 'Django', 'HTML5', 'HTML/CSS', 'JavaScript'].includes(t),
+        ),
       );
     }
     return PROJECTS;

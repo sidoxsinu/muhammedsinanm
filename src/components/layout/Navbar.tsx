@@ -17,41 +17,11 @@ export function Navbar() {
   const closeTweenRef = useRef<gsap.core.Tween | null>(null);
   const isBusyRef = useRef(false);
 
-  // Nav entrance & glassmorphism morph on scroll
+  // Floating glassmorphism navigation
   useEffect(() => {
     const navEl = navRef.current;
     if (!navEl) return;
-
-    // For non-home pages, always keep the sleek floating glass bar
-    if (pathname !== '/') {
-      navEl.classList.add('nav-glass');
-      return;
-    }
-
-    const hero = document.querySelector('.hero-premium');
-    if (!hero) {
-      navEl.classList.add('nav-glass');
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            navEl.classList.remove('nav-glass');
-          } else {
-            navEl.classList.add('nav-glass');
-          }
-        });
-      },
-      { threshold: 0.05 },
-    );
-
-    observer.observe(hero);
-
-    return () => {
-      observer.disconnect();
-    };
+    navEl.classList.add('nav-glass');
   }, [pathname]);
 
   // Staggered menu animations

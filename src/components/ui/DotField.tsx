@@ -18,8 +18,8 @@ export function DotField() {
       bulgeStrength: 67,
       sparkle: false,
       waveAmplitude: 0,
-      gradientFrom: 'rgba(0, 0, 0, 0.30)',
-      gradientTo: 'rgba(0, 0, 0, 0.15)',
+      gradientFrom: 'rgba(255, 255, 255, 0.22)',
+      gradientTo: 'rgba(232, 86, 42, 0.15)',
     };
 
     const TWO_PI = Math.PI * 2;

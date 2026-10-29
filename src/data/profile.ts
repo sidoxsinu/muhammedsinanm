@@ -4,14 +4,19 @@ export const PROFILE_DATA: Profile = {
   name: 'Muhammed Sinan M',
   firstName: 'Muhammed',
   lastName: 'Sinan M',
-  roles: ['Computer Science Student', 'Full-Stack Developer', 'Software Engineering Intern'],
-  bio: 'Computer Science student and Software Engineering Intern at Torcue Digital, building full-stack software in a professional, cross-functional environment. Strong in frontend engineering, systems thinking, and structured problem solving, with experience developing platforms and automation from scratch. Enthusiastic about agentic AI, scalable web systems, and delivering high-leverage products.',
-  location: 'Irinjalakuda, Kerala, India',
+  roles: [
+    'Software Developer',
+    'Full-Stack Developer',
+    'Computer Science Undergraduate',
+    'Software Engineering Intern',
+  ],
+  bio: 'Second-year B.Tech CSE student and Software Engineering Intern (6 months, full-time schedule) building full-stack web, iOS and AI-driven products. Delivered frontend, backend, AI-related and Swift tickets in Agile sprints, completed 5+ freelance client projects, and competed in 30+ hackathons, winning Best Technical Project (Google for Developers Build with AI) and 2nd Prize (Webathon 2025). Seeking a remote SDE internship.',
+  location: 'Valanchery, Kerala, India (open to remote)',
   email: 'muhammedsinan.m67@gmail.com',
   phone: '+91 85905 68566',
   contactUrl: 'https://contact.muhammedsinan.in',
-  resumeUrl: '/assets/documents/resume/muhammed-sinan-resume.pdf',
-  profileImage: '/assets/images/profile/muhammed-sinan-profile.webp',
+  resumeUrl: '/images/Resume/Muhammed Sinan M.pdf',
+  profileImage: '/images/profile-picture/bg-removed-black&white-pfp.webp',
 };
 
 export const PROFILE = PROFILE_DATA;

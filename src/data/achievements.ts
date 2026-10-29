@@ -2,10 +2,10 @@ import { Achievement } from '@/types';
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
-    title: 'Best Technical Project — Build with AI Hackathon 2026',
-    organization: 'Organized by Google for Developers / MuLearn NSSCE · Mar 2026',
+    title: 'Best Technical Project — Google for Developers Build with AI (2026)',
+    organization: 'Google for Developers / MuLearn NSSCE · Mar 2026',
     description:
-      'Next Gen AI Assistant recognized for technical excellence and innovation among all competing teams.',
+      'Next Gen AI Assistant was awarded Best Technical Project among competing teams for low-latency Groq LLaMA 3.3 voice terminal workflows and systems architecture.',
     links: [
       {
         label: 'MuLearn NSSCE (LinkedIn) ↗',
@@ -18,15 +18,27 @@ export const ACHIEVEMENTS: Achievement[] = [
     ],
   },
   {
-    title: 'WEBATHON 2025 — Second Prize',
-    organization: 'Organized by CSI CCE · 2025',
+    title: 'Second Prize — Webathon 2025',
+    organization: 'Computer Society of India (CSI) CCE · 2025',
     description:
-      'Pylon — an all-in-one scholarship search platform — was recognized as Second Prize winner at WEBATHON 2025, competing against teams from across the college.',
+      'Pylon — custom-filtered dynamic scholarship matching portal — awarded 2nd Prize for UI responsiveness, clean architecture, and rapid algorithmic filtering.',
     links: [
       {
-        label: 'View Project ↗',
+        label: 'View Repository ↗',
         url: 'https://github.com/sidoxsinu/Pylon',
       },
     ],
+  },
+  {
+    title: 'Finalist — BeachHack Season 7',
+    organization: 'BeachHack 2026 · Multi-stage selection from 100+ teams',
+    description:
+      'Selected as a finalist among 100+ competitive engineering teams across South India for real-time systems problem solving.',
+  },
+  {
+    title: 'Medical SaaS Presentation — Medex Concordium 2025',
+    organization: 'Medex Concordium · Medical Technology Showcase',
+    description:
+      'Presented a medical SaaS workflow product at Medex Concordium 2025, exploring automated health record triage and clinical interface efficiency.',
   },
 ];

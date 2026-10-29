@@ -5,7 +5,8 @@
   --bg-color: #111111; /* Softer dark for a more premium look */
   --text-primary: #ffffff;
   --text-secondary: #999999;
-  --accent-red: #e54d2e;
+  --accent-red: #e8562a;
+  --accent-orange: #e8562a;
 
   --font-heading: 'General Sans', sans-serif;
   --font-body: 'Space Grotesk', sans-serif;
@@ -276,7 +277,8 @@ a {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #ffffff; /* Pure white for perfect black text inversion */
+  background-color: var(--bg-color);
+  background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232, 86, 42, 0.12), transparent 70%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -305,19 +307,21 @@ a {
   flex-direction: column;
   gap: 16px;
   z-index: 10;
-  color: #000;
+  color: #ffffff;
 }
 
 .hero-socials a {
   font-size: 14px;
   font-weight: 500;
-  transition: opacity 0.3s;
-  color: #000 !important;
-  opacity: 1 !important;
+  transition: all 0.3s ease;
+  color: #ffffff !important;
+  opacity: 0.75 !important;
   mix-blend-mode: normal !important;
 }
 .hero-socials a:hover {
-  opacity: 0.6 !important;
+  opacity: 1 !important;
+  color: var(--accent-orange) !important;
+  transform: translateY(-2px);
 }
 
 .hero-socials a svg {
@@ -331,10 +335,10 @@ a {
   bottom: 40px;
   text-align: right;
   z-index: 10;
-  mix-blend-mode: difference;
-  color: #fff;
-  font-size: 1.5vw;
-  line-height: 1.3;
+  mix-blend-mode: normal;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.2vw;
+  line-height: 1.5;
 }
 
 .hero-content {
@@ -348,12 +352,13 @@ a {
 
 .hero-pfp {
   position: absolute;
-  height: 110vh; /* Enlarged image */
+  height: 110vh;
   max-width: 100%;
-  object-fit: cover; /* Ensures it scales nicely */
+  object-fit: cover;
   z-index: 1;
-  filter: grayscale(100%) contrast(1.3) brightness(0.85); /* Deepened blacks for purer white text inversion */
-  /* will-change moved to JS to prevent NO_LCP error */
+  filter: grayscale(100%) contrast(1.2) brightness(0.95);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
 }
 
 .hero-title {
@@ -2028,7 +2033,7 @@ body.cursor-hover .cursor-dot {
   bottom: 110px;
   right: 5vw;
   z-index: 10;
-  color: #000000;
+  color: #ffffff;
 }
 
 .scroll-circle {
@@ -2978,7 +2983,7 @@ body.cursor-hover .cursor-dot {
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #000000; /* Black by default in hero section */
+  color: #ffffff;
   font-weight: 500;
   line-height: 1;
   overflow: visible;
@@ -2987,11 +2992,11 @@ body.cursor-hover .cursor-dot {
 }
 
 .premium-nav.nav-glass .sm-toggle {
-  color: #ffffff; /* White in dark background sections */
+  color: #ffffff;
 }
 
 .sm-toggle.active {
-  color: #000000 !important; /* Black when mobile menu is open (white background) */
+  color: #ffffff !important;
 }
 
 .sm-toggle:focus-visible {
