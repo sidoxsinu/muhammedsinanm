@@ -211,7 +211,7 @@ export function SkillsSection() {
   };
 
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <section id="skills" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
         badge="// Core Capabilities"
         title="Skills & Technologies"

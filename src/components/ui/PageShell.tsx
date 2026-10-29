@@ -26,7 +26,9 @@ export function PageShell({
     <div className="min-h-screen bg-[var(--bg-color)] text-[var(--text-primary)]">
       <Navbar />
 
-      <main className={`mx-auto ${maxWidth} px-4 pt-32 pb-24 sm:px-6 ${className}`}>
+      <main
+        className={`mx-auto ${maxWidth} px-4 pt-24 pb-20 sm:px-6 sm:pt-32 sm:pb-28 lg:px-8 ${className}`}
+      >
         <PageHeader badge={badge} title={title} description={description} />
         {children}
       </main>

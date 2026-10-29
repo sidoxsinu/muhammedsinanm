@@ -51,25 +51,56 @@ export function StatsSection() {
   }, []);
 
   return (
-    <section aria-label="Portfolio stats" className="stats-strip-section" id="stats-strip">
-      <div className="stats-strip" ref={stripRef}>
-        <div className="stat-item fade-in-up">
-          <span className="stat-number count-up" data-suffix="+" data-target="27">
+    <section
+      aria-label="Portfolio stats"
+      id="stats-strip"
+      className="relative z-10 border-y border-white/[0.08] bg-[#111111]/80 backdrop-blur-md"
+    >
+      <div
+        ref={stripRef}
+        className="mx-auto flex max-w-5xl flex-col items-center justify-around gap-8 px-4 py-12 sm:flex-row sm:gap-6 sm:px-6 sm:py-16"
+      >
+        <div className="flex flex-col items-center text-center">
+          <span
+            className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+            data-suffix="+"
+            data-target="27"
+          >
             0
           </span>
-          <span className="stat-label">HACKATHONS</span>
+          <span className="mt-2 font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
+            Hackathons
+          </span>
         </div>
-        <div className="stat-item fade-in-up">
-          <span className="stat-number count-up" data-suffix="+" data-target="8">
+
+        <div className="hidden h-12 w-px bg-white/10 sm:block" />
+
+        <div className="flex flex-col items-center text-center">
+          <span
+            className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+            data-suffix="+"
+            data-target="8"
+          >
             0
           </span>
-          <span className="stat-label">PROJECTS</span>
+          <span className="mt-2 font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
+            Projects
+          </span>
         </div>
-        <div className="stat-item fade-in-up">
-          <span className="stat-number count-up" data-suffix="" data-target="2">
+
+        <div className="hidden h-12 w-px bg-white/10 sm:block" />
+
+        <div className="flex flex-col items-center text-center">
+          <span
+            className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+            data-suffix=""
+            data-target="2"
+          >
             0
           </span>
-          <span className="stat-label">AWARDS</span>
+          <span className="mt-2 font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
+            Major Awards
+          </span>
         </div>
       </div>
     </section>

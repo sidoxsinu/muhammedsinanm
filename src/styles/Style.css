@@ -11,11 +11,7 @@
   --font-body: 'Space Grotesk', sans-serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Note: Universal reset is handled by Tailwind preflight in @layer base */
 
 html,
 body {
@@ -379,10 +375,8 @@ a {
    GENERAL SECTIONS & DARK THEME
    ========================================================================== */
 section {
-  padding-block: 5rem;
-  margin-top: 0;
-  max-width: 1200px;
-  margin-inline: auto;
+  position: relative;
+  box-sizing: border-box;
 }
 
 #about {
@@ -2651,26 +2645,9 @@ body.cursor-hover .cursor-dot {
   }
 
   /* 9 — SECTION TYPOGRAPHY & SPACING: MOBILE SCALE */
-  section {
-    padding-block: 20px !important;
-    padding-inline: 6vw !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
+  .hero-premium {
+    padding: 0 !important;
   }
-  #about {
-    padding-bottom: 0 !important;
-    margin-bottom: -60px !important;
-  }
-  #about .section-inner {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  #stats-strip {
-    padding-top: 0 !important;
-    margin-top: -180px !important; /* Absolute max pull up */
-  }
-  .hero-premium,
   .cert-carousel-section,
   .testimonials-section {
     padding-inline: 0 !important;
@@ -2725,6 +2702,9 @@ body.cursor-hover .cursor-dot {
     font-size: 0.8rem;
     padding: 10px 16px;
     min-height: 44px;
+  }
+  .profile-pill {
+    padding: 6px 16px 6px 6px !important;
   }
   .stats-strip {
     flex-direction: column;

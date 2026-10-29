@@ -12,7 +12,7 @@ export function ProjectsSection() {
   const featuredProjects = PROJECTS.filter((p) => p.featured).slice(0, 4);
 
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+    <section id="projects" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
         badge="// Selected Works"
         title="Featured Projects"

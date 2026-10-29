@@ -40,7 +40,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Button type="button" variant="secondary" size="sm" onClick={copyEmail}>
               {copied ? '✓ Copied Email' : 'Copy Email Address'}
             </Button>

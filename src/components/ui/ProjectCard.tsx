@@ -68,7 +68,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
 
             {/* Links */}
-            <div className="flex items-center justify-between border-t border-white/[0.06] pt-2">
+            <div className="flex items-center justify-between border-t border-white/[0.06] pt-3.5">
               {project.links.live ? (
                 <a
                   href={project.links.live}

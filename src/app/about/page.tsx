@@ -175,7 +175,7 @@ export default function AboutPage() {
 
       {/* Tab 3: Journey Timeline */}
       {activeTab === 'journey' && (
-        <div className="relative ml-4 space-y-10 border-l border-white/10 pl-6 sm:pl-8">
+        <div className="relative ml-3 space-y-10 border-l border-white/10 pl-6 sm:ml-6 sm:pl-8">
           {JOURNEY_DATA.map((jy) => (
             <div key={jy.year} className="relative">
               {/* Year Marker */}
