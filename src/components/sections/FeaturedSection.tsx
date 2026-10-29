@@ -34,7 +34,7 @@ const FEATURED_ITEMS: FeaturedItem[] = [
     description:
       'AI transit companion for travelers navigating flight layovers. Computes safe local transit radii, currency conversions, and offline boarding passes.',
     image: '/assets/images/projects/gate-layover.webp',
-    link: 'https://github.com/sidoxsinu/LayoverHackathon',
+    link: 'https://gate-next-cyan.vercel.app/',
     tech: ['Next.js 15', 'FastAPI', 'Groq API', 'Leaflet', 'Tailwind'],
   },
   {

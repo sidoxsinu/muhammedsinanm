@@ -41,7 +41,8 @@ export const PROJECTS: Project[] = [
     year: '2026',
     tags: ['Next.js', 'Supabase', 'Groq API', 'Vercel', 'Tailwind CSS'],
     links: {
-      repo: 'https://github.com/sidoxsinu/gate-layover',
+      live: 'https://gate-next-cyan.vercel.app/',
+      repo: 'https://github.com/sidoxsinu/layoverhackathon',
     },
     image: '/assets/images/projects/gate-layover.webp',
     featured: true,
