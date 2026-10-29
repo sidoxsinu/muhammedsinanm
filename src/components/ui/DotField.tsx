@@ -9,40 +9,23 @@ export function DotField() {
     const container = containerRef.current;
     if (!container) return;
 
-    // Detect theme (dark or light) from the parent hero container
-    const heroEl = container.closest('.hero-premium') || container;
-    const computedBg = window.getComputedStyle(heroEl).backgroundColor;
-    let isDarkBg = false;
-    const rgbMatch = computedBg.match(/\d+/g);
-    if (rgbMatch && rgbMatch.length >= 3) {
-      const r = parseInt(rgbMatch[0], 10);
-      const g = parseInt(rgbMatch[1], 10);
-      const b = parseInt(rgbMatch[2], 10);
-      const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
-      isDarkBg = luminance < 128;
-    }
-
     const config = {
-      dotRadius: 1.2,
-      dotSpacing: 16,
-      cursorRadius: 320,
-      bulgeStrength: 52,
-      waveAmplitude: 0.5,
-      // Subtle, low-opacity dot colors as before
-      gradientFrom: isDarkBg ? 'rgba(255, 255, 255, 0.28)' : 'rgba(0, 0, 0, 0.28)',
-      gradientTo: isDarkBg ? 'rgba(255, 255, 255, 0.14)' : 'rgba(0, 0, 0, 0.14)',
+      dotRadius: 1.5,
+      dotSpacing: 14,
+      cursorRadius: 500,
+      cursorForce: 0.1,
+      bulgeOnly: true,
+      bulgeStrength: 67,
+      sparkle: false,
+      waveAmplitude: 0,
+      gradientFrom: 'rgba(0, 0, 0, 0.30)',
+      gradientTo: 'rgba(0, 0, 0, 0.15)',
     };
 
     const TWO_PI = Math.PI * 2;
 
-    // Ensure single canvas instance
-    while (container.firstChild) {
-      container.removeChild(container.firstChild);
-    }
-
     const canvas = document.createElement('canvas');
-    canvas.style.cssText =
-      'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+    canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
     container.appendChild(canvas);
 
     const ctx = canvas.getContext('2d', { alpha: true });
@@ -54,33 +37,20 @@ export function DotField() {
       ay: number;
       sx: number;
       sy: number;
+      vx: number;
+      vy: number;
+      x: number;
+      y: number;
     }> = [];
-
-    const mouse = { x: -9999, y: -9999 };
-    const size = { w: 0, h: 0 };
-    let textBounds = { left: -9999, top: -9999, right: -9999, bottom: -9999 };
+    const mouse = { x: -9999, y: -9999, prevX: -9999, prevY: -9999, speed: 0 };
+    const size = { w: 0, h: 0, offsetX: 0, offsetY: 0 };
+    let engagement = 0;
     let rafId: number;
+    let resizeTimer: ReturnType<typeof setTimeout>;
     let frameCount = 0;
-    let isVisible = true;
-
-    function updateTextBounds() {
-      if (!container) return;
-      const heroEl = container.closest('.hero-premium') || container;
-      const titleEl = heroEl.querySelector('.hero-title');
-      if (titleEl) {
-        const cRect = container.getBoundingClientRect();
-        const tRect = titleEl.getBoundingClientRect();
-        textBounds = {
-          left: tRect.left - cRect.left,
-          top: tRect.top - cRect.top,
-          right: tRect.right - cRect.left,
-          bottom: tRect.bottom - cRect.top,
-        };
-      }
-    }
 
     function buildDots(w: number, h: number) {
-      const step = config.dotRadius * 2 + config.dotSpacing;
+      const step = config.dotRadius + config.dotSpacing;
       const cols = Math.floor(w / step);
       const rows = Math.floor(h / step);
       const padX = (w % step) / 2;
@@ -91,7 +61,7 @@ export function DotField() {
         for (let col = 0; col < cols; col++) {
           const ax = padX + col * step + step / 2;
           const ay = padY + row * step + step / 2;
-          dots[idx++] = { ax, ay, sx: ax, sy: ay };
+          dots[idx++] = { ax, ay, sx: ax, sy: ay, vx: 0, vy: 0, x: ax, y: ay };
         }
       }
     }
@@ -99,10 +69,8 @@ export function DotField() {
     function doResize() {
       if (!container) return;
       const rect = container.getBoundingClientRect();
-      const w = Math.max(rect.width, window.innerWidth);
-      const h = Math.max(rect.height, window.innerHeight);
-      if (w === 0 || h === 0) return;
-
+      const w = rect.width;
+      const h = rect.height;
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       canvas.style.width = w + 'px';
@@ -110,131 +78,113 @@ export function DotField() {
       ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
       size.w = w;
       size.h = h;
-      updateTextBounds();
+      size.offsetX = rect.left + window.scrollX;
+      size.offsetY = rect.top + window.scrollY;
       buildDots(w, h);
     }
 
-    function updateMouse(clientX: number, clientY: number) {
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-      mouse.x = clientX - rect.left;
-      mouse.y = clientY - rect.top;
+    function onResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(doResize, 100);
     }
 
     function onMouseMove(e: MouseEvent) {
-      updateMouse(e.clientX, e.clientY);
+      mouse.x = e.pageX - size.offsetX;
+      mouse.y = e.pageY - size.offsetY;
     }
 
-    function onMouseLeave() {
-      mouse.x = -9999;
-      mouse.y = -9999;
+    function updateMouseSpeed() {
+      const dx = mouse.prevX - mouse.x;
+      const dy = mouse.prevY - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      mouse.speed += (dist - mouse.speed) * 0.5;
+      if (mouse.speed < 0.001) mouse.speed = 0;
+      mouse.prevX = mouse.x;
+      mouse.prevY = mouse.y;
     }
 
-    function onTouchMove(e: TouchEvent) {
-      if (e.touches[0]) {
-        updateMouse(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    }
-
-    function onTouchEnd() {
-      mouse.x = -9999;
-      mouse.y = -9999;
-    }
-
+    let isVisible = true;
     function tick() {
       if (!ctx || !isVisible) return;
       frameCount++;
       const len = dots.length;
       const { w, h } = size;
-      if (w === 0 || h === 0) {
-        rafId = requestAnimationFrame(tick);
-        return;
-      }
-
       const t = frameCount * 0.02;
+
+      const targetEngagement = Math.min(mouse.speed / 5, 1);
+      engagement += (targetEngagement - engagement) * 0.06;
+      if (engagement < 0.001) engagement = 0;
+      const eng = engagement;
+
       ctx.clearRect(0, 0, w, h);
 
-      // Base gradient for field dots
       const grad = ctx.createLinearGradient(0, 0, w, h);
       grad.addColorStop(0, config.gradientFrom);
       grad.addColorStop(1, config.gradientTo);
+      ctx.fillStyle = grad;
 
       const cr = config.cursorRadius;
       const crSq = cr * cr;
-      const rad = config.dotRadius;
-      const hasMouse = mouse.x > -400 && mouse.x < w + 400 && mouse.y > -400 && mouse.y < h + 400;
+      const rad = config.dotRadius / 2;
+      const isBulge = config.bulgeOnly;
 
-      // Standard dots batch with gentle low opacity
       ctx.beginPath();
-      ctx.fillStyle = grad;
 
       for (let i = 0; i < len; i++) {
         const d = dots[i];
+        const dx = mouse.x - d.ax;
+        const dy = mouse.y - d.ay;
+        const distSq = dx * dx + dy * dy;
 
-        if (hasMouse) {
-          const dx = mouse.x - d.ax;
-          const dy = mouse.y - d.ay;
-          const distSq = dx * dx + dy * dy;
-
-          if (distSq < crSq) {
-            const dist = Math.sqrt(distSq);
-            const factor = 1 - dist / cr;
-            const push = factor * factor * config.bulgeStrength;
+        if (distSq < crSq && eng > 0.01) {
+          const dist = Math.sqrt(distSq);
+          if (isBulge) {
+            const t2 = 1 - dist / cr;
+            const push = t2 * t2 * config.bulgeStrength * eng;
             const angle = Math.atan2(dy, dx);
-            d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.25;
-            d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.25;
+            d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.15;
+            d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.15;
           } else {
-            d.sx += (d.ax - d.sx) * 0.12;
-            d.sy += (d.ay - d.sy) * 0.12;
+            const angle = Math.atan2(dy, dx);
+            const move = (500 / dist) * (mouse.speed * config.cursorForce);
+            d.vx += Math.cos(angle) * -move;
+            d.vy += Math.sin(angle) * -move;
           }
-        } else {
-          d.sx += (d.ax - d.sx) * 0.12;
-          d.sy += (d.ay - d.sy) * 0.12;
+        } else if (isBulge) {
+          d.sx += (d.ax - d.sx) * 0.1;
+          d.sy += (d.ay - d.sy) * 0.1;
+        }
+
+        if (!isBulge) {
+          d.vx *= 0.9;
+          d.vy *= 0.9;
+          d.x = d.ax + d.vx;
+          d.y = d.ay + d.vy;
+          d.sx += (d.x - d.sx) * 0.1;
+          d.sy += (d.y - d.sy) * 0.1;
         }
 
         let drawX = d.sx;
         let drawY = d.sy;
-
-        // Subtle ambient wave breathing motion
         if (config.waveAmplitude > 0) {
-          drawY += Math.sin(d.ax * 0.02 + t) * config.waveAmplitude;
-          drawX += Math.cos(d.ay * 0.02 + t * 0.7) * (config.waveAmplitude * 0.5);
-        }
-
-        // Keep dots in the white space only - do not render behind or inside the text
-        if (
-          drawX >= textBounds.left &&
-          drawX <= textBounds.right &&
-          drawY >= textBounds.top &&
-          drawY <= textBounds.bottom
-        ) {
-          continue;
+          drawY += Math.sin(d.ax * 0.03 + t) * config.waveAmplitude;
+          drawX += Math.cos(d.ay * 0.03 + t * 0.7) * config.waveAmplitude * 0.5;
         }
 
         ctx.moveTo(drawX + rad, drawY);
         ctx.arc(drawX, drawY, rad, 0, TWO_PI);
       }
-      ctx.fill();
 
+      ctx.fill();
       rafId = requestAnimationFrame(tick);
     }
 
     doResize();
-    const boundsTimer = setTimeout(updateTextBounds, 120);
-
-    const resizeObserver = new ResizeObserver(() => {
-      doResize();
-    });
-    resizeObserver.observe(container);
-
-    window.addEventListener('resize', doResize);
-    window.addEventListener('scroll', updateTextBounds, { passive: true });
+    const speedInterval = setInterval(updateMouseSpeed, 20);
+    window.addEventListener('resize', onResize);
     window.addEventListener('mousemove', onMouseMove, { passive: true });
-    window.addEventListener('mouseleave', onMouseLeave, { passive: true });
-    window.addEventListener('touchmove', onTouchMove, { passive: true });
-    window.addEventListener('touchend', onTouchEnd, { passive: true });
 
-    const intersectionObserver = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
         if (isVisible) {
@@ -246,21 +196,17 @@ export function DotField() {
       },
       { threshold: 0.01 },
     );
-    intersectionObserver.observe(container);
+    observer.observe(container);
 
     rafId = requestAnimationFrame(tick);
 
     return () => {
-      clearTimeout(boundsTimer);
-      intersectionObserver.disconnect();
-      resizeObserver.disconnect();
+      observer.disconnect();
       cancelAnimationFrame(rafId);
-      window.removeEventListener('resize', doResize);
-      window.removeEventListener('scroll', updateTextBounds);
+      clearInterval(speedInterval);
+      clearTimeout(resizeTimer);
+      window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseleave', onMouseLeave);
-      window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('touchend', onTouchEnd);
       if (container.contains(canvas)) container.removeChild(canvas);
     };
   }, []);

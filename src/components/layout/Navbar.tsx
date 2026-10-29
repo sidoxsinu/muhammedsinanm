@@ -17,25 +17,40 @@ export function Navbar() {
   const closeTweenRef = useRef<gsap.core.Tween | null>(null);
   const isBusyRef = useRef(false);
 
-  // Sticky docked navigation on scroll (merged at top, docks on scroll)
+  // Nav entrance & glassmorphism morph on scroll
   useEffect(() => {
     const navEl = navRef.current;
     if (!navEl) return;
 
-    const onScroll = () => {
-      const isTop = window.scrollY <= 40;
-      if (isTop && pathname === '/') {
-        navEl.classList.remove('nav-glass');
-      } else {
-        navEl.classList.add('nav-glass');
-      }
-    };
+    // For non-home pages, always keep the sleek floating glass bar
+    if (pathname !== '/') {
+      navEl.classList.add('nav-glass');
+      return;
+    }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    const hero = document.querySelector('.hero-premium');
+    if (!hero) {
+      navEl.classList.add('nav-glass');
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navEl.classList.remove('nav-glass');
+          } else {
+            navEl.classList.add('nav-glass');
+          }
+        });
+      },
+      { threshold: 0.05 },
+    );
+
+    observer.observe(hero);
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
+      observer.disconnect();
     };
   }, [pathname]);
 
@@ -319,11 +334,7 @@ export function Navbar() {
         <div className="nav-right">
           <Link
             href="/contact"
-            className={`rounded-full px-4 py-1.5 font-mono text-xs tracking-wider uppercase transition-colors ${
-              pathname === '/contact'
-                ? 'bg-[var(--accent-orange)] text-white'
-                : 'bg-white/10 text-white hover:bg-[var(--accent-orange)]'
-            }`}
+            className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-white transition-all hover:bg-[var(--accent-orange)]"
           >
             Let&apos;s Talk!
           </Link>

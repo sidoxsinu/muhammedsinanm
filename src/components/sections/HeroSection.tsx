@@ -90,26 +90,32 @@ export function HeroSection() {
       }, 150);
     }
 
-    // Hero entrance animations
-    const heroPfpTween = gsap.from('.hero-pfp', { scale: 1.05, duration: 0.6, ease: 'power2.out' });
-    const heroSocialsTween = gsap.from('.hero-socials a', {
-      x: -10,
-      opacity: 0,
-      duration: 0.3,
-      stagger: 0.05,
-      ease: 'power2.out',
-    });
-    const heroRolesTween = gsap.from('.hero-roles p', {
-      x: 10,
-      opacity: 0,
-      duration: 0.3,
-      stagger: 0.05,
-      ease: 'power2.out',
-    });
+    const ctx = gsap.context(() => {
+      // Hero entrance animations
+      gsap.fromTo(
+        '.hero-pfp',
+        { scale: 1.05 },
+        { scale: 1, duration: 0.6, ease: 'power2.out' },
+      );
+      gsap.fromTo(
+        '.hero-socials a',
+        { x: -10, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: 'power2.out' },
+      );
+      gsap.fromTo(
+        '.hero-roles p',
+        { x: 10, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: 'power2.out' },
+      );
+      gsap.fromTo(
+        '.scroll-circle-wrapper',
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.6, delay: 0.6, ease: 'power2.out' },
+      );
 
-    // Parallax Hero Image
-    const pfpParallaxTween = isMobile
-      ? gsap.to('.hero-pfp', {
+      // Parallax Hero Image
+      if (isMobile) {
+        gsap.to('.hero-pfp', {
           y: '10vh',
           ease: 'none',
           scrollTrigger: {
@@ -118,8 +124,9 @@ export function HeroSection() {
             end: 'bottom top',
             scrub: true,
           },
-        })
-      : gsap.to('.hero-pfp', {
+        });
+      } else {
+        gsap.to('.hero-pfp', {
           yPercent: 15,
           ease: 'none',
           scrollTrigger: {
@@ -129,59 +136,45 @@ export function HeroSection() {
             scrub: true,
           },
         });
+      }
 
-    // Hero Text Parallax Depth
-    const nameTween = gsap.to('.hero-name', {
-      yPercent: -25,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero-premium',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
+      // Hero Text Parallax Depth
+      gsap.to('.hero-name', {
+        yPercent: -25,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero-premium',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
 
-    const subtitleTween = gsap.to('.hero-subtitle', {
-      opacity: 0,
-      yPercent: -30,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero-premium',
-        start: 'top top',
-        end: '40% top',
-        scrub: true,
-      },
+      gsap.to('.hero-subtitle', {
+        opacity: 0,
+        yPercent: -30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero-premium',
+          start: 'top top',
+          end: '40% top',
+          scrub: true,
+        },
+      });
     });
 
     return () => {
       clearTimeout(timer1);
       if (tick1) clearInterval(tick1);
       if (tick2) clearInterval(tick2);
-      heroPfpTween.kill();
-      heroSocialsTween.kill();
-      heroRolesTween.kill();
-      pfpParallaxTween.kill();
-      nameTween.kill();
-      subtitleTween.kill();
+      ctx?.revert();
     };
   }, []);
 
   return (
     <section className="hero-premium">
-      {/* Interactive Dotted Background Animation */}
+      {/* DOT FIELD BACKGROUND */}
       <DotField />
-
-      {/* Aesthetic Status Pill */}
-      <div className="absolute top-20 z-10 flex justify-center sm:top-24">
-        <div className="inline-flex items-center gap-2.5 rounded-full border border-black/10 bg-black/5 px-4 py-1.5 font-mono text-xs tracking-wider text-neutral-800 shadow-sm backdrop-blur-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent-orange)] opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent-orange)]" />
-          </span>
-          <span>STATUS: OPEN TO REMOTE SDE INTERNSHIPS</span>
-        </div>
-      </div>
 
       <div className="hero-socials">
         <a
@@ -279,16 +272,16 @@ export function HeroSection() {
       </div>
 
       <div className="hero-roles hero-subtitle">
-        <p>Software Developer</p>
-        <p>Full-Stack Engineer</p>
-        <p>B.Tech CSE Undergraduate</p>
+        <p>Computer Science Student</p>
+        <p>Full-Stack Developer</p>
+        <p>Software Engineering Intern</p>
       </div>
 
       <div className="hero-content">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/profile-picture/bg-removed-black&white-pfp.webp"
-          alt="Muhammed Sinan M - Full-Stack Developer and AI Enthusiast from Kerala, India"
+          alt="Muhammed Sinan M — Full-Stack Developer and AI Enthusiast from Kerala, India"
           className="hero-pfp hero-portrait"
         />
         <h1 className="hero-title hero-name" aria-label="Muhammed Sinan M">
@@ -300,6 +293,50 @@ export function HeroSection() {
             Sinan M
           </span>
         </h1>
+      </div>
+
+      {/* GSAP SCROLL CIRCLE */}
+      <div className="scroll-circle-wrapper">
+        <div className="scroll-circle">
+          <svg className="scroll-circle-svg" viewBox="0 0 100 100" width="120" height="120">
+            <path
+              id="circlePath"
+              d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
+              fill="none"
+              stroke="none"
+            />
+            <text>
+              <textPath
+                href="#circlePath"
+                startOffset="0%"
+                textLength="220"
+                lengthAdjust="spacingAndGlyphs"
+                fontSize="11"
+                fill="currentColor"
+                letterSpacing="3.4px"
+                style={{ fontFamily: 'var(--font-heading)', textTransform: 'uppercase' }}
+              >
+                SCROLL • EXPLORE • SCROLL • EXPLORE •
+              </textPath>
+            </text>
+          </svg>
+          <div className="scroll-circle-icon scroll-circle-asterisk">
+            <svg
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              width="36"
+              height="36"
+            >
+              <line x1="12" y1="2" x2="12" y2="22" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+              <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
+            </svg>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -8,8 +8,8 @@
   --accent-red: #e8562a;
   --accent-orange: #e8562a;
 
-  --font-heading: 'General Sans', system-ui, -apple-system, sans-serif;
-  --font-body: 'General Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'General Sans', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
 }
 
 /* Note: Universal reset is handled by Tailwind preflight in @layer base */
@@ -78,7 +78,7 @@ a {
 .premium-nav .nav-center a,
 .premium-nav .nav-right a {
   color: #000000;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
 
 .premium-nav a:hover,
@@ -98,13 +98,16 @@ a {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: rgba(17, 17, 17, 0.88);
+  background: rgba(17, 17, 17, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  backdrop-filter: blur(24px) saturate(1.6);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
   z-index: -2;
 }
@@ -121,8 +124,10 @@ a {
   white-space: nowrap;
   pointer-events: none;
   transition:
-    flex-grow 0.4s ease,
-    flex-basis 0.4s ease;
+    flex-grow 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    flex-basis 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    font-size 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    letter-spacing 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .premium-nav .nav-left a,
@@ -139,8 +144,8 @@ a {
   white-space: nowrap;
   pointer-events: none;
   transition:
-    flex-grow 0.4s ease,
-    flex-basis 0.4s ease;
+    flex-grow 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    flex-basis 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .premium-nav .nav-right a {
@@ -148,13 +153,13 @@ a {
   display: inline-block;
 }
 
-/* ── DOCKED STICKY NAV STATE ── */
+/* ── GLASSMORPHISM FLOATING NAV STATE ── */
 .premium-nav.nav-glass {
-  top: 12px;
-  max-width: 1040px;
-  padding: 12px 28px;
+  top: 16px;
+  max-width: 960px;
+  padding: 14px 44px;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
   border-radius: 60px;
   pointer-events: auto;
   color: #ffffff;
@@ -186,8 +191,21 @@ a {
   flex-basis: 90px;
 }
 
+/* Subtle shimmer highlight on the glass bar */
 .premium-nav.nav-glass::after {
-  display: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Links breathe in glass mode */
@@ -288,21 +306,19 @@ a {
   flex-direction: column;
   gap: 16px;
   z-index: 10;
-  color: #ffffff;
+  color: #000;
 }
 
 .hero-socials a {
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.3s ease;
-  color: #ffffff !important;
-  opacity: 0.75 !important;
+  transition: opacity 0.3s;
+  color: #000 !important;
+  opacity: 1 !important;
   mix-blend-mode: normal !important;
 }
 .hero-socials a:hover {
-  opacity: 1 !important;
-  color: var(--accent-orange) !important;
-  transform: translateY(-2px);
+  opacity: 0.6 !important;
 }
 
 .hero-socials a svg {
@@ -316,10 +332,10 @@ a {
   bottom: 40px;
   text-align: right;
   z-index: 10;
-  mix-blend-mode: normal;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1.2vw;
-  line-height: 1.5;
+  mix-blend-mode: difference;
+  color: #fff;
+  font-size: 1.5vw;
+  line-height: 1.3;
 }
 
 .hero-content {
@@ -333,11 +349,12 @@ a {
 
 .hero-pfp {
   position: absolute;
-  height: 110vh;
+  height: 110vh; /* Enlarged image */
   max-width: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Ensures it scales nicely */
   z-index: 1;
-  filter: grayscale(100%) contrast(1.2) brightness(0.95);
+  filter: grayscale(100%) contrast(1.3) brightness(0.85); /* Deepened blacks for purer white text inversion */
+  /* will-change moved to JS to prevent NO_LCP error */
 }
 
 .hero-title {
@@ -2001,7 +2018,7 @@ body.cursor-hover .cursor-dot {
   bottom: 110px;
   right: 5vw;
   z-index: 10;
-  color: #ffffff;
+  color: #000000;
 }
 
 .scroll-circle {
@@ -2949,7 +2966,7 @@ body.cursor-hover .cursor-dot {
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #ffffff;
+  color: #000000; /* Black by default in hero section */
   font-weight: 500;
   line-height: 1;
   overflow: visible;
@@ -2958,11 +2975,11 @@ body.cursor-hover .cursor-dot {
 }
 
 .premium-nav.nav-glass .sm-toggle {
-  color: #ffffff;
+  color: #ffffff; /* White in dark background sections */
 }
 
 .sm-toggle.active {
-  color: #ffffff !important;
+  color: #000000 !important; /* Black when mobile menu is open (white background) */
 }
 
 .sm-toggle:focus-visible {
