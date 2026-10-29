@@ -3,7 +3,6 @@ import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
 
 import { SITE_CONFIG } from '@/lib/site-config';
-import { ClickSpark } from '@/components/ui/ClickSpark';
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import { GlobalEffects } from '@/components/ui/GlobalEffects';
 import { PROFILE } from '@/data/profile';
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
     template: `%s | ${PROFILE.name}`,
   },
   description:
-    'Portfolio of Muhammed Sinan M — CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
+    'Portfolio of Muhammed Sinan M - CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
   keywords: [
     'Muhammed Sinan M',
     'muhammed sinan',
@@ -47,13 +46,13 @@ export const metadata: Metadata = {
     url: SITE_CONFIG.url,
     title: `${PROFILE.name} | Full-Stack Developer & AI Enthusiast`,
     description:
-      'Portfolio of Muhammed Sinan M — CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
+      'Portfolio of Muhammed Sinan M - CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
     images: [
       {
         url: `${SITE_CONFIG.url}/images/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: `${PROFILE.name} — Full-Stack Developer from Kerala`,
+        alt: `${PROFILE.name} - Full-Stack Developer from Kerala`,
       },
     ],
     siteName: `${PROFILE.name} | Portfolio`,
@@ -68,11 +67,11 @@ export const metadata: Metadata = {
     creator: '@sidoxsinu',
     title: `${PROFILE.name} | Full-Stack Developer & AI Enthusiast`,
     description:
-      'Portfolio of Muhammed Sinan M — CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
+      'Portfolio of Muhammed Sinan M - CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
     images: [
       {
         url: `${SITE_CONFIG.url}/images/og-image.jpg`,
-        alt: `${PROFILE.name} — Full-Stack Developer from Kerala, India`,
+        alt: `${PROFILE.name} - Full-Stack Developer from Kerala, India`,
       },
     ],
   },
@@ -155,7 +154,7 @@ const jsonLdPerson = {
     'GSAP',
     'Freelance Web Development',
   ],
-  award: 'Best Technical Project — Google for Developers Build with AI Hackathon 2026',
+  award: 'Best Technical Project - Google for Developers Build with AI Hackathon 2026',
   memberOf: [
     { '@type': 'Organization', name: 'IEEE' },
     { '@type': 'Organization', name: 'IEEE Computer Society' },
@@ -189,7 +188,7 @@ const jsonLdWebSite = {
   url: 'https://muhammedsinan.in/',
   name: 'Muhammed Sinan M | Portfolio',
   description:
-    'Official portfolio of Muhammed Sinan M (sidoxsinu) — Full-Stack Developer and AI Enthusiast from Kerala, India.',
+    'Official portfolio of Muhammed Sinan M (sidoxsinu) - Full-Stack Developer and AI Enthusiast from Kerala, India.',
   inLanguage: 'en-IN',
   author: {
     '@id': 'https://muhammedsinan.in/#person',
@@ -205,7 +204,7 @@ const jsonLdProfilePage = {
   '@type': 'ProfilePage',
   '@id': 'https://muhammedsinan.in/#profilepage',
   url: 'https://muhammedsinan.in/',
-  name: 'Muhammed Sinan M — Portfolio',
+  name: 'Muhammed Sinan M - Portfolio',
   description:
     'Official portfolio page of Muhammed Sinan M, Computer Science student and Full-Stack Developer from Kerala, India. Features projects, hackathon achievements, certifications, and contact links.',
   inLanguage: 'en-IN',
@@ -241,7 +240,7 @@ export default function RootLayout({
           type="image/webp"
         />
         <link
-          href="https://api.fontshare.com/v2/css?f[]=general-sans@500&f[]=space-grotesk@300,400,1&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
           rel="stylesheet"
         />
         <script
@@ -259,7 +258,6 @@ export default function RootLayout({
       </head>
       <body>
         <CustomCursor />
-        <ClickSpark />
         <GlobalEffects />
         {children}
       </body>

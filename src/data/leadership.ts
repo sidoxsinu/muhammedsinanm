@@ -8,7 +8,7 @@ export const LEADERSHIP: LeadershipItem[] = [
     badge: 'PRESENT',
   },
   {
-    role: 'Resource Person — Converge AI Tool Workshop',
+    role: 'Resource Person - Converge AI Tool Workshop',
     organization: 'IEDC CCE · Trained 25–30 engineering students on AI dev tools',
     period: 'Oct 2026',
     badge: 'SPEAKER',

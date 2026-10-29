@@ -98,7 +98,13 @@ async function isServerRunning(url) {
       const title = await page.title();
       assert(title.length > 5, `Route ${route} has descriptive title ("${title}")`);
 
-      // Verify images loaded on page
+      // Verify images loaded on page (scroll down to trigger lazy-loaded images)
+      await page.evaluate(async () => {
+        window.scrollTo(0, document.body.scrollHeight);
+        await new Promise((r) => setTimeout(r, 600));
+        window.scrollTo(0, 0);
+      });
+
       const images = await page.$$eval('img', (imgs) =>
         imgs.map((img) => ({
           src: img.src,

@@ -16,7 +16,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     badge: 'Best Tech Project',
     recognition: {
-      text: 'Best Technical Project — Google for Developers Build with AI Hackathon 2026',
+      text: 'Best Technical Project - Google for Developers Build with AI Hackathon 2026',
     },
   },
   {
@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'project-gate-layover',
-    title: 'GATE — Layover Companion',
+    title: 'GATE - Layover Companion',
     description:
       'Mobile-first progressive web app built for the LAYOVER Hackathon (TinkerSpace Calicut, Oct 2026). Turns layover wait times into location-based exploration missions, complete with an XP progression rank system and a digital travel passport of photo memories.',
     year: '2026',
@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'project-pylon',
-    title: 'Pylon — Smart Scholarship Finder',
+    title: 'Pylon - Smart Scholarship Finder',
     description:
       'Performance-tuned scholarship discovery engine with a custom multi-criteria filtering algorithm and responsive UI to match students with verified opportunities. Awarded 2nd Prize at Webathon 2025.',
     year: '2025',
@@ -66,7 +66,7 @@ export const PROJECTS: Project[] = [
     id: 'project-parackal',
     title: 'Parackal Travels Hub',
     description:
-      'Bilingual (English/Malayalam) travel agency platform engineered end-to-end for a commercial client. Features LocalBusiness schema SEO markup, interactive booking request flows, and responsive GSAP animations — live in production.',
+      'Bilingual (English/Malayalam) travel agency platform engineered end-to-end for a commercial client. Features LocalBusiness schema SEO markup, interactive booking request flows, and responsive GSAP animations - live in production.',
     year: '2026',
     tags: ['Freelance', 'JavaScript', 'GSAP', 'SEO'],
     links: {

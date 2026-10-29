@@ -29,7 +29,7 @@ export function StatsSection() {
             return;
           }
 
-          const duration = 1800;
+          const duration = 1400;
           const startTime = performance.now();
 
           function tick(now: number) {
@@ -42,7 +42,7 @@ export function StatsSection() {
           requestAnimationFrame(tick);
         });
       },
-      { threshold: 0.5 },
+      { threshold: 0.2, rootMargin: '0px 0px -40px 0px' },
     );
 
     counters.forEach((el) => observer.observe(el));
@@ -56,7 +56,7 @@ export function StatsSection() {
     <section
       aria-label="Portfolio stats"
       id="stats-strip"
-      className="relative z-10 border-y border-white/[0.08] bg-[#111111]/80 backdrop-blur-md"
+      className="relative z-10 border-y border-white/[0.08] bg-[#111111]"
     >
       <div
         ref={stripRef}

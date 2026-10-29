@@ -24,15 +24,15 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-red)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] cursor-pointer';
+    'inline-flex items-center justify-center font-mono uppercase tracking-wider text-xs rounded-[2px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent-orange)] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
 
   const variantStyles = {
     primary:
-      'bg-[var(--accent-red)] text-white hover:bg-[var(--accent-orange)] shadow-lg shadow-[var(--accent-red)]/20',
-    secondary: 'bg-white/10 text-white hover:bg-white/15 border border-[var(--border-subtle)]',
+      'bg-[var(--accent-orange)] text-white hover:bg-[#d94e24] border border-[var(--accent-orange)]',
+    secondary: 'bg-[#161616] text-white hover:bg-neutral-800 border border-neutral-700',
     outline:
-      'bg-transparent text-white border border-[var(--border-subtle)] hover:border-white/40 hover:bg-white/5',
-    ghost: 'bg-transparent text-[var(--text-secondary)] hover:text-white hover:bg-white/5',
+      'bg-transparent text-white border border-neutral-700 hover:border-white/50 hover:bg-white/5',
+    ghost: 'bg-transparent text-neutral-400 hover:text-white hover:bg-white/5',
   }[variant];
 
   const sizeStyles = {

@@ -5,17 +5,17 @@ export const JOURNEY_DATA: JourneyYear[] = [
     year: '2026',
     milestones: [
       {
-        title: 'Software Engineering Intern — Torcue Digital',
+        title: 'Software Engineering Intern - Torcue Digital',
         description:
           'Delivering production tickets across full-stack web, AI workflows, and native iOS (Swift) on a full-time Agile schedule.',
       },
       {
-        title: 'Best Technical Project — Google Build with AI Hackathon',
+        title: 'Best Technical Project - Google Build with AI Hackathon',
         description:
           'Won top technical honors for Next-Gen AI Assistant System featuring real-time Groq LLaMA 3.3 and Whisper voice terminals.',
       },
       {
-        title: 'GATE — Layover Companion',
+        title: 'GATE - Layover Companion',
         description:
           'Built and deployed a mobile-first layover quest and digital passport PWA for the LAYOVER hackathon at TinkerSpace Calicut.',
       },
@@ -25,17 +25,17 @@ export const JOURNEY_DATA: JourneyYear[] = [
           'Engineered a 36-hour hackathon dashboard mapping and revoking developer credentials across AWS IAM, GitHub, and Docker SSH sandbox.',
       },
       {
-        title: 'Resource Person — Converge AI Workshop',
+        title: 'Resource Person - Converge AI Workshop',
         description:
           'Invited by IEDC CCE to conduct hands-on training for 25–30 engineering students on modern AI developer tooling.',
       },
       {
-        title: 'Co-CFO — IEDC CCE',
+        title: 'Co-CFO - IEDC CCE',
         description:
           'Elected Co-Chief Financial Officer for the Innovation & Entrepreneurship Development Centre at Christ College of Engineering.',
       },
       {
-        title: 'Research Intern — Suvidha Foundation',
+        title: 'Research Intern - Suvidha Foundation',
         description:
           'Contributed to backend development and research workflows in collaboration with Code Karo Yaaro.',
       },
@@ -45,12 +45,12 @@ export const JOURNEY_DATA: JourneyYear[] = [
           'Multi-stage competitive finalist selection among 100+ participating engineering teams.',
       },
       {
-        title: 'Design Lead & Webmaster — IEEE',
+        title: 'Design Lead & Webmaster - IEEE',
         description:
           'Design Lead for IEEE Kerala Section Joint Chapter (EDS/CT/Nano); Webmaster for IEEE CS & IAS Chapters.',
       },
       {
-        title: 'Learning Coordinator — TinkerHub CCE',
+        title: 'Learning Coordinator - TinkerHub CCE',
         description:
           'Coordinating and hosting campus tech cohorts, hack nights, and peer learning sessions.',
       },
@@ -60,7 +60,7 @@ export const JOURNEY_DATA: JourneyYear[] = [
     year: '2025',
     milestones: [
       {
-        title: 'Webathon 2025 — Second Prize',
+        title: 'Webathon 2025 - Second Prize',
         description:
           'Won 2nd Prize for Pylon, an algorithmic multi-criteria scholarship search engine.',
       },

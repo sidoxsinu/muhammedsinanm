@@ -50,10 +50,10 @@ export function SectionHeading({
       {ctaText && ctaHref && (
         <Link
           href={ctaHref}
-          className="group inline-flex items-center gap-2 self-start text-sm font-semibold text-[var(--accent-orange)] transition-colors hover:text-white md:self-auto"
+          className="group inline-flex items-center gap-2 self-start font-mono text-xs font-semibold text-[var(--accent-orange)] uppercase transition-colors hover:text-white md:self-auto"
         >
           <span>{ctaText}</span>
-          <span className="transition-transform group-hover:translate-x-1">→</span>
+          <span>→</span>
         </Link>
       )}
     </div>

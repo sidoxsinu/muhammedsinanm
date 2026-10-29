@@ -3,7 +3,19 @@ import { CertificateCard, FormalCertification } from '@/types';
 export const FORMAL_CERTIFICATIONS: FormalCertification[] = [
   { name: 'IEEE Certified Member (CM)' },
   { name: 'Google Developer Program (2025)' },
-  { name: 'National Service Scheme (NSS) Certificate (2023–2025)' },
+  { name: 'National Service Scheme (NSS) Certificate (2023-2025)' },
+];
+
+export interface LanguageItem {
+  name: string;
+  proficiency: string;
+}
+
+export const SPOKEN_LANGUAGES: LanguageItem[] = [
+  { name: 'English', proficiency: 'Professional Working' },
+  { name: 'Malayalam', proficiency: 'Native / Bilingual' },
+  { name: 'Hindi', proficiency: 'Conversational' },
+  { name: 'Arabic', proficiency: 'Elementary' },
 ];
 
 export const LANGUAGES: string[] = ['English', 'Malayalam', 'Hindi', 'Arabic'];

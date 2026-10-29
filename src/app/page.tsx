@@ -1,10 +1,19 @@
 import React from 'react';
 
 import { Navbar } from '@/components/layout/Navbar';
+import { AboutSection } from '@/components/sections/AboutSection';
+import { AchievementsSection } from '@/components/sections/AchievementsSection';
+import { CertificationsSection } from '@/components/sections/CertificationsSection';
+import { ClubsSection } from '@/components/sections/ClubsSection';
 import { ContactSection } from '@/components/sections/ContactSection';
-import { ExperiencePreviewSection } from '@/components/sections/ExperiencePreviewSection';
+import { EducationSection } from '@/components/sections/EducationSection';
+import { EventsSection } from '@/components/sections/EventsSection';
+import { ExperienceSection } from '@/components/sections/ExperienceSection';
+import { FeaturedSection } from '@/components/sections/FeaturedSection';
 import { Footer } from '@/components/sections/Footer';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { JourneySection } from '@/components/sections/JourneySection';
+import { LeadershipSection } from '@/components/sections/LeadershipSection';
 import { ProjectsSection } from '@/components/sections/ProjectsSection';
 import { SkillsSection } from '@/components/sections/SkillsSection';
 import { StatsSection } from '@/components/sections/StatsSection';
@@ -16,9 +25,18 @@ export default function Home() {
       <main id="main-content">
         <HeroSection />
         <StatsSection />
+        <AboutSection />
+        <FeaturedSection />
         <ProjectsSection />
         <SkillsSection />
-        <ExperiencePreviewSection />
+        <ExperienceSection />
+        <JourneySection />
+        <EducationSection />
+        <AchievementsSection />
+        <LeadershipSection />
+        <ClubsSection />
+        <EventsSection />
+        <CertificationsSection />
         <ContactSection />
       </main>
       <Footer />

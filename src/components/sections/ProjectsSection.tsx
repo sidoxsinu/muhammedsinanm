@@ -32,9 +32,9 @@ export function ProjectsSection() {
       <div className="mt-12 text-center">
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.04] px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:border-[var(--accent-orange)] hover:bg-[var(--accent-orange)] hover:shadow-[var(--accent-orange)]/20 hover:shadow-lg"
+          className="inline-flex items-center gap-2 rounded-[2px] border border-neutral-700 bg-[#161616] px-6 py-3 font-mono text-xs font-semibold text-white uppercase transition-colors hover:border-[var(--accent-orange)] hover:bg-[var(--accent-orange)]"
         >
-          <span>Explore All Projects &amp; Archives</span>
+          <span>Explore All 9 Projects in Full Catalog</span>
           <span>→</span>
         </Link>
       </div>

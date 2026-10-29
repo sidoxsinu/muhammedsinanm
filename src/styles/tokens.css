@@ -6,15 +6,15 @@
   --accent-red: #e8562a;
   --accent-orange: #e8562a;
 
-  --font-heading: 'General Sans', sans-serif;
-  --font-body: 'Space Grotesk', sans-serif;
+  --font-heading: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Semantic Aliases */
   --bg-primary: var(--bg-color);
   --bg-secondary: #161616;
   --bg-card: #1a1a1a;
   --bg-card-hover: #222222;
-  --text-muted: #666666;
+  --text-muted: #737373;
   --gold-accent: #c9a84c;
 
   /* Borders */
@@ -22,12 +22,12 @@
   --border-highlight: rgba(255, 255, 255, 0.16);
   --border-gold: rgba(201, 168, 76, 0.4);
 
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
+  /* Radii strictly capped at 2px max (BANNED: Rounded corners above 2 px) */
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-full: 2px;
 
   /* Layout */
   --container-max-width: 1200px;

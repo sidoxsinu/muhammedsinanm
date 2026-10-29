@@ -21,7 +21,7 @@ export function Tabs({ tabs, activeTab, onChange, className = '' }: TabsProps) {
     <div
       role="tablist"
       aria-label="Navigation Tabs"
-      className={`inline-flex max-w-full scrollbar-none items-center gap-1.5 overflow-x-auto rounded-full border border-white/[0.08] bg-white/[0.04] p-1.5 backdrop-blur-md ${className}`}
+      className={`inline-flex max-w-full scrollbar-none items-center gap-1 overflow-x-auto rounded-[2px] border border-neutral-800 bg-[#161616] p-1 ${className}`}
     >
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;
@@ -34,18 +34,18 @@ export function Tabs({ tabs, activeTab, onChange, className = '' }: TabsProps) {
             id={`tab-${tab.id}`}
             type="button"
             onClick={() => onChange(tab.id)}
-            className={`relative flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-xs font-medium whitespace-nowrap transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-orange)] sm:text-sm ${
+            className={`relative flex cursor-pointer items-center gap-2 rounded-[2px] px-3.5 py-1.5 font-mono text-xs tracking-wider whitespace-nowrap uppercase transition-colors duration-150 outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent-orange)] ${
               isActive
-                ? 'bg-[var(--accent-orange)] font-semibold text-white shadow-[var(--accent-orange)]/25 shadow-lg'
-                : 'text-neutral-400 hover:bg-white/[0.04] hover:text-white'
+                ? 'bg-[var(--accent-orange)] font-semibold text-white'
+                : 'text-neutral-400 hover:bg-neutral-800 hover:text-white'
             }`}
           >
-            {tab.icon && <span className="h-4 w-4">{tab.icon}</span>}
+            {tab.icon && <span className="h-3.5 w-3.5">{tab.icon}</span>}
             <span>{tab.label}</span>
             {tab.count !== undefined && (
               <span
-                className={`rounded-full px-1.5 py-0.5 text-[11px] ${
-                  isActive ? 'bg-black/30 text-white' : 'bg-white/10 text-neutral-400'
+                className={`py-0.2 rounded-[2px] px-1.5 font-mono text-[10px] ${
+                  isActive ? 'bg-black/40 text-white' : 'bg-neutral-800 text-neutral-400'
                 }`}
               >
                 {tab.count}

@@ -1,75 +1,19 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React from 'react';
 
 interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
-  spotlightColor?: string;
-  borderColor?: string;
 }
 
-export function SpotlightCard({
-  children,
-  className = '',
-  spotlightColor = 'rgba(232, 86, 42, 0.12)',
-  style,
-  ...props
-}: SpotlightCardProps) {
-  const divRef = useRef<HTMLDivElement>(null);
-  const [isFocused, setIsFocused] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!divRef.current || isFocused) return;
-
-    const div = divRef.current;
-    const rect = div.getBoundingClientRect();
-
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
-
-  const handleFocus = () => {
-    setIsFocused(true);
-    setOpacity(1);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-    setOpacity(0);
-  };
-
-  const handleMouseEnter = () => {
-    setOpacity(1);
-  };
-
-  const handleMouseLeave = () => {
-    setOpacity(0);
-  };
-
+export function SpotlightCard({ children, className = '', style, ...props }: SpotlightCardProps) {
   return (
     <div
-      ref={divRef}
-      onMouseMove={handleMouseMove}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-orange)]/40 ${className}`}
-      style={{
-        ...style,
-      }}
+      className={`relative overflow-hidden rounded-[2px] border border-neutral-800 bg-[#161616] transition-colors duration-200 hover:border-neutral-700 ${className}`}
+      style={style}
       {...props}
     >
-      <div
-        className="pointer-events-none absolute -inset-px transition-opacity duration-300"
-        style={{
-          opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 60%)`,
-        }}
-        aria-hidden="true"
-      />
       <div className="relative z-10 h-full w-full">{children}</div>
     </div>
   );

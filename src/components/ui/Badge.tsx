@@ -19,7 +19,7 @@ export function Badge({ variant = 'orange', children, className = '', ...props }
 
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold backdrop-blur-md ${variantStyles} ${className}`}
+      className={`inline-flex items-center rounded-[2px] px-2.5 py-0.5 font-mono text-xs tracking-wider uppercase ${variantStyles} ${className}`}
       {...props}
     >
       {children}

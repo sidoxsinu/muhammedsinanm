@@ -45,7 +45,7 @@ export default function CredentialsPage() {
             <SpotlightCard key={idx} className="flex flex-col justify-between gap-6 p-6 sm:p-8">
               <div className="space-y-3">
                 <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[var(--accent-orange)]">
-                  <span>🏆 MAJOR RECOGNITION</span>
+                  <span>MAJOR RECOGNITION</span>
                 </div>
                 <h3 className="text-xl leading-snug font-semibold text-white sm:text-2xl">
                   {award.title}
@@ -100,7 +100,7 @@ export default function CredentialsPage() {
                     />
                     <Badge
                       variant="dark"
-                      className="absolute top-2 left-2 rounded px-2 py-0.5 font-mono text-[10px]"
+                      className="absolute top-2 left-2 rounded-[2px] px-2 py-0.5 font-mono text-[10px]"
                     >
                       {cert.number}
                     </Badge>
@@ -127,13 +127,13 @@ export default function CredentialsPage() {
           {EVENTS.map((group) => (
             <SpotlightCard key={group.institution} className="p-6">
               <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
-                <span>🏛️ {group.institution}</span>
+                <span>{group.institution}</span>
               </h3>
               <div className="space-y-3">
                 {group.events.map((evt, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between gap-3 rounded-xl border border-white/[0.05] bg-white/[0.02] p-3"
+                    className="flex items-center justify-between gap-3 rounded-[2px] border border-white/[0.05] bg-white/[0.02] p-3"
                   >
                     <span className="text-sm font-medium text-neutral-200">{evt.name}</span>
                     {evt.result && (
@@ -163,13 +163,13 @@ export default function CredentialsPage() {
           {CLUBS.map((club) => (
             <SpotlightCard key={club.title} className="p-6">
               <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
-                <span>🤝 {club.title}</span>
+                <span>{club.title}</span>
               </h3>
               <ul className="space-y-2">
                 {club.items.map((item, idx) => (
                   <li
                     key={idx}
-                    className="flex items-start gap-2 rounded-lg border border-white/[0.04] bg-white/[0.02] p-2.5 text-sm text-neutral-300"
+                    className="flex items-start gap-2 rounded-[2px] border border-white/[0.04] bg-white/[0.02] p-2.5 text-sm text-neutral-300"
                   >
                     <span className="mt-0.5 text-[var(--accent-orange)]">•</span>
                     <span>{item}</span>

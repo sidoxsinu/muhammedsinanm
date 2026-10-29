@@ -4,8 +4,6 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { DotField } from '@/components/ui/DotField';
-
 export function HeroSection() {
   const line1Ref = useRef<HTMLSpanElement>(null);
   const line2Ref = useRef<HTMLSpanElement>(null);
@@ -106,13 +104,6 @@ export function HeroSection() {
       stagger: 0.05,
       ease: 'power2.out',
     });
-    const scrollCircleTween = gsap.from('.scroll-circle-wrapper', {
-      opacity: 0,
-      scale: 0.8,
-      duration: 0.6,
-      delay: 0.6,
-      ease: 'power2.out',
-    });
 
     // Parallax Hero Image
     const pfpParallaxTween = isMobile
@@ -168,7 +159,6 @@ export function HeroSection() {
       heroPfpTween.kill();
       heroSocialsTween.kill();
       heroRolesTween.kill();
-      scrollCircleTween.kill();
       pfpParallaxTween.kill();
       nameTween.kill();
       subtitleTween.kill();
@@ -177,17 +167,11 @@ export function HeroSection() {
 
   return (
     <section className="hero-premium">
-      {/* DOT FIELD BACKGROUND */}
-      <DotField />
-
-      {/* Live Status Badge */}
-      <div className="absolute top-24 z-10 flex justify-center sm:top-28">
-        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-950/40 px-3.5 py-1.5 font-mono text-xs text-emerald-400 shadow-lg shadow-emerald-950/30 backdrop-blur-md">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-          </span>
-          <span>Available for Remote SDE Internships</span>
+      {/* Professional Status Bar (No emojis, No glow, Max 2px radius) */}
+      <div className="absolute top-20 z-10 flex justify-center sm:top-24">
+        <div className="inline-flex items-center gap-2.5 rounded-[2px] border border-white/10 bg-[#161616] px-3.5 py-1.5 font-mono text-xs tracking-wider text-neutral-300 uppercase">
+          <span className="h-1.5 w-1.5 bg-[var(--accent-orange)]" />
+          <span>STATUS: OPEN TO REMOTE SDE INTERNSHIPS</span>
         </div>
       </div>
 
@@ -296,7 +280,7 @@ export function HeroSection() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/profile-picture/bg-removed-black&white-pfp.webp"
-          alt="Muhammed Sinan M — Full-Stack Developer and AI Enthusiast from Kerala, India"
+          alt="Muhammed Sinan M - Full-Stack Developer and AI Enthusiast from Kerala, India"
           className="hero-pfp hero-portrait"
         />
         <h1 className="hero-title hero-name" aria-label="Muhammed Sinan M">
@@ -308,50 +292,6 @@ export function HeroSection() {
             Sinan M
           </span>
         </h1>
-      </div>
-
-      {/* GSAP SCROLL CIRCLE */}
-      <div className="scroll-circle-wrapper">
-        <div className="scroll-circle">
-          <svg className="scroll-circle-svg" viewBox="0 0 100 100" width="120" height="120">
-            <path
-              id="circlePath"
-              d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
-              fill="none"
-              stroke="none"
-            />
-            <text>
-              <textPath
-                href="#circlePath"
-                startOffset="0%"
-                textLength="220"
-                lengthAdjust="spacingAndGlyphs"
-                fontSize="11"
-                fill="currentColor"
-                letterSpacing="3.4px"
-                style={{ fontFamily: 'var(--font-heading)', textTransform: 'uppercase' }}
-              >
-                SCROLL • EXPLORE • SCROLL • EXPLORE •
-              </textPath>
-            </text>
-          </svg>
-          <div className="scroll-circle-icon scroll-circle-asterisk">
-            <svg
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              width="36"
-              height="36"
-            >
-              <line x1="12" y1="2" x2="12" y2="22" />
-              <line x1="2" y1="12" x2="22" y2="12" />
-              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-              <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
-            </svg>
-          </div>
-        </div>
       </div>
     </section>
   );

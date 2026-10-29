@@ -46,7 +46,7 @@ export default function AboutPage() {
               <img
                 src="/images/profile-picture/bg-removed-black&white-pfp.webp"
                 alt={PROFILE.name}
-                className="h-24 w-24 shrink-0 rounded-2xl border border-white/10 bg-neutral-900 object-cover sm:h-32 sm:w-32"
+                className="h-24 w-24 shrink-0 rounded-[2px] border border-white/10 bg-neutral-900 object-cover sm:h-32 sm:w-32"
               />
               <div className="space-y-4">
                 <div>
@@ -59,9 +59,9 @@ export default function AboutPage() {
                   {PROFILE.bio}
                 </p>
                 <div className="flex flex-wrap gap-4 pt-2 font-mono text-xs text-neutral-400">
-                  <span>📍 {PROFILE.location}</span>
-                  <span>✉️ {PROFILE.email}</span>
-                  <span>📞 {PROFILE.phone}</span>
+                  <span>LOC: {PROFILE.location}</span>
+                  <span>EMAIL: {PROFILE.email}</span>
+                  <span>TEL: {PROFILE.phone}</span>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <SpotlightCard className="p-6">
               <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
-                <span>🎓 Education</span>
+                <span>Education</span>
               </h3>
               <div className="space-y-6">
                 {EDUCATION_DATA.map((edu, idx) => (
@@ -96,7 +96,7 @@ export default function AboutPage() {
 
             <SpotlightCard className="p-6">
               <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
-                <span>🌐 Languages &amp; Communication</span>
+                <span>Languages &amp; Communication</span>
               </h3>
               <p className="mb-6 text-xs text-neutral-400">
                 Bilingual and multilingual proficiency for international collaboration and remote
@@ -111,7 +111,7 @@ export default function AboutPage() {
                 ].map((l) => (
                   <div
                     key={l.lang}
-                    className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-3"
+                    className="rounded-[2px] border border-white/[0.06] bg-white/[0.03] p-3"
                   >
                     <div className="text-sm font-medium text-white">{l.lang}</div>
                     <div className="text-[11px] text-neutral-400">{l.level}</div>
@@ -136,7 +136,7 @@ export default function AboutPage() {
                   </div>
                   <p className="mt-1 text-sm font-medium text-neutral-300">{exp.company}</p>
                   {exp.location && (
-                    <p className="mt-0.5 font-mono text-xs text-neutral-500">📍 {exp.location}</p>
+                    <p className="mt-0.5 font-mono text-xs text-neutral-500">{exp.location}</p>
                   )}
                 </div>
                 <Badge variant="outline">{exp.period}</Badge>
@@ -179,7 +179,7 @@ export default function AboutPage() {
           {JOURNEY_DATA.map((jy) => (
             <div key={jy.year} className="relative">
               {/* Year Marker */}
-              <div className="absolute top-0 -left-[31px] h-4 w-4 rounded-full border-4 border-[var(--bg-color)] bg-[var(--accent-orange)] shadow sm:-left-[39px]" />
+              <div className="absolute top-0 -left-[31px] h-4 w-4 rounded-[2px] border-4 border-[var(--bg-color)] bg-[var(--accent-orange)] sm:-left-[39px]" />
               <div className="mb-4">
                 <span className="font-heading text-2xl font-bold text-white">{jy.year}</span>
               </div>
