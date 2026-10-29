@@ -77,11 +77,8 @@ export function FeaturedSection() {
       className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28"
     >
       <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-        <div className="space-y-3">
-          <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
-            {'// Featured Work'}
-          </span>
-          <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
+        <div className="space-y-2">
+          <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
             Interactive Showcase
           </h2>
           <p className="max-w-xl text-sm text-neutral-400 sm:text-base">
@@ -137,17 +134,14 @@ export function FeaturedSection() {
               <div className="absolute inset-0 bg-[#111111]/70" />
 
               {/* Panel Content */}
-              <div className="relative z-10 flex h-full flex-col justify-between p-5 sm:p-6">
-                {/* Header Badge */}
-                <div className="flex items-center justify-between gap-2">
-                  <span className="rounded-full border border-white/10 bg-black/80 px-3 py-0.5 font-mono text-[10px] tracking-wider text-[var(--accent-orange)] uppercase">
-                    {item.badge}
-                  </span>
-                </div>
-
+              <div className="relative z-10 flex h-full flex-col justify-end p-5 sm:p-6">
                 {/* Main Text Content */}
-                <div className="space-y-3">
-                  <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                <div className="space-y-2.5">
+                  <h3
+                    className={`font-semibold tracking-tight text-white transition-all ${
+                      isActive ? 'text-lg sm:text-xl' : 'text-sm sm:text-base leading-snug'
+                    }`}
+                  >
                     {item.title}
                   </h3>
 

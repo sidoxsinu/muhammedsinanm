@@ -380,9 +380,9 @@ section {
   position: relative;
 }
 
-section h2,
-section h3 {
-  font-size: 3.5rem;
+section h2:not([class*='text-']),
+section h3:not([class*='text-']) {
+  font-size: 2.25rem;
   letter-spacing: -0.02em;
   line-height: 1.1;
   max-width: 900px;
@@ -1326,9 +1326,9 @@ section h3 {
   .hero-roles {
     font-size: 4vw;
   }
-  section h2,
-  section h3 {
-    font-size: 2.8rem;
+  section h2:not([class*='text-']),
+  section h3:not([class*='text-']) {
+    font-size: 2rem;
   }
   .premium-nav {
     padding: 24px 5vw;
@@ -2650,11 +2650,11 @@ body.cursor-hover .cursor-dot {
   .section-inner {
     gap: 16px;
   }
-  .section-h3,
-  h3,
-  section h2,
-  section h3 {
-    font-size: clamp(2rem, 8vw, 2.5rem) !important;
+  .section-h3:not([class*='text-']),
+  h3:not([class*='text-']),
+  section h2:not([class*='text-']),
+  section h3:not([class*='text-']) {
+    font-size: clamp(1.75rem, 6vw, 2.25rem) !important;
   }
   .section-label {
     font-size: 0.7rem;
