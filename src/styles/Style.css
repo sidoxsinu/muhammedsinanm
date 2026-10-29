@@ -338,8 +338,6 @@ a {
   object-fit: cover;
   z-index: 1;
   filter: grayscale(100%) contrast(1.2) brightness(0.95);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
 }
 
 .hero-title {

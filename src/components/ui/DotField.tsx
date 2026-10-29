@@ -58,9 +58,26 @@ export function DotField() {
 
     const mouse = { x: -9999, y: -9999 };
     const size = { w: 0, h: 0 };
+    let textBounds = { left: -9999, top: -9999, right: -9999, bottom: -9999 };
     let rafId: number;
     let frameCount = 0;
     let isVisible = true;
+
+    function updateTextBounds() {
+      if (!container) return;
+      const heroEl = container.closest('.hero-premium') || container;
+      const titleEl = heroEl.querySelector('.hero-title');
+      if (titleEl) {
+        const cRect = container.getBoundingClientRect();
+        const tRect = titleEl.getBoundingClientRect();
+        textBounds = {
+          left: tRect.left - cRect.left,
+          top: tRect.top - cRect.top,
+          right: tRect.right - cRect.left,
+          bottom: tRect.bottom - cRect.top,
+        };
+      }
+    }
 
     function buildDots(w: number, h: number) {
       const step = config.dotRadius * 2 + config.dotSpacing;
@@ -93,6 +110,7 @@ export function DotField() {
       ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
       size.w = w;
       size.h = h;
+      updateTextBounds();
       buildDots(w, h);
     }
 
@@ -183,6 +201,16 @@ export function DotField() {
           drawX += Math.cos(d.ay * 0.02 + t * 0.7) * (config.waveAmplitude * 0.5);
         }
 
+        // Keep dots in the white space only - do not render behind or inside the text
+        if (
+          drawX >= textBounds.left &&
+          drawX <= textBounds.right &&
+          drawY >= textBounds.top &&
+          drawY <= textBounds.bottom
+        ) {
+          continue;
+        }
+
         ctx.moveTo(drawX + rad, drawY);
         ctx.arc(drawX, drawY, rad, 0, TWO_PI);
       }
@@ -192,6 +220,7 @@ export function DotField() {
     }
 
     doResize();
+    const boundsTimer = setTimeout(updateTextBounds, 120);
 
     const resizeObserver = new ResizeObserver(() => {
       doResize();
@@ -199,6 +228,7 @@ export function DotField() {
     resizeObserver.observe(container);
 
     window.addEventListener('resize', doResize);
+    window.addEventListener('scroll', updateTextBounds, { passive: true });
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('mouseleave', onMouseLeave, { passive: true });
     window.addEventListener('touchmove', onTouchMove, { passive: true });
@@ -221,10 +251,12 @@ export function DotField() {
     rafId = requestAnimationFrame(tick);
 
     return () => {
+      clearTimeout(boundsTimer);
       intersectionObserver.disconnect();
       resizeObserver.disconnect();
       cancelAnimationFrame(rafId);
       window.removeEventListener('resize', doResize);
+      window.removeEventListener('scroll', updateTextBounds);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseleave', onMouseLeave);
       window.removeEventListener('touchmove', onTouchMove);
