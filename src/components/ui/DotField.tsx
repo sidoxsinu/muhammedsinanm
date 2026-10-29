@@ -23,15 +23,14 @@ export function DotField() {
     }
 
     const config = {
-      dotRadius: 1.7,
-      dotSpacing: 18,
-      cursorRadius: 300,
+      dotRadius: 1.2,
+      dotSpacing: 16,
+      cursorRadius: 320,
       bulgeStrength: 52,
-      waveAmplitude: 0.6,
-      // Visible, elegant dot colors matching the theme
-      gradientFrom: isDarkBg ? 'rgba(255, 255, 255, 0.45)' : 'rgba(35, 35, 35, 0.48)',
-      gradientTo: isDarkBg ? 'rgba(232, 86, 42, 0.40)' : 'rgba(232, 86, 42, 0.45)',
-      highlightColor: isDarkBg ? 'rgba(255, 255, 255, 0.95)' : 'rgba(232, 86, 42, 0.95)',
+      waveAmplitude: 0.5,
+      // Subtle, low-opacity dot colors as before
+      gradientFrom: isDarkBg ? 'rgba(255, 255, 255, 0.28)' : 'rgba(0, 0, 0, 0.28)',
+      gradientTo: isDarkBg ? 'rgba(255, 255, 255, 0.14)' : 'rgba(0, 0, 0, 0.14)',
     };
 
     const TWO_PI = Math.PI * 2;
@@ -147,16 +146,12 @@ export function DotField() {
       const rad = config.dotRadius;
       const hasMouse = mouse.x > -400 && mouse.x < w + 400 && mouse.y > -400 && mouse.y < h + 400;
 
-      // Group 1: Standard dots batch
+      // Standard dots batch with gentle low opacity
       ctx.beginPath();
       ctx.fillStyle = grad;
 
-      const highlightedDots: Array<{ x: number; y: number; r: number }> = [];
-
       for (let i = 0; i < len; i++) {
         const d = dots[i];
-        let drawX = d.sx;
-        let drawY = d.sy;
 
         if (hasMouse) {
           const dx = mouse.x - d.ax;
@@ -170,14 +165,6 @@ export function DotField() {
             const angle = Math.atan2(dy, dx);
             d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.25;
             d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.25;
-
-            if (dist < cr * 0.7) {
-              highlightedDots.push({
-                x: drawX,
-                y: drawY,
-                r: rad * (1 + factor * 0.35),
-              });
-            }
           } else {
             d.sx += (d.ax - d.sx) * 0.12;
             d.sy += (d.ay - d.sy) * 0.12;
@@ -187,8 +174,8 @@ export function DotField() {
           d.sy += (d.ay - d.sy) * 0.12;
         }
 
-        drawX = d.sx;
-        drawY = d.sy;
+        let drawX = d.sx;
+        let drawY = d.sy;
 
         // Subtle ambient wave breathing motion
         if (config.waveAmplitude > 0) {
@@ -200,18 +187,6 @@ export function DotField() {
         ctx.arc(drawX, drawY, rad, 0, TWO_PI);
       }
       ctx.fill();
-
-      // Group 2: Glowing / highlighted interactive dots near cursor
-      if (highlightedDots.length > 0) {
-        ctx.beginPath();
-        ctx.fillStyle = config.highlightColor;
-        for (let j = 0; j < highlightedDots.length; j++) {
-          const hd = highlightedDots[j];
-          ctx.moveTo(hd.x + hd.r, hd.y);
-          ctx.arc(hd.x, hd.y, hd.r, 0, TWO_PI);
-        }
-        ctx.fill();
-      }
 
       rafId = requestAnimationFrame(tick);
     }
