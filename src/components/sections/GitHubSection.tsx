@@ -213,11 +213,26 @@ export function GitHubSection() {
           {/* Color Scale Legend */}
           <div className="flex items-center gap-1.5 font-mono text-[11px] text-neutral-400">
             <span>Less</span>
-            <span className="h-2.5 w-2.5 rounded-[2px]" style={{ backgroundColor: LEVEL_COLORS[0] }} />
-            <span className="h-2.5 w-2.5 rounded-[2px]" style={{ backgroundColor: LEVEL_COLORS[1] }} />
-            <span className="h-2.5 w-2.5 rounded-[2px]" style={{ backgroundColor: LEVEL_COLORS[2] }} />
-            <span className="h-2.5 w-2.5 rounded-[2px]" style={{ backgroundColor: LEVEL_COLORS[3] }} />
-            <span className="h-2.5 w-2.5 rounded-[2px]" style={{ backgroundColor: LEVEL_COLORS[4] }} />
+            <span
+              className="h-2.5 w-2.5 rounded-[2px]"
+              style={{ backgroundColor: LEVEL_COLORS[0] }}
+            />
+            <span
+              className="h-2.5 w-2.5 rounded-[2px]"
+              style={{ backgroundColor: LEVEL_COLORS[1] }}
+            />
+            <span
+              className="h-2.5 w-2.5 rounded-[2px]"
+              style={{ backgroundColor: LEVEL_COLORS[2] }}
+            />
+            <span
+              className="h-2.5 w-2.5 rounded-[2px]"
+              style={{ backgroundColor: LEVEL_COLORS[3] }}
+            />
+            <span
+              className="h-2.5 w-2.5 rounded-[2px]"
+              style={{ backgroundColor: LEVEL_COLORS[4] }}
+            />
             <span>More</span>
           </div>
         </div>
@@ -262,7 +277,7 @@ export function GitHubSection() {
                           aria-label={`${day.count} contributions on ${day.date}`}
                           className={`h-[10px] w-[10px] rounded-[2px] transition-all duration-150 ${
                             isHovered
-                              ? 'ring-2 ring-white scale-125 z-10'
+                              ? 'z-10 scale-125 ring-2 ring-white'
                               : 'hover:ring-1 hover:ring-white/80'
                           }`}
                           style={{
@@ -283,7 +298,10 @@ export function GitHubSection() {
           <div className="font-mono text-neutral-300">
             {displayedDay ? (
               <span>
-                <strong className="text-white">{displayedDay.count} contribution{displayedDay.count === 1 ? '' : 's'}</strong> on{' '}
+                <strong className="text-white">
+                  {displayedDay.count} contribution{displayedDay.count === 1 ? '' : 's'}
+                </strong>{' '}
+                on{' '}
                 <span className="text-[var(--accent-orange)]">
                   {new Date(displayedDay.date).toLocaleDateString('en-US', {
                     weekday: 'short',

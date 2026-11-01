@@ -226,10 +226,7 @@ export function GradualBlur({
       if (!point) return;
       const box = root.getBoundingClientRect();
       const now =
-        point.x >= box.left &&
-        point.x <= box.right &&
-        point.y >= box.top &&
-        point.y <= box.bottom;
+        point.x >= box.left && point.x <= box.right && point.y >= box.top && point.y <= box.bottom;
       if (now === inside) return;
       inside = now;
       root.style.setProperty(

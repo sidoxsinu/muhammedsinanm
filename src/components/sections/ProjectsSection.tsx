@@ -12,7 +12,11 @@ export function ProjectsSection() {
   const featuredProjects = PROJECTS.filter((p) => p.featured || p.badge).slice(0, 5);
 
   return (
-    <section id="projects" aria-label="Featured Projects" className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24">
+    <section
+      id="projects"
+      aria-label="Featured Projects"
+      className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24"
+    >
       <SectionHeading
         badge="// Selected Works"
         title="Featured Projects"

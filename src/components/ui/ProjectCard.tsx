@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
 import { Project } from '@/types';
+import gsap from 'gsap';
 
 interface ProjectCardProps {
   project: Project;
@@ -101,7 +101,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <article
       data-testid="project-card"
-      className="w-full relative"
+      className="relative w-full"
       onMouseEnter={(e) => {
         setIsHovered(true);
         setMousePos({ x: e.clientX, y: e.clientY });
@@ -127,16 +127,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           <div className="min-w-0 space-y-1">
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <h3 className="truncate text-base font-semibold text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg leading-snug">
+              <h3 className="truncate text-base leading-snug font-semibold text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg">
                 {project.title}
               </h3>
               {project.badge && (
-                <span className="font-mono text-xs text-[var(--accent-orange)] opacity-90 hidden sm:inline-block">
-                  {'// '}{project.badge}
+                <span className="hidden font-mono text-xs text-[var(--accent-orange)] opacity-90 sm:inline-block">
+                  {'// '}
+                  {project.badge}
                 </span>
               )}
             </div>
-            <p className="font-mono text-xs text-neutral-400 truncate">
+            <p className="truncate font-mono text-xs text-neutral-400">
               {project.tags.slice(0, 4).join(' • ')}
             </p>
           </div>
@@ -148,7 +149,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </span>
           <span
             className={`flex h-7 w-7 items-center justify-center rounded-full border border-neutral-700 bg-neutral-900 text-xs text-neutral-400 transition-all duration-300 group-hover:border-[var(--accent-orange)] group-hover:text-white ${
-              isExpanded ? 'rotate-180 border-[var(--accent-orange)] text-[var(--accent-orange)]' : ''
+              isExpanded
+                ? 'rotate-180 border-[var(--accent-orange)] text-[var(--accent-orange)]'
+                : ''
             }`}
           >
             ▼
@@ -160,7 +163,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       {isHovered && !isExpanded && (
         <div
           ref={previewRef}
-          className="pointer-events-none fixed z-50 hidden md:block overflow-hidden rounded-2xl border border-white/20 bg-[#161616] shadow-[0_25px_60px_rgba(0,0,0,0.9)] will-change-transform"
+          className="pointer-events-none fixed z-50 hidden overflow-hidden rounded-2xl border border-white/20 bg-[#161616] shadow-[0_25px_60px_rgba(0,0,0,0.9)] will-change-transform md:block"
           style={{
             left: `${left}px`,
             top: `${top}px`,
@@ -178,7 +181,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             />
           </div>
           <div className="flex items-center justify-between border-t border-white/10 bg-[#111111]/90 px-3 py-1.5 font-mono text-[10px]">
-            <span className="truncate text-white font-medium">{project.title}</span>
+            <span className="truncate font-medium text-white">{project.title}</span>
             <span className="shrink-0 text-[var(--accent-orange)]">Preview</span>
           </div>
         </div>
@@ -188,9 +191,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       {isExpanded && (
         <div
           ref={drawerRef}
-          className="mb-6 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-7 shadow-xl"
+          className="mb-6 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 shadow-xl sm:p-7"
         >
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8 items-center">
+          <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-12 md:gap-8">
             {/* High-res Image preview without badge overlay */}
             <div className="md:col-span-5">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900">
@@ -209,11 +212,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               <div className="space-y-3">
                 {project.recognition ? (
                   <p className="font-mono text-xs font-semibold text-[var(--accent-orange)] opacity-95">
-                    {'// '}{project.recognition.text}
+                    {'// '}
+                    {project.recognition.text}
                   </p>
                 ) : project.badge ? (
                   <p className="font-mono text-xs font-semibold text-[var(--accent-orange)] opacity-95">
-                    {'// '}{project.badge}
+                    {'// '}
+                    {project.badge}
                   </p>
                 ) : null}
                 <p className="text-sm leading-relaxed text-neutral-300 sm:text-base">

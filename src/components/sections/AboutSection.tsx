@@ -116,9 +116,7 @@ export function AboutSection() {
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
           {'// Background'}
         </span>
-        <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
-          About Me
-        </h2>
+        <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">About Me</h2>
       </div>
 
       <p

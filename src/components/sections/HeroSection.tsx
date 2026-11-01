@@ -92,11 +92,7 @@ export function HeroSection() {
 
     const ctx = gsap.context(() => {
       // Hero entrance animations
-      gsap.fromTo(
-        '.hero-pfp',
-        { scale: 1.05 },
-        { scale: 1, duration: 0.6, ease: 'power2.out' },
-      );
+      gsap.fromTo('.hero-pfp', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power2.out' });
       gsap.fromTo(
         '.hero-socials a',
         { x: -10, opacity: 0 },
@@ -326,7 +322,8 @@ export function HeroSection() {
             tabIndex={0}
             aria-label="Scroll to explore"
             onClick={() => {
-              const target = document.querySelector('#about') || document.querySelector('#projects');
+              const target =
+                document.querySelector('#about') || document.querySelector('#projects');
               target?.scrollIntoView({ behavior: 'smooth' });
             }}
           >

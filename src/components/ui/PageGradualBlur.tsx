@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+
 import { GradualBlur } from '@/components/ui/GradualBlur';
 
 export function PageGradualBlur() {

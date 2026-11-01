@@ -329,7 +329,7 @@ export function Navbar() {
           >
             <span>Resume</span>
             <svg
-              className="h-2.5 w-2.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              className="h-2.5 w-2.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               viewBox="0 0 12 12"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

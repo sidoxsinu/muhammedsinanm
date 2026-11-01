@@ -136,8 +136,8 @@ export function FeaturedSection() {
                   <h3
                     className={`font-semibold tracking-tight text-white transition-all ${
                       isActive
-                        ? 'text-base sm:text-lg leading-tight'
-                        : 'text-xs sm:text-sm line-clamp-2 leading-snug'
+                        ? 'text-base leading-tight sm:text-lg'
+                        : 'line-clamp-2 text-xs leading-snug sm:text-sm'
                     }`}
                   >
                     {item.title}

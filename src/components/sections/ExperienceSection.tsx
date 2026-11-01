@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+
 import { EXPERIENCES } from '@/data/experience';
 
 export function ExperienceSection() {
@@ -62,12 +63,13 @@ export function ExperienceSection() {
                   </span>
                   <div className="min-w-0 space-y-1">
                     <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                      <h3 className="truncate text-base font-semibold text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg leading-snug">
+                      <h3 className="truncate text-base leading-snug font-semibold text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg">
                         {exp.role}
                       </h3>
                       {exp.badge && (
-                        <span className="font-mono text-xs text-neutral-400 font-normal hidden sm:inline-block">
-                          {'// '}{exp.badge}
+                        <span className="hidden font-mono text-xs font-normal text-neutral-400 sm:inline-block">
+                          {'// '}
+                          {exp.badge}
                         </span>
                       )}
                     </div>
@@ -83,7 +85,9 @@ export function ExperienceSection() {
                   </span>
                   <span
                     className={`flex h-7 w-7 items-center justify-center rounded-full border border-neutral-700 bg-neutral-900 text-xs text-neutral-400 transition-all duration-300 group-hover:border-[var(--accent-orange)] group-hover:text-white ${
-                      isExpanded ? 'rotate-180 border-[var(--accent-orange)] text-[var(--accent-orange)]' : ''
+                      isExpanded
+                        ? 'rotate-180 border-[var(--accent-orange)] text-[var(--accent-orange)]'
+                        : ''
                     }`}
                   >
                     ▼
@@ -96,7 +100,7 @@ export function ExperienceSection() {
                   ref={(el) => {
                     drawersRef.current[idx] = el;
                   }}
-                  className="mb-5 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-7 shadow-xl"
+                  className="mb-5 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 shadow-xl sm:p-7"
                 >
                   <div className="space-y-4">
                     {exp.location && (

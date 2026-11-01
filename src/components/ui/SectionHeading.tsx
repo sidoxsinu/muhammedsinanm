@@ -33,9 +33,7 @@ export function SectionHeading({
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
           {formattedBadge}
         </span>
-        <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
-          {title}
-        </h2>
+        <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">{title}</h2>
         {description && (
           <p
             className={`text-sm text-neutral-400 sm:text-base ${

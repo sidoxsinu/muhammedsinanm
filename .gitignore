@@ -1,39 +1,154 @@
-# Dependencies
+# ==============================================================================
+# Git Ignore Configuration
+# Protects against credential/secret leaks and prevents repository file dumping
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Security & Secrets (Prevents Credential & API Key Leaks)
+# ------------------------------------------------------------------------------
+# Environment variables (all variations: local, test, prod, staging, backup)
+.env*
+*.env
+*.env.*
+# Allow documentation/template env files
+!.env.example
+!.env*.example
+
+# Private keys, certificates, keystores & bundles
+*.pem
+*.key
+*.p12
+*.pfx
+*.pkcs12
+*.keystore
+*.jks
+*.cert
+*.crt
+*.ca-bundle
+
+# SSH Keys & Local Auth Tokens
+id_rsa*
+id_ed25519*
+id_ecdsa*
+id_dsa*
+*.token
+auth.json
+token.json
+
+# Service Accounts, Cloud & Database Credentials
+*credential*.json
+serviceAccountKey*.json
+client_secret*.json
+google-services.json
+GoogleService-Info.plist
+
+# Cloud CLI local authentication & deployment states
+.vercel
+.vercel/
+.netlify
+.netlify/
+.firebase/
+.serverless/
+.aws/
+.gcloud/
+
+# Package manager local authentication configs
+.npmrc.local
+npm-auth*
+
+# ------------------------------------------------------------------------------
+# 2. Dependencies & Package Managers (Prevents Dependency File Dumping)
+# ------------------------------------------------------------------------------
 node_modules/
 .pnp
-.pnp.js
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# Production build outputs
-dist/
-build/
+# ------------------------------------------------------------------------------
+# 3. Next.js & Build Outputs (Prevents Build Artifact Dumping)
+# ------------------------------------------------------------------------------
 .next/
 out/
+build/
+dist/
+.turbo/
 *.tsbuildinfo
+next-env.d.ts
 
-# Logs
+# ------------------------------------------------------------------------------
+# 4. Testing & Code Coverage (Prevents Test Output Dumping)
+# ------------------------------------------------------------------------------
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+
+# ------------------------------------------------------------------------------
+# 5. Caches, Metrics & Logs
+# ------------------------------------------------------------------------------
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
+.cache/
+.npm/
+.eslintcache
+.prettiercache
+.stylelintcache
+.parcel-cache/
 
-# Environment & local files
-.env
-.env.local
-.env.*.local
+# ------------------------------------------------------------------------------
+# 6. Temporary, Scratch & Backup Files
+# ------------------------------------------------------------------------------
+scratch/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*~
+*.swp
+*.swo
+*.patch
 
-# Editor & OS files
+# ------------------------------------------------------------------------------
+# 7. OS Metadata & System Files
+# ------------------------------------------------------------------------------
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
+
+# ------------------------------------------------------------------------------
+# 8. IDEs & Editors
+# ------------------------------------------------------------------------------
 .vscode/
+.idea/
 *.sublime-project
 *.sublime-workspace
 
-# Python leftovers if any
+# ------------------------------------------------------------------------------
+# 9. Python Leftovers (if scripting/tooling is executed)
+# ------------------------------------------------------------------------------
 .venv/
 venv/
+ENV/
 __pycache__/
-*.pyc
-
-# Local cache
-.cache/
-.npm/
+*.py[cod]
+*$py.class

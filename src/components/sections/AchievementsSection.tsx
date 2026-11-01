@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+
 import { ACHIEVEMENTS } from '@/data/achievements';
 
 export function AchievementsSection() {
@@ -61,7 +62,7 @@ export function AchievementsSection() {
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                   <div className="min-w-0 space-y-1">
-                    <h3 className="truncate text-base font-semibold text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg leading-snug">
+                    <h3 className="truncate text-base leading-snug font-semibold text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg">
                       {award.title}
                     </h3>
                     <p className="truncate font-mono text-xs text-neutral-400">
@@ -73,7 +74,9 @@ export function AchievementsSection() {
                 <div className="flex shrink-0 items-center gap-3">
                   <span
                     className={`flex h-7 w-7 items-center justify-center rounded-full border border-neutral-700 bg-neutral-900 text-xs text-neutral-400 transition-all duration-300 group-hover:border-[var(--accent-orange)] group-hover:text-white ${
-                      isExpanded ? 'rotate-180 border-[var(--accent-orange)] text-[var(--accent-orange)]' : ''
+                      isExpanded
+                        ? 'rotate-180 border-[var(--accent-orange)] text-[var(--accent-orange)]'
+                        : ''
                     }`}
                   >
                     ▼
@@ -86,7 +89,7 @@ export function AchievementsSection() {
                   ref={(el) => {
                     drawersRef.current[idx] = el;
                   }}
-                  className="mb-5 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 sm:p-6 shadow-xl"
+                  className="mb-5 overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616] p-5 shadow-xl sm:p-6"
                 >
                   <div className="space-y-4">
                     {award.description && (

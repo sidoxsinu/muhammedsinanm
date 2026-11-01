@@ -60,7 +60,14 @@ export default function NotFound() {
       gsap.fromTo(
         '.nf-glitch-num',
         { opacity: 0, scale: 0.85, filter: 'blur(10px)' },
-        { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.7, ease: 'back.out(1.4)', delay: 0.2 },
+        {
+          opacity: 1,
+          scale: 1,
+          filter: 'blur(0px)',
+          duration: 0.7,
+          ease: 'back.out(1.4)',
+          delay: 0.2,
+        },
       );
       gsap.fromTo(
         '.nf-heading',
@@ -118,7 +125,7 @@ export default function NotFound() {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-[var(--bg-color)] text-[var(--text-primary)] flex flex-col justify-between selection:bg-[var(--accent-orange)] selection:text-white"
+      className="flex min-h-screen flex-col justify-between bg-[var(--bg-color)] text-[var(--text-primary)] selection:bg-[var(--accent-orange)] selection:text-white"
     >
       <Navbar />
 
@@ -135,9 +142,9 @@ export default function NotFound() {
         </div>
 
         {/* Large Stylized 404 & Glow */}
-        <div className="relative my-2 select-none text-center">
+        <div className="relative my-2 text-center select-none">
           <span
-            className="nf-glitch-num block font-mono text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-200 to-neutral-700 sm:text-9xl md:text-[11rem] leading-none"
+            className="nf-glitch-num block bg-gradient-to-b from-white via-neutral-200 to-neutral-700 bg-clip-text font-mono text-8xl leading-none font-black tracking-tighter text-transparent sm:text-9xl md:text-[11rem]"
             style={{
               textShadow: '0 0 60px rgba(229, 77, 46, 0.25)',
             }}
