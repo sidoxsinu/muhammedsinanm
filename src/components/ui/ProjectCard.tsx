@@ -127,9 +127,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           <div className="min-w-0 space-y-1">
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <h3 className="truncate text-base leading-snug font-semibold text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg">
+              <h3 className="line-clamp-2 text-base leading-snug font-semibold break-words text-white transition-colors group-hover:text-[var(--accent-orange)] sm:line-clamp-none sm:truncate sm:text-lg">
                 {project.title}
               </h3>
+
               {project.badge && (
                 <span className="hidden font-mono text-xs text-[var(--accent-orange)] opacity-90 sm:inline-block">
                   {'// '}

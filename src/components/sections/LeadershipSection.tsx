@@ -9,9 +9,9 @@ export function LeadershipSection() {
     <section
       id="leadership"
       aria-label="Leadership Roles"
-      className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24"
+      className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-24"
     >
-      <div className="mb-10 space-y-3">
+      <div className="mb-8 space-y-3 sm:mb-10">
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
           {'// Responsibility'}
         </span>
@@ -28,16 +28,24 @@ export function LeadershipSection() {
         {LEADERSHIP.map((item) => (
           <div
             key={item.role + item.organization}
-            className="flex flex-col justify-between gap-2 py-5 sm:flex-row sm:items-center sm:gap-6"
+            className="flex flex-col justify-between gap-1.5 py-4 sm:flex-row sm:items-center sm:gap-6 sm:py-5"
           >
-            <div className="space-y-1">
-              <h3 className="text-base leading-snug font-semibold text-white sm:text-lg">
-                {item.role}
-              </h3>
-              <p className="text-sm text-neutral-400">{item.organization}</p>
+            <div className="flex items-start justify-between gap-3 sm:block sm:space-y-1">
+              <div className="space-y-1">
+                <h3 className="text-base leading-snug font-semibold text-white sm:text-lg">
+                  {item.role}
+                </h3>
+                <p className="text-sm text-neutral-400">{item.organization}</p>
+              </div>
+
+              <div className="shrink-0 sm:hidden">
+                <span className="rounded-full border border-neutral-700 bg-[#161616] px-2.5 py-0.5 font-mono text-[11px] text-neutral-300">
+                  {item.period}
+                </span>
+              </div>
             </div>
 
-            <div className="shrink-0 self-start sm:self-auto">
+            <div className="hidden shrink-0 sm:block sm:self-auto">
               <span className="rounded-full border border-neutral-700 bg-[#161616] px-3.5 py-1 font-mono text-xs text-neutral-300">
                 {item.period}
               </span>

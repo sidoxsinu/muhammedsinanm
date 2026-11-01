@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     'content-kit/**',
     'nextjs-scaffold/**',
     '_original/**',
+    '.agents/**',
   ]),
 ]);
 

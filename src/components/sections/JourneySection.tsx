@@ -35,7 +35,7 @@ export function JourneySection() {
     <section
       id="journey"
       aria-label="Career Journey"
-      className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28"
+      className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-28"
     >
       {/* Section Header with Navigation Controls */}
       <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">

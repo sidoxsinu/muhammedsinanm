@@ -76,7 +76,7 @@ export function FeaturedSection() {
     <section
       id="featured"
       aria-label="Highlighted Projects"
-      className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28"
+      className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-28"
     >
       <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
         <div className="space-y-2">

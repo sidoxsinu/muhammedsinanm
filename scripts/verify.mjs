@@ -9,8 +9,10 @@ import { chromium } from 'playwright';
 
 const BASE_URL = process.env.TEST_URL || 'http://localhost:3000';
 const VIEWPORTS = [
+  { name: 'Mobile Minimum (320x568)', width: 320, height: 568 },
   { name: 'Mobile Narrow (360x740)', width: 360, height: 740 },
   { name: 'Mobile Standard (375x667)', width: 375, height: 667 },
+  { name: 'Mobile Max (480x854)', width: 480, height: 854 },
   { name: 'Tablet (768x1024)', width: 768, height: 1024 },
   { name: 'Desktop (1440x900)', width: 1440, height: 900 },
 ];
@@ -75,6 +77,21 @@ async function isServerRunning(url) {
     console.log('--- SUITE 1: ROUTE STATUS & CORE METADATA ---');
     const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
     const page = await context.newPage();
+
+    // Intercept external GitHub contributions API to eliminate rate-limiting and flakiness
+    await page.route('**github-contributions-api.jogruber.de/**', (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          total: { lastYear: 120 },
+          contributions: [
+            { date: '2026-10-31', count: 2, level: 1 },
+            { date: '2026-11-01', count: 4, level: 2 },
+          ],
+        }),
+      });
+    });
 
     const consoleErrors = [];
     const failedRequests = [];
@@ -219,9 +236,23 @@ async function isServerRunning(url) {
       for (const route of PAGES) {
         await page.goto(`${BASE_URL}${route}`, { waitUntil: 'networkidle' });
         const hasOverflow = await page.evaluate(() => {
-          return document.documentElement.scrollWidth > window.innerWidth + 1;
+          const doc = document.documentElement.scrollWidth;
+          const body = document.body ? document.body.scrollWidth : 0;
+          return Math.max(doc, body) > window.innerWidth + 1;
         });
         assert(!hasOverflow, `Zero horizontal overflow on [${vp.name}] ${route}`);
+
+        // Consolidated: Verify mobile footer height on mobile viewports (320px, 375px, 480px) without extra page loads
+        if (route === '/' && [320, 375, 480].includes(vp.width)) {
+          const footerHeight = await page.evaluate(() => {
+            const footer = document.querySelector('.site-footer');
+            return footer ? footer.getBoundingClientRect().height : 0;
+          });
+          assert(
+            footerHeight > 0 && footerHeight < 600,
+            `Mobile footer height on ${vp.width}px is proportional (< 600px, actual: ${Math.round(footerHeight)}px)`,
+          );
+        }
       }
     }
 

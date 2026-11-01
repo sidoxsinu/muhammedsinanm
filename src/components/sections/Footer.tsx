@@ -110,109 +110,155 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="footer-col">
-          <h4 style={{ color: '#f0f0f0', marginBottom: '20px', fontSize: '18px', fontWeight: 600 }}>
-            Navigation
-          </h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <Link
-              href="/"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
+        <div className="footer-nav-grid grid w-full grid-cols-2 gap-6 sm:contents">
+          <div className="footer-col">
+            <h4
+              style={{ color: '#f0f0f0', marginBottom: '20px', fontSize: '18px', fontWeight: 600 }}
             >
-              Home
-            </Link>
-            <Link
-              href="/projects"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
-            >
-              Projects
-            </Link>
-            <Link
-              href="/about"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
-            >
-              About &amp; Journey
-            </Link>
-            <Link
-              href="/credentials"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
-            >
-              Credentials &amp; Awards
-            </Link>
-            <Link
-              href="/contact"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
-            >
-              Contact
-            </Link>
+              Navigation
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <Link
+                href="/"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+              >
+                Home
+              </Link>
+              <Link
+                href="/projects"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+              >
+                Projects
+              </Link>
+              <Link
+                href="/about"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+              >
+                About &amp; Journey
+              </Link>
+              <Link
+                href="/credentials"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+              >
+                Credentials &amp; Awards
+              </Link>
+              <Link
+                href="/contact"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+              >
+                Contact
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className="footer-col">
-          <h4 style={{ color: '#f0f0f0', marginBottom: '20px', fontSize: '18px', fontWeight: 600 }}>
-            Social &amp; More
-          </h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <a
-              rel="me noopener noreferrer"
-              target="_blank"
-              href="https://github.com/sidoxsinu"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
+          <div className="footer-col">
+            <h4
+              style={{ color: '#f0f0f0', marginBottom: '20px', fontSize: '18px', fontWeight: 600 }}
             >
-              GitHub
-            </a>
-            <a
-              rel="me noopener noreferrer"
-              target="_blank"
-              href="https://www.linkedin.com/in/sidoxsinu/"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
-            >
-              LinkedIn
-            </a>
-            <a
-              rel="me noopener noreferrer"
-              target="_blank"
-              href="https://x.com/sidoxsinu"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
-            >
-              X (Twitter)
-            </a>
-            <a
-              rel="me noopener noreferrer"
-              target="_blank"
-              href="https://www.instagram.com/sidoxsinu"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
-            >
-              Instagram
-            </a>
-            <a
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://buymeacoffee.com/sidoxsinu"
-              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-[var(--accent-orange)]"
-            >
-              <span>Buy Me a Coffee</span>
-              <span style={{ color: 'var(--accent-orange)' }}>☕</span>
-            </a>
-            <button
-              type="button"
-              aria-label="Print Portfolio"
-              onClick={handlePrint}
-              style={{
-                color: 'var(--accent-orange)',
-                textDecoration: 'none',
-                fontSize: '14px',
-                fontWeight: 600,
-                background: 'none',
-                border: 'none',
-                padding: 0,
-                textAlign: 'left',
-                cursor: 'pointer',
-              }}
-              title="Print Portfolio"
-            >
-              Print Portfolio
-            </button>
+              Social &amp; More
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <a
+                rel="me noopener noreferrer"
+                target="_blank"
+                href="https://github.com/sidoxsinu"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+              >
+                GitHub
+              </a>
+              <a
+                rel="me noopener noreferrer"
+                target="_blank"
+                href="https://www.linkedin.com/in/sidoxsinu/"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+              >
+                LinkedIn
+              </a>
+              <a
+                rel="me noopener noreferrer"
+                target="_blank"
+                href="https://x.com/sidoxsinu"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+              >
+                X (Twitter)
+              </a>
+              <a
+                rel="me noopener noreferrer"
+                target="_blank"
+                href="https://www.instagram.com/sidoxsinu"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+              >
+                Instagram
+              </a>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://buymeacoffee.com/sidoxsinu"
+                style={{
+                  color: 'rgba(240,240,240,0.8)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                }}
+                className="inline-flex items-center gap-1.5 transition-colors hover:text-[var(--accent-orange)]"
+              >
+                <span>Buy Me a Coffee</span>
+                <span style={{ color: 'var(--accent-orange)' }}>☕</span>
+              </a>
+              <button
+                type="button"
+                aria-label="Print Portfolio"
+                onClick={handlePrint}
+                style={{
+                  color: 'var(--accent-orange)',
+                  textDecoration: 'none',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  textAlign: 'left',
+                  cursor: 'pointer',
+                }}
+                title="Print Portfolio"
+              >
+                Print Portfolio
+              </button>
+            </div>
           </div>
         </div>
       </div>

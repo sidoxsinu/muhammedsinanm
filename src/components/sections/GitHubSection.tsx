@@ -117,7 +117,7 @@ export function GitHubSection() {
     <section
       id="github-activity"
       aria-label="GitHub Activity & Contributions"
-      className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24"
+      className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-24"
     >
       {/* Section Header */}
       <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">

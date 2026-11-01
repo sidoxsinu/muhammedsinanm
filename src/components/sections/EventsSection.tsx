@@ -17,7 +17,7 @@ export function EventsSection() {
     <section
       id="hackathons"
       aria-label="Hackathons & Events"
-      className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24"
+      className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-24"
     >
       <div className="mb-10 space-y-3">
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">

@@ -30,9 +30,9 @@ export function ExperienceSection() {
     <section
       id="experience"
       aria-label="Work Experience"
-      className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24"
+      className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-24"
     >
-      <div className="mb-10 space-y-3">
+      <div className="mb-8 space-y-3 sm:mb-10">
         <span className="font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
           {'// Career Track'}
         </span>
@@ -55,15 +55,15 @@ export function ExperienceSection() {
                 type="button"
                 onClick={() => toggle(idx)}
                 aria-expanded={isExpanded}
-                className="group flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left transition-colors duration-200"
+                className="group flex w-full cursor-pointer items-start justify-between gap-3 py-4 text-left transition-colors duration-200 sm:items-center sm:gap-4 sm:py-5"
               >
-                <div className="flex min-w-0 items-center gap-4 sm:gap-6">
+                <div className="flex min-w-0 items-start gap-3 sm:items-center sm:gap-6">
                   <span className="font-mono text-xs font-semibold text-neutral-500 transition-colors group-hover:text-[var(--accent-orange)] sm:text-sm">
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                   <div className="min-w-0 space-y-1">
                     <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                      <h3 className="truncate text-base leading-snug font-semibold text-white transition-colors group-hover:text-[var(--accent-orange)] sm:text-lg">
+                      <h3 className="line-clamp-2 text-sm leading-snug font-semibold break-words text-white transition-colors group-hover:text-[var(--accent-orange)] sm:line-clamp-none sm:truncate sm:text-lg">
                         {exp.role}
                       </h3>
                       {exp.badge && (
@@ -73,14 +73,19 @@ export function ExperienceSection() {
                         </span>
                       )}
                     </div>
-                    <p className="truncate font-mono text-xs text-[var(--accent-orange)]">
-                      {exp.company}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                      <p className="font-mono text-xs text-[var(--accent-orange)] sm:truncate">
+                        {exp.company}
+                      </p>
+                      <span className="font-mono text-[11px] text-neutral-400 sm:hidden">
+                        • {exp.period}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex shrink-0 items-center gap-3">
-                  <span className="rounded-full border border-neutral-700 bg-[#161616] px-3.5 py-1 font-mono text-xs text-neutral-300">
+                  <span className="hidden rounded-full border border-neutral-700 bg-[#161616] px-3.5 py-1 font-mono text-xs text-neutral-300 sm:inline-block">
                     {exp.period}
                   </span>
                   <span

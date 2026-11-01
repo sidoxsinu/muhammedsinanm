@@ -45,3 +45,4 @@ public/sitemap.xml
 scratch/
 tmp/
 temp/
+.agents/

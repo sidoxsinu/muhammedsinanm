@@ -59,19 +59,19 @@ export function StatsSection() {
     >
       <div
         ref={stripRef}
-        className="mx-auto flex max-w-5xl flex-col items-center justify-around gap-8 px-4 py-12 sm:flex-row sm:gap-6 sm:px-6 sm:py-16"
+        className="mx-auto grid max-w-5xl grid-cols-3 items-center justify-items-center gap-2 px-3 py-6 sm:flex sm:flex-row sm:justify-around sm:gap-6 sm:px-6 sm:py-16"
       >
         {STATS.map((stat, idx) => (
           <React.Fragment key={stat.label}>
             <div className="flex flex-col items-center text-center">
               <span
-                className="count-up font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+                className="count-up font-heading text-2xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
                 data-suffix={stat.suffix}
                 data-target={String(stat.target)}
               >
                 0
               </span>
-              <span className="mt-2 font-mono text-xs font-semibold tracking-widest text-[var(--accent-orange)] uppercase">
+              <span className="mt-1 font-mono text-[10px] font-semibold tracking-wider text-[var(--accent-orange)] uppercase sm:mt-2 sm:text-xs sm:tracking-widest">
                 {stat.label}
               </span>
             </div>
