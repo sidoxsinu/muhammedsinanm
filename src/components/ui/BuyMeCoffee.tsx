@@ -53,11 +53,7 @@ export function BuyMeCoffee({
   className = '',
   url = BUY_ME_A_COFFEE_URL,
 }: BuyMeCoffeeProps) {
-  const isStorageDismissed = useSyncExternalStore(
-    subscribeStorage,
-    getSnapshot,
-    getServerSnapshot,
-  );
+  const isStorageDismissed = useSyncExternalStore(subscribeStorage, getSnapshot, getServerSnapshot);
   const [localDismissed, setLocalDismissed] = useState(false);
 
   const dismissed = isStorageDismissed || localDismissed;
