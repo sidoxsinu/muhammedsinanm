@@ -5,10 +5,7 @@ import React, { useState } from 'react';
 import { CLUBS } from '@/data/clubs';
 
 export function ClubsSection() {
-  const [openMap, setOpenMap] = useState<Record<string, boolean>>({
-    'IEEE Memberships': true,
-    'Communities & Organizations': true,
-  });
+  const [openMap, setOpenMap] = useState<Record<string, boolean>>({});
 
   const toggle = (title: string) => {
     setOpenMap((prev) => ({ ...prev, [title]: !prev[title] }));

@@ -5,10 +5,7 @@ import React, { useState } from 'react';
 import { EVENTS } from '@/data/events';
 
 export function EventsSection() {
-  const [openMap, setOpenMap] = useState<Record<string, boolean>>({
-    'Christ College of Engineering (CCE)': true,
-    'NSS Palakkad / MuLearn': true,
-  });
+  const [openMap, setOpenMap] = useState<Record<string, boolean>>({});
 
   const toggle = (inst: string) => {
     setOpenMap((prev) => ({ ...prev, [inst]: !prev[inst] }));
