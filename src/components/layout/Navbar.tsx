@@ -326,17 +326,17 @@ export function Navbar() {
             href={BUY_ME_A_COFFEE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="nav-resume group inline-flex items-center gap-1.5"
-            style={{ color: '#E8562A', fontWeight: 600 }}
+            className="group inline-flex items-center gap-1.5"
             title="Buy Me a Coffee"
             aria-label="Buy Me a Coffee"
           >
             <span>Buy Me a Coffee</span>
             <svg
               className="h-3 w-3 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:scale-110"
+              style={{ color: '#E8562A' }}
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
+              stroke="#E8562A"
               strokeWidth="2.2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -473,16 +473,16 @@ export function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-index="6"
-                  style={{ color: '#E54D2E' }}
                   onClick={closeMenu}
                 >
                   <span className="sm-panel-itemLabel inline-flex items-center gap-1.5">
                     <span>Buy Me a Coffee</span>
                     <svg
                       className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:scale-110"
+                      style={{ color: '#E54D2E' }}
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="currentColor"
+                      stroke="#E54D2E"
                       strokeWidth="2.2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
