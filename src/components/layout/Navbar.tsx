@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 
+import { BUY_ME_A_COFFEE_URL } from '@/data/socials';
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
@@ -499,6 +501,16 @@ export function Navbar() {
                     className="sm-socials-link"
                   >
                     Direct Portal ↗
+                  </a>
+                </li>
+                <li className="sm-socials-item">
+                  <a
+                    href={BUY_ME_A_COFFEE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sm-socials-link"
+                  >
+                    Buy Me a Coffee ☕
                   </a>
                 </li>
               </ul>

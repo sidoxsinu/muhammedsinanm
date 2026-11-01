@@ -3,6 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 
+import { BuyMeCoffee } from '@/components/ui/BuyMeCoffee';
+
 export function ContactSection() {
   return (
     <section className="cta-section" id="contact-cta">
@@ -123,6 +125,7 @@ export function ContactSection() {
           </svg>
           <span>Twitter</span>
         </a>
+        <BuyMeCoffee variant="pill" />
       </div>
     </section>
   );

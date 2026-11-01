@@ -2055,6 +2055,22 @@ section.cta-section .cta-desc,
   z-index: 2;
 }
 
+.social-pill.bmc-pill {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.social-pill.bmc-pill:hover {
+  border-color: rgba(232, 86, 42, 0.6);
+}
+
+.social-pill.bmc-pill svg {
+  color: var(--accent-orange);
+}
+
+.social-pill.bmc-pill:hover svg {
+  color: #ff9d66;
+}
+
 .profile-pill {
   background: #ffffff;
   color: #000000;

@@ -184,6 +184,16 @@ export function Footer() {
             >
               Instagram
             </a>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://buymeacoffee.com/sidoxsinu"
+              style={{ color: 'rgba(240,240,240,0.8)', textDecoration: 'none', fontSize: '14px' }}
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-[var(--accent-orange)]"
+            >
+              <span>Buy Me a Coffee</span>
+              <span style={{ color: 'var(--accent-orange)' }}>☕</span>
+            </a>
             <button
               type="button"
               aria-label="Print Portfolio"

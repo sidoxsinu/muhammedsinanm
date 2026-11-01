@@ -83,10 +83,10 @@ export default function ContactPage() {
         </SpotlightCard>
       </div>
 
-      {/* Socials & Location Card */}
+      {/* Socials & Support Card */}
       <SpotlightCard className="p-6 sm:p-8">
-        <h3 className="mb-4 text-lg font-semibold text-white">Connect on Social Platforms</h3>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <h3 className="mb-4 text-lg font-semibold text-white">Connect &amp; Support</h3>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
           {SOCIAL_LINKS.map((s) => (
             <a
               key={s.platform}
@@ -98,7 +98,9 @@ export default function ContactPage() {
               <div className="text-sm font-medium text-white transition-colors group-hover:text-[var(--accent-orange)]">
                 {s.platform}
               </div>
-              <div className="mt-0.5 font-mono text-[11px] text-neutral-500">Visit Profile ↗</div>
+              <div className="mt-0.5 font-mono text-[11px] text-neutral-500">
+                {s.platform === 'Buy Me a Coffee' ? 'Support / Sponsor ☕ ↗' : 'Visit Profile ↗'}
+              </div>
             </a>
           ))}
         </div>

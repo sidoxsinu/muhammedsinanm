@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
 
 import { SITE_CONFIG } from '@/lib/site-config';
+import { BuyMeCoffee } from '@/components/ui/BuyMeCoffee';
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import { GlobalEffects } from '@/components/ui/GlobalEffects';
 import { PageGradualBlur } from '@/components/ui/PageGradualBlur';
@@ -261,6 +262,7 @@ export default function RootLayout({
         <PageGradualBlur />
         <CustomCursor />
         <GlobalEffects />
+        <BuyMeCoffee variant="floating" />
         {children}
       </body>
     </html>
