@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 import { STATS } from '@/data/stats';
 
@@ -29,17 +30,15 @@ export function StatsSection() {
             return;
           }
 
-          const duration = 1400;
-          const startTime = performance.now();
-
-          function tick(now: number) {
-            const progress = Math.min((now - startTime) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(eased * target) + suffix;
-            if (progress < 1) requestAnimationFrame(tick);
-          }
-
-          requestAnimationFrame(tick);
+          const counter = { value: 0 };
+          gsap.to(counter, {
+            value: target,
+            duration: 2.8,
+            ease: 'power2.out',
+            onUpdate: () => {
+              el.textContent = Math.round(counter.value) + suffix;
+            },
+          });
         });
       },
       { threshold: 0.2, rootMargin: '0px 0px -40px 0px' },
