@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 
+import { PROFILE } from '@/data/profile';
 import { BUY_ME_A_COFFEE_URL } from '@/data/socials';
 
 export function Navbar() {
@@ -350,7 +351,7 @@ export function Navbar() {
             </svg>
           </a>
           <a
-            href="/images/Resume/Muhammed%20Sinan%20M.pdf"
+            href={PROFILE.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="nav-resume group inline-flex items-center gap-1"
@@ -500,7 +501,7 @@ export function Navbar() {
               <li className="sm-panel-itemWrap">
                 <a
                   className="sm-panel-item"
-                  href="/images/Resume/Muhammed%20Sinan%20M.pdf"
+                  href={PROFILE.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-index="7"

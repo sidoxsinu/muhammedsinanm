@@ -15,7 +15,7 @@ export const PROFILE_DATA: Profile = {
   email: 'muhammedsinan.m67@gmail.com',
   phone: '+91 85905 68566',
   contactUrl: 'https://contact.muhammedsinan.in',
-  resumeUrl: '/images/Resume/Muhammed Sinan M.pdf',
+  resumeUrl: '/images/Resume/Muhammed Sinan M.pdf?v=20261111-nda',
   profileImage: '/images/profile-picture/bg-removed-black&white-pfp.webp',
 };
 
