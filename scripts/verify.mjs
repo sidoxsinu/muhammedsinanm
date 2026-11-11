@@ -193,8 +193,10 @@ async function isServerRunning(url) {
       await page.waitForTimeout(200);
       const content = await page.textContent('body');
       assert(
-        content.includes('Torcue Digital'),
-        'About Work Experience tab displays Torcue Digital',
+        content.includes('Torcue Digital') &&
+          content.includes('10 June 2026') &&
+          content.includes('Internship details are under NDA.'),
+        'About Work Experience tab displays the corrected NDA-safe Torcue entry',
       );
     }
 

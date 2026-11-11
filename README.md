@@ -18,7 +18,7 @@ Designed with a clean, dark aesthetic (`#111111`) accented by vibrant orange (`#
 - **Multi-Page Architecture**:
   - **`/`**: Home overview featuring typewriter intro, interactive dot field, live stats strip, 4 featured projects, technical capabilities hub, work experience preview, and contact CTA.
   - **`/projects`**: Interactive project catalog with reactive filtering (`All`, `Freelance & Client`, `AI & Systems`, `Web & Hackathons`) and direct GitHub/Live links.
-  - **`/about`**: Tabbed biography, detailed work experience (including 6-month full-time internship at Torcue Digital), career journey timeline (2021–2026), and student leadership roles.
+  - **`/about`**: Tabbed biography, detailed work experience (including the NDA-protected Software Engineering Intern role at Torcue Digital beginning 10 June 2026), career journey timeline (2021–2026), and student leadership roles.
   - **`/credentials`**: Verified honors & awards, interactive certifications grid with modal viewer, hackathons list, and student developer clubs.
   - **`/contact`**: Direct communication channels with one-click clipboard email copy and active social links.
   - **`/resume`**: Native streaming route handler serving the latest PDF resume.

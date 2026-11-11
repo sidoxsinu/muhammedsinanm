@@ -6,8 +6,7 @@ export const JOURNEY_DATA: JourneyYear[] = [
     milestones: [
       {
         title: 'Software Engineering Intern - Torcue Digital',
-        description:
-          'Delivering production tickets across full-stack web, AI workflows, and native iOS (Swift) on a full-time Agile schedule.',
+        description: 'Internship details are under NDA.',
       },
       {
         title: 'Best Technical Project - Google Build with AI Hackathon',

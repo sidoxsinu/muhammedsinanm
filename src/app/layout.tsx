@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: `%s | ${PROFILE.name}`,
   },
   description:
-    'Portfolio of Muhammed Sinan M - CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
+    'Portfolio of Muhammed Sinan M - CS&E student and Software Engineering Intern at Torcue Digital. Built real production websites and won the Google Build with AI Hackathon 2026.',
   keywords: [
     'Muhammed Sinan M',
     'muhammed sinan',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     url: SITE_CONFIG.url,
     title: `${PROFILE.name} | Full-Stack Developer & AI Enthusiast`,
     description:
-      'Portfolio of Muhammed Sinan M - CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
+      'Portfolio of Muhammed Sinan M - CS&E student and Software Engineering Intern at Torcue Digital. Built real production websites and won the Google Build with AI Hackathon 2026.',
     images: [
       {
         url: `${SITE_CONFIG.url}/images/og-image.jpg`,
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     creator: '@sidoxsinu',
     title: `${PROFILE.name} | Full-Stack Developer & AI Enthusiast`,
     description:
-      'Portfolio of Muhammed Sinan M - CS&E student, Software Engineering Intern at Torcue Digital, and Full-Stack Developer from Kerala. Built real production websites and won the Google Build with AI Hackathon 2026.',
+      'Portfolio of Muhammed Sinan M - CS&E student and Software Engineering Intern at Torcue Digital. Built real production websites and won the Google Build with AI Hackathon 2026.',
     images: [
       {
         url: `${SITE_CONFIG.url}/images/og-image.jpg`,
@@ -118,9 +118,7 @@ const jsonLdPerson = {
   },
   worksFor: {
     '@type': 'Organization',
-    name: 'Torcue Digital Inc.',
-    alternateName: 'Toric Software Labs Private Limited',
-    url: 'https://www.torcue.com',
+    name: 'Torcue Digital',
   },
   address: {
     '@type': 'PostalAddress',

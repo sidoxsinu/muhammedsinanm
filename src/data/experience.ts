@@ -3,13 +3,9 @@ import { ExperienceItem } from '@/types';
 export const EXPERIENCES: ExperienceItem[] = [
   {
     role: 'Software Engineering Intern',
-    badge: 'Current / 6 Mo+',
-    company: 'Torcue Digital (Client projects under NDA)',
-    period: 'May 2026 – Present',
-    description:
-      'Delivering frontend, backend, AI-related, and iOS (Swift) tickets for production applications on a full-time schedule (6 months and ongoing). Working in a deadline-driven Agile team with sprint tickets tracked in Jira, codebases managed across Git and Bitbucket, and daily engineering stand-ups.',
-    location: 'Transasia Cyberpark, Infopark Phase II, Kochi, Kerala',
-    companyUrl: 'https://www.torcue.com',
+    company: 'Torcue Digital',
+    period: '10 June 2026 – Present',
+    description: 'Internship details are under NDA.',
   },
   {
     role: 'Freelance Web Developer',
