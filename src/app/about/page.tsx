@@ -32,7 +32,7 @@ export default function AboutPage() {
       description="Computer Science student, full-stack engineer, and AI builder based in Kerala, India. Dedicated to crafting software that solves real user problems."
     >
       {/* Navigation Tabs */}
-      <div className="mb-12 flex justify-start overflow-x-auto pb-2">
+      <div className="mb-8 flex w-full justify-start overflow-x-auto pb-2 scrollbar-none sm:mb-12">
         <Tabs tabs={tabs} activeTab={activeTab} onChange={(id) => setActiveTab(id as AboutTab)} />
       </div>
 

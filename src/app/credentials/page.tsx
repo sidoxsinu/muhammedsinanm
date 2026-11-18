@@ -30,7 +30,7 @@ export default function CredentialsPage() {
       description="Verified technical awards, official certifications, collegiate leadership memberships, and competitive hackathon participations."
     >
       {/* Navigation Tabs */}
-      <div className="mb-12 flex justify-start overflow-x-auto pb-2">
+      <div className="mb-8 flex w-full justify-start overflow-x-auto pb-2 scrollbar-none sm:mb-12">
         <Tabs
           tabs={tabs}
           activeTab={activeTab}

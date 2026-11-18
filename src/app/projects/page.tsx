@@ -79,7 +79,7 @@ export default function ProjectsPage() {
       description="A comprehensive catalog of production web platforms, hackathon-winning AI assistants, open-source utilities, and freelance deliverables."
     >
       {/* Filter Tabs */}
-      <div className="mb-12 flex justify-start overflow-x-auto pb-2">
+      <div className="mb-8 flex w-full justify-start overflow-x-auto pb-2 scrollbar-none sm:mb-12">
         <Tabs tabs={tabs} activeTab={activeFilter} onChange={setActiveFilter} />
       </div>
 

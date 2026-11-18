@@ -21,7 +21,7 @@ export function Tabs({ tabs, activeTab, onChange, className = '' }: TabsProps) {
     <div
       role="tablist"
       aria-label="Navigation Tabs"
-      className={`inline-flex w-max min-w-full items-center gap-1.5 rounded-full border border-neutral-800 bg-[#161616]/95 p-1.5 backdrop-blur-md ${className}`}
+      className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border border-neutral-800 bg-[#161616]/95 p-1.5 backdrop-blur-md ${className}`}
     >
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;
@@ -34,7 +34,7 @@ export function Tabs({ tabs, activeTab, onChange, className = '' }: TabsProps) {
             id={`tab-${tab.id}`}
             type="button"
             onClick={() => onChange(tab.id)}
-            className={`relative flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-4 py-2 font-mono text-xs tracking-wider whitespace-nowrap uppercase transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent-orange)] ${
+            className={`relative flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-3.5 py-1.5 font-mono text-xs tracking-wider whitespace-nowrap uppercase transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent-orange)] sm:px-4 sm:py-2 ${
               isActive
                 ? 'bg-[var(--accent-orange)] font-semibold text-white shadow-sm'
                 : 'text-neutral-400 hover:bg-neutral-800/80 hover:text-white'

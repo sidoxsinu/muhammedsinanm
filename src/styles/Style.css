@@ -619,6 +619,14 @@ section h3:not([class*='text-']) {
   display: none;
 }
 
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 .carousel-track {
   display: flex;
   gap: 40px;
