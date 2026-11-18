@@ -3064,6 +3064,8 @@ section.cta-section .cta-desc,
   overflow: visible;
   padding: 0;
   transition: color 0.3s ease;
+  z-index: 1005;
+  pointer-events: auto !important;
 }
 
 .premium-nav.nav-glass .sm-toggle {
@@ -3291,6 +3293,25 @@ section.cta-section .cta-desc,
     width: 100%;
     left: 0;
     right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sm-panel-item {
+    font-size: clamp(1.75rem, 6.5vw, 2.5rem);
+    letter-spacing: -1px;
+    padding-right: 1.2em;
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  .sm-panel-list[data-numbering] .sm-panel-item::after {
+    font-size: 13px;
+    right: 1.8em;
+  }
+
+  .staggered-menu-panel {
+    padding: 5rem 1.5rem 2rem 1.5rem;
   }
 }
 

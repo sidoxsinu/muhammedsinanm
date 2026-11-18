@@ -170,13 +170,16 @@ export default function NotFound() {
           className="nf-terminal mt-10 w-full overflow-hidden rounded-2xl border border-neutral-800 bg-[#161616]/90 shadow-2xl backdrop-blur-md"
         >
           {/* Terminal Window Header */}
-          <div className="flex items-center justify-between border-b border-neutral-800 bg-[#141414] px-4 py-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-800 bg-[#141414] px-4 py-3">
             <div className="flex items-center gap-2">
               <span className="h-3 w-3 rounded-full bg-red-500/80" />
               <span className="h-3 w-3 rounded-full bg-amber-500/80" />
               <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
-              <span className="ml-2 font-mono text-xs text-neutral-500">
+              <span className="ml-2 hidden font-mono text-xs text-neutral-500 sm:inline">
                 terminal — diagnostics@muhammedsinan.in
+              </span>
+              <span className="ml-2 font-mono text-xs text-neutral-500 sm:hidden">
+                terminal
               </span>
             </div>
 
@@ -186,7 +189,19 @@ export default function NotFound() {
               disabled={isDiagnosing}
               className="group flex cursor-pointer items-center gap-1.5 rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 font-mono text-[11px] font-medium text-neutral-300 transition-colors hover:border-[var(--accent-orange)] hover:text-white disabled:opacity-50"
             >
-              <span className={isDiagnosing ? 'animate-spin' : ''}>⚙</span>
+              <svg
+                className={`h-3 w-3 ${isDiagnosing ? 'animate-spin text-[var(--accent-orange)]' : 'text-neutral-400'}`}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+              </svg>
               <span>{isDiagnosing ? 'Diagnosing...' : 'Run Diagnostics'}</span>
             </button>
           </div>

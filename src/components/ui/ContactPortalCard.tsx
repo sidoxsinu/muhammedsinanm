@@ -80,9 +80,11 @@ export function ContactPortalCard({ className = '' }: ContactPortalCardProps) {
 
         {/* Ambient Corner Accents */}
         <div
-          className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[var(--accent-orange)]/10 blur-3xl transition-all duration-500 group-hover:scale-125 group-hover:bg-[var(--accent-orange)]/25"
+          className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl sm:rounded-3xl"
           aria-hidden="true"
-        />
+        >
+          <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[var(--accent-orange)]/10 blur-3xl transition-all duration-500 group-hover:scale-125 group-hover:bg-[var(--accent-orange)]/25" />
+        </div>
 
         {/* Card Content Hierarchy */}
         <div className="relative z-10 flex flex-col gap-6 sm:gap-8">

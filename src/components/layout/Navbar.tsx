@@ -185,12 +185,13 @@ export function Navbar() {
   };
 
   const closeMenu = useCallback(() => {
-    if (isBusyRef.current) return;
     setIsOpen(false);
 
     const wrapper = wrapperRef.current;
     const panel = panelRef.current;
     if (!wrapper || !panel) return;
+
+    isBusyRef.current = true;
 
     const preLayers = Array.from(wrapper.querySelectorAll<HTMLElement>('.sm-prelayer'));
     if (openTlRef.current) {
