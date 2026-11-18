@@ -57,12 +57,14 @@ export function Navbar() {
 
     const preLayers = Array.from(wrapper.querySelectorAll<HTMLElement>('.sm-prelayer'));
     const itemEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-itemLabel'));
-    const numberEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-num'));
+    const numberEls = Array.from(
+      panel.querySelectorAll<HTMLElement>('.sm-panel-list[data-numbering] .sm-panel-item'),
+    );
     const socialTitle = panel.querySelector<HTMLElement>('.sm-socials-title');
     const socialLinks = Array.from(panel.querySelectorAll<HTMLElement>('.sm-socials-link'));
 
     if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
-    if (numberEls.length) gsap.set(numberEls, { opacity: 0, scale: 0.8 });
+    if (numberEls.length) gsap.set(numberEls, { '--sm-num-opacity': 0 } as gsap.TweenVars);
     if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
     if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
 
@@ -106,12 +108,11 @@ export function Navbar() {
         tl.to(
           numberEls,
           {
-            duration: 0.5,
+            duration: 0.6,
             ease: 'power2.out',
-            opacity: 1,
-            scale: 1,
+            '--sm-num-opacity': 1,
             stagger: { each: 0.08, from: 'start' },
-          },
+          } as gsap.TweenVars,
           itemsStart + 0.1,
         );
       }
@@ -200,8 +201,10 @@ export function Navbar() {
       onComplete: () => {
         const itemEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-itemLabel'));
         if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
-        const numberEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-num'));
-        if (numberEls.length) gsap.set(numberEls, { opacity: 0, scale: 0.8 });
+        const numberEls = Array.from(
+          panel.querySelectorAll<HTMLElement>('.sm-panel-list[data-numbering] .sm-panel-item'),
+        );
+        if (numberEls.length) gsap.set(numberEls, { '--sm-num-opacity': 0 } as gsap.TweenVars);
         const socialTitle = panel.querySelector<HTMLElement>('.sm-socials-title');
         const socialLinks = Array.from(panel.querySelectorAll<HTMLElement>('.sm-socials-link'));
         if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
@@ -420,75 +423,55 @@ export function Navbar() {
           ref={panelRef}
         >
           <div className="sm-panel-inner">
-            <ul className="sm-panel-list" role="list">
+            <ul className="sm-panel-list" role="list" data-numbering="true">
               <li className="sm-panel-itemWrap">
-                <Link
-                  className="sm-panel-item group flex w-full items-center justify-between"
-                  href="/"
-                  data-index="1"
-                  onClick={closeMenu}
-                >
+                <Link className="sm-panel-item" href="/" data-index="1" onClick={closeMenu}>
                   <span className="sm-panel-itemLabel">Home</span>
-                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
-                    01
-                  </span>
                 </Link>
               </li>
               <li className="sm-panel-itemWrap">
                 <Link
-                  className="sm-panel-item group flex w-full items-center justify-between"
+                  className="sm-panel-item"
                   href="/projects"
                   data-index="2"
                   onClick={closeMenu}
                 >
                   <span className="sm-panel-itemLabel">Projects</span>
-                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
-                    02
-                  </span>
                 </Link>
               </li>
               <li className="sm-panel-itemWrap">
                 <Link
-                  className="sm-panel-item group flex w-full items-center justify-between"
+                  className="sm-panel-item"
                   href="/about"
                   data-index="3"
                   onClick={closeMenu}
                 >
                   <span className="sm-panel-itemLabel">About &amp; Journey</span>
-                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
-                    03
-                  </span>
                 </Link>
               </li>
               <li className="sm-panel-itemWrap">
                 <Link
-                  className="sm-panel-item group flex w-full items-center justify-between"
+                  className="sm-panel-item"
                   href="/credentials"
                   data-index="4"
                   onClick={closeMenu}
                 >
                   <span className="sm-panel-itemLabel">Credentials &amp; Certs</span>
-                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
-                    04
-                  </span>
                 </Link>
               </li>
               <li className="sm-panel-itemWrap">
                 <Link
-                  className="sm-panel-item group flex w-full items-center justify-between"
+                  className="sm-panel-item"
                   href="/contact"
                   data-index="5"
                   onClick={closeMenu}
                 >
                   <span className="sm-panel-itemLabel">Contact</span>
-                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
-                    05
-                  </span>
                 </Link>
               </li>
               <li className="sm-panel-itemWrap" style={{ marginTop: '0.75rem' }}>
                 <a
-                  className="sm-panel-item group flex w-full items-center justify-between"
+                  className="sm-panel-item"
                   href={BUY_ME_A_COFFEE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -498,7 +481,7 @@ export function Navbar() {
                   <span className="sm-panel-itemLabel inline-flex items-center gap-1.5">
                     <span>Buy Me a Coffee</span>
                     <svg
-                      className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:scale-110"
+                      className="h-3.5 w-3.5 transition-transform duration-200 hover:-translate-y-0.5 hover:scale-110"
                       style={{ color: '#E54D2E' }}
                       viewBox="0 0 24 24"
                       fill="none"
@@ -515,14 +498,11 @@ export function Navbar() {
                       <line x1="14" y1="2" x2="14" y2="4" />
                     </svg>
                   </span>
-                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
-                    06
-                  </span>
                 </a>
               </li>
               <li className="sm-panel-itemWrap">
                 <a
-                  className="sm-panel-item group flex w-full items-center justify-between"
+                  className="sm-panel-item"
                   href={PROFILE.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -547,9 +527,6 @@ export function Navbar() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </span>
-                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
-                    07
                   </span>
                 </a>
               </li>

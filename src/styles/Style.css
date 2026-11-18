@@ -3267,12 +3267,9 @@ section.cta-section .cta-desc,
   transition:
     background 0.25s,
     color 0.25s;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  display: inline-block;
   text-decoration: none;
-  padding-right: 0.5rem;
+  padding-right: 1.5em;
 }
 
 .sm-panel-itemLabel {
@@ -3282,21 +3279,27 @@ section.cta-section .cta-desc,
 }
 
 .sm-panel-item:hover {
-  color: var(--sm-accent, #5227ff);
+  color: var(--sm-accent, #e54d2e);
 }
 
-.sm-panel-num {
+.sm-panel-list[data-numbering] {
+  counter-reset: smItem;
+}
+
+.sm-panel-list[data-numbering] .sm-panel-item::after {
+  counter-increment: smItem;
+  content: counter(smItem, decimal-leading-zero);
+  position: absolute;
+  top: 0.05em;
+  right: 0.25em;
+  font-size: 18px;
+  font-weight: 500;
   font-family: var(--font-mono, monospace);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
   color: var(--sm-accent, #e54d2e);
-  padding: 2px 8px;
-  border-radius: 9999px;
-  background: rgba(229, 77, 46, 0.1);
-  border: 1px solid rgba(229, 77, 46, 0.25);
-  margin-left: 1rem;
-  flex-shrink: 0;
+  letter-spacing: 0;
+  pointer-events: none;
+  user-select: none;
+  opacity: var(--sm-num-opacity, 0);
 }
 
 @media (max-width: 1024px) {
@@ -3312,9 +3315,15 @@ section.cta-section .cta-desc,
   .sm-panel-item {
     font-size: clamp(1.75rem, 6.5vw, 2.5rem);
     letter-spacing: -1px;
-    padding-right: 0.5rem;
+    padding-right: 1.4em;
     max-width: 100%;
     word-break: break-word;
+  }
+
+  .sm-panel-list[data-numbering] .sm-panel-item::after {
+    font-size: 13px;
+    top: 0.1em;
+    right: 0.2em;
   }
 
   .staggered-menu-panel {
