@@ -1932,6 +1932,17 @@ section.cta-section .cta-desc,
   font-weight: 500;
 }
 
+.cta-btn svg {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cta-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
 /* General premium buttons (magnetic + ripple) */
 .btn {
   position: relative;

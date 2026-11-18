@@ -19,8 +19,25 @@ export function ContactSection() {
           target="_blank"
           rel="noopener noreferrer"
           className="cta-btn magnetic-btn"
+          aria-label="Let's Talk - Open Contact Portal"
         >
-          <span>Let&apos;s Talk! ↗</span>
+          <span>Let&apos;s Talk!</span>
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </a>
       </div>
       <div className="cta-social-pills">
