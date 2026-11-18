@@ -25,36 +25,22 @@ export function Navbar() {
     const navEl = navRef.current;
     if (!navEl) return;
 
-    // For non-home pages, always keep the sleek floating glass bar
     if (pathname !== '/') {
       navEl.classList.add('nav-glass');
       return;
     }
 
-    const hero = document.querySelector('.hero-premium');
-    if (!hero) {
-      navEl.classList.add('nav-glass');
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            navEl.classList.remove('nav-glass');
-          } else {
-            navEl.classList.add('nav-glass');
-          }
-        });
-      },
-      { threshold: 0.05 },
-    );
-
-    observer.observe(hero);
-
-    return () => {
-      observer.disconnect();
+    const onScroll = () => {
+      if (window.scrollY > 30) {
+        navEl.classList.add('nav-glass');
+      } else {
+        navEl.classList.remove('nav-glass');
+      }
     };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [pathname]);
 
   // Staggered menu animations
@@ -71,14 +57,12 @@ export function Navbar() {
 
     const preLayers = Array.from(wrapper.querySelectorAll<HTMLElement>('.sm-prelayer'));
     const itemEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-itemLabel'));
-    const numberEls = Array.from(
-      panel.querySelectorAll<HTMLElement>('.sm-panel-list[data-numbering] .sm-panel-item'),
-    );
+    const numberEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-num'));
     const socialTitle = panel.querySelector<HTMLElement>('.sm-socials-title');
     const socialLinks = Array.from(panel.querySelectorAll<HTMLElement>('.sm-socials-link'));
 
     if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
-    if (numberEls.length) gsap.set(numberEls, { '--sm-num-opacity': 0 } as gsap.TweenVars);
+    if (numberEls.length) gsap.set(numberEls, { opacity: 0, scale: 0.8 });
     if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
     if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
 
@@ -122,11 +106,12 @@ export function Navbar() {
         tl.to(
           numberEls,
           {
-            duration: 0.6,
+            duration: 0.5,
             ease: 'power2.out',
-            '--sm-num-opacity': 1,
+            opacity: 1,
+            scale: 1,
             stagger: { each: 0.08, from: 'start' },
-          } as gsap.TweenVars,
+          },
           itemsStart + 0.1,
         );
       }
@@ -215,10 +200,8 @@ export function Navbar() {
       onComplete: () => {
         const itemEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-itemLabel'));
         if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
-        const numberEls = Array.from(
-          panel.querySelectorAll<HTMLElement>('.sm-panel-list[data-numbering] .sm-panel-item'),
-        );
-        if (numberEls.length) gsap.set(numberEls, { '--sm-num-opacity': 0 } as gsap.TweenVars);
+        const numberEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-num'));
+        if (numberEls.length) gsap.set(numberEls, { opacity: 0, scale: 0.8 });
         const socialTitle = panel.querySelector<HTMLElement>('.sm-socials-title');
         const socialLinks = Array.from(panel.querySelectorAll<HTMLElement>('.sm-socials-link'));
         if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
@@ -388,7 +371,7 @@ export function Navbar() {
 
         <button
           className="sm-toggle"
-          aria-label="Open menu"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
           aria-controls="staggered-menu-panel"
           type="button"
@@ -437,40 +420,75 @@ export function Navbar() {
           ref={panelRef}
         >
           <div className="sm-panel-inner">
-            <ul className="sm-panel-list" role="list" data-numbering="true">
+            <ul className="sm-panel-list" role="list">
               <li className="sm-panel-itemWrap">
-                <Link className="sm-panel-item" href="/" data-index="1" onClick={closeMenu}>
+                <Link
+                  className="sm-panel-item group flex w-full items-center justify-between"
+                  href="/"
+                  data-index="1"
+                  onClick={closeMenu}
+                >
                   <span className="sm-panel-itemLabel">Home</span>
-                </Link>
-              </li>
-              <li className="sm-panel-itemWrap">
-                <Link className="sm-panel-item" href="/projects" data-index="2" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">Projects</span>
-                </Link>
-              </li>
-              <li className="sm-panel-itemWrap">
-                <Link className="sm-panel-item" href="/about" data-index="3" onClick={closeMenu}>
-                  <span className="sm-panel-itemLabel">About &amp; Journey</span>
+                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
+                    01
+                  </span>
                 </Link>
               </li>
               <li className="sm-panel-itemWrap">
                 <Link
-                  className="sm-panel-item"
+                  className="sm-panel-item group flex w-full items-center justify-between"
+                  href="/projects"
+                  data-index="2"
+                  onClick={closeMenu}
+                >
+                  <span className="sm-panel-itemLabel">Projects</span>
+                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
+                    02
+                  </span>
+                </Link>
+              </li>
+              <li className="sm-panel-itemWrap">
+                <Link
+                  className="sm-panel-item group flex w-full items-center justify-between"
+                  href="/about"
+                  data-index="3"
+                  onClick={closeMenu}
+                >
+                  <span className="sm-panel-itemLabel">About &amp; Journey</span>
+                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
+                    03
+                  </span>
+                </Link>
+              </li>
+              <li className="sm-panel-itemWrap">
+                <Link
+                  className="sm-panel-item group flex w-full items-center justify-between"
                   href="/credentials"
                   data-index="4"
                   onClick={closeMenu}
                 >
                   <span className="sm-panel-itemLabel">Credentials &amp; Certs</span>
+                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
+                    04
+                  </span>
                 </Link>
               </li>
               <li className="sm-panel-itemWrap">
-                <Link className="sm-panel-item" href="/contact" data-index="5" onClick={closeMenu}>
+                <Link
+                  className="sm-panel-item group flex w-full items-center justify-between"
+                  href="/contact"
+                  data-index="5"
+                  onClick={closeMenu}
+                >
                   <span className="sm-panel-itemLabel">Contact</span>
+                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
+                    05
+                  </span>
                 </Link>
               </li>
-              <li className="sm-panel-itemWrap" style={{ marginTop: '1rem' }}>
+              <li className="sm-panel-itemWrap" style={{ marginTop: '0.75rem' }}>
                 <a
-                  className="sm-panel-item"
+                  className="sm-panel-item group flex w-full items-center justify-between"
                   href={BUY_ME_A_COFFEE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -497,11 +515,14 @@ export function Navbar() {
                       <line x1="14" y1="2" x2="14" y2="4" />
                     </svg>
                   </span>
+                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
+                    06
+                  </span>
                 </a>
               </li>
               <li className="sm-panel-itemWrap">
                 <a
-                  className="sm-panel-item"
+                  className="sm-panel-item group flex w-full items-center justify-between"
                   href={PROFILE.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -526,6 +547,9 @@ export function Navbar() {
                         strokeLinejoin="round"
                       />
                     </svg>
+                  </span>
+                  <span className="sm-panel-num shrink-0 ml-4 rounded-full border border-[var(--accent-orange)]/30 bg-[var(--accent-orange)]/10 px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-[var(--accent-orange)]">
+                    07
                   </span>
                 </a>
               </li>

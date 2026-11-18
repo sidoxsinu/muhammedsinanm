@@ -21,7 +21,7 @@ export function Tabs({ tabs, activeTab, onChange, className = '' }: TabsProps) {
     <div
       role="tablist"
       aria-label="Navigation Tabs"
-      className={`inline-flex max-w-full scrollbar-none items-center gap-1 overflow-x-auto rounded-full border border-neutral-800 bg-[#161616] p-1.5 ${className}`}
+      className={`inline-flex w-max min-w-full items-center gap-1.5 rounded-full border border-neutral-800 bg-[#161616]/95 p-1.5 backdrop-blur-md ${className}`}
     >
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;
@@ -34,18 +34,18 @@ export function Tabs({ tabs, activeTab, onChange, className = '' }: TabsProps) {
             id={`tab-${tab.id}`}
             type="button"
             onClick={() => onChange(tab.id)}
-            className={`relative flex cursor-pointer items-center gap-2 rounded-full px-4 py-1.5 font-mono text-xs tracking-wider whitespace-nowrap uppercase transition-colors duration-150 outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent-orange)] ${
+            className={`relative flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-4 py-2 font-mono text-xs tracking-wider whitespace-nowrap uppercase transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent-orange)] ${
               isActive
-                ? 'bg-[var(--accent-orange)] font-semibold text-white'
-                : 'text-neutral-400 hover:bg-neutral-800 hover:text-white'
+                ? 'bg-[var(--accent-orange)] font-semibold text-white shadow-sm'
+                : 'text-neutral-400 hover:bg-neutral-800/80 hover:text-white'
             }`}
           >
-            {tab.icon && <span className="h-3.5 w-3.5">{tab.icon}</span>}
-            <span>{tab.label}</span>
+            {tab.icon && <span className="h-3.5 w-3.5 shrink-0">{tab.icon}</span>}
+            <span className="shrink-0">{tab.label}</span>
             {tab.count !== undefined && (
               <span
-                className={`py-0.2 rounded-full px-1.5 font-mono text-[10px] ${
-                  isActive ? 'bg-black/40 text-white' : 'bg-neutral-800 text-neutral-400'
+                className={`shrink-0 rounded-full px-1.5 py-0.5 font-mono text-[10px] font-medium ${
+                  isActive ? 'bg-black/30 text-white' : 'bg-neutral-800 text-neutral-400'
                 }`}
               >
                 {tab.count}
