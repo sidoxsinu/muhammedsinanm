@@ -140,6 +140,7 @@ desktop.ini
 # ------------------------------------------------------------------------------
 .vscode/
 .idea/
+.agents/
 *.sublime-project
 *.sublime-workspace
 

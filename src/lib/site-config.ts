@@ -10,5 +10,5 @@ export const SITE_CONFIG = {
   email: 'muhammedsinan.m67@gmail.com',
   phone: '+91 85905 68566',
   contactUrl: 'https://contact.muhammedsinan.in',
-  resumeUrl: '/assets/documents/resume/muhammed-sinan-resume.pdf',
+  resumeUrl: '/assets/documents/resume/muhammed-sinan-resume.pdf?v=20261111-nda',
 };

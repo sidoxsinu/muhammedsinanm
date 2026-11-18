@@ -9,10 +9,7 @@ const ABOUT_SEGMENTS = [
   { text: 'Engineering', isKey: true },
   { text: ' ', isKey: false },
   { text: 'Intern', isKey: true },
-  {
-    text: ' at Torcue Digital, delivering full-stack web architectures, iOS (Swift) tickets, and production-grade AI systems.',
-    isKey: false,
-  },
+  { text: ' at Torcue Digital.', isKey: false },
 ];
 
 const CHARS_DATA = ABOUT_SEGMENTS.flatMap((segment) =>

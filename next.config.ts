@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/resume',
-        destination: '/images/Resume/Muhammed Sinan M.pdf',
+        destination: '/images/Resume/Muhammed Sinan M.pdf?v=20261111-nda',
         permanent: false,
       },
     ];
