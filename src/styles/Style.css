@@ -2282,8 +2282,23 @@ section.cta-section .cta-desc,
   color: #f0f0f0;
 }
 
+.footer-inner a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
 .footer-inner a:hover {
-  text-decoration: underline !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.footer-print-btn {
+  transition: all 0.2s ease;
+}
+
+.footer-print-btn:hover {
+  background-color: var(--accent-orange) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-orange) !important;
 }
 
 .footer-col-left {
@@ -2801,10 +2816,10 @@ section.cta-section .cta-desc,
     padding: 0;
   }
   .footer-inner {
-    padding: 24px 5vw 16px 5vw;
+    padding: 22px 5vw 14px 5vw;
     flex-direction: column;
     gap: 16px;
-    text-align: center;
+    text-align: left;
   }
   .footer-col-left {
     min-width: auto !important;
@@ -2816,10 +2831,12 @@ section.cta-section .cta-desc,
   }
   .footer-col-left p {
     margin-bottom: 12px !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
   }
   .footer-col-left > div > div {
-    justify-content: center !important;
-    margin-bottom: 8px !important;
+    justify-content: flex-start !important;
+    margin-bottom: 7px !important;
   }
   .footer-nav-grid {
     display: grid;
@@ -2838,10 +2855,17 @@ section.cta-section .cta-desc,
   }
   .footer-nav-grid .footer-col h4 {
     margin-bottom: 8px !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
   }
   .footer-nav-grid .footer-col > div {
-    gap: 4px !important;
+    gap: 5px !important;
+  }
+  .footer-bottom {
+    padding: 14px 5vw;
+    padding-right: 56px !important;
+    text-align: left !important;
+    font-size: 11.5px !important;
+    line-height: 1.4 !important;
   }
   .footer-nav-grid .footer-col a,
   .footer-nav-grid .footer-col button,
